@@ -104,7 +104,7 @@
                                 標題
                             </td>
                             <td style="width: 80%">
-                                <asp:Label ID="LbTitle" runat="server" Text="阿~~~被你看到拉"></asp:Label>
+                                <asp:TextBox ID="TbTitle" runat="server"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -112,7 +112,15 @@
                                 說明
                             </td>
                             <td style="width: 80%">
-                                <asp:Label ID="Label1" runat="server" Text="阿~~~被你看到拉"></asp:Label>
+                                <asp:TextBox ID="TbDescription" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 20%; line-height: 50px">
+                                及格分數
+                            </td>
+                            <td style="width: 80%">
+                                <asp:TextBox ID="TbPassScore" runat="server"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -120,23 +128,15 @@
                                 URL
                             </td>
                             <td style="width: 80%">
-                                <asp:Label ID="Label2" runat="server" Text="阿~~~被你看到拉"></asp:Label>
+                                <asp:TextBox ID="TbURL" runat="server"></asp:TextBox>
                             </td>
                         </tr>
+                        
                         <tr>
                             <td style="width: 20%; line-height: 50px">
                                 視頻
                             </td>
-                            <td style="width: 80%">
-                                <asp:Label ID="Label3" runat="server" Text="阿~~~被你看到拉"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 20%; line-height: 50px">
-                                視頻
-                            </td>
-                            <td style="width: 80%">
-                                
+                            <td style="width: 80%; height: 600px">
                                 <asp:Label ID="Label4" runat="server" Text="阿~~~被你看到拉"></asp:Label>
                             </td>
                         </tr>

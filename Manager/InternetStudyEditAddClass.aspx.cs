@@ -9,7 +9,10 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
 {
     protected void Page_Init(object sender, EventArgs e)
     {
-
+        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+        //    Response.Redirect("SessionOut.aspx");
+        //if (!Session["ClassCode"].ToString().Equals("2"))
+        //    Response.Redirect("SessionOut.aspx");
 
         for (int i = 0; i < 10 ; i++)
         {
@@ -18,6 +21,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
             //c.eventArgs.QuestionContent = ;
             //c.cClick += new userControl_questionTest.questionClick(c_cClick);
             //PnQuestion.Controls.Add(c);
+            PnQuestionList.Controls.Add(c);
         }
     }
     protected void Page_Load(object sender, EventArgs e)
