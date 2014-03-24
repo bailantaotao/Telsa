@@ -91,6 +91,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
+        BaseClass bc = new BaseClass();
 
         if (ms.GetAllColumnData(Query, data))
         {
@@ -154,8 +155,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     else
                         LbCompleted.Text += "<tr align='center'>";
 
+                    string EncryptQuestionID = bc.encryption(((string[])(data[i]))[0]);
+
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditViewer.aspx?QuestionClass=" + ((string[])(data[i]))[0] + "'>" + (i + 1).ToString() + "</a></td>";
+                    LbCompleted.Text += "<a href='InternetStudyEditViewer.aspx?QuestionClass=" + EncryptQuestionID + "'>" + (i + 1).ToString() + "</a></td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
@@ -164,10 +167,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditAdd.aspx?QuestionClass=" + i + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?QuestionClass=" + EncryptQuestionID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?QuestionClass=" + i + "&'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?QuestionClass=" + EncryptQuestionID + "&'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
 
                     LbCompleted.Text += "</tr>";
 

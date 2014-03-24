@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,21 +16,44 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
     {
         // 目前此form的問卷編號
         public string QuestionID = string.Empty;
-        public string QuestionContent = string.Empty;
-        public string[] QuestionAnswer;
-        public int UserAnswer = -1;
+        public string Question = string.Empty;
+        public bool IsSingleSelected = true;
+        public int PassScore = -1;
+        public string Answer = string.Empty;
+        public ArrayList AnswerItem = new ArrayList();
+        public int AnswerItemCount = -1;
+        //public string[] AnswerItem = new string[]{"", "", "", ""};
+
     }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            LbQuestion.Text = eventArgs.QuestionID + ". " + eventArgs.QuestionContent;
-            for (int i = 0; i < eventArgs.QuestionContent.Length; i++)
-                RblQuestionChoose.Items[i].Text = eventArgs.QuestionAnswer[i];
+            LbQuestionNumber.Text = eventArgs.QuestionID + ". 題目: ";
+            
         }
         else
         {
-            eventArgs.UserAnswer = RblQuestionChoose.SelectedIndex;
+            eventArgs.Question = TbQuestion.Text;
+            eventArgs.IsSingleSelected = (RblQuestionType.SelectedIndex == 0) ? true : false;
+            int PassScore = -1;
+            bool IsDigit = Int32.TryParse(TbPassScore.Text, out PassScore);
+            if(IsDigit)
+                eventArgs.PassScore = PassScore;
+            eventArgs.Answer = TbAnswer.Text;
+            /** 將來要改成動態新增答案選項 */
+            //eventArgs.AnswerItem.Add(TbQuestionItem1.Text);
+            //eventArgs.AnswerItem.Add(TbQuestionItem2.Text);
+            //eventArgs.AnswerItem.Add(TbQuestionItem3.Text);
+            //eventArgs.AnswerItem.Add(TbQuestionItem4.Text);
+            eventArgs.AnswerItem.Add("1");
+            eventArgs.AnswerItem.Add("2");
+            eventArgs.AnswerItem.Add("3");
+            eventArgs.AnswerItem.Add("4");
+            eventArgs.AnswerItemCount = eventArgs.AnswerItem.Count;
+            
         }
     }
+
+
 }

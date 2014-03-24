@@ -100,49 +100,61 @@
                 <div id="BlockRightDownController">
                     <table style="border: thin solid Gray; width: 1000px; height: 60px; ">
                         <tr>
-                            <td style="width: 20%; line-height: 50px">
+                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 標題
                             </td>
-                            <td style="width: 80%">
-                                <asp:TextBox ID="TbTitle" runat="server"></asp:TextBox>
+                            <td style="width: 80%; border: thin solid Gray;">
+                                <asp:TextBox ID="TbTitle" runat="server" Width="700px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; line-height: 50px">
+                            <td style="width: 20%; line-height: 80px; border: thin solid Gray;">
                                 說明
                             </td>
-                            <td style="width: 80%">
-                                <asp:TextBox ID="TbDescription" runat="server"></asp:TextBox>
+                            <td style="height: 80px: 80%; border: thin solid Gray;">
+                                <asp:TextBox ID="TbDescription" runat="server" Width="700px" Rows="3" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; line-height: 50px">
+                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 及格分數
                             </td>
-                            <td style="width: 80%">
-                                <asp:TextBox ID="TbPassScore" runat="server"></asp:TextBox>
+                            <td style="width: 80%; border: thin solid Gray;">
+                                <asp:TextBox ID="TbPassScore" runat="server" Width="700px" MaxLength="3"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width: 20%; line-height: 50px">
+                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 URL
                             </td>
-                            <td style="width: 80%">
-                                <asp:TextBox ID="TbURL" runat="server"></asp:TextBox>
+                            <td style="width: 80%; border: thin solid Gray;">
+                                <asp:TextBox ID="TbURL" runat="server" Width="700px"></asp:TextBox>
                             </td>
                         </tr>
                         
                         <tr>
-                            <td style="width: 20%; line-height: 50px">
+                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 視頻
                             </td>
-                            <td style="width: 80%; height: 600px">
+                            <td style="width: 80%; height: 600px; border: thin solid Gray;">
                                 <asp:Label ID="Label4" runat="server" Text="阿~~~被你看到拉"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" style="border: thin solid Gray;">
                                 <asp:Panel ID="PnQuestionList" runat="server"></asp:Panel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table>
+                                    <td style="line-height: 50px;">
+                                            <asp:Button ID="BtnSubmit" runat="server" Text="確定" OnClick="Btn_Click" />
+                                    </td>
+                                    <td style="line-height: 50px;">
+                                            <asp:Button ID="BtnCancel" runat="server" Text="取消" OnClick="Btn_Click" />
+                                    </td>
+                                </table>
                             </td>
                         </tr>
                     </table>
