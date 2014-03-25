@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 
 public partial class Manager_InternetStudyEdit : System.Web.UI.Page
 {
+    private const int ClassMaxNumbers = 10;
     private int Page = 0, Flag = 0, Count = 0;
     private string Query = string.Empty;
     private const string QuestionClassID = "QuestionClassID";
@@ -69,9 +70,13 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
         //    Response.Redirect("SessionOut.aspx");
         //if (!Session["ClassCode"].ToString().Equals("2"))
         //    Response.Redirect("SessionOut.aspx");
+        
         if (!IsPostBack)
         {
-            SearchType(BaseClass.NowYear);
+            if (Session["InternetStudyEditYearQuery"] != null)
+                Query = Session["InternetStudyEditYearQuery"].ToString();
+            else
+                SearchType(BaseClass.NowYear);
             LoadInternetStudy(1);
         }
     }
@@ -79,14 +84,14 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
     private void SearchType(int QuestionClassYear)
     {
         Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
-                "InternetStudy.Deadline from InternetStudy " +
+                "InternetStudy.Deadline, InternetStudy.QuestionAddedComplete from InternetStudy " +
                 "where InternetStudy.QuestionClassYear = '" + QuestionClassYear + "'";
     }
 
     private void SearchType(int Low, int High)
     {
         Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
-                "InternetStudy.Deadline from InternetStudy " +
+                "InternetStudy.Deadline, InternetStudy.QuestionAddedComplete from InternetStudy " +
                 "where InternetStudy.QuestionClassYear between '" + Low + "' AND '" + High + "'";
     }
 
@@ -162,6 +167,9 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     string EncryptQuestionClassYear = GetEncryptionString(QuestionClassYear, ((string[])(data[i]))[1]);
                     string EncryptClassID = GetEncryptionString(ClassID, ((string[])(data[i]))[2]);
 
+                    bool IsAdded = false, DBAddedComplete = false;
+                    IsAdded = bool.TryParse(((string[])(data[i]))[5], out DBAddedComplete);
+
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += "<a href='InternetStudyEditViewer.aspx?" + EncryptQuestionClassID + "'>" + (i + 1).ToString() + "</a></td>";
 
@@ -171,11 +179,29 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    //LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    //LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+
+                    // 如果已經新增過該類別之問題，則只能做修改
+                    if (DBAddedComplete)
+                    {
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<a href='#'><img src='../Image/zh-TW/ButtonAddGary.png'></a></td>";
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    }
+                    else
+                    {
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<a href='#'><img src='../Image/zh-TW/ButtonAddGary.png'></a></td>";
+                    }
+
 
                     LbCompleted.Text += "</tr>";
 
@@ -185,7 +211,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             else
             {
                 LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                 LbCompleted.Text += "此年度您還沒有新增，請按下新增年度開始</td>";
                 LbCompleted.Text += "</tr>";
 
@@ -199,10 +225,35 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
 
     private string GetEncryptionString(string Tag, string Data)
     {
+        //BaseClass bc = new BaseClass();
+        //return (Tag + "=" +bc.encryption(Data));
         BaseClass bc = new BaseClass();
-        return (Tag + "=" +bc.encryption(Data));
+        return (Tag + "=" + Data);
     }
-    
+
+    private bool AddClassData()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        BaseClass bc = new BaseClass();
+        for (int i = 0; i < ClassMaxNumbers; i++)
+        {
+            Query = "insert into InternetStudy (QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete) VALUES ('" +
+                    TbAddYear.Text + "','" +
+                    i + "','" +
+                    " N / A" + "','" +
+                    "2014-12-31 00:00:00.000" + "','" +
+                    "" + "','" +
+                    "0" + "','" +
+                    "" + "','" +
+                    "False" + "')";
+            if (!ms.WriteData(Query, sb))
+                return false;
+            sb.Clear();
+        }
+        return true;
+    }
+
     private void AddYearQuestionnaire()
     {
         ManageSQL ms = new ManageSQL();
@@ -218,9 +269,17 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             if (ms.GetRowNumbers(query, sb))
             {
                 if (Convert.ToInt32(sb.ToString()) == 0)
-                    Response.Redirect("");
+                {
+                    sb.Clear();
+                    if (AddClassData())
+                    {
+                        Session["QuestionClassYear"] = TbAddYear.Text;
+                        Response.Redirect("InternetStudyEditAddYear.aspx");
+                    }
+                }
                 else
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您輸入的年份目前已存在');", true);
+                sb.Clear();
             }
         }
         else

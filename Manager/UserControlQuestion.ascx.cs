@@ -15,7 +15,7 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
     public class MyEventArgs : EventArgs
     {
         // 目前此form的問卷編號
-        public string QuestionID = string.Empty;
+        public int QuestionID = -1;
         public string Question = string.Empty;
         public bool IsSingleSelected = true;
         public int PassScore = -1;
@@ -23,14 +23,31 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
         public ArrayList AnswerItem = new ArrayList();
         public int AnswerItemCount = -1;
         //public string[] AnswerItem = new string[]{"", "", "", ""};
-
+        
     }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            LbQuestionNumber.Text = eventArgs.QuestionID + ". 題目: ";
-            
+            LbQuestionNumber.Text = (eventArgs.QuestionID+1).ToString() + ". 題目: ";
+            TbQuestion.Text = eventArgs.Question;
+            TbPassScore.Text = (eventArgs.PassScore < 0) ? "0" : eventArgs.PassScore.ToString();
+            TbAnswer.Text = eventArgs.Answer;
+            RblQuestionType.SelectedIndex = eventArgs.IsSingleSelected ? 0 : 1;
+            if(eventArgs.AnswerItem.Count > 0)
+            { 
+                TbQuestionItem1.Text = eventArgs.AnswerItem[0].ToString();
+                TbQuestionItem2.Text = eventArgs.AnswerItem[1].ToString();
+                TbQuestionItem3.Text = eventArgs.AnswerItem[2].ToString();
+                TbQuestionItem4.Text = eventArgs.AnswerItem[3].ToString();
+                eventArgs.AnswerItemCount = 4;
+            }
+            //TbQuestion.Text = "222";
+            //TbAnswer.Text = "123213";
+            //TbQuestionItem1.Text = "1";
+            //TbQuestionItem2.Text = "2";
+            //TbQuestionItem3.Text = "3";
+            //TbQuestionItem4.Text = "4";
         }
         else
         {
@@ -42,14 +59,20 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
                 eventArgs.PassScore = PassScore;
             eventArgs.Answer = TbAnswer.Text;
             /** 將來要改成動態新增答案選項 */
-            //eventArgs.AnswerItem.Add(TbQuestionItem1.Text);
-            //eventArgs.AnswerItem.Add(TbQuestionItem2.Text);
-            //eventArgs.AnswerItem.Add(TbQuestionItem3.Text);
-            //eventArgs.AnswerItem.Add(TbQuestionItem4.Text);
-            eventArgs.AnswerItem.Add("1");
-            eventArgs.AnswerItem.Add("2");
-            eventArgs.AnswerItem.Add("3");
-            eventArgs.AnswerItem.Add("4");
+            if (eventArgs.AnswerItem.Count > 0)
+            {
+                eventArgs.AnswerItem[0] = TbQuestionItem1.Text;
+                eventArgs.AnswerItem[1] = TbQuestionItem2.Text;
+                eventArgs.AnswerItem[2] = TbQuestionItem3.Text;
+                eventArgs.AnswerItem[3] = TbQuestionItem4.Text;
+            }
+            else
+            {
+                eventArgs.AnswerItem.Add(TbQuestionItem1.Text);
+                eventArgs.AnswerItem.Add(TbQuestionItem2.Text);
+                eventArgs.AnswerItem.Add(TbQuestionItem3.Text);
+                eventArgs.AnswerItem.Add(TbQuestionItem4.Text);
+            }
             eventArgs.AnswerItemCount = eventArgs.AnswerItem.Count;
             
         }

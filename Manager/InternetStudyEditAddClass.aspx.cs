@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,11 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         //    Response.Redirect("SessionOut.aspx");
 
         // test
-        Session["QuestionClassID"] = "1";
-        Session["QuestionClassYear"] = "104";
-        Session["ClassID"] = "1";
+        //Session["QuestionClassID"] = "1";
+        //Session["QuestionClassYear"] = "104";
+        //Session["ClassID"] = "1";
         // test
-
         BaseClass bc = new BaseClass();
-        ManageSQL ms = new ManageSQL();
 
         //string DecryptQuestionID = bc.decryption(Request["QuestionClassID"]);
         //Session["QuestionClassID"] = DecryptQuestionID;
@@ -33,15 +32,22 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         //string DecryptClassID = bc.decryption(Request["ClassID"]);
         //Session["ClassID"] = DecryptClassID;
 
+        
+        Session["QuestionClassID"] = Request["QuestionClassID"];
+        
+        Session["QuestionClassYear"] = Request["QuestionClassYear"];
+
+        Session["ClassID"] = Request["ClassID"];
+
         for (int i = 0; i < QuestionMaxNumbers; i++)
         {
             Manager_UserControlQuestion c = (Manager_UserControlQuestion)LoadControl("UserControlQuestion.ascx");
-            c.eventArgs.QuestionID = (i + 1).ToString();
-            //c.eventArgs.QuestionContent = ;
+            c.eventArgs.QuestionID = i;
             //c.cClick += new userControl_questionTest.questionClick(c_cClick);
             //PnQuestion.Controls.Add(c);
             PnQuestionList.Controls.Add(c);
         }
+
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -74,7 +80,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         int PassScore = -1;
         bool IsDigit = Int32.TryParse(TbPassScore.Text, out PassScore);
 
-        if (IsDigit)
+        if (!IsDigit)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('及格分數必須是數字');", true);
             return false;
@@ -123,7 +129,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
     private void UploadData()
     {
         ManageSQL ms = new ManageSQL();
-
+        StringBuilder sb = new StringBuilder();
 
         // 資料庫有問題，InternetStudyQuestionItem必須重新設計
 
@@ -131,34 +137,71 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         // and in addYear, must insert data to table.
         // in this, must to update
         string Query;
-        Query = "insert into InternetStudy (QuestionClassID, QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, " +
-                "PassScore, QuestionURL, QuestionAddedComplete) VALUES ('" + Session["QuestionClassID"].ToString() + "','" +
-                "";
+        Query = "Update InternetStudy set " +
+                "ClassName = '" + TbTitle.Text + "'," +
+                "ClassDescription = '" + TbDescription.Text + "'," +
+                "PassScore = '" + TbPassScore.Text + "'," +
+                "QuestionURL = '" + TbURL.Text + "'," +
+                "QuestionAddedComplete = '" + "True" + "' " +
+                "where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "'";
 
-        for (int i = 0; i < PnQuestionList.Controls.Count; i++)
+        if (ms.WriteData(Query, sb))
         {
-            //string t = pn_main.Controls[i].GetType().ToString();
-            switch (this.PnQuestionList.Controls[i].GetType().ToString())
+            sb.Clear();
+
+            Query = "delete from InternetStudyQuestionContent where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "'";
+            ms.WriteData(Query, sb);
+            sb.Clear();
+
+            // 先刪除再新增資料
+            Query = "delete from InternetStudyQuestionItem where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "'";
+            ms.WriteData(Query, sb);
+            sb.Clear();
+
+            for (int i = 0; i < PnQuestionList.Controls.Count; i++)
             {
-                case "ASP.manager_usercontrolquestion_ascx":
-                    Manager_UserControlQuestion c = (Manager_UserControlQuestion)PnQuestionList.Controls[i];
-                    
-                    for (int j = 0; j < c.eventArgs.AnswerItemCount; j++)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        Query = "insert into InternetStudyQuestionItem (QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent) " +
-                                "VALUES ('" + Session["QuestionClassID"].ToString() + "','" + c.eventArgs.QuestionID + "','" +
-                                j + "','" + c.eventArgs.AnswerItem[j] + "'";
-                        ms.WriteData(Query, sb);
+                //string t = pn_main.Controls[i].GetType().ToString();
+                switch (this.PnQuestionList.Controls[i].GetType().ToString())
+                {
+                    case "ASP.manager_usercontrolquestion_ascx":
+                        Manager_UserControlQuestion c = (Manager_UserControlQuestion)PnQuestionList.Controls[i];
 
-                    }
+                        Query = "insert into InternetStudyQuestionContent " +
+                                "( QuestionClassID, QuestionNo, QuestionContent, IsSingleSelection, Score, Answer ) " +
+                                "VALUES " +
+                                "( '" + Session["QuestionClassID"].ToString() + "','" + 
+                                c.eventArgs.QuestionID + "','" + 
+                                c.eventArgs.Question + "','" + 
+                                c.eventArgs.IsSingleSelected + "','" + 
+                                c.eventArgs.PassScore + "','" +
+                                c.eventArgs.Answer + "')";
 
-                    break;
-                default:
-                    string ss = PnQuestionList.Controls[i].GetType().ToString();
-                    break;
+                        bool isTrue = ms.WriteData(Query, sb);
+                        sb.Clear();
+
+                        for (int j = 0; j < c.eventArgs.AnswerItemCount; j++)
+                        {
+                            //StringBuilder sb = new StringBuilder();
+                            Query = "insert into InternetStudyQuestionItem (QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent) " +
+                                    "VALUES " +
+                                    "('" + Session["QuestionClassID"].ToString() + "','" + 
+                                    c.eventArgs.QuestionID + "','" +
+                                    j + "','" + 
+                                    c.eventArgs.AnswerItem[j] + "')";
+                            isTrue = ms.WriteData(Query, sb);
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
             }
         }
+        else
+        {
+            return;
+        }
+
     }
 
     protected void Btn_Click(object sender, EventArgs e)
@@ -166,12 +209,19 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         Button btn = (Button)sender;
         if (btn.ID == "BtnSubmit")
         {
-            //bool CheckPass = CheckData();
-            //if (CheckPass)
-            //{
- 
-            //}
-            UploadData();
+            bool CheckPass = CheckData();
+            if (CheckPass)
+            {
+                UploadData();
+                if (Session["AddYearTag"] != null)
+                {
+                    Response.Redirect("InternetStudyEditAddYear.aspx");
+                }
+                else
+                {
+                    Response.Redirect("InternetStudyEdit.aspx");
+                }
+            }            
         }
         else if (btn.ID == "BtnCancel")
         {

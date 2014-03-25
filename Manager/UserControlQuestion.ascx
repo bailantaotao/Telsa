@@ -9,7 +9,7 @@
     <tr>
         <td style="padding: 5px; height: auto; line-height: 20px;">
             <asp:RadioButtonList ID="RblQuestionType" runat="server" RepeatDirection="Horizontal">
-                <asp:ListItem Value="0">單選</asp:ListItem>
+                <asp:ListItem Value="0" Selected="True">單選</asp:ListItem>
                 <asp:ListItem Value="1">多選</asp:ListItem>
             </asp:RadioButtonList>
         </td>

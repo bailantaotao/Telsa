@@ -1,12 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="InternetStudyEditModify.aspx.cs" Inherits="Manager_InternetStudyEditModify" %>
-<%@ Register Src="UserControlQuestion.ascx" TagName="UCQ" TagPrefix="CustomControl" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="InternetStudyEditAddYear.aspx.cs" Inherits="Manager_InternetStudyEditAddYear" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-        <style>
+    <style>
         #BlockLeft {
             float: left;
             padding-top: 295px;
@@ -22,7 +22,7 @@
             padding-left:25px;
         }
         #BlockRightDown {
-            padding-top: 30px;
+            padding-top: 20px;
         }
         #BlockRightDownController {
             height:55px;
@@ -87,7 +87,7 @@
                     <img src="../Image/zh-TW/TipRed.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red">自學教材編輯</asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red">自學教材</asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
@@ -98,69 +98,52 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table style="border: thin solid Gray; width: 1000px; height: 60px; ">
+                    <div style="text-align:center; height:39px; float: left;  line-height:39px; margin-left: 20px">
+                        <asp:Label ID="Label2" runat="server" Text="新增100年度：" Font-Bold="true" Font-Size="26px"></asp:Label>
+                    </div>
+                    
+                    <div style="text-align:center; width: 850px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
+                        <asp:Button ID="BtnBack" runat="server" Text="儲存並回到上頁" OnClick="Btn_Click" />
+                        <asp:Button ID="BtnCancel" runat="server" Text="取消新增" OnClick="Btn_Click" />
+                    </div>
+                </div>
+                <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
+                    <asp:Label ID="Label1" runat="server" Text="階段一：" Font-Bold="true" Font-Size="20px"></asp:Label>
+                </div>
+                <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
+                    <asp:Label ID="Label3" runat="server" Text="請輸入完成閱讀期限：" Font-Bold="true" Font-Size="16px"></asp:Label>
+                    <asp:TextBox ID="TbToday" runat="server" Width="300px"></asp:TextBox>
+                </div>
+                <div style="margin-left: 30px">
+                    <hr />
+                </div>
+                <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
+                    <asp:Label ID="Label4" runat="server" Text="階段二：" Font-Bold="true" Font-Size="20px"></asp:Label>
+                </div>
+                <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
+                    <asp:Label ID="Label5" runat="server" Text="請完成問卷內容清單" Font-Bold="true" Font-Size="16px"></asp:Label>
+                </div>
+                <div id="BlockRightDownDataDisplay">
+                    <table style="width: 1070px">
                         <tr>
-                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                標題
-                            </td>
-                            <td style="width: 80%; border: thin solid Gray;">
-                                <asp:TextBox ID="TbTitle" runat="server" Width="700px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 20%; line-height: 80px; border: thin solid Gray;">
-                                說明
-                            </td>
-                            <td style="height: 80px: 80%; border: thin solid Gray;">
-                                <asp:TextBox ID="TbDescription" runat="server" Width="700px" Rows="3" TextMode="MultiLine"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                及格分數
-                            </td>
-                            <td style="width: 80%; border: thin solid Gray;">
-                                <asp:TextBox ID="TbPassScore" runat="server" Width="700px" MaxLength="3"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                URL
-                            </td>
-                            <td style="width: 80%; border: thin solid Gray;">
-                                <asp:TextBox ID="TbURL" runat="server" Width="700px"></asp:TextBox>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                視頻
-                            </td>
-                            <td style="width: 80%; height: 600px; border: thin solid Gray;">
-                                <asp:Label ID="Label4" runat="server" Text="阿~~~被你看到拉"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" style="border: thin solid Gray;">
-                                <asp:Panel ID="PnQuestionList" runat="server"></asp:Panel>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <table>
-                                    <td style="line-height: 50px;">
-                                            <asp:Button ID="BtnSubmit" runat="server" Text="確定" OnClick="Btn_Click" />
-                                    </td>
-                                    <td style="line-height: 50px;">
-                                            <asp:Button ID="BtnCancel" runat="server" Text="取消" OnClick="Btn_Click" />
-                                    </td>
-                                </table>
+                            <td colspan="2" align="center">
+                                <%--<asp:UpdatePanel ID="UpdateCompleted" runat="server">
+                                    <ContentTemplate>--%>
+                                        <asp:Label ID="LbCompleted" runat="server"></asp:Label>
+                                    <%--</ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="DdlPageSelect" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div id="BlockRightDownDataDisplay">
-                    
+                <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
+                    <asp:Label ID="Label6" runat="server" Text="階段三：" Font-Bold="true" Font-Size="20px"></asp:Label>
+                </div>
+                <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
+                    <asp:Button ID="BtnCompleted" runat="server" Text="請完成所有問卷" Enabled="false" OnClick="Btn_Click" />
                 </div>
             </div>
         </div>
