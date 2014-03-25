@@ -11,6 +11,9 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
 {
     private int Page = 0, Flag = 0, Count = 0;
     private string Query = string.Empty;
+    private const string QuestionClassID = "QuestionClassID";
+    private const string QuestionClassYear = "QuestionClassYear";
+    private const string ClassID = "ClassID";
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -155,10 +158,12 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     else
                         LbCompleted.Text += "<tr align='center'>";
 
-                    string EncryptQuestionID = bc.encryption(((string[])(data[i]))[0]);
+                    string EncryptQuestionClassID = GetEncryptionString(QuestionClassID, ((string[])(data[i]))[0]);
+                    string EncryptQuestionClassYear = GetEncryptionString(QuestionClassYear, ((string[])(data[i]))[1]);
+                    string EncryptClassID = GetEncryptionString(ClassID, ((string[])(data[i]))[2]);
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditViewer.aspx?QuestionClass=" + EncryptQuestionID + "'>" + (i + 1).ToString() + "</a></td>";
+                    LbCompleted.Text += "<a href='InternetStudyEditViewer.aspx?" + EncryptQuestionClassID + "'>" + (i + 1).ToString() + "</a></td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
@@ -167,10 +172,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?QuestionClass=" + EncryptQuestionID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?QuestionClass=" + EncryptQuestionID + "&'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
+                    LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
 
                     LbCompleted.Text += "</tr>";
 
@@ -191,6 +196,13 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
         }
 
     }
+
+    private string GetEncryptionString(string Tag, string Data)
+    {
+        BaseClass bc = new BaseClass();
+        return (Tag + "=" +bc.encryption(Data));
+    }
+    
     private void AddYearQuestionnaire()
     {
         ManageSQL ms = new ManageSQL();

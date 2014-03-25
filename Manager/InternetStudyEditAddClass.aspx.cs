@@ -18,15 +18,20 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         //    Response.Redirect("SessionOut.aspx");
 
         // test
-        Session["QuestionClass"] = "1";
-
+        Session["QuestionClassID"] = "1";
+        Session["QuestionClassYear"] = "104";
+        Session["ClassID"] = "1";
+        // test
 
         BaseClass bc = new BaseClass();
         ManageSQL ms = new ManageSQL();
 
-        //string DecryptQuestionID = bc.decryption(Request["QuestionClass"]);
-        //Session["QuestionClass"] = DecryptQuestionID;
-
+        //string DecryptQuestionID = bc.decryption(Request["QuestionClassID"]);
+        //Session["QuestionClassID"] = DecryptQuestionID;
+        //string DecryptQuestionClassYear = bc.decryption(Request["QuestionClassYear"]);
+        //Session["QuestionClassYear"] = DecryptQuestionClassYear;
+        //string DecryptClassID = bc.decryption(Request["ClassID"]);
+        //Session["ClassID"] = DecryptClassID;
 
         for (int i = 0; i < QuestionMaxNumbers; i++)
         {
@@ -121,8 +126,14 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
 
 
         // 資料庫有問題，InternetStudyQuestionItem必須重新設計
-        string Query;
 
+        // get data must be add QuestionYear, ClassID
+        // and in addYear, must insert data to table.
+        // in this, must to update
+        string Query;
+        Query = "insert into InternetStudy (QuestionClassID, QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, " +
+                "PassScore, QuestionURL, QuestionAddedComplete) VALUES ('" + Session["QuestionClassID"].ToString() + "','" +
+                "";
 
         for (int i = 0; i < PnQuestionList.Controls.Count; i++)
         {
@@ -136,7 +147,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
                     {
                         StringBuilder sb = new StringBuilder();
                         Query = "insert into InternetStudyQuestionItem (QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent) " +
-                                "VALUES ('" + Session["QuestionClass"].ToString() + "','" + c.eventArgs.QuestionID + "','" +
+                                "VALUES ('" + Session["QuestionClassID"].ToString() + "','" + c.eventArgs.QuestionID + "','" +
                                 j + "','" + c.eventArgs.AnswerItem[j] + "'";
                         ms.WriteData(Query, sb);
 
