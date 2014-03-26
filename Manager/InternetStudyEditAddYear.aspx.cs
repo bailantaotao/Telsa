@@ -79,10 +79,19 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
 
-                    if(isDigit)
-                        LbCompleted.Text += (DBClassID + 1).ToString() + "</td>";
+                    //if(isDigit)
+                    //    LbCompleted.Text += (DBClassID + 1).ToString() + "</td>";
+                    //else
+                    //    LbCompleted.Text += (i + 1).ToString() + "</td>";
+                    // 如果已經新增過該類別之問題，才可以做檢視的動作
+                    if (DBAddedComplete)
+                    {
+                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                    }
                     else
-                        LbCompleted.Text += (i + 1).ToString() + "</td>";
+                    {
+                        LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
+                    }
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
