@@ -40,14 +40,15 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
                 TbQuestionItem2.Text = eventArgs.AnswerItem[1].ToString();
                 TbQuestionItem3.Text = eventArgs.AnswerItem[2].ToString();
                 TbQuestionItem4.Text = eventArgs.AnswerItem[3].ToString();
-                eventArgs.AnswerItemCount = 4;
+                TbQuestionItem5.Text = eventArgs.AnswerItem[4].ToString();
+                eventArgs.AnswerItemCount = 5;
             }
-            //TbQuestion.Text = "222";
-            //TbAnswer.Text = "123213";
-            //TbQuestionItem1.Text = "1";
-            //TbQuestionItem2.Text = "2";
-            //TbQuestionItem3.Text = "3";
-            //TbQuestionItem4.Text = "4";
+            TbQuestion.Text = "中国";
+            TbAnswer.Text = "123213";
+            TbQuestionItem1.Text = "1";
+            TbQuestionItem2.Text = "2";
+            TbQuestionItem3.Text = "3";
+            TbQuestionItem4.Text = "4";
         }
         else
         {
@@ -65,6 +66,7 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
                 eventArgs.AnswerItem[1] = TbQuestionItem2.Text;
                 eventArgs.AnswerItem[2] = TbQuestionItem3.Text;
                 eventArgs.AnswerItem[3] = TbQuestionItem4.Text;
+                eventArgs.AnswerItem[4] = TbQuestionItem5.Text;
             }
             else
             {
@@ -72,6 +74,7 @@ public partial class Manager_UserControlQuestion : System.Web.UI.UserControl
                 eventArgs.AnswerItem.Add(TbQuestionItem2.Text);
                 eventArgs.AnswerItem.Add(TbQuestionItem3.Text);
                 eventArgs.AnswerItem.Add(TbQuestionItem4.Text);
+                eventArgs.AnswerItem.Add(TbQuestionItem5.Text);
             }
             eventArgs.AnswerItemCount = eventArgs.AnswerItem.Count;
             

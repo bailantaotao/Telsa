@@ -136,8 +136,8 @@
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 視頻
                             </td>
-                            <td style="width: 80%; height: 600px; border: thin solid Gray;">
-                                <asp:Label ID="Label4" runat="server" Text="阿~~~被你看到拉"></asp:Label>
+                            <td style="width: 80%; height: 500px; border: thin solid Gray;">
+                                <asp:Label ID="LbUrl" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>

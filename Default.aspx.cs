@@ -26,10 +26,14 @@ public partial class _Default : System.Web.UI.Page
         }
         else if (ib.ID == "ImgBtn_Cancel")
         {
+            Tb_Account.Text = "";
+            Tb_Pwd.Text = "";
+            Tb_VerificationCode.Text = "";
         }
     }
     private void LoginVerification()
     {
+        Session.Clear();
         Session["UserID"] = "";
         Session["UserName"] = "";
         Session["ClassCode"] = "";
@@ -45,7 +49,7 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             ManageSQL ms = new ManageSQL();
-            string query = "select UserID, UserName, ClassCode from Account where UserID = '" + Tb_Account.Text + "' and Password = '" + bc.encryption(Tb_Pwd.Text) + "'";            
+            string query = "select UserID, UserName, ClassCode from Account where UserID = '" + Tb_Account.Text + "' and Password = '" + Tb_Pwd.Text + "'";            
             ArrayList data = new ArrayList();
             if (ms.GetAllColumnData(query, data))
             {
@@ -81,9 +85,11 @@ public partial class _Default : System.Web.UI.Page
                     }
                     else if (Session["ClassCode"].ToString().Equals("2"))
                     {
-                        ClientScriptArea.Text = bc.responseMsg("你是系統管理員");
+                        //ClientScriptArea.Text = bc.responseMsg("你是系統管理員");
+                        Response.Redirect("Manager/InternetStudyEdit.aspx");
                     }
                     //Response.Redirect("Index.aspx");
+                    
                 }
             }
         }

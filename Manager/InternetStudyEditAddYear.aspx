@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="InternetStudyEditAddYear.aspx.cs" Inherits="Manager_InternetStudyEditAddYear" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <!DOCTYPE html>
 
@@ -6,6 +7,12 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script language="javascript" type="text/javascript">
+        function Conversion2() {
+            var year = parseInt(document.getElementById('ToDay').value.substr(0, 4)) - 1911;
+            document.getElementById('ToDay').value = year + document.getElementById('ToDay').value.substr(4, 8);
+        }
+    </script>
     <style>
         #BlockLeft {
             float: left;
@@ -99,7 +106,7 @@
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
                     <div style="text-align:center; height:39px; float: left;  line-height:39px; margin-left: 20px">
-                        <asp:Label ID="Label2" runat="server" Text="新增100年度：" Font-Bold="true" Font-Size="26px"></asp:Label>
+                        <asp:Label ID="LbYear" runat="server" Text="新增100年度：" Font-Bold="true" Font-Size="26px"></asp:Label>
                     </div>
                     
                     <div style="text-align:center; width: 850px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
@@ -112,7 +119,21 @@
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
                     <asp:Label ID="Label3" runat="server" Text="請輸入完成閱讀期限：" Font-Bold="true" Font-Size="16px"></asp:Label>
-                    <asp:TextBox ID="TbToday" runat="server" Width="300px"></asp:TextBox>
+                    
+                    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>--%>
+                    <asp:TextBox ID="TbToday" runat="server" Width="300px" CausesValidation="true"></asp:TextBox>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Ex: 2014-01-01" ControlToValidate="TbToday" Operator="DataTypeCheck" Type="Date"
+                        ValidateEmptyText="True"></asp:CompareValidator>
+                            <%--<asp:CalendarExtender ID="CalendarExtender1" runat="server"
+                                Enabled="True" Format="yyyy/MM/dd" 
+                                TargetControlID="TbToday"></asp:CalendarExtender>--%>
+                        <%--</ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="BtnCompleted" EventName="Click" />
+                            <asp:AsyncPostBackTrigger ControlID="BtnBack" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>--%>
                 </div>
                 <div style="margin-left: 30px">
                     <hr />
@@ -129,10 +150,11 @@
                             <td colspan="2" align="center">
                                 <%--<asp:UpdatePanel ID="UpdateCompleted" runat="server">
                                     <ContentTemplate>--%>
-                                        <asp:Label ID="LbCompleted" runat="server"></asp:Label>
+                                        <asp:Label ID="LbCompleted" runat="server"></asp:Label>                                        
                                     <%--</ContentTemplate>
                                     <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="DdlPageSelect" EventName="SelectedIndexChanged" />
+                                        <asp:AsyncPostBackTrigger ControlID="BtnCompleted" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BtnBack" EventName="Click" />
                                     </Triggers>
                                 </asp:UpdatePanel>--%>
                             </td>
@@ -143,7 +165,7 @@
                     <asp:Label ID="Label6" runat="server" Text="階段三：" Font-Bold="true" Font-Size="20px"></asp:Label>
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
-                    <asp:Button ID="BtnCompleted" runat="server" Text="請完成所有問卷" Enabled="false" OnClick="Btn_Click" />
+                    <asp:Button ID="BtnCompleted" runat="server" Text="請完成所有問卷" OnClick="Btn_Click" Enabled="False" />
                 </div>
             </div>
         </div>

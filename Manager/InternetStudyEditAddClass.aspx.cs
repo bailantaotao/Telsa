@@ -13,10 +13,10 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["QuestionClass"]).ToString())
-        //    Response.Redirect("SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("2"))
-        //    Response.Redirect("SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["QuestionClassID"]))
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("2"))
+            Response.Redirect("../SessionOut.aspx");
 
         // test
         //Session["QuestionClassID"] = "1";
@@ -41,7 +41,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
 
         for (int i = 0; i < QuestionMaxNumbers; i++)
         {
-            Manager_UserControlQuestion c = (Manager_UserControlQuestion)LoadControl("UserControlQuestion.ascx");
+            Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)LoadControl("UserControlQuestionItem.ascx");
             c.eventArgs.QuestionID = i;
             //c.cClick += new userControl_questionTest.questionClick(c_cClick);
             //PnQuestion.Controls.Add(c);
@@ -95,26 +95,26 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         {
             switch (this.PnQuestionList.Controls[i].GetType().ToString())
             {
-                case "ASP.manager_usercontrolquestion_ascx":
-                    Manager_UserControlQuestion c = (Manager_UserControlQuestion)PnQuestionList.Controls[i];
+                case "ASP.manager_usercontrolquestionitem_ascx":
+                    Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
                     if (c.eventArgs.PassScore < 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，配分不得小於0');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1).ToString() + "題，配分不得小於0');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Answer))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，必須輸入答案');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1).ToString() + "題，必須輸入答案');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Question))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，必須描述問題');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1).ToString() + "題，必須描述問題');", true);
                         return false;
                     }
                     else if (c.eventArgs.AnswerItemCount < 2)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，必須輸入問題之答案');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1).ToString() + "題，必須輸入問題之答案');", true);
                         return false;
                     }
 
@@ -138,11 +138,11 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         // in this, must to update
         string Query;
         Query = "Update InternetStudy set " +
-                "ClassName = '" + TbTitle.Text + "'," +
-                "ClassDescription = '" + TbDescription.Text + "'," +
-                "PassScore = '" + TbPassScore.Text + "'," +
-                "QuestionURL = '" + TbURL.Text + "'," +
-                "QuestionAddedComplete = '" + "True" + "' " +
+                "ClassName = N'" + TbTitle.Text + "'," +
+                "ClassDescription = N'" + TbDescription.Text + "'," +
+                "PassScore = N'" + TbPassScore.Text + "'," +
+                "QuestionURL = N'" + TbURL.Text + "'," +
+                "QuestionAddedComplete = N'" + "True" + "' " +
                 "where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "'";
 
         if (ms.WriteData(Query, sb))
@@ -163,17 +163,17 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
                 //string t = pn_main.Controls[i].GetType().ToString();
                 switch (this.PnQuestionList.Controls[i].GetType().ToString())
                 {
-                    case "ASP.manager_usercontrolquestion_ascx":
-                        Manager_UserControlQuestion c = (Manager_UserControlQuestion)PnQuestionList.Controls[i];
+                    case "ASP.manager_usercontrolquestionitem_ascx":
+                        Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
 
                         Query = "insert into InternetStudyQuestionContent " +
                                 "( QuestionClassID, QuestionNo, QuestionContent, IsSingleSelection, Score, Answer ) " +
                                 "VALUES " +
-                                "( '" + Session["QuestionClassID"].ToString() + "','" + 
-                                c.eventArgs.QuestionID + "','" + 
-                                c.eventArgs.Question + "','" + 
-                                c.eventArgs.IsSingleSelected + "','" + 
-                                c.eventArgs.PassScore + "','" +
+                                "( '" + Session["QuestionClassID"].ToString() + "',N'" + 
+                                c.eventArgs.QuestionID + "',N'" + 
+                                c.eventArgs.Question + "',N'" + 
+                                c.eventArgs.IsSingleSelected + "',N'" + 
+                                c.eventArgs.PassScore + "',N'" +
                                 c.eventArgs.Answer + "')";
 
                         bool isTrue = ms.WriteData(Query, sb);
@@ -184,9 +184,9 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
                             //StringBuilder sb = new StringBuilder();
                             Query = "insert into InternetStudyQuestionItem (QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent) " +
                                     "VALUES " +
-                                    "('" + Session["QuestionClassID"].ToString() + "','" + 
-                                    c.eventArgs.QuestionID + "','" +
-                                    j + "','" + 
+                                    "('" + Session["QuestionClassID"].ToString() + "',N'" + 
+                                    c.eventArgs.QuestionID + "',N'" +
+                                    j + "',N'" + 
                                     c.eventArgs.AnswerItem[j] + "')";
                             isTrue = ms.WriteData(Query, sb);
                         }
@@ -225,7 +225,14 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         }
         else if (btn.ID == "BtnCancel")
         {
- 
+            if (Session["AddYearTag"] != null)
+            {
+                Response.Redirect("InternetStudyEditAddYear.aspx");
+            }
+            else
+            {
+                Response.Redirect("InternetStudyEdit.aspx");
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="InternetStudyEditAddClass.aspx.cs" Inherits="Manager_InternetStudyEditAddClass" %>
 <%@ Register Src="UserControlQuestion.ascx" TagName="UCQ" TagPrefix="CustomControl" %>
+<%@ Register Src="UserControlQuestionItem.ascx" TagName="UCQI" TagPrefix="CustomControl" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -137,7 +139,7 @@
                                 視頻
                             </td>
                             <td style="width: 80%; height: 600px; border: thin solid Gray;">
-                                <asp:Label ID="Label4" runat="server" Text="阿~~~被你看到拉"></asp:Label>
+                                <asp:Label ID="LbUrl" runat="server" Text=""></asp:Label>               
                             </td>
                         </tr>
                         <tr>

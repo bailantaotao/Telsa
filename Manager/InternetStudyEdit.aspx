@@ -104,7 +104,7 @@
                     <div style="text-align:center; height:39px; float: left;  line-height:39px;">
                         <asp:UpdatePanel ID="UpdateCNo" runat="server">
                             <ContentTemplate>
-                                <asp:TextBox ID="TbYearA" runat="server" Width="70px" MaxLength="3"></asp:TextBox>
+                                <asp:TextBox ID="TbYearA" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
                             </ContentTemplate>
                             <Triggers>
                                 <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
@@ -117,7 +117,7 @@
                     <div style="text-align:center; height:39px; float: left;  line-height:39px;">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
-                                <asp:TextBox ID="TbYearB" runat="server" Width="70px" MaxLength="3"></asp:TextBox>
+                                <asp:TextBox ID="TbYearB" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
                             </contenttemplate>
                             <triggers>
                                 <asp:asyncpostbacktrigger controlid="imgbtnsearch" eventname="click" />
@@ -128,7 +128,7 @@
                         <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="~/Image/zh-TW/ButtonSearchOrange.png"/>
                     </div>
                     <div style="text-align:center; width: 660px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
-                        <asp:TextBox ID="TbAddYear" runat="server" Width="70px" MaxLength="3"></asp:TextBox>
+                        <asp:TextBox ID="TbAddYear" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
                         <asp:ImageButton ID="ImgBtnAddYear" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="~/Image/zh-TW/ButtonAddYearOrange.png"/>
                     </div>
                 </div>

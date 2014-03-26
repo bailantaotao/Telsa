@@ -16,12 +16,13 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || Session["InternetStudyEditYearQuery"] == null)
-        //    Response.Redirect("SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("2"))
-        //    Response.Redirect("SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("2"))
+            Response.Redirect("../SessionOut.aspx");
+
         if (Session["QuestionClassYear"] == null)
-            Response.Redirect("SessionOut.aspx");
+            Response.Redirect("../SessionOut.aspx");
         Session["AddYearTag"] = true;
         LoadInternetStudyClass();
     }
@@ -35,6 +36,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
 
     private void LoadInternetStudyClass()
     {
+        LbYear.Text = "新增" + Session["QuestionClassYear"].ToString() + "學年度";
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         BaseClass bc = new BaseClass();
@@ -86,7 +88,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                     // 如果已經新增過該類別之問題，才可以做檢視的動作
                     if (DBAddedComplete)
                     {
-                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + (i + 1).ToString() + "</a></td>";
                     }
                     else
                     {
@@ -119,12 +121,18 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                 }
 
                 Query = "select count(*) from InternetStudy where QuestionAddedComplete = 'True' and QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
-                if (ms.WriteData(Query, sb))
+                if (ms.GetOneData(Query, sb))
                 {
                     int AllOK = -1;
                     bool bIsDigit = int.TryParse(sb.ToString(), out AllOK);
                     if (bIsDigit)
-                        BtnCompleted.Enabled = true;
+                    {
+                        if( AllOK == 10)
+                        { 
+                            BtnCompleted.Enabled = true;
+                            BtnCompleted.Text = "完成";
+                        }
+                    }
                 }
 
                 sb.Clear();
@@ -153,30 +161,69 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
 
     protected void Btn_Click(object sender, EventArgs e)
     {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
         Button btn = (Button)sender;
         if (btn.ID == "BtnBack")
         {
-            Session.Remove("InternetStudyEditYearQuery");
-            Session.Remove("AddYearTag");
-            Response.Redirect("InternetStudyEdit.aspx");
+            if (CompareValidator1.IsValid && !string.IsNullOrEmpty(TbToday.Text))
+            {
+                if (DateTime.Parse(TbToday.Text.Trim()) >= DateTime.Now)
+                {
+                    Query = "Update InternetStudy set " +
+                        "DeadLine = N'" + TbToday.Text + "' " +
+                        "where QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
+                    ms.WriteData(Query, sb);
+
+                    Session.Remove("InternetStudyEditYearQuery");
+                    Session.Remove("AddYearTag");
+                    Response.Redirect("InternetStudyEdit.aspx");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須輸入大於今天的日期');", true);
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須先輸入正確日期，才能離開');", true);
+            }
         }
         else if (btn.ID == "BtnCancel")
         {
+            Query = "delete from InternetStudy where QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
             
-            Query = "delete from InternetStudy where QuestionClassYear = '" + Session["InternetStudyEditYearQuery"].ToString() + "'";
-            ManageSQL ms = new ManageSQL();
-            StringBuilder sb = new StringBuilder();
             ms.WriteData(Query, sb);
             Session.Remove("InternetStudyEditYearQuery");
             Session.Remove("AddYearTag");
             Response.Redirect("InternetStudyEdit.aspx");
-
+            
         }
         else if (btn.ID == "BtnCompleted")
         {
-            Session.Remove("InternetStudyEditYearQuery");
-            Session.Remove("AddYearTag");
-            Response.Redirect("InternetStudyEdit.aspx");
+            if (CompareValidator1.IsValid && !string.IsNullOrEmpty(TbToday.Text))
+            {
+                if (DateTime.Parse(TbToday.Text.Trim()) >= DateTime.Now)
+                {
+                    Query = "Update InternetStudy set " +
+                        "DeadLine = N'" + TbToday.Text + "' " +
+                        "where QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
+                    ms.WriteData(Query, sb);
+
+                    Session.Remove("InternetStudyEditYearQuery");
+                    Session.Remove("AddYearTag");
+                    Response.Redirect("InternetStudyEdit.aspx");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須輸入大於今天的日期');", true);
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須先輸入正確日期，才能離開');", true);
+            }
         }
     }
+
 }

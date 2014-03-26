@@ -40,7 +40,8 @@ public partial class Manager_UserControlQuestionDisplay : System.Web.UI.UserCont
                 LbQuestionItem2.Text = eventArgs.AnswerItem[1].ToString();
                 LbQuestionItem3.Text = eventArgs.AnswerItem[2].ToString();
                 LbQuestionItem4.Text = eventArgs.AnswerItem[3].ToString();
-                eventArgs.AnswerItemCount = 4;
+                LbQuestionItem5.Text = eventArgs.AnswerItem[4].ToString();
+                eventArgs.AnswerItemCount = 5;
             }
             //LbQuestion.Text = "222";
             //LbAnswer.Text = "123213";

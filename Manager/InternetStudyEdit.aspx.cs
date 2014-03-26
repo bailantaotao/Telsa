@@ -18,10 +18,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("2"))
-        //    Response.Redirect("SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("2"))
+            Response.Redirect("../SessionOut.aspx");
 
     //    ManageSQL ms = new ManageSQL();
     //    ArrayList data = new ArrayList();
@@ -174,7 +174,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     // 如果已經新增過該類別之問題，才可以做檢視的動作
                     if (DBAddedComplete)
                     {
-                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + (i + 1).ToString() + "</a></td>";
                     }
                     else
                     {
@@ -185,7 +185,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
+                    LbCompleted.Text += ((string[])(data[i]))[4].Split(' ')[0] + "</td>";
 
                     //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     //LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
@@ -250,7 +250,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     TbAddYear.Text + "','" +
                     i + "','" +
                     " N / A" + "','" +
-                    "2014-12-31 00:00:00.000" + "','" +
+                    "2014-12-31 00:00:00" + "','" +
                     "" + "','" +
                     "0" + "','" +
                     "" + "','" +

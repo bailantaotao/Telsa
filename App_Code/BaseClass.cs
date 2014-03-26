@@ -11,7 +11,7 @@ public class BaseClass
 {
     private int i, k, toint, tochar;
     private string cryption;
-    private const int BaseYear = 1911;
+    private const int BaseYear = 0;
 
 	public BaseClass()
 	{

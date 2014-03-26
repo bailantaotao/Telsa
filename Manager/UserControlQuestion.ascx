@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UserControlQuestion.ascx.cs" Inherits="Manager_UserControlQuestion" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UserControlQuestion.ascx.cs" Inherits="Manager_UserControlQuestion" Debug="true" %>
 <table width="1000px" align="left" runat="server" style="border: groove 5px">
     <tr>
         <td colspan="4" style="padding: 5px; height: auto; line-height: 20px;">
@@ -40,6 +40,11 @@
     <tr>
         <td colspan="4" style="padding: 5px; height: auto">
             4. <asp:TextBox ID="TbQuestionItem4" runat="server" Width="900px"></asp:TextBox>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" style="padding: 5px; height: auto">
+            5. <asp:TextBox ID="TbQuestionItem5" runat="server" Width="900px"></asp:TextBox>
         </td>
     </tr>
 </table>

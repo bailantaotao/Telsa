@@ -13,10 +13,10 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["QuestionClass"]).ToString())
-        //    Response.Redirect("SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("2"))
-        //    Response.Redirect("SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["QuestionClassID"]))
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("2"))
+            Response.Redirect("../SessionOut.aspx");
 
         // test
         //Session["QuestionClassID"] = "1";
@@ -79,6 +79,8 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
             }
             data.Clear();
 
+            
+
             Query = "select QuestionNo, QuestionContent, IsSingleSelection, Score, Answer from InternetStudyQuestionContent where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "' " +
                     "order by QuestionNo asc";
             ms.GetAllColumnData(Query, data);
@@ -91,8 +93,8 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
                 int PassScore = -1;
 
 
-                Manager_UserControlQuestion c = (Manager_UserControlQuestion)LoadControl("UserControlQuestion.ascx");
-                if (Int32.TryParse(((string[])data[0])[0], out QuestionID))
+                Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)LoadControl("UserControlQuestionItem.ascx");
+                if (Int32.TryParse(((string[])data[i])[0], out QuestionID))
                 {
                     c.eventArgs.QuestionID = QuestionID;
                 }
@@ -192,8 +194,8 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
         {
             switch (this.PnQuestionList.Controls[i].GetType().ToString())
             {
-                case "ASP.manager_usercontrolquestion_ascx":
-                    Manager_UserControlQuestion c = (Manager_UserControlQuestion)PnQuestionList.Controls[i];
+                case "ASP.manager_usercontrolquestionitem_ascx":
+                    Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
                     if (c.eventArgs.PassScore < 0)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，配分不得小於0');", true);
@@ -235,10 +237,10 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
         // in this, must to update
         string Query;
         Query = "Update InternetStudy set " +
-                "ClassName = '" + TbTitle.Text + "'," +
-                "ClassDescription = '" + TbDescription.Text + "'," +
-                "PassScore = '" + TbPassScore.Text + "'," +
-                "QuestionURL = '" + TbURL.Text + "' " +
+                "ClassName = N'" + TbTitle.Text + "'," +
+                "ClassDescription = N'" + TbDescription.Text + "'," +
+                "PassScore = N'" + TbPassScore.Text + "'," +
+                "QuestionURL = N'" + TbURL.Text + "' " +
                 "where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "'";
 
         if (ms.WriteData(Query, sb))
@@ -259,18 +261,18 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
                 //string t = pn_main.Controls[i].GetType().ToString();
                 switch (this.PnQuestionList.Controls[i].GetType().ToString())
                 {
-                    case "ASP.manager_usercontrolquestion_ascx":
-                        Manager_UserControlQuestion c = (Manager_UserControlQuestion)PnQuestionList.Controls[i];
+                    case "ASP.manager_usercontrolquestionitem_ascx":
+                        Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
 
 
                         Query = "insert into InternetStudyQuestionContent " +
                                 "( QuestionClassID, QuestionNo, QuestionContent, IsSingleSelection, Score, Answer ) " +
                                 "VALUES " +
-                                "( '" + Session["QuestionClassID"].ToString() + "','" + 
-                                c.eventArgs.QuestionID + "','" + 
-                                c.eventArgs.Question + "','" + 
-                                c.eventArgs.IsSingleSelected + "','" + 
-                                c.eventArgs.PassScore + "','" +
+                                "( '" + Session["QuestionClassID"].ToString() + "',N'" + 
+                                c.eventArgs.QuestionID + "',N'" + 
+                                c.eventArgs.Question + "',N'" + 
+                                c.eventArgs.IsSingleSelected + "',N'" + 
+                                c.eventArgs.PassScore + "',N'" +
                                 c.eventArgs.Answer + "')";
                         
                         ms.WriteData(Query, sb);
@@ -294,9 +296,9 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
                             //StringBuilder sb = new StringBuilder();
                             Query = "insert into InternetStudyQuestionItem (QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent) " +
                                     "VALUES " +
-                                    "('" + Session["QuestionClassID"].ToString() + "','" +
-                                    c.eventArgs.QuestionID + "','" +
-                                    j + "','" +
+                                    "('" + Session["QuestionClassID"].ToString() + "',N'" +
+                                    c.eventArgs.QuestionID + "',N'" +
+                                    j + "',N'" +
                                     c.eventArgs.AnswerItem[j] + "')";
                             ms.WriteData(Query, sb);
                             sb.Clear();
@@ -346,7 +348,14 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
         }
         else if (btn.ID == "BtnCancel")
         {
-
+            if (Session["AddYearTag"] != null)
+            {
+                Response.Redirect("InternetStudyEditAddYear.aspx");
+            }
+            else
+            {
+                Response.Redirect("InternetStudyEdit.aspx");
+            }
         }
     }
 }
