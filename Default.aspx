@@ -12,12 +12,12 @@
         }
     </style>
 </head>
-<body style="margin-top: 0%; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(Image/zh-TW/BackgroundLogin.png) no-repeat center top;">
+<body style="margin-top: 0%; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(Image/zh-CN/BackgroundLogin.png) no-repeat center top;">
 
     <form id="form1" runat="server">
     <div align="center">
         <div style="height: 330px"></div>
-        <table style="width: 750px; height:291px; ">
+        <table style="width: 750px; height:291px; padding-left:50px ">
             <tr style="height:auto;">
                 <td align="center" style="vertical-align: top">
                     <table>
@@ -52,13 +52,13 @@
                         <tr>
                             <td align="center" colspan="2" class="auto-style1">
                                 <div style="float:left; padding-left:60px">
-                                    <asp:ImageButton ID="ImgBtn_Login" runat="server" ImageUrl="~/Image/zh-TW/ButtonLoginOrange.png" OnClick="ImgBtn_Click"/>
+                                    <asp:ImageButton ID="ImgBtn_Login" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlLogin %>" OnClick="ImgBtn_Click"/>
                                 </div>
                                 <div style="float:left; padding-left:30px;">
-                                    <asp:ImageButton ID="ImgBtn_Cancel" runat="server" ImageUrl="~/Image/zh-TW/ButtonCancelOrange.png" OnClick="ImgBtn_Click"/>
+                                    <asp:ImageButton ID="ImgBtn_Cancel" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlCancel %>" OnClick="ImgBtn_Click"/>
                                 </div>
                                 <div style="float:left; padding-left:30px;">
-                                    <asp:ImageButton ID="ImgBtn_Forget" runat="server" ImageUrl="~/Image/zh-TW/ButtonForgetOrange_PWD.png" OnClick="ImgBtn_Click"/>
+                                    <asp:ImageButton ID="ImgBtn_Forget" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlForget %>" OnClick="ImgBtn_Click"/>
                                 </div>
                             </td>
                         </tr>

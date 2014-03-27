@@ -31,7 +31,7 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
         if (!IsPostBack)
         {
             // 題號
-            LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". 題目: ";
+            LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". " + Resources.Resource.TipQuestion + " ";
             // 題目內容
             TbQuestion.Text = eventArgs.Question;
             // 此題分數
@@ -40,7 +40,7 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             //RblQuestionType.SelectedIndex = eventArgs.IsSingleSelected ? 0 : 1;
 
             // 單選或多選
-            LbQuestionType.Text = eventArgs.IsSingleSelected ? "單選題" : "多選題";
+            LbQuestionType.Text = eventArgs.IsSingleSelected ? Resources.Resource.TipSingleQuestion : Resources.Resource.TipMultiQuestion;
 
             // 答案勾選
             if (!string.IsNullOrEmpty(eventArgs.Answer))
@@ -152,9 +152,9 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             {
                 Session["QuestionNoType_" + eventArgs.QuestionID] = ++count;
                 if (count > 1)
-                    LbQuestionType.Text = "多選";
+                    LbQuestionType.Text = Resources.Resource.TipMultiQuestion;
                 else
-                    LbQuestionType.Text = "單選";
+                    LbQuestionType.Text = Resources.Resource.TipSingleQuestion;
             }
         }
         else
@@ -165,9 +165,9 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             {
                 Session["QuestionNoType_" + eventArgs.QuestionID] = --count;
                 if (count > 1)
-                    LbQuestionType.Text = "多選";
+                    LbQuestionType.Text = Resources.Resource.TipMultiQuestion;
                 else
-                    LbQuestionType.Text = "單選";
+                    LbQuestionType.Text = Resources.Resource.TipSingleQuestion;
             }
         }
     }

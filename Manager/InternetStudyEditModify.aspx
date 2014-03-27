@@ -52,49 +52,49 @@
         <div id="BlockLeft">
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="14px">網路自學</asp:HyperLink>
+                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="14px">KPI</asp:HyperLink>
+                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="14px">學校發展計畫</asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="14px">後期跟蹤指導執行監測</asp:HyperLink>
+                <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyFollowingMonitor %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="14px">規章制度管理</asp:HyperLink>
+                <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyRuleManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="14px">學生資料管理</asp:HyperLink>
+                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="14px">調查問卷管理</asp:HyperLink>
+                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
             </div>
         </div>
         <div id="BlockRight">
             <div id="BlockRightUp">
                 <div style="background: url(../Image/zh-TW/TipGary_TipUserLocation.png) no-repeat; text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
-                    <asp:Label ID="LbLocation" runat="server" Text="網路自學" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipInternetStudy %>" Font-Bold="true"></asp:Label>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipRed.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red">自學教材編輯</asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipTeachContentEdit %>"></asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black">自學成績查詢</asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
@@ -102,7 +102,7 @@
                     <table style="border: thin solid Gray; width: 1000px; height: 60px; ">
                         <tr>
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                標題
+                                <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipTitle %>"></asp:Label>
                             </td>
                             <td style="width: 80%; border: thin solid Gray;">
                                 <asp:TextBox ID="TbTitle" runat="server" Width="700px"></asp:TextBox>
@@ -110,7 +110,7 @@
                         </tr>
                         <tr>
                             <td style="width: 20%; line-height: 80px; border: thin solid Gray;">
-                                說明
+                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipDescription %>"></asp:Label>
                             </td>
                             <td style="height: 80px: 80%; border: thin solid Gray;">
                                 <asp:TextBox ID="TbDescription" runat="server" Width="700px" Rows="3" TextMode="MultiLine"></asp:TextBox>
@@ -118,7 +118,7 @@
                         </tr>
                         <tr>
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                及格分數
+                                <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipPassScore %>"></asp:Label>
                             </td>
                             <td style="width: 80%; border: thin solid Gray;">
                                 <asp:TextBox ID="TbPassScore" runat="server" Width="700px" MaxLength="3"></asp:TextBox>
@@ -136,7 +136,7 @@
                         
                         <tr>
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
-                                視頻
+                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipVideo %>"></asp:Label>
                             </td>
                             <td style="width: 80%; height: 500px; border: thin solid Gray;">
                                 <asp:Label ID="LbUrl" runat="server" Text=""></asp:Label>
@@ -151,10 +151,10 @@
                             <td colspan="2">
                                 <table>
                                     <td style="line-height: 50px;">
-                                            <asp:Button ID="BtnSubmit" runat="server" Text="確定" OnClick="Btn_Click" />
+                                            <asp:Button ID="BtnSubmit" runat="server" Text="<%$ Resources:Resource, BtnSubmit %>" OnClick="Btn_Click" />
                                     </td>
                                     <td style="line-height: 50px;">
-                                            <asp:Button ID="BtnCancel" runat="server" Text="取消" OnClick="Btn_Click" />
+                                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnCancel %>" OnClick="Btn_Click" />
                                     </td>
                                 </table>
                             </td>

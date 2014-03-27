@@ -10,6 +10,10 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    protected override void InitializeCulture()
+    {
+        Page.UICulture = "zh-CN";
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
         

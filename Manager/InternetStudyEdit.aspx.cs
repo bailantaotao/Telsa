@@ -108,16 +108,16 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             LbCompleted.Text += "No</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "名稱</td>";
+            LbCompleted.Text += Resources.Resource.TipClassName + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "完成閱讀期限</td>";
+            LbCompleted.Text += Resources.Resource.TipDeadline + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "新增</td>";
+            LbCompleted.Text += Resources.Resource.TipAdd + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "修改</td>";
+            LbCompleted.Text += Resources.Resource.TipEdit + "</td>";
             LbCompleted.Text += "</tr>";
 
-            LbTotalCount.Text = "共 " + data.Count.ToString() + " 筆";
+            LbTotalCount.Text = Resources.Resource.TipTotal + " " + data.Count.ToString() + " " + Resources.Resource.TipNumbers;
 
             if (data.Count > 0)
             {
@@ -220,10 +220,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             {
                 LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
                 LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                LbCompleted.Text += "此年度您還沒有新增，請按下新增年度開始</td>";
+                LbCompleted.Text += Resources.Resource.SMNowYearNoData + "</td>";
                 LbCompleted.Text += "</tr>";
 
-                LbTotalCount.Text = "共 0 筆";
+                LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
                 PageOrder.Text = "0 / 0";
             }
             LbCompleted.Text += "</table>";
@@ -270,7 +270,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
         int YearNumber = -1;
 
         if(TbAddYear.Text == "")
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('請輸入年份後再按下確定');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoYear + "');", true);
         else if (Int32.TryParse(TbAddYear.Text, out YearNumber))
         {
             string query = "select count(QuestionClassYear) from InternetStudy where QuestionClassYear='" + YearNumber + "'";
@@ -286,13 +286,13 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     }
                 }
                 else
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您輸入的年份目前已存在');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMExistYear + "');", true);
                 sb.Clear();
             }
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('請輸入數字');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoNumber + "');", true);
         }
     }
 
@@ -330,7 +330,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('請輸入數字');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoNumber + "');", true);
                 return;
             }
             LoadInternetStudy(1);

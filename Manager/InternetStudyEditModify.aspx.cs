@@ -51,21 +51,21 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
             bool IsDigit = Int32.TryParse(Session["QuestionClassID"].ToString(), out Digit);
             if (!IsDigit)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('未能找到該類別之資料，SORRY!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.TipDataLose + "，SORRY!');", true);
                 return;
             }
 
             IsDigit = Int32.TryParse(Session["QuestionClassYear"].ToString(), out Digit);
             if (!IsDigit)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('未能找到該類別之資料，SORRY!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.TipDataLose + "，SORRY!');", true);
                 return;
             }
 
             IsDigit = Int32.TryParse(Session["ClassID"].ToString(), out Digit);
             if (!IsDigit)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('未能找到該類別之資料，SORRY!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.TipDataLose + "，SORRY!');", true);
                 return;
             }
 
@@ -162,23 +162,27 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
     {
         if (string.IsNullOrEmpty(TbTitle.Text))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('標題不可為空');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMTitleEmpty + "');", true);
             return false;
         }
         else if (string.IsNullOrEmpty(TbDescription.Text))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('說明不可為空');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMDescriptionEmpty + "');", true);
             return false;
         }
         else if (string.IsNullOrEmpty(TbPassScore.Text))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('及格分數不可為空');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMPassScoreEmpty + "');", true);
             return false;
         }
         else if (string.IsNullOrEmpty(TbURL.Text))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('URL輸入不可為空');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMURLEmpty + "');", true);
             return false;
+        }
+        else if (!TbURL.Text.Contains(RegressionString))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMURLError + "');", true);
         }
 
         int PassScore = -1;
@@ -186,12 +190,12 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
 
         if (!IsDigit)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('及格分數必須是數字');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMPassScoreIsNumber + "');", true);
             return false;
         }
         if (PassScore < 0 && 100 < PassScore)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('及格分數必須為0~100');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMPassScroeRange + "');", true);
             return false;
         }
 
@@ -203,22 +207,22 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
                     Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
                     if (c.eventArgs.PassScore < 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，配分不得小於0');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMScoreLessZero + "');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Answer))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，必須輸入答案');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMInputAnswer + "');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Question))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，必須描述問題');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMInputQuestion + "');", true);
                         return false;
                     }
                     else if (c.eventArgs.AnswerItemCount < 2)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + "題，必須輸入問題之答案');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMInputQuestionItem + "');", true);
                         return false;
                     }
 
@@ -370,7 +374,7 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您輸入的URL有問題，請重新輸入');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMURLError + "');", true);
             }
         }
     }

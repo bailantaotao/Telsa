@@ -2,7 +2,7 @@
 <table width="1000px" align="left" runat="server" style="border: groove 5px">
     <tr>
         <td colspan="4" style="padding: 5px; height: auto; line-height: 20px;">
-            <asp:Label ID="LbQuestionNumber" runat="server" Text="題目: " Font-Size="Larger"></asp:Label>
+            <asp:Label ID="LbQuestionNumber" runat="server" Text="<%$ Resources:Resource, TipQuestion %>" Font-Size="Larger"></asp:Label>
             <asp:TextBox ID="TbQuestion" runat="server" Width="850px"></asp:TextBox>
         </td>
     </tr>
@@ -15,8 +15,8 @@
             
             <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-                    <asp:Label ID="Label2" runat="server" Text="題目類型："></asp:Label>
-                    <asp:Label ID="LbQuestionType" runat="server" Text="單選"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipQuestionType %>"></asp:Label>
+                    <asp:Label ID="LbQuestionType" runat="server" Text="<%$ Resources:Resource, TipSingleQuestion %>"></asp:Label>
                 </ContentTemplate>
                 <Triggers>
                     <asp:asyncpostbacktrigger controlid="CbQuestionItem1" eventname="CheckedChanged" />
@@ -28,7 +28,7 @@
             </asp:UpdatePanel>
         </td>
         <td style="padding: 5px; height: auto; line-height: 20px;">
-            <asp:Label ID="Label1" runat="server" Text="配分"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipScore %>"></asp:Label>
             <asp:TextBox ID="TbPassScore" runat="server" Width="40px" MaxLength="2"></asp:TextBox>
         </td>
         <td style="padding: 5px; height: auto; line-height: 20px;">

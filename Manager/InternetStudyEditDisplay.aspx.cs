@@ -50,21 +50,21 @@ public partial class Manager_InternetStudyEditDisplay : System.Web.UI.Page
             bool IsDigit = Int32.TryParse(Session["QuestionClassID"].ToString(), out Digit);
             if (!IsDigit)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('未能找到該類別之資料，SORRY!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.TipDataLose + "，SORRY!');", true);
                 return;
             }
 
             IsDigit = Int32.TryParse(Session["QuestionClassYear"].ToString(), out Digit);
             if (!IsDigit)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('未能找到該類別之資料，SORRY!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.TipDataLose + "，SORRY!');", true);
                 return;
             }
 
             IsDigit = Int32.TryParse(Session["ClassID"].ToString(), out Digit);
             if (!IsDigit)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('未能找到該類別之資料，SORRY!');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.TipDataLose + "，SORRY!');", true);
                 return;
             }
 

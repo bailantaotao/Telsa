@@ -36,7 +36,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
 
     private void LoadInternetStudyClass()
     {
-        LbYear.Text = "新增" + Session["QuestionClassYear"].ToString() + "學年度";
+        LbYear.Text = Resources.Resource.TipAdd + Session["QuestionClassYear"].ToString() + Resources.Resource.TipYears;
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         BaseClass bc = new BaseClass();
@@ -51,13 +51,13 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             LbCompleted.Text += "No</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "名稱</td>";
+            LbCompleted.Text += Resources.Resource.TipClassName  + "</td>";
             //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             //LbCompleted.Text += "完成閱讀期限</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "新增</td>";
+            LbCompleted.Text += Resources.Resource.TipAdd + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "修改</td>";
+            LbCompleted.Text += Resources.Resource.TipEdit + "</td>";
             LbCompleted.Text += "</tr>";
 
             if (data.Count > 0)
@@ -130,7 +130,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                         if( AllOK == 10)
                         { 
                             BtnCompleted.Enabled = true;
-                            BtnCompleted.Text = "完成";
+                            BtnCompleted.Text = Resources.Resource.BtnFinish;
                         }
                     }
                 }
@@ -144,7 +144,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
             {
                 LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                LbCompleted.Text += "新增資料時發生錯誤</td>";
+                LbCompleted.Text += Resources.Resource.TipInputDataError + "</td>";
                 LbCompleted.Text += "</tr>";
             }
             LbCompleted.Text += "</table>";
@@ -181,12 +181,12 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須輸入大於今天的日期');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMGreterDate + "');", true);
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須先輸入正確日期，才能離開');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMErrorDate + "');", true);
             }
         }
         else if (btn.ID == "BtnCancel")
@@ -216,12 +216,12 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須輸入大於今天的日期');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMGreterDate + "');", true);
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您必須先輸入正確日期，才能離開');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMErrorDate + "');", true);
             }
         }
     }

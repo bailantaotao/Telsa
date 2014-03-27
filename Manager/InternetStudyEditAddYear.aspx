@@ -58,49 +58,49 @@
         <div id="BlockLeft">
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="14px">網路自學</asp:HyperLink>
+                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="14px">KPI</asp:HyperLink>
+                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="14px">學校發展計畫</asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="14px">後期跟蹤指導執行監測</asp:HyperLink>
+                <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyFollowingMonitor %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="14px">規章制度管理</asp:HyperLink>
+                <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyRuleManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="14px">學生資料管理</asp:HyperLink>
+                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="14px">調查問卷管理</asp:HyperLink>
+                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>">></asp:HyperLink>
             </div>
         </div>
         <div id="BlockRight">
             <div id="BlockRightUp">
                 <div style="background: url(../Image/zh-TW/TipGary_TipUserLocation.png) no-repeat; text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
-                    <asp:Label ID="LbLocation" runat="server" Text="網路自學" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipInternetStudy %>" Font-Bold="true"></asp:Label>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipRed.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red">自學教材</asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipTeachContent %>"></asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black">自學成績查詢</asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
@@ -110,15 +110,15 @@
                     </div>
                     
                     <div style="text-align:center; width: 850px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
-                        <asp:Button ID="BtnBack" runat="server" Text="儲存並回到上頁" OnClick="Btn_Click" />
-                        <asp:Button ID="BtnCancel" runat="server" Text="取消新增" OnClick="Btn_Click" />
+                        <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBackPage %>" OnClick="Btn_Click" />
+                        <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnCancelAdd %>" OnClick="Btn_Click" />
                     </div>
                 </div>
                 <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
-                    <asp:Label ID="Label1" runat="server" Text="階段一：" Font-Bold="true" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipStage1 %>" Font-Bold="true" Font-Size="20px"></asp:Label>
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
-                    <asp:Label ID="Label3" runat="server" Text="請輸入完成閱讀期限：" Font-Bold="true" Font-Size="16px"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipInputDeadline %>" Font-Bold="true" Font-Size="16px"></asp:Label>
                     
                     <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>--%>
@@ -139,10 +139,10 @@
                     <hr />
                 </div>
                 <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
-                    <asp:Label ID="Label4" runat="server" Text="階段二：" Font-Bold="true" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipStage2 %>" Font-Bold="true" Font-Size="20px"></asp:Label>
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
-                    <asp:Label ID="Label5" runat="server" Text="請完成問卷內容清單" Font-Bold="true" Font-Size="16px"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="<%$ Resources:Resource, TipInputQuestions %>" Font-Bold="true" Font-Size="16px"></asp:Label>
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 1070px">
@@ -162,10 +162,10 @@
                     </table>
                 </div>
                 <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
-                    <asp:Label ID="Label6" runat="server" Text="階段三：" Font-Bold="true" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text="<%$ Resources:Resource, TipStage3 %>" Font-Bold="true" Font-Size="20px"></asp:Label>
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
-                    <asp:Button ID="BtnCompleted" runat="server" Text="請完成所有問卷" OnClick="Btn_Click" Enabled="False" />
+                    <asp:Button ID="BtnCompleted" runat="server" Text="<%$ Resources:Resource, BtnPlzFinishQuestionnaire %>" OnClick="Btn_Click" Enabled="False" />
                 </div>
             </div>
         </div>
