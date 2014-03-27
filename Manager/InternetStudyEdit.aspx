@@ -132,7 +132,7 @@
                             <asp:TextBox ID="TbAddYear" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
                         </div>
                         <div style="float:left; padding-top:10px;padding-left:10px">
-                            <asp:ImageButton ID="ImageButton1" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlAddYear %>" Width="85px" Height="36px"/>                        
+                            <asp:ImageButton ID="ImgBtnAddYear" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlAddYear %>" Width="85px" Height="36px"/>                        
                         </div>
                     </div>
                 </div>
