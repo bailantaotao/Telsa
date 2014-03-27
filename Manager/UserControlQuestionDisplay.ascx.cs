@@ -27,12 +27,42 @@ public partial class Manager_UserControlQuestionDisplay : System.Web.UI.UserCont
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        CheckBox[] cb = new CheckBox[] { CbQuestionItem1, CbQuestionItem2, CbQuestionItem3, CbQuestionItem4, CbQuestionItem5 };
         if (!IsPostBack)
         {
+            // 題號
             LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". 題目: ";
+            // 題目內容
             LbQuestion.Text = eventArgs.Question;
+            // 此題分數
             LbPassScore.Text = (eventArgs.PassScore < 0) ? "0" : eventArgs.PassScore.ToString();
-            LbAnswer.Text = eventArgs.Answer;
+            //LbAnswer.Text = eventArgs.Answer;
+
+            
+
+            // 答案勾選
+            if (!string.IsNullOrEmpty(eventArgs.Answer))
+            {
+                string[] index = eventArgs.Answer.Split(',');
+
+                for (int i = 0; i < cb.Length; i++)
+                {
+                    for (int j = 0; j < index.Length; j++)
+                    {
+                        int t = -1;
+                        bool IsDigit = Int32.TryParse(index[j], out t);
+                        if (IsDigit)
+                        {
+                            if (i == t)
+                            {
+                                cb[i].Checked = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
             LbQuestionType.Text = eventArgs.IsSingleSelected ? "單選題" : "多選題";
             if (eventArgs.AnswerItem.Count > 0)
             {

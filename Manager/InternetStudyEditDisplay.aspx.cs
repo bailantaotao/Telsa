@@ -75,7 +75,7 @@ public partial class Manager_InternetStudyEditDisplay : System.Web.UI.Page
                 LbTitle.Text = ((string[])data[0])[0].ToString();
                 LbDescription.Text = ((string[])data[0])[1].ToString();
                 LbPassScore.Text = ((string[])data[0])[2].ToString();
-                //HyURL.Text = ((string[])data[0])[3].ToString();
+                HyURL.Text = ((string[])data[0])[3].ToString();
                 //mplayer.Url = ((string[])data[0])[3].ToString();
                 LbUrl.Text = "<embed src='http://player.youku.com/player.php/sid/XNTg2ODk2ODIw/v.swf' allowFullScreen='true' quality='high' width='640' height='480' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
             }

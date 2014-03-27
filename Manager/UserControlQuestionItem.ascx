@@ -7,44 +7,63 @@
         </td>
     </tr>
     <tr>
-        <td style="padding: 5px; height: auto; line-height: 20px;">
-            <asp:RadioButtonList ID="RblQuestionType" runat="server" RepeatDirection="Horizontal">
+        <td style="padding: 5px; height: auto; line-height: 20px; width:300px">
+            <%--<asp:RadioButtonList ID="RblQuestionType" runat="server" RepeatDirection="Horizontal">
                 <asp:ListItem Value="0" Selected="True">單選</asp:ListItem>
                 <asp:ListItem Value="1">多選</asp:ListItem>
-            </asp:RadioButtonList>
+            </asp:RadioButtonList>--%>
+            
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <asp:Label ID="Label2" runat="server" Text="題目類型："></asp:Label>
+                    <asp:Label ID="LbQuestionType" runat="server" Text="單選"></asp:Label>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:asyncpostbacktrigger controlid="CbQuestionItem1" eventname="CheckedChanged" />
+                    <asp:asyncpostbacktrigger controlid="CbQuestionItem2" eventname="CheckedChanged" />
+                    <asp:asyncpostbacktrigger controlid="CbQuestionItem3" eventname="CheckedChanged" />
+                    <asp:asyncpostbacktrigger controlid="CbQuestionItem4" eventname="CheckedChanged" />
+                    <asp:asyncpostbacktrigger controlid="CbQuestionItem5" eventname="CheckedChanged" />
+                </Triggers>
+            </asp:UpdatePanel>
         </td>
         <td style="padding: 5px; height: auto; line-height: 20px;">
             <asp:Label ID="Label1" runat="server" Text="配分"></asp:Label>
-            <asp:TextBox ID="TbPassScore" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TbPassScore" runat="server" Width="40px" MaxLength="2"></asp:TextBox>
         </td>
         <td style="padding: 5px; height: auto; line-height: 20px;">
-            <asp:Label ID="Label2" runat="server" Text="答案"></asp:Label>
-            <asp:TextBox ID="TbAnswer" runat="server"></asp:TextBox>
+            <%--<asp:Label ID="Label2" runat="server" Text="答案"></asp:Label>
+            <asp:TextBox ID="TbAnswer" runat="server"></asp:TextBox>--%>
         </td>
     </tr>
     <tr>
         <td colspan="4" style="padding: 5px; height: auto">
-            1. <asp:TextBox ID="TbQuestionItem1" runat="server" Width="900px"></asp:TextBox>
+            <asp:CheckBox ID="CbQuestionItem1" runat="server" Text="" OnCheckedChanged="CbQuestionItem_CheckedChanged" AutoPostBack="true" />
+            1. <asp:TextBox ID="TbQuestionItem1" runat="server" Width="850px"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td colspan="4" style="padding: 5px; height: auto">
-            2. <asp:TextBox ID="TbQuestionItem2" runat="server" Width="900px"></asp:TextBox>
+            <asp:CheckBox ID="CbQuestionItem2" runat="server" Text="" OnCheckedChanged="CbQuestionItem_CheckedChanged" AutoPostBack="true"  />
+            2. <asp:TextBox ID="TbQuestionItem2" runat="server" Width="850px"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td colspan="4" style="padding: 5px; height: auto">
-            3. <asp:TextBox ID="TbQuestionItem3" runat="server" Width="900px"></asp:TextBox>
+            <asp:CheckBox ID="CbQuestionItem3" runat="server" Text="" OnCheckedChanged="CbQuestionItem_CheckedChanged" AutoPostBack="true"  />
+            3. <asp:TextBox ID="TbQuestionItem3" runat="server" Width="850px"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td colspan="4" style="padding: 5px; height: auto">
-            4. <asp:TextBox ID="TbQuestionItem4" runat="server" Width="900px"></asp:TextBox>
+            <asp:CheckBox ID="CbQuestionItem4" runat="server" Text="" OnCheckedChanged="CbQuestionItem_CheckedChanged" AutoPostBack="true"  />
+            4. <asp:TextBox ID="TbQuestionItem4" runat="server" Width="850px"></asp:TextBox>
         </td>
     </tr>
     <tr>
         <td colspan="4" style="padding: 5px; height: auto">
-            5. <asp:TextBox ID="TbQuestionItem5" runat="server" Width="900px"></asp:TextBox>
+            <asp:CheckBox ID="CbQuestionItem5" runat="server" Text="" OnCheckedChanged="CbQuestionItem_CheckedChanged" AutoPostBack="true"  />
+            5. <asp:TextBox ID="TbQuestionItem5" runat="server" Width="850px"></asp:TextBox>
         </td>
     </tr>
 </table>

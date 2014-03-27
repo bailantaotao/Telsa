@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
 {
     private const int QuestionMaxNumbers = 10;
+    private const string RegressionString = "http://player.youku.com/player.php/sid/";
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -76,6 +77,10 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
                 TbDescription.Text = ((string[])data[0])[1].ToString();
                 TbPassScore.Text = ((string[])data[0])[2].ToString();
                 TbURL.Text = ((string[])data[0])[3].ToString();
+                if (((string[])data[0])[3].ToString().Contains(RegressionString))
+                {
+                    LbUrl.Text = "<embed src='" + ((string[])data[0])[3].ToString() + "' allowFullScreen='true' quality='high' width='640' height='480' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
+                }
             }
             data.Clear();
 
@@ -355,6 +360,17 @@ public partial class Manager_InternetStudyEditModify : System.Web.UI.Page
             else
             {
                 Response.Redirect("InternetStudyEdit.aspx");
+            }
+        }
+        else if (btn.ID == "BtnPreview")
+        {
+            if (TbURL.Text.Contains(RegressionString))
+            {
+                LbUrl.Text = "<embed src='" + TbURL.Text + "' allowFullScreen='true' quality='high' width='640' height='480' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您輸入的URL有問題，請重新輸入');", true);
             }
         }
     }

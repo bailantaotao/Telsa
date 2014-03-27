@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
 {
     private const int QuestionMaxNumbers = 10;
+    private const string RegressionString = "http://player.youku.com/player.php/sid/";
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -104,7 +105,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Answer))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1).ToString() + "題，必須輸入答案');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1).ToString() + "題，必須選擇答案');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Question))
@@ -232,6 +233,17 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
             else
             {
                 Response.Redirect("InternetStudyEdit.aspx");
+            }
+        }
+        else if (btn.ID == "BtnPreview")
+        {
+            if (TbURL.Text.Contains(RegressionString))
+            {
+                LbUrl.Text = "<embed src='" + TbURL.Text + "' allowFullScreen='true' quality='high' width='640' height='480' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('您輸入的URL有問題，請重新輸入');", true);
             }
         }
     }

@@ -130,7 +130,8 @@
                                 URL
                             </td>
                             <td style="width: 80%; border: thin solid Gray;">
-                                <asp:TextBox ID="TbURL" runat="server" Width="700px"></asp:TextBox>
+                                <asp:TextBox ID="TbURL" runat="server" Width="700px"></asp:TextBox><br />
+                                <asp:Button ID="BtnPreview" runat="server" Text="預覽" OnClick="Btn_Click" />
                             </td>
                         </tr>
                         
@@ -138,7 +139,7 @@
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 視頻
                             </td>
-                            <td style="width: 80%; height: 600px; border: thin solid Gray;">
+                            <td style="width: 80%; height: 500px; border: thin solid Gray;">
                                 <asp:Label ID="LbUrl" runat="server" Text=""></asp:Label>               
                             </td>
                         </tr>

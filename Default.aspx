@@ -21,7 +21,7 @@
             <tr style="height:auto;">
                 <td align="center" style="vertical-align: top">
                     <table>
-                        <tr rowspan>
+                        <tr>
                             <td style="width:110px; line-height:50px">
                                 <asp:Image ID="ImgView_Account" ImageUrl="~/Image/zh-TW/TextViewBlack_Account.png" runat="server" />
                             </td>

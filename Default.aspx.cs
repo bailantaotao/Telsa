@@ -79,9 +79,9 @@ public partial class _Default : System.Web.UI.Page
                     else if (Session["ClassCode"].ToString().Equals("1"))
                     {
                         if (Session["IsMingDer"].ToString().Equals("True"))
-                            ClientScriptArea.Text = bc.responseMsg("你是MingDer專家");
+                            ClientScriptArea.Text = bc.responseMsg("你是明德專家");
                         else
-                            ClientScriptArea.Text = bc.responseMsg("你不是MingDer專家");
+                            ClientScriptArea.Text = bc.responseMsg("你是省專家");
                     }
                     else if (Session["ClassCode"].ToString().Equals("2"))
                     {
