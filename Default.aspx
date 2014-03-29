@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body style="margin-top: 0%; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(Image/zh-CN/BackgroundLogin.png) no-repeat center top;">
+<body style="margin-top: 0%; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none;">
 
     <form id="form1" runat="server">
     <div align="center">

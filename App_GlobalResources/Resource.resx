@@ -208,22 +208,22 @@
     <value>确定</value>
   </data>
   <data name="ImgUrlAddYear" xml:space="preserve">
-    <value>/Image/zh-CN/ButtonAddYearOrange.png</value>
+    <value>../Image/zh-CN/ButtonAddYearOrange.png</value>
   </data>
   <data name="ImgUrlCancel" xml:space="preserve">
-    <value>/Image/zh-CN/ButtonCancelOrange.png</value>
+    <value>Image/zh-CN/ButtonCancelOrange.png</value>
   </data>
   <data name="ImgUrlConfirm" xml:space="preserve">
-    <value>/Image/zh-CN/ButtonConfirm.png</value>
+    <value>Image/zh-CN/ButtonConfirm.png</value>
   </data>
   <data name="ImgUrlForget" xml:space="preserve">
-    <value>/Image/zh-CN/ButtonForgetOrange_PWD.png</value>
+    <value>Image/zh-CN/ButtonForgetOrange_PWD.png</value>
   </data>
   <data name="ImgUrlLogin" xml:space="preserve">
-    <value>/Image/zh-CN/ButtonLoginOrange.png</value>
+    <value>Image/zh-CN/ButtonLoginOrange.png</value>
   </data>
   <data name="ImgUrlSearch" xml:space="preserve">
-    <value>/Image/zh-CN/ButtonSearchOrange.png</value>
+    <value>../Image/zh-CN/ButtonSearchOrange.png</value>
   </data>
   <data name="SMDescriptionEmpty" xml:space="preserve">
     <value>说明不可为空</value>
@@ -320,5 +320,44 @@
   </data>
   <data name="TipYears" xml:space="preserve">
     <value>学年度</value>
+  </data>
+  <data name="ImgUrlBackground" xml:space="preserve">
+    <value>Image/zh-CN/background.png</value>
+  </data>
+  <data name="ImgUrlBackgroundLogin" xml:space="preserve">
+    <value>Image/zh-CN/backgroundlogin.png</value>
+  </data>
+  <data name="TextSizeHyLink" xml:space="preserve">
+    <value>14pt</value>
+  </data>
+  <data name="TextSizeTip" xml:space="preserve">
+    <value>14pt</value>
+  </data>
+  <data name="TextSizeTitle" xml:space="preserve">
+    <value>16pt</value>
+  </data>
+  <data name="SMAnswerHaveEmpty" xml:space="preserve">
+    <value>您有答案选项填写为空，请填写完整</value>
+  </data>
+  <data name="TextSizeH1Title" xml:space="preserve">
+    <value>22pt</value>
+  </data>
+  <data name="TextSizeH2Title" xml:space="preserve">
+    <value>20pt</value>
+  </data>
+  <data name="TextSizeH3Title" xml:space="preserve">
+    <value>18pt</value>
+  </data>
+  <data name="TextSizeH4Title" xml:space="preserve">
+    <value>16pt</value>
+  </data>
+  <data name="TipUrl" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="VideoHeight" xml:space="preserve">
+    <value>435</value>
+  </data>
+  <data name="VideoWidth" xml:space="preserve">
+    <value>580</value>
   </data>
 </root>
