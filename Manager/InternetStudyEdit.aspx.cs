@@ -5,16 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 public partial class Manager_InternetStudyEdit : System.Web.UI.Page
 {
     private const int ClassMaxNumbers = 10;
-    private int Page = 0, Flag = 0, Count = 0;
+    private int DataPage = 0, Flag = 0, Count = 0;
     private string Query = string.Empty;
     private const string QuestionClassID = "QuestionClassID";
     private const string QuestionClassYear = "QuestionClassYear";
     private const string ClassID = "ClassID";
+
+    public string backgroundImage = Resources.Resource.ImgUrlBackground;
+
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -122,24 +126,24 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             if (data.Count > 0)
             {
                 //Setting pagings
-                Page = data.Count / 10;
+                DataPage = data.Count / 10;
 
                 if (data.Count % 10 != 0)
-                    Page++;
+                    DataPage++;
 
                 //Paging
                 DdlPageSelect.Items.Clear();
 
-                for (int j = 1; j <= Page; j++)
+                for (int j = 1; j <= DataPage; j++)
                 {
                     DdlPageSelect.Items.Add(j.ToString());
                 }
 
                 DdlPageSelect.SelectedIndex = Select - 1;
 
-                if (Page != 0)
+                if (DataPage != 0)
                 {
-                    PageOrder.Text = Select.ToString() + " / " + Page.ToString();
+                    PageOrder.Text = Select.ToString() + " / " + DataPage.ToString();
                 }
 
                 Flag = 0;

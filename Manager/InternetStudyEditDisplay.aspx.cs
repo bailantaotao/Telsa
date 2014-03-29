@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 public partial class Manager_InternetStudyEditDisplay : System.Web.UI.Page
 {
     private const int QuestionMaxNumbers = 10;
+    public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -77,7 +78,7 @@ public partial class Manager_InternetStudyEditDisplay : System.Web.UI.Page
                 LbPassScore.Text = ((string[])data[0])[2].ToString();
                 HyURL.Text = ((string[])data[0])[3].ToString();
                 //mplayer.Url = ((string[])data[0])[3].ToString();
-                LbUrl.Text = "<embed src='http://player.youku.com/player.php/sid/XNTg2ODk2ODIw/v.swf' allowFullScreen='true' quality='high' width='640' height='480' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
+                LbUrl.Text = "<embed src='" + ((string[])data[0])[3].ToString() + "' allowFullScreen='true' quality='high' width='" + Resources.Resource.VideoWidth + "' height='" + Resources.Resource.VideoHeight + "' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
             }
             data.Clear();
 

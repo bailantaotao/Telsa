@@ -16,20 +16,20 @@
     <style>
         #BlockLeft {
             float: left;
-            padding-top: 295px;
-            width: 230px;
+            padding-top: 235px;
+            width: 285px;
         }
         #BlockRight {
             float: left;
-            padding-top: 270px;
-            width: 1070px;
+            padding-top: 220px;
+            width: 739px;
         }
         #BlockRightUp {
             height: 65px;
             padding-left:25px;
         }
         #BlockRightDown {
-            padding-top: 20px;
+            padding-top: 10px;
         }
         #BlockRightDownController {
             height:55px;
@@ -50,75 +50,75 @@
         }
     </style>
 </head>
-<body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../Image/zh-TW/Background.png) no-repeat center top;">
+<body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
     <form id="form1" runat="server">
-    <div align="center" style="width: 1300px; margin: 0px auto;">
+    <div align="center" style="width: 1024px; margin: 0px auto;">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true">
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyFollowingMonitor %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyFollowingMonitor %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyRuleManage %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyRuleManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="14px" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>">></asp:HyperLink>
+                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
             </div>
         </div>
         <div id="BlockRight">
             <div id="BlockRightUp">
                 <div style="background: url(../Image/zh-TW/TipGary_TipUserLocation.png) no-repeat; text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
-                    <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipInternetStudy %>" Font-Bold="true"></asp:Label>
+                    <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipInternetStudy %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipRed.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipTeachContent %>"></asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipTeachContent %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>"></asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
                     <div style="text-align:center; height:39px; float: left;  line-height:39px; margin-left: 20px">
-                        <asp:Label ID="LbYear" runat="server" Text="新增100年度：" Font-Bold="true" Font-Size="26px"></asp:Label>
+                        <asp:Label ID="LbYear" runat="server" Text="新增100年度：" Font-Bold="true" Font-Size="22pt"></asp:Label>
                     </div>
                     
-                    <div style="text-align:center; width: 850px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
+                    <div style="text-align:center; width: 739px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
                         <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBackPage %>" OnClick="Btn_Click" />
                         <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnCancelAdd %>" OnClick="Btn_Click" />
                     </div>
                 </div>
                 <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
-                    <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipStage1 %>" Font-Bold="true" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipStage1 %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH3Title %>"></asp:Label>
                 </div>
-                <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
-                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipInputDeadline %>" Font-Bold="true" Font-Size="16px"></asp:Label>
+                <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; padding-top:30px">
+                    <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipInputDeadline %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH4Title %>"></asp:Label>
                     
                     <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>--%>
@@ -139,13 +139,13 @@
                     <hr />
                 </div>
                 <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
-                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipStage2 %>" Font-Bold="true" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipStage2 %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH3Title %>"></asp:Label>
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
-                    <asp:Label ID="Label5" runat="server" Text="<%$ Resources:Resource, TipInputQuestions %>" Font-Bold="true" Font-Size="16px"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="<%$ Resources:Resource, TipInputQuestions %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH4Title %>"></asp:Label>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table style="width: 1070px">
+                    <table style="width: 739px">
                         <tr>
                             <td colspan="2" align="center">
                                 <%--<asp:UpdatePanel ID="UpdateCompleted" runat="server">
@@ -161,8 +161,11 @@
                         </tr>
                     </table>
                 </div>
+                <div style="margin-left: 30px">
+                    <hr />
+                </div>
                 <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
-                    <asp:Label ID="Label6" runat="server" Text="<%$ Resources:Resource, TipStage3 %>" Font-Bold="true" Font-Size="20px"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text="<%$ Resources:Resource, TipStage3 %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH3Title %>"></asp:Label>
                 </div>
                 <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; ">
                     <asp:Button ID="BtnCompleted" runat="server" Text="<%$ Resources:Resource, BtnPlzFinishQuestionnaire %>" OnClick="Btn_Click" Enabled="False" />

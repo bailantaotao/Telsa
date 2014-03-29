@@ -13,6 +13,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
     private const string QuestionClassID = "QuestionClassID";
     private const string QuestionClassYear = "QuestionClassYear";
     private const string ClassID = "ClassID";
+    public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
     protected void Page_Init(object sender, EventArgs e)
     {
