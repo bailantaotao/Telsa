@@ -11,7 +11,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
 {
     private const int QuestionMaxNumbers = 10;
     private const string RegressionString = "http://player.youku.com/player.php/sid/";
-
+    public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
 
     protected void Page_Init(object sender, EventArgs e)
@@ -106,25 +106,29 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
                     Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
                     if (c.eventArgs.PassScore < 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMScoreLessZero + "');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMScoreLessZero + "');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Answer))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMInputAnswer + "');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputAnswer + "');", true);
                         return false;
                     }
                     else if (string.IsNullOrEmpty(c.eventArgs.Question))
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMInputQuestion + "');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputQuestion + "');", true);
                         return false;
                     }
                     else if (c.eventArgs.AnswerItemCount < 2)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + c.eventArgs.QuestionID + Resources.Resource.SMInputQuestionItem + "');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputQuestionItem + "');", true);
                         return false;
                     }
-
+                    else if (c.eventArgs.AnswerHaveEmpty)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMAnswerHaveEmpty + "');", true);
+                        return false;
+                    }
 
                     break;
                 default:
@@ -245,7 +249,7 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
         {
             if (TbURL.Text.Contains(RegressionString))
             {
-                LbUrl.Text = "<embed src='" + TbURL.Text + "' allowFullScreen='true' quality='high' width='640' height='480' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
+                LbUrl.Text = "<embed src='" + TbURL.Text + "' allowFullScreen='true' quality='high' width='" + Resources.Resource.VideoWidth + "' height='" + Resources.Resource.VideoHeight + "' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";                
             }
             else
             {

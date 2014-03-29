@@ -22,12 +22,14 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
         public string Answer = string.Empty;
         public ArrayList AnswerItem = new ArrayList();
         public int AnswerItemCount = -1;
+        public bool AnswerHaveEmpty = false;
         //public string[] AnswerItem = new string[]{"", "", "", ""};
 
     }
     protected void Page_Load(object sender, EventArgs e)
     {
         CheckBox[] cb = new CheckBox[] { CbQuestionItem1, CbQuestionItem2, CbQuestionItem3, CbQuestionItem4, CbQuestionItem5 };
+        TextBox[] tb = new TextBox[] { TbQuestionItem1, TbQuestionItem2, TbQuestionItem3, TbQuestionItem4, TbQuestionItem5 };
         if (!IsPostBack)
         {
             // 題號
@@ -119,8 +121,6 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             }
             eventArgs.Answer = (eventArgs.Answer.Length > 1) ? eventArgs.Answer.Substring(0, eventArgs.Answer.Length - 1) : eventArgs.Answer;
 
-
-            /** 將來要改成動態新增答案選項 */
             if (eventArgs.AnswerItem.Count > 0)
             {
                 eventArgs.AnswerItem[0] = TbQuestionItem1.Text;
@@ -136,6 +136,14 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
                 eventArgs.AnswerItem.Add(TbQuestionItem3.Text);
                 eventArgs.AnswerItem.Add(TbQuestionItem4.Text);
                 eventArgs.AnswerItem.Add(TbQuestionItem5.Text);
+            }
+            for (int i = 0; i < eventArgs.AnswerItem.Count; i++)
+            {
+                if (tb[i].Text.Equals(""))
+                {
+                    eventArgs.AnswerHaveEmpty = true;
+                    break;
+                }
             }
             eventArgs.AnswerItemCount = eventArgs.AnswerItem.Count;
 

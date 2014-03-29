@@ -6,10 +6,30 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    protected override void OnInit(EventArgs e)
+    {
+        // Define an Literal control.
+        HtmlGenericControl css = new HtmlGenericControl();
+        css.TagName = "style";
+        css.Attributes.Add("type", "text/css");
+
+        string imageURL = string.Empty;
+
+        //Logic to determin imageURL goes here
+
+        //Update Tag
+        css.InnerHtml = @"body{background-image: url(" + Resources.Resource.ImgUrlBackgroundLogin + "); background-repeat:no-repeat; background-position: center top;}";
+
+        // Add the Tag to the Head section of the page.
+        Page.Header.Controls.Add(css);
+        
+        base.OnInit(e);
+    } 
     protected override void InitializeCulture()
     {
         Page.UICulture = "zh-CN";
