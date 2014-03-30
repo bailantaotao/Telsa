@@ -9,11 +9,17 @@ using System.Web.UI.WebControls;
 public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
 {
     
-    private int Page = 0, Flag = 0, Count = 0;
     private string Query = string.Empty;
-    
+    public string backgroundImage = Resources.Resource.ImgUrlBackground;
+    private const string QuestionClassID = "QuestionClassID";
+    private const string QuestionClassYear = "QuestionClassYear";
+    private const string ClassID = "ClassID";
 
-    
+
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,28 +27,70 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
         //    Response.Redirect("SessionOut.aspx");
         //if (!Session["ClassCode"].ToString().Equals("0"))
         //    Response.Redirect("SessionOut.aspx");
+
+        Session["UserID"] = "fuck";
         
+
         if (!IsPostBack)
         {
-            SearchType(BaseClass.NowYear);
-            LoadInternetStudy(1);
+            AddYearToDDL();
+            if (Session["CurrentYear"] != null)
+            {
+                int digit = -1;
+                bool IsDigit = Int32.TryParse(Session["CurrentYear"].ToString(), out digit);
+                if (IsDigit)
+                {
+                    SearchType(digit);
+                }
+                else
+                {
+                    SearchType(BaseClass.NowYear);            
+                }
+            }
+            else
+                SearchType(BaseClass.NowYear);            
         }
+        else
+        {
+            if (!DdlYear.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+            {
+                Session["CurrentYear"] = DdlYear.SelectedValue;
+                SearchType(Convert.ToInt32(DdlYear.SelectedValue));
+            }
+        }
+
+        LoadInternetStudy();
+        
     }
+
     private void SearchType(int QuestionClassYear)
     {
         Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
-                        "InternetStudy.Deadline, InternetStudyUserAnswer.TotalScore from InternetStudy " +
+                        "InternetStudy.Deadline, InternetStudy.PassScore, InternetStudyUserAnswer.TotalScore from InternetStudy " +
                         "left join InternetStudyUserAnswer on InternetStudy.QuestionClassID = InternetStudyUserAnswer.QuestionClassID " +
                         "where InternetStudy.QuestionClassYear = '" + QuestionClassYear + "'";
     }
-    private void SearchType(int Low, int High)
+
+    private void AddYearToDDL()
     {
-        Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
-                        "InternetStudy.Deadline, InternetStudyUserAnswer.TotalScore from InternetStudy " +
-                        "left join InternetStudyUserAnswer on InternetStudy.QuestionClassID = InternetStudyUserAnswer.QuestionClassID " +
-                        "where InternetStudy.QuestionClassYear between '" + Low + "' AND '" + High + "'";
+        Query = "select QuestionClassYear from InternetStudy group by QuestionClassYear order by QuestionClassYear asc";
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        if(ms.GetAllColumnData(Query,data))
+        {
+            if (data.Count > 0)
+            {
+                for (int i = 0; i < data.Count; i++)
+                    DdlYear.Items.Add(((string[])data[i])[0]);
+            }
+            else
+            {
+                DdlYear.Items.Add("未有任何資料");
+            }
+        }
     }
-    private void LoadInternetStudy(int Select)
+
+    private void LoadInternetStudy()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
@@ -55,64 +103,33 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             LbCompleted.Text += "No</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "名稱</td>";
+            LbCompleted.Text += Resources.Resource.TipClassName + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "完成閱讀期限</td>";
+            LbCompleted.Text += Resources.Resource.TipDeadline + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "作答</td>";
+            LbCompleted.Text += Resources.Resource.TipAnswerState + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-            LbCompleted.Text += "分數</td>";
+            LbCompleted.Text += Resources.Resource.TipUserScore + "</td>";
             LbCompleted.Text += "</tr>";
 
-            LbTotalCount.Text = "共 " + data.Count.ToString() + " 筆";
             if (data.Count > 0)
             {
-                //Setting pagings
-                Page = data.Count / 10;
-
-                if (data.Count % 10 != 0)
-                    Page++;
-
-                //Paging
-                DdlPageSelect.Items.Clear();
-
-                for (int j = 1; j <= Page; j++)
+                for (int i = 0 ; i < data.Count; i++)
                 {
-                    DdlPageSelect.Items.Add(j.ToString());
-                }
+                    bool UserIsReview = String.IsNullOrEmpty(((string[])(data[i]))[6]) ? false : true;
 
-                DdlPageSelect.SelectedIndex = Select - 1;
+                    string EncryptQuestionClassID = GetEncryptionString(QuestionClassID, ((string[])(data[i]))[0]);
+                    string EncryptQuestionClassYear = GetEncryptionString(QuestionClassYear, ((string[])(data[i]))[1]);
+                    string EncryptClassID = GetEncryptionString(ClassID, ((string[])(data[i]))[2]);
 
-                if (Page != 0)
-                {
-                    PageOrder.Text = Select.ToString() + " / " + Page.ToString();
-                }
-
-
-
-                Flag = 0;
-
-                Count = (Select - 1) * 10;
-                int Max = 0;
-                if (Count + 10 < data.Count)
-                {
-                    Max = Count + 10;
-                }
-                else
-                {
-                    Max = data.Count;
-                }
-
-                for (int i = Count; i < Max; i++)
-                {
-
-                    if ((Flag % 2) == 1)
-                        LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
-                    else
-                        LbCompleted.Text += "<tr align='center'>";
+                    LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='Viewer.aspx?CNo=" + i + "'>" + (i + 1).ToString() + "</a></td>";
+                    if (UserIsReview)                        
+                        LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
+                    else
+                        LbCompleted.Text += "<a href='InternetStudyQuestionnaire.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                        
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
@@ -121,25 +138,22 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                     LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[5]) ? "未通過" : "通過" + "</td>";
+                    LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[6]) ? Resources.Resource.TipUnPass : (Convert.ToInt32(((string[])(data[i]))[6]) >= Convert.ToInt32(((string[])(data[i]))[5])) ? Resources.Resource.TipPass : Resources.Resource.TipUnPass + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[5]) ? "0" : ((string[])(data[i]))[5].ToString() + "</td>";
+                    LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[6]) ? "......" : ((string[])(data[i]))[6].ToString() + "</td>";
 
                     LbCompleted.Text += "</tr>";
 
-                    Flag++;
                 }
             }
             else
             {
                 LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                LbCompleted.Text += "此年度您還沒有新增，請按下新增年度開始</td>";
+                LbCompleted.Text += "<td colspan='5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "此年度尚未產生問卷</td>";
                 LbCompleted.Text += "</tr>";
 
-                LbTotalCount.Text = "共 0 筆";
-                PageOrder.Text = "0 / 0";
             }
 
             LbCompleted.Text += "</table>";
@@ -147,49 +161,42 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
 
     }
 
-
-
-    
-    protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
+    private string GetEncryptionString(string Tag, string Data)
     {
-        // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
-        Query = Session["InternetStudyYearQuery"].ToString();
-        LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
+        //BaseClass bc = new BaseClass();
+        //return (Tag + "=" +bc.encryption(Data));
+        BaseClass bc = new BaseClass();
+        return (Tag + "=" + Data);
     }
-
-    
 
     protected void ImgBtnSearch_Click(object sender, ImageClickEventArgs e)
     {
         BaseClass bc = new BaseClass();
         int Low = -1, High = -1;
-        if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
-        {
-            SearchType(BaseClass.NowYear);            
-        }
-        else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
-        {
-            if (Low > High)
-                bc.swap(ref Low, ref High);
-            SearchType(Low, High);
-        }
-        else if (Int32.TryParse(TbYearA.Text, out Low))
-        {
-            SearchType(Low);
-        }              
-        else if (Int32.TryParse(TbYearB.Text, out High))
-        {
-            SearchType(High);
-        }
-        else
+        //if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
+        //{
+        //    SearchType(BaseClass.NowYear);            
+        //}
+        //else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
+        //{
+        //    if (Low > High)
+        //        bc.swap(ref Low, ref High);
+        //    SearchType(Low, High);
+        //}
+        //else if (Int32.TryParse(TbYearA.Text, out Low))
+        //{
+        //    SearchType(Low);
+        //}              
+        //else if (Int32.TryParse(TbYearB.Text, out High))
+        //{
+        //    SearchType(High);
+        //}
+        //else
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('請輸入數字');", true);
             return;
         }
-        LoadInternetStudy(1);
-        Session["InternetStudyYearQuery"] = Query;
-        TbYearA.Text = "";
-        TbYearB.Text = "";
+        LoadInternetStudy();
     }
 
 }

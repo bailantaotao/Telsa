@@ -81,12 +81,13 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             Session["QuestionNoType_" + eventArgs.QuestionID] = 0;
 
             // debug test
-            //TbQuestion.Text = "中国";
-            //TbAnswer.Text = "123213";
-            //TbQuestionItem1.Text = "1";
-            //TbQuestionItem2.Text = "2";
-            //TbQuestionItem3.Text = "3";
-            //TbQuestionItem4.Text = "4";
+            TbQuestion.Text = "中国";
+            
+            TbQuestionItem1.Text = "1";
+            TbQuestionItem2.Text = "2";
+            TbQuestionItem3.Text = "3";
+            TbQuestionItem4.Text = "4";
+            TbQuestionItem5.Text = "5";
         }
         else
         {

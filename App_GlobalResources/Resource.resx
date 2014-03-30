@@ -205,7 +205,7 @@
     <value>预览</value>
   </data>
   <data name="BtnSubmit" xml:space="preserve">
-    <value>确定</value>
+    <value>提交</value>
   </data>
   <data name="ImgUrlAddYear" xml:space="preserve">
     <value>../Image/zh-CN/ButtonAddYearOrange.png</value>
@@ -359,5 +359,26 @@
   </data>
   <data name="VideoWidth" xml:space="preserve">
     <value>580</value>
+  </data>
+  <data name="TipAnswerState" xml:space="preserve">
+    <value>作答</value>
+  </data>
+  <data name="TipPass" xml:space="preserve">
+    <value>通过</value>
+  </data>
+  <data name="TipPlzChoose" xml:space="preserve">
+    <value>请选择</value>
+  </data>
+  <data name="TipUnPass" xml:space="preserve">
+    <value>未通过</value>
+  </data>
+  <data name="TipUserScore" xml:space="preserve">
+    <value>分数</value>
+  </data>
+  <data name="BtnSubmitComment" xml:space="preserve">
+    <value>我要评论</value>
+  </data>
+  <data name="BtnViewComment" xml:space="preserve">
+    <value>观看评论</value>
   </data>
 </root>
