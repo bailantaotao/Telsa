@@ -28,8 +28,8 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["QuestionClassID"] = "829";
-        Session["UserID"] = "fuck";
+        Session["QuestionClassID"] = Request["QuestionClassID"];
+        //Session["UserID"] = "fuck";
         if (!IsPostBack)
         {
             LoadInternetStudyComment(1);
@@ -178,7 +178,7 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
         }
         else if (btn.ID == "BtnBack")
         {
-            Response.Redirect("InterStudy.aspx");
+            Response.Redirect("InternetStudy.aspx");
         }
     }
 }

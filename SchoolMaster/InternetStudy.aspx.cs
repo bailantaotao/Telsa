@@ -103,16 +103,18 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
         LbCompleted.Text += Resources.Resource.TipAnswerState + "</td>";
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
         LbCompleted.Text += Resources.Resource.TipUserScore + "</td>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += Resources.Resource.TipComment + "</td>";
         LbCompleted.Text += "</tr>";
 
         if (ms.GetAllColumnData(Query, data))
         {
             if(data.Count == 1)
             { 
-                int digit = -1;
-                bool isDigit = Int32.TryParse(((string[])data[0])[0], out digit);
-                
-                if(digit == 1)
+                bool bdata = false;
+                bool isParseOK = bool.TryParse(((string[])data[0])[0], out bdata);
+
+                if (bdata)
                 {
                     data.Clear();
                     Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
@@ -154,7 +156,11 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                                 LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[6]) ? "......" : ((string[])(data[i]))[6].ToString() + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += "<a href='InternetStudyComment.aspx?" + EncryptQuestionClassID + "'>" + Resources.Resource.TipComment + "</a></td>";
+
+                                if (UserIsReview)
+                                    LbCompleted.Text += "<a href='InternetStudyComment.aspx?" + EncryptQuestionClassID + "'>" + Resources.Resource.TipComment + "</a></td>";
+                                else
+                                    LbCompleted.Text += "<a href='#'>" + Resources.Resource.TipComment + "</a></td>";
 
                                 LbCompleted.Text += "</tr>";
 
