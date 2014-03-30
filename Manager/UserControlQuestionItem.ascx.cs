@@ -80,14 +80,14 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             // 用來判斷question type
             Session["QuestionNoType_" + eventArgs.QuestionID] = 0;
 
-            // debug test
-            TbQuestion.Text = "中国";
+            //// debug test
+            //TbQuestion.Text = "中国";
             
-            TbQuestionItem1.Text = "1";
-            TbQuestionItem2.Text = "2";
-            TbQuestionItem3.Text = "3";
-            TbQuestionItem4.Text = "4";
-            TbQuestionItem5.Text = "5";
+            //TbQuestionItem1.Text = "1";
+            //TbQuestionItem2.Text = "2";
+            //TbQuestionItem3.Text = "3";
+            //TbQuestionItem4.Text = "4";
+            //TbQuestionItem5.Text = "5";
         }
         else
         {
