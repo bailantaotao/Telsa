@@ -100,9 +100,6 @@
                             <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    <div style="text-align:center; width: auto; height:55px; float: left;  line-height:55px; vertical-align:middle; padding-left:15px; padding-top:0px">
-                        <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
-                    </div>
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">

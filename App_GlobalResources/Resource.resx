@@ -381,4 +381,13 @@
   <data name="BtnViewComment" xml:space="preserve">
     <value>观看评论</value>
   </data>
+  <data name="TipComment" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="TipNoComment" xml:space="preserve">
+    <value>现在还没有任何评论，请马上评论吧！</value>
+  </data>
+  <data name="TipQuestionnaireNotCompelet" xml:space="preserve">
+    <value>此年度尚未產生問卷，或問卷未制定完畢</value>
+  </data>
 </root>

@@ -98,7 +98,8 @@ public partial class _Default : System.Web.UI.Page
                     }
                     if (Session["ClassCode"].ToString().Equals("0"))
                     {
-                        ClientScriptArea.Text = bc.responseMsg("你是校長");
+                        //ClientScriptArea.Text = bc.responseMsg("你是校長");
+                        Response.Redirect("SchoolMaster/InternetStudy.aspx");
                     }
                     else if (Session["ClassCode"].ToString().Equals("1"))
                     {
