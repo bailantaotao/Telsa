@@ -390,4 +390,22 @@
   <data name="TipQuestionnaireNotCompelet" xml:space="preserve">
     <value>此年度尚未產生問卷，或問卷未制定完畢</value>
   </data>
+  <data name="TipFinishRate" xml:space="preserve">
+    <value>完成度</value>
+  </data>
+  <data name="TipPassClass" xml:space="preserve">
+    <value>及格科目</value>
+  </data>
+  <data name="TipProvince" xml:space="preserve">
+    <value>省分：</value>
+  </data>
+  <data name="TipSchool" xml:space="preserve">
+    <value>校名</value>
+  </data>
+  <data name="TipSchoolMaster" xml:space="preserve">
+    <value>校长姓名</value>
+  </data>
+  <data name="TipUnPassClass" xml:space="preserve">
+    <value>不及格科目</value>
+  </data>
 </root>
