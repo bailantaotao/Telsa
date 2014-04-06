@@ -73,7 +73,8 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             ManageSQL ms = new ManageSQL();
-            string query = "select UserID, UserName, ClassCode from Account where UserID = '" + Tb_Account.Text + "' and Password = '" + Tb_Pwd.Text + "'";            
+            string query = "select Account.UserID, Account.UserName, Account.ClassCode, ZipCode from Account " +
+                            "where UserID = '" + Tb_Account.Text + "' and Password = '" + Tb_Pwd.Text + "'";
             ArrayList data = new ArrayList();
             if (ms.GetAllColumnData(query, data))
             {
@@ -87,6 +88,7 @@ public partial class _Default : System.Web.UI.Page
                     Session["UserID"] = ((string[])data[0])[0];
                     Session["UserName"] = ((string[])data[0])[1];
                     Session["ClassCode"] = ((string[])data[0])[2];
+                    Session["Province"] = ((string[])data[0])[3];
                     if (Session["ClassCode"].ToString().Equals("1"))
                     {
                         string IsMingder = "select IsMingder from ExpertAuthority where UserID = '" + Tb_Account.Text + "'";
@@ -103,10 +105,13 @@ public partial class _Default : System.Web.UI.Page
                     }
                     else if (Session["ClassCode"].ToString().Equals("1"))
                     {
+                        Response.Redirect("Expert/ViewInternetStudyScore.aspx");
+                        /*
                         if (Session["IsMingDer"].ToString().Equals("True"))
                             ClientScriptArea.Text = bc.responseMsg("你是明德專家");
                         else
-                            ClientScriptArea.Text = bc.responseMsg("你是省專家");
+                            ClientScriptArea.Text = bc.responseMsg("你是省專家");                        
+                         * */
                     }
                     else if (Session["ClassCode"].ToString().Equals("2"))
                     {
