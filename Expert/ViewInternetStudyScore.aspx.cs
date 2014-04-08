@@ -30,6 +30,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             DdlProvince.Visible = true;
             LbProvince.Visible = false;
             IsMingDer = true;
+            LoadProvince();
         }
         else
         {
@@ -82,6 +83,28 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             return true;
         }
         return false;
+    }
+    private void LoadProvince()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select zipcode.name from zipcode";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlProvince.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlProvince.Items.Add("None");
+            return;
+        }
+
+        foreach (string[] province in data)
+        {
+            DdlProvince.Items.Add(province[0]);
+        }
     }
 
     private void LoadInternetStudy(int Select)
@@ -224,18 +247,39 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     private bool GetUserAnswerData(ArrayList UserData)
     {
         ManageSQL ms = new ManageSQL();
-        if (IsMingDer)
+        if (Session["ProvinceSelect"] != null && Session["ProvinceSelect"].ToString().Equals("True"))
         {
-            Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                    "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                    "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+            if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+            {
+                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+            }
+            else
+            {
+                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                        "left join ZipCode on ZipCode.ZipCode = Account.Zipcode " +
+                        "where zipcode.name = '" + DdlProvince.SelectedValue + "' " +
+                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, ZipCode.Name";
+            }
         }
         else
         {
-            Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                    "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                    "where Account.ZipCode = '" + Session["Province"].ToString() + "' group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+            if (IsMingDer)
+            {
+                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+            }
+            else
+            {
+                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+            }
         }
+
 
         if (ms.GetAllColumnData(Query, UserData))
         {
@@ -329,10 +373,12 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                         LbCompleted.Text += CompleteNumbers + " / " + CompleteBase + "</td>";
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                        LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "Pass=" + Pass + "'>" + "Click" + "</a></td>";
-
+                        //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "Pass=" + Pass + "'>" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('InternetStudyAnswerView.aspx?" + "Pass=" + Pass + "&SM="+saUserData[0]+"', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
+                         
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                        LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
+                        //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('InternetStudyAnswerView.aspx?" + "UnPass=" + UnPass + "&SM="+saUserData[0]+"', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
                         
                         // initialzation
                         CompleteNumbers = 0;
@@ -369,43 +415,48 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         return true;
     }
 
+    private void CheckSearchType()
+    {
+        BaseClass bc = new BaseClass();
+        int Low = -1, High = -1;
+        if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
+        {
+            SearchType(BaseClass.NowYear);
+        }
+        else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
+        {
+            if (Low > High)
+                bc.swap(ref Low, ref High);
+            SearchType(Low, High);
+        }
+        else if (Int32.TryParse(TbYearA.Text, out Low))
+        {
+            SearchType(Low);
+        }
+        else if (Int32.TryParse(TbYearB.Text, out High))
+        {
+            SearchType(High);
+        }
+        else
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoNumber + "');", true);
+            return;
+        }
+        Session["InternetStudyEditYearQuery"] = Query;
+        Session["InternetStudyEditDataPage"] = 1;
+        LoadInternetStudy(1);
+
+
+        TbYearA.Text = "";
+        TbYearB.Text = "";
+    }
+
     protected void ImgBtnSearch_Click(object sender, ImageClickEventArgs e)
     {
         ImageButton ibt = (ImageButton)sender;
         if (ibt.ID == "ImgBtnSearch")
         {
-            BaseClass bc = new BaseClass();
-            int Low = -1, High = -1;
-            if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
-            {
-                SearchType(BaseClass.NowYear);
-            }
-            else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
-            {
-                if (Low > High)
-                    bc.swap(ref Low, ref High);
-                SearchType(Low, High);
-            }
-            else if (Int32.TryParse(TbYearA.Text, out Low))
-            {
-                SearchType(Low);
-            }
-            else if (Int32.TryParse(TbYearB.Text, out High))
-            {
-                SearchType(High);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoNumber + "');", true);
-                return;
-            }
-            Session["InternetStudyEditYearQuery"] = Query;
-            Session["InternetStudyEditDataPage"] = 1;
-            LoadInternetStudy(1);
-            
-            
-            TbYearA.Text = "";
-            TbYearB.Text = "";
+            CheckSearchType();
         }
     }
     
@@ -414,5 +465,16 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         Query = Session["InternetStudyEditYearQuery"].ToString();
         Session["InternetStudyEditDataPage"] = DdlPageSelect.SelectedIndex + 1;
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
+    }
+    protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+            Session["ProvinceSelect"] = "False";
+        else
+        {
+            Session["ProvinceSelect"] = "True";
+            Session["ProvinceSelectValue"] = DdlProvince.SelectedValue;
+        }
+        CheckSearchType();
     }
 }

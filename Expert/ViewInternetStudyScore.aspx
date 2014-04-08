@@ -97,7 +97,7 @@
                     </div>
                     <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 0px">
                         <asp:Label ID="LbProvince" runat="server" Text="" Font-Size="<%$ Resources:Resource, TextSizeTitle %>" Font-Bold="true" Font-Underline="true"></asp:Label>
-                        <asp:DropDownList ID="DdlProvince" runat="server">
+                        <asp:DropDownList ID="DdlProvince" runat="server" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
