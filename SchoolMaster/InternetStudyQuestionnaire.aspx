@@ -109,14 +109,14 @@
                                 <asp:Label ID="LbDescription" runat="server" Text="Label" style="word-break:break-all"></asp:Label>
                             </td>
                         </tr>
-                        <tr>
+                        <%--<tr>
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">
                                 <asp:Label ID="Label5" runat="server" Text="<%$ Resources:Resource, TipUrl %>" Font-Size="<%$ Resources:Resource, TextSizeTip %>"></asp:Label>
                             </td>
                             <td style="width: 80%; border: thin solid Gray;">
                                 <asp:HyperLink ID="HyURL" runat="server" style="word-break:break-all"></asp:HyperLink>
                             </td>
-                        </tr>
+                        </tr>--%>
                         
                         <tr>
                             <td style="width: 20%; line-height: 50px; border: thin solid Gray;">

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
+public partial class Manager_InternetStudyScore : System.Web.UI.Page
 {
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
     private const int ClassMaxNumbers = 10;
@@ -20,7 +20,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" )
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
         if (Session["IsMingDer"] == null)
             Response.Redirect("../SessionOut.aspx");
@@ -41,15 +41,15 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         }
         if (!IsPostBack)
         {
-            if (Session["InternetStudyEditYearQuery"] != null)
-                Query = Session["InternetStudyEditYearQuery"].ToString();
+            if (Session["InternetStudyYearQuery"] != null)
+                Query = Session["InternetStudyYearQuery"].ToString();
             else
                 SearchType(BaseClass.NowYear);
-            Session["InternetStudyEditYearQuery"] = Query;
+            Session["InternetStudyYearQuery"] = Query;
 
             // will comming when...
             // 1. 使用者按下了查詢，此時page會歸0
-            
+
             if (Session["InternetStudyEditDataPage"] != null)
                 LoadInternetStudy(Convert.ToInt32(Session["InternetStudyEditDataPage"]));
             // will comming when...
@@ -115,7 +115,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         // 找出已新增完成的問卷年分，以及是否10筆皆完成
         // select InternetStudy.QuestionClassYear, Count(QuestionAddedComplete) from InternetStudy where InternetStudy.QuestionAddedComplete='true' group by QuestionClassYear
-        
+
 
         LbCompleted.Text = "<table style='width:700px;'>";
         LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
@@ -186,7 +186,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     private void NoData()
     {
         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4;'>";
-        LbCompleted.Text += "<td colspan = '7' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
         LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -377,10 +377,10 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "Pass=" + Pass + "'>" + "Click" + "</a></td>";
                         LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "Pass=" + Pass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
-                         
+
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
-                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM="+saUserData[0]+"', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
@@ -449,7 +449,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoNumber + "');", true);
             return;
         }
-        Session["InternetStudyEditYearQuery"] = Query;
+        Session["InternetStudyYearQuery"] = Query;
         Session["InternetStudyEditDataPage"] = 1;
         LoadInternetStudy(1);
 
@@ -466,10 +466,10 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             CheckSearchType();
         }
     }
-    
+
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Query = Session["InternetStudyEditYearQuery"].ToString();
+        Query = Session["InternetStudyYearQuery"].ToString();
         Session["InternetStudyEditDataPage"] = DdlPageSelect.SelectedIndex + 1;
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }

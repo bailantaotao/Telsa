@@ -75,7 +75,7 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
             {
                 LbTitle.Text = ((string[])data[0])[0].ToString();
                 LbDescription.Text = ((string[])data[0])[1].ToString();
-                HyURL.Text = ((string[])data[0])[2].ToString();
+                //HyURL.Text = ((string[])data[0])[2].ToString();
                 LbUrl.Text = "<embed src='" + ((string[])data[0])[2].ToString() + "' allowFullScreen='true' quality='high' width='" + Resources.Resource.VideoWidth + "' height='" + Resources.Resource.VideoHeight + "' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>";
             }
             data.Clear();

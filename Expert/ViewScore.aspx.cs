@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Expert_InternetStudyAnswerView : System.Web.UI.Page
+public partial class Expert_ViewScore : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -36,7 +36,7 @@ public partial class Expert_InternetStudyAnswerView : System.Web.UI.Page
         LbComplete.Text += "校長分數" + "</td>";
         LbComplete.Text += "</tr>";
 
-        if (PassContent.Length > 0 || UnPassContent.Length > 0)
+        if ((PassContent.Length > 0 || UnPassContent.Length > 0) && Request["SM"] != null && !string.IsNullOrEmpty(Request["SM"].ToString()))
         {
             Print(PassContent);
             Print(UnPassContent);

@@ -408,4 +408,34 @@
   <data name="TipUnPassClass" xml:space="preserve">
     <value>不及格科目</value>
   </data>
+  <data name="BtnCloseMsg" xml:space="preserve">
+    <value>你确定真的要取消吗?</value>
+  </data>
+  <data name="BtnSend" xml:space="preserve">
+    <value>传送</value>
+  </data>
+  <data name="TipHowToViewQuestionnaire" xml:space="preserve">
+    <value>针对已完成之问卷，您可点击编号进行观看</value>
+  </data>
+  <data name="TipLetterFinish" xml:space="preserve">
+    <value>寄送成功</value>
+  </data>
+  <data name="TipMessage" xml:space="preserve">
+    <value>信息内容</value>
+  </data>
+  <data name="TipMsgError" xml:space="preserve">
+    <value>您必须输入要传送讯息的内容</value>
+  </data>
+  <data name="TipNotify" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="TipReceiver" xml:space="preserve">
+    <value>收件者</value>
+  </data>
+  <data name="TipSubject" xml:space="preserve">
+    <value>主旨</value>
+  </data>
+  <data name="TipSubjectError" xml:space="preserve">
+    <value>您必须输入主旨</value>
+  </data>
 </root>
