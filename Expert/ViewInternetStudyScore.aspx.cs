@@ -36,7 +36,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         {
             DdlProvince.Visible = false;
             LbProvince.Visible = true;
-            LbProvince.Text = Session["Province"].ToString();
+            LbProvince.Text = SearchProvince();
             IsMingDer = false;
         }
         if (!IsPostBack)
@@ -63,6 +63,15 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+    }
+
+    private string SearchProvince()
+    {
+        string query = "select zipcode.name from zipcode where zipcode.zipcode='" + Session["Province"].ToString() + "'";
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        ms.GetOneData(query, sb);
+        return string.IsNullOrEmpty(sb.ToString())? "none":sb.ToString();
     }
 
     private void SearchType(int QuestionClassYear)

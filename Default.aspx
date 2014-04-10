@@ -27,7 +27,7 @@
                             </td>
                             <td style="width:200px;">
                                 <asp:TextBox ID="Tb_Account" runat="server" Font-Bold="False" Font-Size="Medium" 
-                                    Font-Names="Microsoft JhengHei"></asp:TextBox>
+                                    Font-Names="Microsoft JhengHei"></asp:TextBox><asp:Label ID="LbUserSchool" runat="server" Text="Label"></asp:Label>
                             </td>
                         </tr>
                         <tr>
