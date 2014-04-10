@@ -62,6 +62,7 @@ public class ManageSQL
 
     public bool GetOneData(string _query, StringBuilder SB)
     {
+        SB.Clear();
         if (SQLControl(SQLStatus.Connect))
         {
             cmd = new SqlCommand(_query, cn);
@@ -91,6 +92,7 @@ public class ManageSQL
     //count_data
     public bool GetRowNumbers(string _query, StringBuilder SB)
     {
+        SB.Clear();
         if (SQLControl(SQLStatus.Connect))
         {
             try
@@ -120,6 +122,7 @@ public class ManageSQL
     //--將資料寫入DB--
     public bool WriteData(string query, StringBuilder SB)
     {
+        SB.Clear();
         if(SQLControl(SQLStatus.Connect))
         {
             try
@@ -139,6 +142,7 @@ public class ManageSQL
     //--取得資料庫內所有資料--
     public bool GetOneColumnData(string query, ArrayList _data)
     {
+        _data.Clear();
         if (SQLControl(SQLStatus.Connect))
         {
             try
@@ -169,6 +173,7 @@ public class ManageSQL
     }
     public bool GetAllColumnData(string query, ArrayList _data)
     {
+        _data.Clear();
         if(SQLControl(SQLStatus.Connect))
         {
             try

@@ -205,7 +205,7 @@
     <value>预览</value>
   </data>
   <data name="BtnSubmit" xml:space="preserve">
-    <value>确定</value>
+    <value>提交</value>
   </data>
   <data name="ImgUrlAddYear" xml:space="preserve">
     <value>../Image/zh-CN/ButtonAddYearOrange.png</value>
@@ -359,5 +359,86 @@
   </data>
   <data name="VideoWidth" xml:space="preserve">
     <value>580</value>
+  </data>
+  <data name="TipAnswerState" xml:space="preserve">
+    <value>作答</value>
+  </data>
+  <data name="TipPass" xml:space="preserve">
+    <value>通过</value>
+  </data>
+  <data name="TipPlzChoose" xml:space="preserve">
+    <value>请选择</value>
+  </data>
+  <data name="TipUnPass" xml:space="preserve">
+    <value>未通过</value>
+  </data>
+  <data name="TipUserScore" xml:space="preserve">
+    <value>分数</value>
+  </data>
+  <data name="BtnSubmitComment" xml:space="preserve">
+    <value>我要评论</value>
+  </data>
+  <data name="BtnViewComment" xml:space="preserve">
+    <value>观看评论</value>
+  </data>
+  <data name="TipComment" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="TipNoComment" xml:space="preserve">
+    <value>现在还没有任何评论，请马上评论吧！</value>
+  </data>
+  <data name="TipQuestionnaireNotCompelet" xml:space="preserve">
+    <value>此年度尚未產生問卷，或問卷未制定完畢</value>
+  </data>
+  <data name="TipFinishRate" xml:space="preserve">
+    <value>完成度</value>
+  </data>
+  <data name="TipPassClass" xml:space="preserve">
+    <value>及格科目</value>
+  </data>
+  <data name="TipProvince" xml:space="preserve">
+    <value>省分：</value>
+  </data>
+  <data name="TipSchool" xml:space="preserve">
+    <value>校名</value>
+  </data>
+  <data name="TipSchoolMaster" xml:space="preserve">
+    <value>校长姓名</value>
+  </data>
+  <data name="TipUnPassClass" xml:space="preserve">
+    <value>不及格科目</value>
+  </data>
+  <data name="BtnCloseMsg" xml:space="preserve">
+    <value>你确定真的要取消吗?</value>
+  </data>
+  <data name="BtnSend" xml:space="preserve">
+    <value>传送</value>
+  </data>
+  <data name="TipHowToViewQuestionnaire" xml:space="preserve">
+    <value>针对已完成之问卷，您可点击编号进行观看</value>
+  </data>
+  <data name="TipLetterFinish" xml:space="preserve">
+    <value>寄送成功</value>
+  </data>
+  <data name="TipMessage" xml:space="preserve">
+    <value>信息内容</value>
+  </data>
+  <data name="TipMsgError" xml:space="preserve">
+    <value>您必须输入要传送讯息的内容</value>
+  </data>
+  <data name="TipNotify" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="TipReceiver" xml:space="preserve">
+    <value>收件者</value>
+  </data>
+  <data name="TipSubject" xml:space="preserve">
+    <value>主旨</value>
+  </data>
+  <data name="TipSubjectError" xml:space="preserve">
+    <value>您必须输入主旨</value>
+  </data>
+  <data name="TipWelcome" xml:space="preserve">
+    <value>欢迎</value>
   </data>
 </root>

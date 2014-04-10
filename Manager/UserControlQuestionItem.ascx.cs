@@ -44,6 +44,8 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             // 單選或多選
             LbQuestionType.Text = eventArgs.IsSingleSelected ? Resources.Resource.TipSingleQuestion : Resources.Resource.TipMultiQuestion;
 
+            int CheckCount = 0;
+
             // 答案勾選
             if (!string.IsNullOrEmpty(eventArgs.Answer))
             {
@@ -60,12 +62,17 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
                             if (i == t)
                             {
                                 cb[i].Checked = true;
+                                CheckCount++;
                                 break;
                             }
                         }
                     }
                 }
             }
+
+            // 用來判斷question type
+            Session["QuestionNoType_" + eventArgs.QuestionID] = CheckCount;
+            LbQuestionType.Text = (CheckCount > 1) ? Resources.Resource.TipMultiQuestion : Resources.Resource.TipSingleQuestion;
 
             // Count 在外面設定好了
             if (eventArgs.AnswerItem.Count > 0)
@@ -77,16 +84,16 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
                 TbQuestionItem5.Text = eventArgs.AnswerItem[4].ToString();
                 eventArgs.AnswerItemCount = 5;
             }
-            // 用來判斷question type
-            Session["QuestionNoType_" + eventArgs.QuestionID] = 0;
+            
 
-            // debug test
+            //// debug test
             //TbQuestion.Text = "中国";
-            //TbAnswer.Text = "123213";
+            
             //TbQuestionItem1.Text = "1";
             //TbQuestionItem2.Text = "2";
             //TbQuestionItem3.Text = "3";
             //TbQuestionItem4.Text = "4";
+            //TbQuestionItem5.Text = "5";
         }
         else
         {

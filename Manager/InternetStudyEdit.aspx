@@ -93,7 +93,8 @@
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                         NavigateUrl="~/Manager/InternetStudyScore.aspx"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
@@ -150,6 +151,10 @@
                                 </asp:UpdatePanel>--%>
                             </td>
                             <td align="right">
+                                <div style="text-align:left">
+                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipHowToViewQuestionnaire %>"></asp:Label>
+                                </div>
+                                
                                 <asp:UpdatePanel ID="UpdatePageSelect" runat="server">
                                     <ContentTemplate>
                                         <asp:Label ID="Label15" runat="server" Font-Size="<%$ Resources:Resource, TextSizeTip %>" Text="<%$ Resources:Resource, TipNo %>"></asp:Label>
