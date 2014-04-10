@@ -13,10 +13,11 @@
     </style>
 </head>
 <body style="margin-top: 0%; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none;">
-
+    
     <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server"/>
     <div align="center">
-        <div style="height: 330px"></div>
+        <div style="height: 270px"></div>
         <table style="width: 750px; height:291px; padding-left:50px ">
             <tr style="height:auto;">
                 <td align="center" style="vertical-align: top">
@@ -25,16 +26,24 @@
                             <td style="width:110px; line-height:50px">
                                 <asp:Image ID="ImgView_Account" ImageUrl="~/Image/zh-TW/TextViewBlack_Account.png" runat="server" />
                             </td>
-                            <td style="width:200px;">
-                                <asp:TextBox ID="Tb_Account" runat="server" Font-Bold="False" Font-Size="Medium" 
-                                    Font-Names="Microsoft JhengHei"></asp:TextBox><asp:Label ID="LbUserSchool" runat="server" Text="Label"></asp:Label>
+                            <td style="width:290px;">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                        <asp:TextBox ID="Tb_Account" runat="server" Font-Bold="False" Font-Size="Medium" 
+                                            Font-Names="Microsoft JhengHei" OnTextChanged="Tb_Account_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                        <asp:Label ID="LbUserSchool" runat="server" Text=""></asp:Label>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID ="Tb_Account" EventName ="TextChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
                         </tr>
                         <tr>
                             <td style="width:110px; line-height:50px">
                                 <asp:Image ID="Img_ViewPwd" ImageUrl="~/Image/zh-TW/TextViewBlack_Pwd.png" runat="server" />
                             </td>
-                            <td style="width:200px;">
+                            <td style="width:290px;">
                                 <asp:TextBox ID="Tb_Pwd" runat="server" Font-Bold="False" Font-Size="Medium" 
                                     TextMode="Password" Font-Names="Microsoft JhengHei"></asp:TextBox>
                             </td>
@@ -44,7 +53,7 @@
                                 <asp:Image ID="Img_ViewVerify" ImageUrl="~/Image/zh-TW/TextViewBlack_Verify.png" runat="server" />
                                 <img src="VerificationCode.aspx" />
                             </td>
-                            <td style="width:200px;">
+                            <td style="width:290px;">
                                 <asp:TextBox ID="Tb_VerificationCode" runat="server" Font-Bold="False" Font-Size="Medium" 
                                     Font-Names="Microsoft JhengHei"></asp:TextBox>
                             </td>
@@ -67,8 +76,7 @@
             </tr>
         </table>
         <asp:Literal ID="ClientScriptArea" runat="server"></asp:Literal>    
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-        </asp:ScriptManager>
+        
     </div>
     </form>
 </body>

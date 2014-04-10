@@ -125,4 +125,18 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    protected void Tb_Account_TextChanged(object sender, EventArgs e)
+    {
+        TextBox tb = (TextBox)sender;
+        ManageSQL ms = new ManageSQL();
+        string query = "select School from Account where UserID='"+tb.Text+"'";
+        StringBuilder sb = new StringBuilder();
+
+        ms.GetOneData(query, sb);
+        if (string.IsNullOrEmpty(sb.ToString()))
+            LbUserSchool.Text = "";
+        else
+            LbUserSchool.Text = Resources.Resource.TipWelcome + sb.ToString(); 
+
+    }
 }

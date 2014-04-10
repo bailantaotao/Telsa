@@ -438,4 +438,7 @@
   <data name="TipSubjectError" xml:space="preserve">
     <value>您必须输入主旨</value>
   </data>
+  <data name="TipWelcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
 </root>
