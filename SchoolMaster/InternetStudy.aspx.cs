@@ -117,22 +117,32 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                 if (bdata)
                 {
                     data.Clear();
-                    Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
-                            "InternetStudy.Deadline, InternetStudy.PassScore, InternetStudyUserAnswer.TotalScore from InternetStudy " +
+                    //Query = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
+                    //        "InternetStudy.Deadline, InternetStudy.PassScore, InternetStudyUserAnswer.TotalScore from InternetStudy " +
+                    //        "left join InternetStudyUserAnswer on InternetStudy.QuestionClassID = InternetStudyUserAnswer.QuestionClassID " +
+                    //        "where InternetStudy.QuestionClassYear = '" + pQuestionClassYear + "'";
+                    
+                    //get user score
+                    Query = "select InternetStudy.QuestionClassID, InternetStudyUserAnswer.TotalScore from InternetStudy " +
                             "left join InternetStudyUserAnswer on InternetStudy.QuestionClassID = InternetStudyUserAnswer.QuestionClassID " +
-                            "where InternetStudy.QuestionClassYear = '" + pQuestionClassYear + "'";
+                            "and InternetStudy.QuestionClassYear = '" + pQuestionClassYear + "' and InternetStudyUserAnswer.UserID = '" + Session["UserID"].ToString() + "'";
 
-                    if (ms.GetAllColumnData(Query, data))
+                    string QuestionContent = "select InternetStudy.QuestionClassID, InternetStudy.QuestionClassYear, InternetStudy.ClassID, InternetStudy.ClassName, " +
+                                                "InternetStudy.Deadline, InternetStudy.PassScore from InternetStudy " +
+                                                "where InternetStudy.QuestionClassYear = '" + pQuestionClassYear + "'";
+                    ArrayList QuestionCollection = new ArrayList();
+                    if (ms.GetAllColumnData(QuestionContent, QuestionCollection) && ms.GetAllColumnData(Query, data))
                     {
-                        if (data.Count > 0)
+                        if (QuestionCollection.Count > 0)
                         {
-                            for (int i = 0; i < data.Count; i++)
+                            for (int i = 0; i < QuestionCollection.Count; i++)
                             {
-                                bool UserIsReview = String.IsNullOrEmpty(((string[])(data[i]))[6]) ? false : true;
+                                //bool UserIsReview = String.IsNullOrEmpty(((string[])(QuestionCollection[i]))[6]) ? false : true;
+                                bool UserIsReview = (data == null) ? false : String.IsNullOrEmpty(((string[])(data[i]))[1]) ? false : true;
 
-                                string EncryptQuestionClassID = GetEncryptionString(QuestionClassID, ((string[])(data[i]))[0]);
-                                string EncryptQuestionClassYear = GetEncryptionString(QuestionClassYear, ((string[])(data[i]))[1]);
-                                string EncryptClassID = GetEncryptionString(ClassID, ((string[])(data[i]))[2]);
+                                string EncryptQuestionClassID = GetEncryptionString(QuestionClassID, ((string[])(QuestionCollection[i]))[0]);
+                                string EncryptQuestionClassYear = GetEncryptionString(QuestionClassYear, ((string[])(QuestionCollection[i]))[1]);
+                                string EncryptClassID = GetEncryptionString(ClassID, ((string[])(QuestionCollection[i]))[2]);
 
                                 LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
 
@@ -144,16 +154,16 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
 
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
+                                LbCompleted.Text += ((string[])(QuestionCollection[i]))[3] + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += ((string[])(data[i]))[4].Split(' ')[0] + "</td>";
+                                LbCompleted.Text += ((string[])(QuestionCollection[i]))[4].Split(' ')[0] + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[6]) ? Resources.Resource.TipUnPass : (Convert.ToInt32(((string[])(data[i]))[6]) >= Convert.ToInt32(((string[])(data[i]))[5])) ? Resources.Resource.TipPass : Resources.Resource.TipUnPass + "</td>";
+                                LbCompleted.Text += (data == null) ? Resources.Resource.TipUnPass : String.IsNullOrEmpty(((string[])(data[i]))[1]) ? Resources.Resource.TipUnPass : (Convert.ToInt32(((string[])(data[i]))[1]) >= Convert.ToInt32(((string[])(QuestionCollection[i]))[5])) ? Resources.Resource.TipPass : Resources.Resource.TipUnPass + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += String.IsNullOrEmpty(((string[])(data[i]))[6]) ? "......" : ((string[])(data[i]))[6].ToString() + "</td>";
+                                LbCompleted.Text += (data == null) ? "......" : String.IsNullOrEmpty(((string[])(data[i]))[1]) ? "......" : ((string[])(data[i]))[1].ToString() + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
 
