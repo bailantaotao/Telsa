@@ -301,13 +301,13 @@
     <value>单选题</value>
   </data>
   <data name="TipStage1" xml:space="preserve">
-    <value>阶段一：</value>
+    <value>步骤一：</value>
   </data>
   <data name="TipStage2" xml:space="preserve">
-    <value>阶段二：</value>
+    <value>步骤二：</value>
   </data>
   <data name="TipStage3" xml:space="preserve">
-    <value>阶段三：</value>
+    <value>步骤三：</value>
   </data>
   <data name="TipTeachContentEdit" xml:space="preserve">
     <value>自学教材编辑</value>
