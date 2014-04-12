@@ -339,7 +339,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                                 "left join InternetStudyUserAnswer on InternetStudyUserAnswer.QuestionClassID = InternetStudy.QuestionClassID " +
                                 "left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                                 "where InternetStudy.QuestionClassYear = '" + entry.Key + "' and Account.UserID = '" + saUserData[0] + "' " +
-                                "order by InternetStudy.ClassID asc";
+                                "order by InternetStudy.ClassID desc";
 
                         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
