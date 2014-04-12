@@ -40,7 +40,7 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
     private void LoadInternetStudyComment(int Select)
     {
 
-        Query = "select Account.UserName, InternetStudyComment.UserComment from InternetStudyComment " +
+        Query = "select Account.UserName, InternetStudyComment.UserComment, Account.School, InternetStudyComment.CommentTime from InternetStudyComment " +
         "left join Account on Account.UserID = InternetStudyComment.UserID " +
         "where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "' " +
         "order by CommentTime desc";
@@ -97,9 +97,10 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
                 {
                     LbCompleted.Text += "<tr>";
                     LbCompleted.Text += "<td align='left' style='width:50%; padding-left:30px;font-weight:900'>";
-                    LbCompleted.Text += ((string[])(data[i]))[0];                    
+                    LbCompleted.Text += ((string[])(data[i]))[0] + " - " + ((string[])(data[i]))[2] ;
                     LbCompleted.Text += "</td>";
                     LbCompleted.Text += "<td align='right' style='width:50%;'>";
+                    LbCompleted.Text += ((string[])(data[i]))[3];
                     LbCompleted.Text += "</td>";
                     LbCompleted.Text += "</tr>";
                     LbCompleted.Text += "<tr>";
