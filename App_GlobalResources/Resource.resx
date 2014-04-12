@@ -441,4 +441,10 @@
   <data name="TipWelcome" xml:space="preserve">
     <value>欢迎</value>
   </data>
+  <data name="TipAdminEmail" xml:space="preserve">
+    <value>管理者Email</value>
+  </data>
+  <data name="TipGetPWD" xml:space="preserve">
+    <value>寻回密码方式说明</value>
+  </data>
 </root>
