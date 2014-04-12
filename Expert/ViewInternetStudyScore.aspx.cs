@@ -49,14 +49,18 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
 
             // will comming when...
             // 1. 使用者按下了查詢，此時page會歸0
-            
+
             if (Session["InternetStudyEditDataPage"] != null)
                 LoadInternetStudy(Convert.ToInt32(Session["InternetStudyEditDataPage"]));
             // will comming when...
             // 1. 使用者第一次選擇頁數
             // 2. 第一次進到此頁面
             else
-                LoadInternetStudy(1);
+            {
+                LbTotalCount.Text = "0";
+                PageOrder.Text = "0 / 0";
+                LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
+            }
         }
     }
 
@@ -489,12 +493,20 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+        {
             Session["ProvinceSelect"] = "False";
+            LbCompleted.Text = "";
+            LbTotalCount.Text = "0";
+            PageOrder.Text = "0 / 0";
+            LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
+            DdlPageSelect.Items.Clear();
+        }
         else
         {
             Session["ProvinceSelect"] = "True";
             Session["ProvinceSelectValue"] = DdlProvince.SelectedValue;
+            CheckSearchType();
         }
-        CheckSearchType();
+        
     }
 }
