@@ -174,19 +174,20 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     bool IsAdded = false, DBAddedComplete = false;
                     IsAdded = bool.TryParse(((string[])(data[i]))[5], out DBAddedComplete);
 
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";                    
+                    LbCompleted.Text += (i + 1).ToString() + "</td>";
+                    
+
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     // 如果已經新增過該類別之問題，才可以做檢視的動作
                     if (DBAddedComplete)
                     {
-                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + ((string[])(data[i]))[3] + "</a></td>";
                     }
                     else
                     {
-                        LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
+                        LbCompleted.Text += "<a href='#'>" + ((string[])(data[i]))[3] + "</a></td>";
                     }
-
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[4].Split(' ')[0] + "</td>";

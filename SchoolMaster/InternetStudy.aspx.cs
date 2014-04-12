@@ -147,14 +147,15 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                                 LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+
+                                LbCompleted.Text += (i + 1).ToString() + "</td>";
+
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                                 if (UserIsReview)
                                     LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
                                 else
-                                    LbCompleted.Text += "<a href='InternetStudyQuestionnaire.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                                    LbCompleted.Text += "<a href='InternetStudyQuestionnaire.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + ((string[])(QuestionCollection[i]))[3] + "</a></td>";
 
-
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += ((string[])(QuestionCollection[i]))[3] + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                                 LbCompleted.Text += ((string[])(QuestionCollection[i]))[4].Split(' ')[0] + "</td>";

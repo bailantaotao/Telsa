@@ -415,7 +415,7 @@
     <value>传送</value>
   </data>
   <data name="TipHowToViewQuestionnaire" xml:space="preserve">
-    <value>针对已完成之问卷，您可点击编号进行观看</value>
+    <value>针对已完成之问卷，您可点击名称进行观看</value>
   </data>
   <data name="TipLetterFinish" xml:space="preserve">
     <value>寄送成功</value>
