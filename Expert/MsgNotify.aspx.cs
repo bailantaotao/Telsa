@@ -17,6 +17,7 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
         {
             LoadData();
         }
+
     }
 
     private void LoadData()

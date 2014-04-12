@@ -447,4 +447,7 @@
   <data name="TipGetPWD" xml:space="preserve">
     <value>寻回密码方式说明</value>
   </data>
+  <data name="TipExpirationDate" xml:space="preserve">
+    <value>有效期限</value>
+  </data>
 </root>
