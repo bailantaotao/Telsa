@@ -339,6 +339,9 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                         string Pass = string.Empty;
                         string UnPass = string.Empty;
                         ArrayList UserAnswer = new ArrayList();
+                        int PassNumber = 0;
+                        int UnPassNumber = 0;
+
                         if (ms.GetAllColumnData(Query, UserAnswer))
                         {
                             if (UserAnswer.Count > 0)
@@ -356,11 +359,13 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                                             if (Convert.ToInt32((((string[])UserAnswer[j])[2])) < Convert.ToInt32(((string[])YearData[i])[3]))
                                             {
                                                 UnPass += (((string[])YearData[i])[0]) + ",";
+                                                UnPassNumber++;
                                             }
                                             //使用者及格
                                             else
                                             {
                                                 Pass += (((string[])YearData[i])[0]) + ",";
+                                                PassNumber++;
                                             }
                                             break;
                                         }
@@ -376,11 +381,11 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "Pass=" + Pass + "'>" + "Click" + "</a></td>";
-                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "Pass=" + Pass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "Pass=" + Pass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + PassNumber + "</a></td>";
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
-                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + UnPassNumber + "</a></td>";
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
