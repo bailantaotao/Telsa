@@ -42,7 +42,7 @@
                     <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipExpirationDate %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label> 
                 </td>
                 <td>
-                    <asp:TextBox ID="TbExpirationDate" runat="server" Width="400px" ReadOnly="true"></asp:TextBox>
+                    <asp:TextBox ID="TbExpirationDate" runat="server" Width="400px"></asp:TextBox>
                     <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="TbExpirationDate"
                                     Enabled="True" TargetControlID="TbExpirationDate" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                 </td>

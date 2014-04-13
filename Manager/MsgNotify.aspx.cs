@@ -17,6 +17,8 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
         {
             LoadData();
         }
+
+        TbExpirationDate.Attributes.Add("readonly", "true");
     }
 
     private void LoadData()
@@ -71,7 +73,7 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
             string Query = "insert into MsgSubject (Subject, Msg, SendTime, NotifyDeadLine) VALUES (N'" +
                             TbSubject.Text.Trim() + "N','" +
                             TbMsg.Text.Trim() + "','" +
-                            DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','"+
+                            DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','" +
                             TbExpirationDate.Text + "')";
 
             if (!ms.WriteData(Query, sb))
