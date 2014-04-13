@@ -330,13 +330,14 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                                 {
                                     for (int j = 0; j < UserAnswer.Count; j++)
                                     {
+                                        int MaxScore = GetUserMaxScore(UserAnswer, ((string[])YearData[i])[0]);
                                         //找到相同的QuestionClassID代表使用者有作答
                                         if (((string[])YearData[i])[0].Equals(((string[])UserAnswer[j])[0]))
                                         {
                                             CompleteNumbers++;
 
                                             // 使用者不及格XD
-                                            if (Convert.ToInt32((((string[])UserAnswer[j])[2])) < Convert.ToInt32(((string[])YearData[i])[3]))
+                                            if (MaxScore < Convert.ToInt32(((string[])YearData[i])[3]))
                                             {
                                                 UnPass += (((string[])YearData[i])[0]) + ",";
                                                 UnPassNumber++;
@@ -405,6 +406,21 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         }
 
         return true;
+    }
+
+    private int GetUserMaxScore(ArrayList UserAnswerTable, String QuestionnireID)
+    {
+        int MaxScore = -1;
+        foreach (string[] table in UserAnswerTable)
+        {
+            if (string.IsNullOrEmpty(table[2]))
+                continue;
+            if (table[0].Equals(QuestionnireID))
+            {
+                MaxScore = Math.Max(MaxScore, Convert.ToInt32(table[2]));
+            }
+        }
+        return MaxScore;
     }
 
     private void CheckSearchType()

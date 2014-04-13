@@ -83,6 +83,31 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
         }
     }
 
+    private bool UserIsReviewQuestionnaire(ArrayList UserAnswerTable, String QuestionnireID)
+    {
+        foreach(string[] table in UserAnswerTable)
+        {
+            if (ID[0].Equals(QuestionnireID))
+                return true;
+        }
+        return false;
+    }
+
+    private int GetUserMaxScore(ArrayList UserAnswerTable, String QuestionnireID)
+    {
+        int MaxScore = -1;
+        foreach (string[] table in UserAnswerTable)
+        {
+            if (string.IsNullOrEmpty(table[1]))
+                continue;
+            if (table[0].Equals(QuestionnireID))
+            {
+                MaxScore = Math.Max(MaxScore, Convert.ToInt32(table[1]));
+            }
+        }
+        return MaxScore;
+    }
+
     private void LoadInternetStudy(int pQuestionClassYear)
     {
 
@@ -137,12 +162,13 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                         {
                             for (int i = 0; i < QuestionCollection.Count; i++)
                             {
-                                //bool UserIsReview = String.IsNullOrEmpty(((string[])(QuestionCollection[i]))[6]) ? false : true;
-                                bool UserIsReview = (data == null) ? false : String.IsNullOrEmpty(((string[])(data[i]))[1]) ? false : true;
-
                                 string EncryptQuestionClassID = GetEncryptionString(QuestionClassID, ((string[])(QuestionCollection[i]))[0]);
                                 string EncryptQuestionClassYear = GetEncryptionString(QuestionClassYear, ((string[])(QuestionCollection[i]))[1]);
                                 string EncryptClassID = GetEncryptionString(ClassID, ((string[])(QuestionCollection[i]))[2]);
+
+                                bool UserIsReview = UserIsReviewQuestionnaire(data, ((string[])(QuestionCollection[i]))[0]);
+                                int MaxScore = GetUserMaxScore(data, ((string[])(QuestionCollection[i]))[0]);
+                                
 
                                 LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
 
@@ -151,20 +177,18 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                                 LbCompleted.Text += (i + 1).ToString() + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                if (UserIsReview)
-                                    LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
-                                else
-                                    LbCompleted.Text += "<a href='InternetStudyQuestionnaire.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + ((string[])(QuestionCollection[i]))[3] + "</a></td>";
+                                
+                                LbCompleted.Text += "<a href='InternetStudyQuestionnaire.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + ((string[])(QuestionCollection[i]))[3] + "</a></td>";
 
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                                 LbCompleted.Text += ((string[])(QuestionCollection[i]))[4].Split(' ')[0] + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += (data == null) ? Resources.Resource.TipUnPass : String.IsNullOrEmpty(((string[])(data[i]))[1]) ? Resources.Resource.TipUnPass : (Convert.ToInt32(((string[])(data[i]))[1]) >= Convert.ToInt32(((string[])(QuestionCollection[i]))[5])) ? Resources.Resource.TipPass : Resources.Resource.TipUnPass + "</td>";
+                                LbCompleted.Text += (data == null) ? Resources.Resource.TipUnPass : (MaxScore >= Convert.ToInt32(((string[])(QuestionCollection[i]))[5])) ? Resources.Resource.TipPass : Resources.Resource.TipUnPass + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                                LbCompleted.Text += (data == null) ? "......" : String.IsNullOrEmpty(((string[])(data[i]))[1]) ? "......" : ((string[])(data[i]))[1].ToString() + "</td>";
+                                LbCompleted.Text += (data == null) ? "......" : (MaxScore == -1) ? "......" : MaxScore + "</td>";
 
                                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
 
