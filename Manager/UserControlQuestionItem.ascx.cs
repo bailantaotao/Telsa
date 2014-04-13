@@ -94,6 +94,8 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             TbQuestionItem3.Text = "3";
             TbQuestionItem4.Text = "4";
             TbQuestionItem5.Text = "5";
+
+            CbQuestionItem1.Checked = true;
         }
         else
         {

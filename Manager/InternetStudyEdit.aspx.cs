@@ -255,7 +255,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     TbAddYear.Text + "','" +
                     i + "','" +
                     " N / A" + "','" +
-                    "2014-12-31 00:00:00" + "','" +
+                    DateTime.Now.ToString("yyyy") + "-12-31" + "','" +
                     "" + "','" +
                     "0" + "','" +
                     "" + "','" +

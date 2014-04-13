@@ -49,12 +49,18 @@
             text-align:left;
         }
     </style>
+    <script language="javascript" type="text/javascript">
+        function Conversion2() {
+            var year = parseInt(document.getElementById('ViewDay').value.substr(0, 4)) - 1911;
+            document.getElementById('ViewDay').value = year + document.getElementById('ViewDay').value.substr(4, 8);
+        }
+    </script>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
     <form id="form1" runat="server">
+    <asp:ToolkitScriptManager runat="Server" EnableScriptGlobalization="true"
+        EnableScriptLocalization="true" ID="ToolkitScriptManager1" CombineScripts="false" />
     <div align="center" style="width: 1024px; margin: 0px auto;">
-        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true">
-        </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -123,9 +129,9 @@
                     
                     <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>--%>
-                    <asp:TextBox ID="TbToday" runat="server" Width="300px" CausesValidation="true"></asp:TextBox>
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Ex: 2014-01-01" ControlToValidate="TbToday" Operator="DataTypeCheck" Type="Date"
-                        ValidateEmptyText="True"></asp:CompareValidator>
+                    <asp:TextBox ID="TbToday" runat="server" Width="300px"></asp:TextBox>
+                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="TbToday"
+                                    Enabled="True" TargetControlID="TbToday" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             <%--<asp:CalendarExtender ID="CalendarExtender1" runat="server"
                                 Enabled="True" Format="yyyy/MM/dd" 
                                 TargetControlID="TbToday"></asp:CalendarExtender>--%>

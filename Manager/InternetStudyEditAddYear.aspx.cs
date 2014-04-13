@@ -26,6 +26,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         Session["AddYearTag"] = true;
         LoadInternetStudyClass();
+        TbToday.Attributes.Add("readonly", "true");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -160,6 +161,30 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
         return (Tag + "=" + Data);
     }
 
+    private void CheckAndUpdate()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        if (string.IsNullOrEmpty(TbToday.Text))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMErrorDate + "');", true);
+            return;
+        }
+        if (DateTime.Parse(TbToday.Text.Trim()) < DateTime.Now)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMGreterDate + "');", true);
+            return;
+        }
+        Query = "Update InternetStudy set " +
+                "DeadLine = N'" + TbToday.Text + "' " +
+                "where QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
+        ms.WriteData(Query, sb);
+
+        Session.Remove("InternetStudyEditYearQuery");
+        Session.Remove("AddYearTag");
+        Response.Redirect("InternetStudyEdit.aspx");
+    }
+
     protected void Btn_Click(object sender, EventArgs e)
     {
         ManageSQL ms = new ManageSQL();
@@ -167,28 +192,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
         Button btn = (Button)sender;
         if (btn.ID == "BtnBack")
         {
-            if (CompareValidator1.IsValid && !string.IsNullOrEmpty(TbToday.Text))
-            {
-                if (DateTime.Parse(TbToday.Text.Trim()) >= DateTime.Now)
-                {
-                    Query = "Update InternetStudy set " +
-                        "DeadLine = N'" + TbToday.Text + "' " +
-                        "where QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
-                    ms.WriteData(Query, sb);
-
-                    Session.Remove("InternetStudyEditYearQuery");
-                    Session.Remove("AddYearTag");
-                    Response.Redirect("InternetStudyEdit.aspx");
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMGreterDate + "');", true);
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMErrorDate + "');", true);
-            }
+            CheckAndUpdate();                           
         }
         else if (btn.ID == "BtnCancel")
         {
@@ -202,28 +206,8 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
         }
         else if (btn.ID == "BtnCompleted")
         {
-            if (CompareValidator1.IsValid && !string.IsNullOrEmpty(TbToday.Text))
-            {
-                if (DateTime.Parse(TbToday.Text.Trim()) >= DateTime.Now)
-                {
-                    Query = "Update InternetStudy set " +
-                        "DeadLine = N'" + TbToday.Text + "' " +
-                        "where QuestionClassYear = '" + Session["QuestionClassYear"].ToString() + "'";
-                    ms.WriteData(Query, sb);
 
-                    Session.Remove("InternetStudyEditYearQuery");
-                    Session.Remove("AddYearTag");
-                    Response.Redirect("InternetStudyEdit.aspx");
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMGreterDate + "');", true);
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMErrorDate + "');", true);
-            }
+            CheckAndUpdate(); 
         }
     }
 
