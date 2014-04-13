@@ -23,24 +23,21 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("SessionOut.aspx");
-
+        Session["QuestionClassID"] = Request["QuestionClassID"];
+        LoadInternetStudyComment(1);
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["QuestionClassID"] = Request["QuestionClassID"];
-        //Session["UserID"] = "fuck";
-        if (!IsPostBack)
-        {
-            LoadInternetStudyComment(1);
-        }
+        
+        
     }
 
 
     private void LoadInternetStudyComment(int Select)
     {
-
-        Query = "select Account.UserName, InternetStudyComment.UserComment, Account.School, InternetStudyComment.CommentTime from InternetStudyComment " +
+        PnComment.Controls.Clear();
+        Query = "select Account.UserName, InternetStudyComment.UserComment, Account.School, InternetStudyComment.CommentTime, InternetStudyComment.AutoUUID, Account.UserId from InternetStudyComment " +
         "left join Account on Account.UserID = InternetStudyComment.UserID " +
         "where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "' " +
         "order by CommentTime desc";
@@ -95,19 +92,32 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
 
                 for (int i = Count; i < Max; i++)
                 {
-                    LbCompleted.Text += "<tr>";
-                    LbCompleted.Text += "<td align='left' style='width:50%; padding-left:30px;font-weight:900'>";
-                    LbCompleted.Text += ((string[])(data[i]))[0] + " - " + ((string[])(data[i]))[2] ;
-                    LbCompleted.Text += "</td>";
-                    LbCompleted.Text += "<td align='right' style='width:50%;'>";
-                    LbCompleted.Text += ((string[])(data[i]))[3];
-                    LbCompleted.Text += "</td>";
-                    LbCompleted.Text += "</tr>";
-                    LbCompleted.Text += "<tr>";
-                    LbCompleted.Text += "<td colspan='2' align='left' style='padding-left:30px; border-bottom: 1px solid Orange; word-break: break-all; width:700px'>";
-                    LbCompleted.Text += ((string[])(data[i]))[1];
-                    LbCompleted.Text += "</td>";
-                    LbCompleted.Text += "</tr>";
+                    SchoolMaster_UserControlComment c = (SchoolMaster_UserControlComment)LoadControl("UserControlComment.ascx");
+
+                    c.eventArgs.SchoolMasterName = ((string[])(data[i]))[0];
+                    c.eventArgs.SchoolName = ((string[])(data[i]))[2];
+                    c.eventArgs.Comment = ((string[])(data[i]))[1];
+                    c.eventArgs.CommentTime = ((string[])(data[i]))[3];
+                    c.eventArgs.IsOwner = ((string[])(data[i]))[5].Equals(Session["UserID"].ToString());
+                    c.eventArgs.CommentUUID = ((string[])(data[i]))[4];
+                    c.cClick += c_cClick;
+                    c.ID = i.ToString();
+                    PnComment.Controls.Add(c);
+
+
+                    //LbCompleted.Text += "<tr>";
+                    //LbCompleted.Text += "<td align='left' style='width:50%; padding-left:30px;font-weight:900'>";
+                    //LbCompleted.Text += ((string[])(data[i]))[0] + " - " + ((string[])(data[i]))[2] ;
+                    //LbCompleted.Text += "</td>";
+                    //LbCompleted.Text += "<td align='right' style='width:50%;'>";
+                    //LbCompleted.Text += ((string[])(data[i]))[3];
+                    //LbCompleted.Text += "</td>";
+                    //LbCompleted.Text += "</tr>";
+                    //LbCompleted.Text += "<tr>";
+                    //LbCompleted.Text += "<td colspan='2' align='left' style='padding-left:30px; border-bottom: 1px solid Orange; word-break: break-all; width:700px'>";
+                    //LbCompleted.Text += ((string[])(data[i]))[1];
+                    //LbCompleted.Text += "</td>";
+                    //LbCompleted.Text += "</tr>";
 
                     Flag++;
                 }
@@ -124,6 +134,11 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
             }
             LbCompleted.Text += "</table>";
         }
+    }
+
+    void c_cClick(object sender, SchoolMaster_UserControlComment.MyEventArgs e)
+    {
+        Response.AddHeader("Refresh", "0");
     }
 
     private string GetEncryptionString(string Tag, string Data)
@@ -175,6 +190,7 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
                 UploadData();
                 LoadInternetStudyComment(1);
                 TbComment.Text = "";
+                Response.AddHeader("Refresh", "0");
             }
         }
         else if (btn.ID == "BtnBack")
