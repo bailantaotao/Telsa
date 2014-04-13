@@ -98,43 +98,43 @@ public partial class Manager_InternetStudyEditAddClass : System.Web.UI.Page
             return false;
         }
 
-        for (int i = 0; i < PnQuestionList.Controls.Count; i++)
-        {
-            switch (this.PnQuestionList.Controls[i].GetType().ToString())
-            {
-                case "ASP.manager_usercontrolquestionitem_ascx":
-                    Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
-                    if (c.eventArgs.PassScore < 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMScoreLessZero + "');", true);
-                        return false;
-                    }
-                    else if (string.IsNullOrEmpty(c.eventArgs.Answer))
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputAnswer + "');", true);
-                        return false;
-                    }
-                    else if (string.IsNullOrEmpty(c.eventArgs.Question))
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputQuestion + "');", true);
-                        return false;
-                    }
-                    else if (c.eventArgs.AnswerItemCount < 2)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputQuestionItem + "');", true);
-                        return false;
-                    }
-                    else if (c.eventArgs.AnswerHaveEmpty)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMAnswerHaveEmpty + "');", true);
-                        return false;
-                    }
+        //for (int i = 0; i < PnQuestionList.Controls.Count; i++)
+        //{
+        //    switch (this.PnQuestionList.Controls[i].GetType().ToString())
+        //    {
+        //        case "ASP.manager_usercontrolquestionitem_ascx":
+        //            Manager_UserControlQuestionItem c = (Manager_UserControlQuestionItem)PnQuestionList.Controls[i];
+        //            if (c.eventArgs.PassScore < 0)
+        //            {
+        //                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMScoreLessZero + "');", true);
+        //                return false;
+        //            }
+        //            else if (string.IsNullOrEmpty(c.eventArgs.Answer))
+        //            {
+        //                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputAnswer + "');", true);
+        //                return false;
+        //            }
+        //            else if (string.IsNullOrEmpty(c.eventArgs.Question))
+        //            {
+        //                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputQuestion + "');", true);
+        //                return false;
+        //            }
+        //            else if (c.eventArgs.AnswerItemCount < 2)
+        //            {
+        //                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMInputQuestionItem + "');", true);
+        //                return false;
+        //            }
+        //            else if (c.eventArgs.AnswerHaveEmpty)
+        //            {
+        //                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('第" + (c.eventArgs.QuestionID + 1) + Resources.Resource.SMAnswerHaveEmpty + "');", true);
+        //                return false;
+        //            }
 
-                    break;
-                default:
-                    break;
-            }
-        }
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
         return true;
     }
     private void UploadData()
