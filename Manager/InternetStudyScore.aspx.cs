@@ -16,29 +16,14 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
     private const string QuestionClassID = "QuestionClassID";
     private const string QuestionClassYear = "QuestionClassYear";
     private const string ClassID = "ClassID";
-    private bool IsMingDer = false;
+    //private bool IsMingDer = false;
 
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
-        if (Session["IsMingDer"] == null)
-            Response.Redirect("../SessionOut.aspx");
 
-        if (Session["IsMingDer"].ToString().Equals("True"))
-        {
-            DdlProvince.Visible = true;
-            LbProvince.Visible = false;
-            IsMingDer = true;
-            LoadProvince();
-        }
-        else
-        {
-            DdlProvince.Visible = false;
-            LbProvince.Visible = true;
-            LbProvince.Text = Session["Province"].ToString();
-            IsMingDer = false;
-        }
+        LoadProvince();
         if (!IsPostBack)
         {
             if (Session["InternetStudyYearQuery"] != null)
@@ -190,7 +175,7 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
     private void NoData()
     {
         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4;'>";
-        LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td colspan = '7' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
         LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -272,18 +257,9 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         }
         else
         {
-            if (IsMingDer)
-            {
                 Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                         "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
-            }
-            else
-            {
-                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
-            }
         }
 
 
