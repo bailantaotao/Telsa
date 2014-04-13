@@ -62,8 +62,8 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
         {
             ManageSQL ms = new ManageSQL();
             StringBuilder sb = new StringBuilder();
-            string Query = "insert into MsgSubject (Subject, Msg, SendTime) VALUES ('" +
-                            TbSubject.Text.Trim() + "','" +
+            string Query = "insert into MsgSubject (Subject, Msg, SendTime) VALUES (N'" +
+                            TbSubject.Text.Trim() + "N','" +
                             TbMsg.Text.Trim() + "','" +
                             DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')";
 
