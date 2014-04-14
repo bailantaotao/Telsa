@@ -69,7 +69,7 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
         {
             ManageSQL ms = new ManageSQL();
             StringBuilder sb = new StringBuilder();
-            string Query = "insert into MsgSubject (Subject, Msg, SendTime, NotifyDeadLine) VALUES (N'" +
+            string Query = "insert into MsgSubject (Subjects, Msg, SendTime, NotifyDeadLine) VALUES (N'" +
                             TbSubject.Text.Trim() + "N','" +
                             TbMsg.Text.Trim() + "','" +
                             DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','" +
@@ -96,10 +96,11 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
             }
 
-            Query = "insert into MsgUserData (UserID, ReadMsg, EmailID) VALUES ('" +
+            Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID) VALUES ('" +
                     Request["SM"].ToString() + "','" +
                     "False" + "','" +
-                    sb.ToString() + "')";
+                    sb.ToString() + "','" +
+                    Session["UserID"].ToString() + "')";
 
             if (!ms.WriteData(Query, sb))
             {

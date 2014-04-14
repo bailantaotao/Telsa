@@ -453,4 +453,19 @@
   <data name="ImgUrlDelete" xml:space="preserve">
     <value>../Image/zh-TW/ButtonDelete.png</value>
   </data>
+  <data name="TipLastLogin" xml:space="preserve">
+    <value>上次登入时间：</value>
+  </data>
+  <data name="TipOpenPermission" xml:space="preserve">
+    <value>您的帐号开通时间为：</value>
+  </data>
+  <data name="TextSize12pt" xml:space="preserve">
+    <value>12pt</value>
+  </data>
+  <data name="TipMingderMsg" xml:space="preserve">
+    <value>明德专家传送之讯息</value>
+  </data>
+  <data name="TipProvinceMsg" xml:space="preserve">
+    <value>省专家传送之讯息</value>
+  </data>
 </root>
