@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body style="margin-top: 0%; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none;">
+<body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
     
     <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"/>

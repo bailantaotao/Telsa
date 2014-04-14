@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="InternetStudyComment.aspx.cs" Inherits="SchoolMaster_InternetStudyComment" %>
+<%@ Register Src="UserControlComment.ascx" TagName="UCC" TagPrefix="CustomControl" %>
 
 <!DOCTYPE html>
 
@@ -122,45 +123,46 @@
                                 </asp:UpdatePanel>--%>
                             </td>
                             <td align="right">
-                                <asp:UpdatePanel ID="UpdatePageSelect" runat="server">
-                                    <ContentTemplate>
+                                <%--<asp:UpdatePanel ID="UpdatePageSelect" runat="server">
+                                    <ContentTemplate>--%>
                                         <asp:Label ID="Label15" runat="server" Font-Size="<%$ Resources:Resource, TextSizeTip %>" Text="<%$ Resources:Resource, TipNo %>"></asp:Label>
                                         &nbsp;<asp:DropDownList ID="DdlPageSelect" runat="server" AutoPostBack="True" 
                                             Font-Size="Small" onselectedindexchanged="PageSelect_SelectedIndexChanged">
                                         </asp:DropDownList>
                                         &nbsp;<asp:Label ID="Label16" runat="server" Font-Size="<%$ Resources:Resource, TextSizeTip %>" Text="<%$ Resources:Resource, TipPage %>"></asp:Label>
-                                    </ContentTemplate>
+                                    <%--</ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="BtnComment" EventName="Click" />
                                     </Triggers>
-                                </asp:UpdatePanel>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <asp:UpdatePanel ID="UpdateCompleted" runat="server">
-                                    <ContentTemplate>
+                                <%--<asp:UpdatePanel ID="UpdateCompleted" runat="server">
+                                    <ContentTemplate>--%>
                                         <asp:Label ID="LbCompleted" runat="server"></asp:Label>
-                                    </ContentTemplate>
+                                        <asp:Panel ID="PnComment" runat="server"  Width="700px"></asp:Panel>
+                                    <%--</ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="DdlPageSelect" EventName="SelectedIndexChanged" />
                                     </Triggers>
-                                </asp:UpdatePanel>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <asp:UpdatePanel ID="UpdatePageOrder" runat="server">
-                                    <ContentTemplate>
+                                <%--<asp:UpdatePanel ID="UpdatePageOrder" runat="server">
+                                    <ContentTemplate>--%>
                                         <asp:Label ID="Label1" runat="server" Font-Size="<%$ Resources:Resource, TextSizeTip %>" Text="<%$ Resources:Resource, TipNo %>"></asp:Label>
                                         &nbsp;<asp:Label ID="PageOrder" runat="server" Font-Size="Small"></asp:Label>
                                         &nbsp;<asp:Label ID="Label3" runat="server" Font-Size="<%$ Resources:Resource, TextSizeTip %>" Text="<%$ Resources:Resource, TipPage %>"></asp:Label>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="LbTotalCount" runat="server" Font-Size="Small"></asp:Label>
-                                    </ContentTemplate>
+                                    <%--</ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="BtnComment" EventName="Click" />
                                     </Triggers>
-                                </asp:UpdatePanel>
+                                </asp:UpdatePanel>--%>
                             </td>
                         </tr>
                     </table>

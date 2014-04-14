@@ -87,13 +87,15 @@ public partial class Manager_UserControlQuestionItem : System.Web.UI.UserControl
             
 
             //// debug test
-            //TbQuestion.Text = "中国";
-            
-            //TbQuestionItem1.Text = "1";
-            //TbQuestionItem2.Text = "2";
-            //TbQuestionItem3.Text = "3";
-            //TbQuestionItem4.Text = "4";
-            //TbQuestionItem5.Text = "5";
+            TbQuestion.Text = "中国";
+
+            TbQuestionItem1.Text = "1";
+            TbQuestionItem2.Text = "2";
+            TbQuestionItem3.Text = "3";
+            TbQuestionItem4.Text = "4";
+            TbQuestionItem5.Text = "5";
+
+            CbQuestionItem1.Checked = true;
         }
         else
         {

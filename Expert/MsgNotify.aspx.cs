@@ -17,6 +17,7 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
         {
             LoadData();
         }
+        TbExpirationDate.Attributes.Add("readonly", "true");
     }
 
     private void LoadData()
@@ -54,6 +55,12 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
             return false;
         }
 
+        if (string.IsNullOrEmpty(TbExpirationDate.Text.Trim()))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipExpirationDate + "')", true);
+            return false;
+        }
+
         return true;
     }
     protected void BtnSend_Click(object sender, EventArgs e)
@@ -62,16 +69,17 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
         {
             ManageSQL ms = new ManageSQL();
             StringBuilder sb = new StringBuilder();
-            string Query = "insert into MsgSubject (Subject, Msg, SendTime) VALUES ('"+
-                            TbSubject.Text.Trim() + "','" +
-                            TbMsg.Text.Trim() + "','" + 
-                            DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "')";
+            string Query = "insert into MsgSubject (Subjects, Msg, SendTime, NotifyDeadLine) VALUES (N'" +
+                            TbSubject.Text.Trim() + "N','" +
+                            TbMsg.Text.Trim() + "','" +
+                            DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','" +
+                            TbExpirationDate.Text + "')";
             
             if (!ms.WriteData(Query, sb))
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);                
             }
-
+            
             if (string.IsNullOrEmpty(sb.ToString()))
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
@@ -88,10 +96,11 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
             }
 
-            Query = "insert into MsgUserData (UserID, ReadMsg, EmailID) VALUES ('" +
+            Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID) VALUES ('" +
                     Request["SM"].ToString() + "','" +
                     "False" + "','" +
-                    sb.ToString() + "')";
+                    sb.ToString() + "','" +
+                    Session["UserID"].ToString() + "')";
 
             if (!ms.WriteData(Query, sb))
             {

@@ -11,24 +11,10 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    public string backgroundImage = Resources.Resource.ImgUrlBackground;
     protected override void OnInit(EventArgs e)
     {
-        // Define an Literal control.
-        HtmlGenericControl css = new HtmlGenericControl();
-        css.TagName = "style";
-        css.Attributes.Add("type", "text/css");
 
-        string imageURL = string.Empty;
-
-        //Logic to determin imageURL goes here
-
-        //Update Tag
-        css.InnerHtml = @"body{background-image: url(" + Resources.Resource.ImgUrlBackgroundLogin + "); background-repeat:no-repeat; background-position: center top;}";
-
-        // Add the Tag to the Head section of the page.
-        Page.Header.Controls.Add(css);
-        
-        base.OnInit(e);
     } 
     protected override void InitializeCulture()
     {
@@ -47,6 +33,7 @@ public partial class _Default : System.Web.UI.Page
         }
         else if (ib.ID == "ImgBtn_Forget")
         {
+            Response.Redirect("ForgetPwd.aspx");
         }
         else if (ib.ID == "ImgBtn_Cancel")
         {
@@ -73,9 +60,10 @@ public partial class _Default : System.Web.UI.Page
         else
         {
             ManageSQL ms = new ManageSQL();
-            string query = "select Account.UserID, Account.UserName, Account.ClassCode, ZipCode from Account " +
+            string query = "select Account.UserID, Account.UserName, Account.ClassCode, ZipCode, OpenPermissionDate, LastLoginTime from Account " +
                             "where UserID = '" + Tb_Account.Text + "' and Password = '" + Tb_Pwd.Text + "'";
             ArrayList data = new ArrayList();
+            StringBuilder sb = new StringBuilder();
             if (ms.GetAllColumnData(query, data))
             {
                 if (data.Count == 0)
@@ -85,14 +73,19 @@ public partial class _Default : System.Web.UI.Page
                 }
                 else
                 {
+                    query = "update Account set LastLoginTime='" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "' where UserID ='" + Tb_Account.Text + "'";
+                    ms.WriteData(query, sb);
+
                     Session["UserID"] = ((string[])data[0])[0];
                     Session["UserName"] = ((string[])data[0])[1];
                     Session["ClassCode"] = ((string[])data[0])[2];
                     Session["Province"] = ((string[])data[0])[3];
+                    Session["OpenPermissionDate"] = ((string[])data[0])[4];
+                    Session["LastLoginTime"] = ((string[])data[0])[5];
+
                     if (Session["ClassCode"].ToString().Equals("1"))
                     {
                         string IsMingder = "select IsMingder from ExpertAuthority where UserID = '" + Tb_Account.Text + "'";
-                        StringBuilder sb = new StringBuilder();
                         if (ms.GetOneData(IsMingder, sb))
                         {
                             Session["IsMingDer"] = sb.ToString();
@@ -101,7 +94,8 @@ public partial class _Default : System.Web.UI.Page
                     if (Session["ClassCode"].ToString().Equals("0"))
                     {
                         //ClientScriptArea.Text = bc.responseMsg("你是校長");
-                        Response.Redirect("SchoolMaster/InternetStudy.aspx");
+                        //Response.Redirect("SchoolMaster/InternetStudy.aspx");
+                        Response.Redirect("Index.aspx");
                     }
                     else if (Session["ClassCode"].ToString().Equals("1"))
                     {
