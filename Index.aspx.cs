@@ -67,4 +67,8 @@ public partial class Index : System.Web.UI.Page
 
     }
 
+    protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }

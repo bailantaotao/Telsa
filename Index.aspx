@@ -14,11 +14,11 @@
         }
         #BlockRight {
             float: left;
-            padding-top: 220px;
+            padding-top: 210px;
             width: 739px;
         }
         #BlockRightUp {
-            height: 65px;
+            height: 40px;
             padding-left:25px;
         }
         #BlockRightDown {
@@ -83,6 +83,9 @@
             </div>
         </div>
         <div id="BlockRight">
+            <div style="text-align:right">
+                <asp:ImageButton ID="ImgBtnLogout" runat="server"  ImageUrl="<%$ Resources:Resource, ImgIndexUrlLogout%>" OnClick="ImgBtnLogout_Click"/>
+            </div>
             <div id="BlockRightUp">
                 <div style="text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
                     <asp:Label ID="LbWelcome" runat="server" Text="" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSize12pt %>"></asp:Label>
@@ -98,9 +101,6 @@
                 <hr />
             </div>
             <div id="BlockRightDown">
-                <div id="BlockRightDownController">
-                    
-                </div>
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">
                         <tr>
