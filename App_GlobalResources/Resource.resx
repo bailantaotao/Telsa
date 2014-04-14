@@ -301,13 +301,13 @@
     <value>单选题</value>
   </data>
   <data name="TipStage1" xml:space="preserve">
-    <value>阶段一：</value>
+    <value>步骤一：</value>
   </data>
   <data name="TipStage2" xml:space="preserve">
-    <value>阶段二：</value>
+    <value>步骤二：</value>
   </data>
   <data name="TipStage3" xml:space="preserve">
-    <value>阶段三：</value>
+    <value>步骤三：</value>
   </data>
   <data name="TipTeachContentEdit" xml:space="preserve">
     <value>自学教材编辑</value>
@@ -415,7 +415,7 @@
     <value>传送</value>
   </data>
   <data name="TipHowToViewQuestionnaire" xml:space="preserve">
-    <value>针对已完成之问卷，您可点击编号进行观看</value>
+    <value>针对已完成之问卷，您可点击名称进行观看</value>
   </data>
   <data name="TipLetterFinish" xml:space="preserve">
     <value>寄送成功</value>
@@ -440,5 +440,38 @@
   </data>
   <data name="TipWelcome" xml:space="preserve">
     <value>欢迎</value>
+  </data>
+  <data name="TipAdminEmail" xml:space="preserve">
+    <value>管理者Email</value>
+  </data>
+  <data name="TipGetPWD" xml:space="preserve">
+    <value>寻回密码方式说明</value>
+  </data>
+  <data name="TipExpirationDate" xml:space="preserve">
+    <value>有效期限</value>
+  </data>
+  <data name="ImgUrlDelete" xml:space="preserve">
+    <value>../Image/zh-TW/ButtonDelete.png</value>
+  </data>
+  <data name="TipLastLogin" xml:space="preserve">
+    <value>上次登入时间：</value>
+  </data>
+  <data name="TipOpenPermission" xml:space="preserve">
+    <value>您的帐号开通时间为：</value>
+  </data>
+  <data name="ImgIndexUrlLogout" xml:space="preserve">
+    <value>Image/zh-CN/ButtonLogout.png</value>
+  </data>
+  <data name="TextSize12pt" xml:space="preserve">
+    <value>12pt</value>
+  </data>
+  <data name="TipLogout" xml:space="preserve">
+    <value>你确定要登出吗?</value>
+  </data>
+  <data name="TipMingderMsg" xml:space="preserve">
+    <value>明德专家传送之讯息</value>
+  </data>
+  <data name="TipProvinceMsg" xml:space="preserve">
+    <value>省专家传送之讯息</value>
   </data>
 </root>

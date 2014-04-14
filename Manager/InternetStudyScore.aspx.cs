@@ -16,29 +16,14 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
     private const string QuestionClassID = "QuestionClassID";
     private const string QuestionClassYear = "QuestionClassYear";
     private const string ClassID = "ClassID";
-    private bool IsMingDer = false;
+    //private bool IsMingDer = false;
 
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
-        if (Session["IsMingDer"] == null)
-            Response.Redirect("../SessionOut.aspx");
 
-        if (Session["IsMingDer"].ToString().Equals("True"))
-        {
-            DdlProvince.Visible = true;
-            LbProvince.Visible = false;
-            IsMingDer = true;
-            LoadProvince();
-        }
-        else
-        {
-            DdlProvince.Visible = false;
-            LbProvince.Visible = true;
-            LbProvince.Text = Session["Province"].ToString();
-            IsMingDer = false;
-        }
+        LoadProvince();
         if (!IsPostBack)
         {
             if (Session["InternetStudyYearQuery"] != null)
@@ -56,7 +41,11 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
             // 1. 使用者第一次選擇頁數
             // 2. 第一次進到此頁面
             else
-                LoadInternetStudy(1);
+            {
+                LbTotalCount.Text = "0";
+                PageOrder.Text = "0 / 0";
+                LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers;
+            }
         }
     }
 
@@ -186,7 +175,7 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
     private void NoData()
     {
         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4;'>";
-        LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td colspan = '7' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
         LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -268,18 +257,9 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         }
         else
         {
-            if (IsMingDer)
-            {
                 Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                         "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
-            }
-            else
-            {
-                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
-            }
         }
 
 
@@ -326,7 +306,7 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                                 "left join InternetStudyUserAnswer on InternetStudyUserAnswer.QuestionClassID = InternetStudy.QuestionClassID " +
                                 "left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                                 "where InternetStudy.QuestionClassYear = '" + entry.Key + "' and Account.UserID = '" + saUserData[0] + "' " +
-                                "order by InternetStudy.ClassID asc";
+                                "order by InternetStudy.ClassID desc";
 
                         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
@@ -339,6 +319,9 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                         string Pass = string.Empty;
                         string UnPass = string.Empty;
                         ArrayList UserAnswer = new ArrayList();
+                        int PassNumber = 0;
+                        int UnPassNumber = 0;
+
                         if (ms.GetAllColumnData(Query, UserAnswer))
                         {
                             if (UserAnswer.Count > 0)
@@ -347,20 +330,23 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                                 {
                                     for (int j = 0; j < UserAnswer.Count; j++)
                                     {
+                                        int MaxScore = GetUserMaxScore(UserAnswer, ((string[])YearData[i])[0]);
                                         //找到相同的QuestionClassID代表使用者有作答
                                         if (((string[])YearData[i])[0].Equals(((string[])UserAnswer[j])[0]))
                                         {
                                             CompleteNumbers++;
 
                                             // 使用者不及格XD
-                                            if (Convert.ToInt32((((string[])UserAnswer[j])[2])) < Convert.ToInt32(((string[])YearData[i])[3]))
+                                            if (MaxScore < Convert.ToInt32(((string[])YearData[i])[3]))
                                             {
                                                 UnPass += (((string[])YearData[i])[0]) + ",";
+                                                UnPassNumber++;
                                             }
                                             //使用者及格
                                             else
                                             {
                                                 Pass += (((string[])YearData[i])[0]) + ",";
+                                                PassNumber++;
                                             }
                                             break;
                                         }
@@ -376,11 +362,11 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "Pass=" + Pass + "'>" + "Click" + "</a></td>";
-                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "Pass=" + Pass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "Pass=" + Pass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + PassNumber + "</a></td>";
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
-                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + "Click" + "</a></td>";
+                        LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + UnPassNumber + "</a></td>";
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
@@ -420,6 +406,21 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         }
 
         return true;
+    }
+
+    private int GetUserMaxScore(ArrayList UserAnswerTable, String QuestionnireID)
+    {
+        int MaxScore = -1;
+        foreach (string[] table in UserAnswerTable)
+        {
+            if (string.IsNullOrEmpty(table[2]))
+                continue;
+            if (table[0].Equals(QuestionnireID))
+            {
+                MaxScore = Math.Max(MaxScore, Convert.ToInt32(table[2]));
+            }
+        }
+        return MaxScore;
     }
 
     private void CheckSearchType()
@@ -476,12 +477,20 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+        {
             Session["ProvinceSelect"] = "False";
+            LbCompleted.Text = "";
+            LbTotalCount.Text = "0";
+            PageOrder.Text = "0 / 0";
+            LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers;
+            DdlPageSelect.Items.Clear();
+        }
         else
         {
             Session["ProvinceSelect"] = "True";
             Session["ProvinceSelectValue"] = DdlProvince.SelectedValue;
+            CheckSearchType();
         }
-        CheckSearchType();
+        
     }
 }

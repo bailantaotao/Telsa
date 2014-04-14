@@ -155,6 +155,7 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
         StringBuilder sb = new StringBuilder();
 
         int Score = GetScore();
+        string NowTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
         string Query;
         Query = "insert into InternetStudyUserAnswer " +
@@ -162,7 +163,7 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
                 Session["QuestionClassID"].ToString() + "','" +
                 Session["UserID"].ToString() + "','" +
                 Score + "','" +
-                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                NowTime + "')";
 
         if (ms.WriteData(Query, sb))
         {
@@ -175,11 +176,12 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
                         SchoolMaster_UserControlQuestionAnswer c = (SchoolMaster_UserControlQuestionAnswer)PnQuestionList.Controls[i];
 
                         Query = "insert into InternetStudyUserAnswerDetail " +
-                        "( QuestionClassID, QuestionNo, UserChooseAnswer ) " +
+                        "( QuestionClassID, QuestionNo, UserChooseAnswer, FinishTime ) " +
                         "VALUES " +
                         "( '" + Session["QuestionClassID"].ToString() + "',N'" +
                         c.eventArgs.QuestionID + "',N'" +
-                        c.eventArgs.Answer + "')";
+                        c.eventArgs.Answer + "','" +
+                        NowTime + "')";
 
                         ms.WriteData(Query, sb);
                         sb.Clear();

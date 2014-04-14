@@ -27,54 +27,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
 
-    //    ManageSQL ms = new ManageSQL();
-    //    ArrayList data = new ArrayList();
-
-    //    if (Session["InternetStudyEditYearQuery"] == null || string.IsNullOrEmpty(Session["InternetStudyEditYearQuery"].ToString()))
-    //        SearchType(BaseClass.NowYear);
-    //    else
-    //        SearchType(Convert.ToInt32(Session["InternetStudyEditYearQuery"].ToString()));
-
-    //    if (ms.GetAllColumnData(Query, data))
-    //    {
-
-    //        LbCompleted.Text = "<table style='width:750px;'>";
-    //        LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
-    //        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-    //        LbCompleted.Text += "No</td>";
-    //        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-    //        LbCompleted.Text += "名稱</td>";
-    //        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-    //        LbCompleted.Text += "完成閱讀期限</td>";
-    //        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-    //        LbCompleted.Text += "新增</td>";
-    //        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-    //        LbCompleted.Text += "修改</td>";
-    //        LbCompleted.Text += "</tr>";
-
-    //        if (data.Count > 0)
-    //        {
-
-    //        }
-    //        else
-    //        {
-    //            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
-    //            LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-    //            LbCompleted.Text += "今年度您還沒有新增，請按下新增年度開始</td>";
-    //            LbCompleted.Text += "</tr>";
-    //        }
-    //        LbCompleted.Text += "</table>";
-    //        Session["InternetStudyEditYearQuery"] = "";
-    //    }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("2"))
-        //    Response.Redirect("SessionOut.aspx");
-        
         if (!IsPostBack)
         {
             if (Session["InternetStudyEditYearQuery"] != null)
@@ -174,19 +130,20 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                     bool IsAdded = false, DBAddedComplete = false;
                     IsAdded = bool.TryParse(((string[])(data[i]))[5], out DBAddedComplete);
 
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";                    
+                    LbCompleted.Text += (i + 1).ToString() + "</td>";
+                    
+
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     // 如果已經新增過該類別之問題，才可以做檢視的動作
                     if (DBAddedComplete)
                     {
-                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + (i + 1).ToString() + "</a></td>";
+                        LbCompleted.Text += "<a href='InternetStudyEditDisplay.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + ((string[])(data[i]))[3] + "</a></td>";
                     }
                     else
                     {
-                        LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
+                        LbCompleted.Text += "<a href='#'>" + ((string[])(data[i]))[3] + "</a></td>";
                     }
-
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[4].Split(' ')[0] + "</td>";
@@ -247,14 +204,87 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
+        ArrayList data = new ArrayList();
         BaseClass bc = new BaseClass();
+        int State = 0;
+
+        Query = "select QuestionClassYear from InternetStudy group by QuestionClassYear order by QuestionClassYear desc";
+
+        if (!ms.GetAllColumnData(Query, data))
+            goto ADDNEYQUESTIONNAIRE;
+
+        if (data.Count == 0)
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+        State = 1;
+        // 1. 找出最近的年度
+        StringBuilder RefYear = new StringBuilder();
+        if (!GetRecentYear(data, RefYear))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+        State = 2;
+        // 2. 取得該年度問卷的基本資料
+        Query = "select QuestionClassID, QuestionClassYear, ClassID, ClassName, DeadLine, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete from InternetStudy " +
+                "where QuestionClassYear ='" + RefYear.ToString() + "'";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+        // 將資料儲存到資料庫
+        if (!CopyInternetStudyData(data))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+
+        State = 3;
+        // 3. 取得參考年度問卷10提的ID
+        ArrayList QuestionID = new ArrayList();
+        Query = "Select QuestionClassID from InternetStudy where QuestionClassYear ='" + RefYear.ToString() + "' order by QuestionClassID asc";
+        if (!ms.GetAllColumnData(Query, QuestionID))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+
+        // 4. 取得新增年度問卷10提的ID
+        ArrayList ThisYearQuestionID = new ArrayList();
+        Query = "Select QuestionClassID from InternetStudy where QuestionClassYear ='" + TbAddYear.Text.Trim() + "' order by QuestionClassID asc";
+        if (!ms.GetAllColumnData(Query, ThisYearQuestionID))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+
+        State = 4;
+        // 4. 取得問卷的題目內容、類型
+        if (!CopyInternetStudyDataContent(data, QuestionID, ThisYearQuestionID))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+
+        State = 5;
+        // 5. 取得問卷的答案選項
+        if (!CopyInternetStudyAnswerItem(data, QuestionID, ThisYearQuestionID))
+        {
+            goto ADDNEYQUESTIONNAIRE;
+        }
+
+        return true;
+        
+        ADDNEYQUESTIONNAIRE:
+        
+        if(2 < State)
+        {
+            Query = "delete from InternetStudy where QuestionClassYear='" + TbAddYear.Text.Trim() + "'";
+            ms.WriteData(Query, sb);
+        }
         for (int i = 0; i < ClassMaxNumbers; i++)
         {
             Query = "insert into InternetStudy (QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete) VALUES ('" +
                     TbAddYear.Text + "','" +
                     i + "','" +
                     " N / A" + "','" +
-                    "2014-12-31 00:00:00" + "','" +
+                    TbAddYear.Text + "-12-31" + "','" +
                     "" + "','" +
                     "0" + "','" +
                     "" + "','" +
@@ -262,6 +292,103 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             if (!ms.WriteData(Query, sb))
                 return false;
             sb.Clear();
+        }
+        
+        return true;
+    }
+
+    private bool GetRecentYear(ArrayList YearTable, StringBuilder Status)
+    {
+        int UserInputYear = Convert.ToInt32(TbAddYear.Text);
+        foreach (string[] Year in YearTable)
+        {
+            if (Convert.ToInt32(Year[0]) < UserInputYear)
+            {
+                Status.Append(Year[0]);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool CopyInternetStudyData(ArrayList QuestionData)
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder STATUS = new StringBuilder();
+        foreach(string[] data in QuestionData)
+        {
+            Query = "insert into InternetStudy (QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete) VALUES (N'" +
+                    TbAddYear.Text + "',N'" +
+                    data[2] + "',N'" +
+                    data[3] + "',N'" +
+                    TbAddYear.Text + "-12-31" + "',N'" +
+                    data[5] + "',N'" +
+                    data[6] + "',N'" +
+                    data[7] + "',N'" +
+                    data[8] + "')";
+            if (!ms.WriteData(Query, STATUS))
+                return false;
+        }
+        return true;
+    }
+
+    private bool CopyInternetStudyDataContent(ArrayList _data, ArrayList QuestionID, ArrayList ThisYearQuestionID)
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder STATUS = new StringBuilder();
+        int Index = 0;
+        foreach(string[] id in QuestionID)
+        {
+
+            Query = "select QuestionClassID, QuestionNo, QuestionContent, IsSingleSelection, Score, Answer from InternetStudyQuestionContent " +
+                "where QuestionClassID='" + id[0] + "'";
+
+            if (!ms.GetAllColumnData(Query, _data))
+                return false;
+
+            foreach (string[] Content in _data)
+            {
+                Query = "insert into InternetStudyQuestionContent (QuestionClassID, QuestionNo, QuestionContent, IsSingleSelection, Score, Answer) VALUES (N'" +
+                        ((string[])ThisYearQuestionID[Index])[0] + "',N'" +
+                        Content[1] + "',N'" +
+                        Content[2] + "',N'" +
+                        Content[3] + "',N'" +
+                        Content[4] + "',N'" +
+                        Content[5] + "')";
+
+                if (!ms.WriteData(Query, STATUS))
+                    return false;
+            }
+            Index++;
+            
+        }
+        return true;
+    }
+
+    private bool CopyInternetStudyAnswerItem(ArrayList _data, ArrayList _QuestionID, ArrayList ThisYearQuestionID)
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        int Index = 0;
+        foreach (string[] id in _QuestionID)
+        {
+            Query = "select QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent from InternetStudyQuestionItem " +
+                    "where QuestionClassID ='" + id[0] + "'";
+
+            if (!ms.GetAllColumnData(Query, _data))
+                return false;
+            foreach (string[] content in _data)
+            {
+                Query = "insert into InternetStudyQuestionItem (QuestionClassID, QuestionNo, QuestionAnswerNumbers, AnswerContent) VALUES (N'" +
+                        ((string[])ThisYearQuestionID[Index])[0] + "',N'" +
+                        content[1] + "',N'" +
+                        content[2] + "',N'" +
+                        content[3] + "')";
+                if (!ms.WriteData(Query, sb))
+                    return false;
+
+            }
+            Index++;
         }
         return true;
     }

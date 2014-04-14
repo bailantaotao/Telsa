@@ -26,7 +26,7 @@ public partial class Manager_ViewScore : System.Web.UI.Page
         if (!string.IsNullOrEmpty(Request["UnPass"]))
             UnPassContent = Request["UnPass"].ToString().Split(',');
 
-        LbComplete.Text = "<table style='width:200px;'>";
+        LbComplete.Text = "<table style='width:500px;'>";
         LbComplete.Text += "<tr align='center' style='background-color:#6699FF;'>";
         LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
         LbComplete.Text += Resources.Resource.TipClassName + "</td>";

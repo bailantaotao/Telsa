@@ -104,6 +104,13 @@
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">
                         <tr>
+                            <td align="right">
+                                <div style="text-align:left">
+                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipHowToViewQuestionnaire %>"></asp:Label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="2" align="center">
                                 <asp:Label ID="LbCompleted" runat="server"></asp:Label>
                             </td>
