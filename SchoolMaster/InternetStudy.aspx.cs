@@ -91,7 +91,7 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
     {
         foreach(string[] table in UserAnswerTable)
         {
-            if (ID[0].Equals(QuestionnireID))
+            if (table[0].Equals(QuestionnireID))
                 return true;
         }
         return false;
