@@ -45,11 +45,15 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                 }
                 else
                 {
-                    LoadInternetStudy(BaseClass.NowYear);            
+                    DdlYear.SelectedValue = BaseClass.NowYear.ToString();
+                    LoadInternetStudy(BaseClass.NowYear);
                 }
             }
             else
-                LoadInternetStudy(BaseClass.NowYear);            
+            {
+                DdlYear.SelectedValue = BaseClass.NowYear.ToString();
+                LoadInternetStudy(BaseClass.NowYear);
+            }
         }
         else
         {
@@ -87,7 +91,7 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
     {
         foreach(string[] table in UserAnswerTable)
         {
-            if (ID[0].Equals(QuestionnireID))
+            if (table[0].Equals(QuestionnireID))
                 return true;
         }
         return false;
