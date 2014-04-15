@@ -45,11 +45,15 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                 }
                 else
                 {
-                    LoadInternetStudy(BaseClass.NowYear);            
+                    DdlYear.SelectedValue = BaseClass.NowYear.ToString();
+                    LoadInternetStudy(BaseClass.NowYear);
                 }
             }
             else
-                LoadInternetStudy(BaseClass.NowYear);            
+            {
+                DdlYear.SelectedValue = BaseClass.NowYear.ToString();
+                LoadInternetStudy(BaseClass.NowYear);
+            }
         }
         else
         {
