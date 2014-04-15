@@ -77,7 +77,10 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         ms.GetOneData(query, sb);
         return string.IsNullOrEmpty(sb.ToString())? "none":sb.ToString();
     }
-
+    private void SearchType()
+    {
+        Query = "select QuestionClassYear, Count(QuestionAddedComplete) from InternetStudy where QuestionAddedComplete='true' group by QuestionClassYear";
+    }
     private void SearchType(int QuestionClassYear)
     {
         Query = "select InternetStudy.QuestionClassYear, Count(QuestionAddedComplete) from InternetStudy where InternetStudy.QuestionAddedComplete='true' AND " +
@@ -462,7 +465,14 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         int Low = -1, High = -1;
         if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
         {
-            SearchType(BaseClass.NowYear);
+            if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+            {
+                SearchType();
+            }
+            else
+            { 
+                SearchType(BaseClass.NowYear);
+            }
         }
         else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
         {
