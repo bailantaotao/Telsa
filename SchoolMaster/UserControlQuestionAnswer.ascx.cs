@@ -19,6 +19,8 @@ public partial class SchoolMaster_UserControlQuestionAnswer : System.Web.UI.User
         public string Question = string.Empty;
 
         public string Answer = string.Empty;
+        public bool IsSingleSelection = false;
+
 		public ArrayList AnswerItem = new ArrayList();
 
     }
@@ -31,7 +33,7 @@ public partial class SchoolMaster_UserControlQuestionAnswer : System.Web.UI.User
             // 題號
             LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". " + Resources.Resource.TipQuestion + " ";
             // 題目內容
-            LbQuestion.Text = eventArgs.Question;
+            LbQuestion.Text = "(" + ((eventArgs.IsSingleSelection) ? Resources.Resource.TipSingleQuestion : Resources.Resource.TipMultiQuestion) + ") " + eventArgs.Question;
 			if (eventArgs.AnswerItem.Count > 0)
             {
                 setDefaultValue(lb, cb);

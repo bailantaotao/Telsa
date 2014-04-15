@@ -80,7 +80,7 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
             }
             data.Clear();
 
-            Query = "select QuestionNo, QuestionContent from InternetStudyQuestionContent where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "' " +
+            Query = "select QuestionNo, QuestionContent, IsSingleSelection from InternetStudyQuestionContent where QuestionClassID = '" + Session["QuestionClassID"].ToString() + "' " +
                     "order by QuestionNo asc";
             ms.GetAllColumnData(Query, data);
 
@@ -101,6 +101,7 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
 
                 c.eventArgs.Question = ((string[])data[i])[1].ToString();
 
+                c.eventArgs.IsSingleSelection = Convert.ToBoolean(((string[])data[i])[2].ToString());
 
                 Query = "select QuestionAnswerNumbers, AnswerContent from InternetStudyQuestionItem where QuestionClassID ='" + Session["QuestionClassID"].ToString() + "' " +
                         "and QuestionNo = '" + c.eventArgs.QuestionID + "' order by QuestionAnswerNumbers asc";

@@ -48,6 +48,19 @@ public partial class Expert_ViewScore : System.Web.UI.Page
         }
         LbComplete.Text += "</table>";
     }
+
+    private int GetUserMaxScore(ArrayList UserAnswerTable)
+    {
+        int MaxScore = -1;
+        foreach (string[] table in UserAnswerTable)
+        {
+            if (string.IsNullOrEmpty(table[2]))
+                continue;
+            MaxScore = Math.Max(MaxScore, Convert.ToInt32(table[2]));
+        }
+        return MaxScore;
+    }
+
     private void Print(string[] pData)
     {
         
@@ -63,13 +76,14 @@ public partial class Expert_ViewScore : System.Web.UI.Page
                                 "left join InternetStudyUserAnswer on InternetStudy.QuestionClassID = InternetStudyUserAnswer.QuestionClassID " +
                                 "where InternetStudy.QuestionClassID = '" + PassID + "' and InternetStudyUserAnswer.UserID ='"+Request["SM"].ToString()+"'";
                 ms.GetAllColumnData(Query, data);
+                int MaxScore = GetUserMaxScore(data);
                 LbComplete.Text += "<tr align='center' style='background-color:#B8CBD4'>";
                 LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                 LbComplete.Text += ((string[])data[0])[0] + "</td>";
                 LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                 LbComplete.Text += ((string[])data[0])[1] + "</td>";
                 LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                LbComplete.Text += ((string[])data[0])[2] + "</td>";
+                LbComplete.Text += MaxScore + "</td>";
                 LbComplete.Text += "</tr>";
             }
         }
