@@ -28,7 +28,7 @@ public partial class Index : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Subjects, Msg, SenderID from MsgUserData " +
+        string query = "select Subjects, Msg, UserName, SendTime from MsgUserData " +
                         "left join MsgSubject on MsgUserData.EmailID = MsgSubject.EmailID " +
                         "left join Account on Account.UserID = MsgUserData.SenderID " +
                         "left join ExpertAuthority on Account.UserID = ExpertAuthority.UserID " +
@@ -58,8 +58,9 @@ public partial class Index : System.Web.UI.Page
         foreach(string[] box in data)
         {
             Label lb = new Label();
-            lb.Text = box[0] + " - " + box[2] + "<br />";
-            lb.Text += box[1];
+            lb.Text = box[2] + " " + box[3].Split(' ')[0] + "<br />";
+            lb.Text += Resources.Resource.TipSubject + "：" + box[1] + "<br />";
+            lb.Text += Resources.Resource.TipMessage + "：" + box[0] + "<br />";
             lb.Width = 362;
             pn.Controls.Add(lb);
         }
