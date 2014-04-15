@@ -112,35 +112,23 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <div style="text-align:center; height:39px; float: left;  line-height:39px; margin-left: 20px">
+                    <div style="text-align:center; height:39px;  line-height:39px; margin-left: 20px;text-align:left">
                         <asp:Label ID="LbYear" runat="server" Text="新增100年度：" Font-Bold="true" Font-Size="22pt"></asp:Label>
                     </div>
                     
-                    <div style="text-align:center; width: 739px; height:50px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
+                    <div style="text-align:center; width: 739px; height:50px;  line-height:55px; vertical-align:middle; text-align:right;">
                         <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBackPage %>" OnClick="Btn_Click" />
                         <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnCancelAdd %>" OnClick="Btn_Click" />
                     </div>
                 </div>
-                <div style="text-align:center; height:39px; line-height:39px; margin-left: 30px; text-align:left">
+                <div style="text-align:center; height:39px; line-height:50px; margin-left: 30px; text-align:left">
                     <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipStage1 %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH3Title %>"></asp:Label>
                 </div>
-                <div align="left" style="text-align:center; height:39px; line-height:39px; margin-left: 60px; text-align:left; padding-top:30px">
+                <div align="left" style="text-align:center; height:39px; margin-left: 60px; text-align:left;margin-top:20px">
                     <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipInputDeadline %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeH4Title %>"></asp:Label>
-                    
-                    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>--%>
                     <asp:TextBox ID="TbToday" runat="server" Width="300px"></asp:TextBox>
                     <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="TbToday"
                                     Enabled="True" TargetControlID="TbToday" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
-                            <%--<asp:CalendarExtender ID="CalendarExtender1" runat="server"
-                                Enabled="True" Format="yyyy/MM/dd" 
-                                TargetControlID="TbToday"></asp:CalendarExtender>--%>
-                        <%--</ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="BtnCompleted" EventName="Click" />
-                            <asp:AsyncPostBackTrigger ControlID="BtnBack" EventName="Click" />
-                        </Triggers>
-                    </asp:UpdatePanel>--%>
                 </div>
                 <div style="margin-left: 30px">
                     <hr />
@@ -155,15 +143,7 @@
                     <table style="width: 739px">
                         <tr>
                             <td colspan="2" align="center">
-                                <%--<asp:UpdatePanel ID="UpdateCompleted" runat="server">
-                                    <ContentTemplate>--%>
-                                        <asp:Label ID="LbCompleted" runat="server"></asp:Label>                                        
-                                    <%--</ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="BtnCompleted" EventName="Click" />
-                                        <asp:AsyncPostBackTrigger ControlID="BtnBack" EventName="Click" />
-                                    </Triggers>
-                                </asp:UpdatePanel>--%>
+                                <asp:Label ID="LbCompleted" runat="server"></asp:Label>         
                             </td>
                         </tr>
                     </table>
