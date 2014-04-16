@@ -540,6 +540,6 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     }
     protected void BtnViewComment_Click(object sender, EventArgs e)
     {
-
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('ViewComment.aspx', '', config='height=500,width=720');", true);
     }
 }

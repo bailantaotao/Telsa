@@ -480,4 +480,10 @@
   <data name="ImgSubIndexUrlLogout" xml:space="preserve">
     <value>../Image/zh-CN/ButtonLogout.png</value>
   </data>
+  <data name="TipNotifyTime" xml:space="preserve">
+    <value>发送时间</value>
+  </data>
+  <data name="TipViewComment" xml:space="preserve">
+    <value>查看已发送评论</value>
+  </data>
 </root>

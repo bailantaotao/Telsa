@@ -135,7 +135,7 @@
                         <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
                     </div>
                     <div>
-                        <asp:Button ID="BtnViewComment" runat="server" Text="Button" OnClick="BtnViewComment_Click" />
+                        <asp:Button ID="BtnViewComment" runat="server" Text="<%$ Resources:Resource, TipViewComment %>" OnClick="BtnViewComment_Click" />
                     </div>
                 </div>
                 <div id="BlockRightDownDataDisplay">
