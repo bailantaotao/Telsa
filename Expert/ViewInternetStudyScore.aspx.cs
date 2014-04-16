@@ -465,13 +465,9 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         int Low = -1, High = -1;
         if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
         {
-            if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+            if (!DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
             {
                 SearchType();
-            }
-            else
-            { 
-                SearchType(BaseClass.NowYear);
             }
         }
         else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
@@ -517,6 +513,12 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         Session["InternetStudyEditDataPage"] = DdlPageSelect.SelectedIndex + 1;
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
+	
+	protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Default.aspx");
+    }
+	
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
@@ -535,5 +537,9 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             CheckSearchType();
         }
         
+    }
+    protected void BtnViewComment_Click(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('ViewComment.aspx', '', config='height=500,width=720');", true);
     }
 }

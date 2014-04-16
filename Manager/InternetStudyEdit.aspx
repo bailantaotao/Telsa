@@ -96,6 +96,10 @@
                     <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
                          NavigateUrl="~/Manager/InternetStudyScore.aspx"></asp:HyperLink>
                 </div>
+                <div style="text-align:right">
+                    <asp:ImageButton ID="ImgBtnLogout" runat="server"   
+                        ImageUrl="<%$ Resources:Resource, ImgSubIndexUrlLogout %>" OnClick="ImgBtnLogout_Click"/>
+                </div>
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
@@ -123,7 +127,7 @@
                             <triggers>
                                 <asp:asyncpostbacktrigger controlid="imgbtnsearch" eventname="click" />
                             </triggers>
-                        </asp:updatepanel>                        
+                        </asp:UpdatePanel>                        
                     </div>
                     <div style="text-align:center; width: auto; height:55px; float: left;  line-height:55px; vertical-align:middle; padding-left:15px; padding-top:10px">
                         <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
