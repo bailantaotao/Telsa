@@ -474,4 +474,8 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             AddYearQuestionnaire();
         }
     }
+    protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Default.aspx");
+    }
 }

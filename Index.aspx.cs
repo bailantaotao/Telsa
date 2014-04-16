@@ -59,8 +59,8 @@ public partial class Index : System.Web.UI.Page
         {
             Label lb = new Label();
             lb.Text = box[2] + " " + box[3].Split(' ')[0] + "<br />";
-            lb.Text += Resources.Resource.TipSubject + "：" + box[1] + "<br />";
-            lb.Text += Resources.Resource.TipMessage + "：" + box[0] + "<br />";
+            lb.Text += Resources.Resource.TipSubject + "：" + box[0] + "<br />";
+            lb.Text += Resources.Resource.TipMessage + "：" + box[1] + "<br />";
             lb.Width = 362;
             pn.Controls.Add(lb);
         }

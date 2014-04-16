@@ -264,4 +264,8 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
 
 
 
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

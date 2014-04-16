@@ -70,7 +70,7 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
             ManageSQL ms = new ManageSQL();
             StringBuilder sb = new StringBuilder();
             string Query = "insert into MsgSubject (Subjects, Msg, SendTime, NotifyDeadLine) VALUES (N'" +
-                            TbSubject.Text.Trim() + "N','" +
+                            TbSubject.Text.Trim() + "',N'" +
                             TbMsg.Text.Trim() + "','" +
                             DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','" +
                             TbExpirationDate.Text + "')";
