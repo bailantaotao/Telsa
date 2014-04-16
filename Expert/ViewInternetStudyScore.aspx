@@ -89,6 +89,10 @@
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:HyperLink>
                 </div>
+                <div style="text-align:right">
+                    <asp:ImageButton ID="ImgBtnLogout" runat="server"  
+                        ImageUrl="<%$ Resources:Resource, ImgSubIndexUrlLogout %>" OnClick="ImgBtnLogout_Click"/>
+                </div>
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
@@ -129,6 +133,9 @@
                     </div>
                     <div style="text-align:center; width: auto; height:55px; float: left;  line-height:55px; vertical-align:middle; padding-left:15px; padding-top:10px">
                         <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
+                    </div>
+                    <div>
+                        <asp:Button ID="BtnViewComment" runat="server" Text="Button" OnClick="BtnViewComment_Click" />
                     </div>
                 </div>
                 <div id="BlockRightDownDataDisplay">

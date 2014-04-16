@@ -513,6 +513,12 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         Session["InternetStudyEditDataPage"] = DdlPageSelect.SelectedIndex + 1;
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
+	
+	protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Default.aspx");
+    }
+	
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
@@ -531,5 +537,9 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             CheckSearchType();
         }
         
+    }
+    protected void BtnViewComment_Click(object sender, EventArgs e)
+    {
+
     }
 }

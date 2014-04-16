@@ -474,4 +474,10 @@
   <data name="TipProvinceMsg" xml:space="preserve">
     <value>省专家传送之讯息</value>
   </data>
+  <data name="ImgUrlBackIndex" xml:space="preserve">
+    <value>../Image/zh-CN/ButtonBackIndex.png</value>
+  </data>
+  <data name="ImgSubIndexUrlLogout" xml:space="preserve">
+    <value>../Image/zh-CN/ButtonLogout.png</value>
+  </data>
 </root>
