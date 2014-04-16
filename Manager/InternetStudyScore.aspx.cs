@@ -434,13 +434,9 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         int Low = -1, High = -1;
         if (string.IsNullOrEmpty(TbYearA.Text) && string.IsNullOrEmpty(TbYearB.Text))
         {
-            if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+            if (!DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
             {
                 SearchType();
-            }
-            else
-            {
-                SearchType(BaseClass.NowYear);
             }
         }
         else if (Int32.TryParse(TbYearA.Text, out Low) && Int32.TryParse(TbYearB.Text, out High))
