@@ -38,7 +38,7 @@ public partial class Expert_ViewComment : System.Web.UI.Page
         LbComplete.Text += Resources.Resource.TipMessage + "</td>";
         LbComplete.Text += "</tr>";
 
-        string Query = "select Account.UserName, MsgSubject.SendTime, MsgSubject.NotifyDeadLine, MsgSubject.Msg " +
+        string Query = "select Account.School,Account.UserName, MsgSubject.SendTime, MsgSubject.NotifyDeadLine, MsgSubject.Msg " +
                         "from MsgUserData "+
                         "left join MsgSubject on MsgSubject.EmailID = MsgUserData.EmailID " +
                         "left join Account on MsgUserData.ReceiverID = Account.UserID " +
@@ -77,13 +77,13 @@ public partial class Expert_ViewComment : System.Web.UI.Page
             {
                 LbComplete.Text += "<tr align='center' style='background-color:#B8CBD4;'>";
                 LbComplete.Text += "<td style='width: 30%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                LbComplete.Text += ((string[])(data[i]))[0] + "</td>";
-                LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                LbComplete.Text += ((string[])(data[i]))[1].Split(' ')[0] + "</td>";
+                LbComplete.Text += ((string[])(data[i]))[0] + "-" + ((string[])(data[i]))[1].Split(' ')[0] + "</td>";
                 LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                 LbComplete.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
+                LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += ((string[])(data[i]))[3].Split(' ')[0] + "</td>";
                 LbComplete.Text += "<td style='width: 50%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF; word-break: break-all; text-align:left;'>";
-                LbComplete.Text += ((string[])(data[i]))[3] + "</td>";
+                LbComplete.Text += ((string[])(data[i]))[4] + "</td>";
                 LbComplete.Text += "</tr>";
             }
         }
