@@ -486,4 +486,7 @@
   <data name="TipViewComment" xml:space="preserve">
     <value>查看已发送评论</value>
   </data>
+  <data name="ImgUrlReturn" xml:space="preserve">
+    <value>Image/zh-CN/ButtonReturn.png</value>
+  </data>
 </root>

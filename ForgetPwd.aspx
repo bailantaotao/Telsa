@@ -32,6 +32,12 @@
                                 <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipAdminEmail%>"></asp:Label>
                             </td>
                         </tr>
+                        <tr>
+                            <td style="float:left; padding-left:30px;">
+                                <asp:ImageButton ID="ImgBtn_Return" runat="server" 
+                                    ImageUrl="<%$ Resources:Resource, ImgUrlReturn%>" OnClick="ImgBtn_Click"/>
+                            </td>
+                        </tr> 
                     </table>
                 </td>
             </tr>

@@ -12,4 +12,8 @@ public partial class ForgetPwd : System.Web.UI.Page
     {
 
     }
+    protected void ImgBtn_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
 }
