@@ -278,7 +278,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                 Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                         "left join ZipCode on ZipCode.ZipCode = Account.Zipcode " +
-                        "where zipcode.name = '" + DdlProvince.SelectedValue + "' " +
+                        "where zipcode.name like N'%" + DdlProvince.SelectedValue + "%' " +
                         "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, ZipCode.Name";
             }
         }
