@@ -489,4 +489,7 @@
   <data name="ImgUrlReturn" xml:space="preserve">
     <value>Image/zh-CN/ButtonReturn.png</value>
   </data>
+  <data name="TipViewQuestion" xml:space="preserve">
+    <value>自学教材试题查看</value>
+  </data>
 </root>
