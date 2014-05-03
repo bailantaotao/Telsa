@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ViewInternetStudyScore.aspx.cs" Inherits="Expert_ViewInternetStudyScore" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ViewInternetStudyQuestionnaire.aspx.cs" Inherits="Expert_ViewInternetStudyQuestionnaire" %>
 
 <!DOCTYPE html>
 
@@ -84,36 +84,27 @@
                     <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipInternetStudy %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <img src="../Image/zh-TW/TipRed.png" />
-                </div>
-                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                        NavigateUrl="~/Expert/ViewInternetStudyScore.aspx"></asp:HyperLink>
-                </div>
-                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipViewQuestion %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="~/Expert/ViewInternetStudyQuestionnaire.aspx"></asp:HyperLink>
+                    <asp:HyperLink ID="HyBtnScore" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipSearchScore %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                        NavigateUrl="~/Expert/ViewInternetStudyScore.aspx"></asp:HyperLink>
+                </div>
+                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <img src="../Image/zh-TW/TipRed.png" />
+                </div>
+                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipViewQuestion %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                         NavigateUrl="~/Expert/InternetStudyScore.aspx"></asp:HyperLink>
                 </div>
                 <div style="text-align:right">
-                    <asp:ImageButton ID="ImgBtnLogout" runat="server"  
+                    <asp:ImageButton ID="ImgBtnLogout" runat="server"   
                         ImageUrl="<%$ Resources:Resource, ImgSubIndexUrlLogout %>" OnClick="ImgBtnLogout_Click"/>
                 </div>
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 30px">
-                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipProvince %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 0px">
-                        <asp:Label ID="LbProvince" runat="server" Text="" Font-Size="<%$ Resources:Resource, TextSizeTitle %>" Font-Bold="true" Font-Underline="true"></asp:Label>
-                        <asp:DropDownList ID="DdlProvince" runat="server" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged" AutoPostBack="true">
-                            <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 30px">
+                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 60px">
                         <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipYear %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
                     </div>
                     <div style="text-align:center; height:55px; float: left;  line-height:55px;">
@@ -137,13 +128,18 @@
                             <triggers>
                                 <asp:asyncpostbacktrigger controlid="imgbtnsearch" eventname="click" />
                             </triggers>
-                        </asp:updatepanel>                        
+                        </asp:UpdatePanel>                        
                     </div>
                     <div style="text-align:center; width: auto; height:55px; float: left;  line-height:55px; vertical-align:middle; padding-left:15px; padding-top:10px">
                         <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
                     </div>
-                    <div>
-                        <asp:Button ID="BtnViewComment" runat="server" Text="<%$ Resources:Resource, TipViewComment %>" OnClick="BtnViewComment_Click" />
+                    <div style="text-align:center; width: 300px; height:55px; float: left;  line-height:55px; vertical-align:middle; text-align:right;">
+                        <div style="float:left; padding-left:120px">
+                            <asp:TextBox ID="TbAddYear" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
+                        </div>
+                        <div style="float:left; padding-top:10px;padding-left:10px">
+                            <asp:ImageButton ID="ImgBtnAddYear" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlAddYear %>" Width="85px" Height="36px"/>                        
+                        </div>
                     </div>
                 </div>
                 <div id="BlockRightDownDataDisplay">
@@ -160,6 +156,10 @@
                                 </asp:UpdatePanel>--%>
                             </td>
                             <td align="right">
+                                <div style="text-align:left">
+                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipHowToViewQuestionnaire %>"></asp:Label>
+                                </div>
+                                
                                 <asp:UpdatePanel ID="UpdatePageSelect" runat="server">
                                     <ContentTemplate>
                                         <asp:Label ID="Label15" runat="server" Font-Size="<%$ Resources:Resource, TextSizeTip %>" Text="<%$ Resources:Resource, TipNo %>"></asp:Label>
@@ -210,3 +210,4 @@
     </form>
 </body>
 </html>
+
