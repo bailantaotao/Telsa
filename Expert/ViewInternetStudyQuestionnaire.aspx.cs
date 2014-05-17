@@ -199,138 +199,6 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
         return (Tag + "=" + Data);
     }
 
-    private bool AddClassData()
-    {
-        ManageSQL ms = new ManageSQL();
-        StringBuilder sb = new StringBuilder();
-        ArrayList data = new ArrayList();
-        BaseClass bc = new BaseClass();
-        int State = 0;
-
-        Query = "select QuestionClassYear from InternetStudy group by QuestionClassYear order by QuestionClassYear desc";
-
-        if (!ms.GetAllColumnData(Query, data))
-            goto ADDNEYQUESTIONNAIRE;
-
-        if (data.Count == 0)
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-        State = 1;
-        // 1. 找出最近的年度
-        StringBuilder RefYear = new StringBuilder();
-        if (!GetRecentYear(data, RefYear))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-        State = 2;
-        // 2. 取得該年度問卷的基本資料
-        Query = "select QuestionClassID, QuestionClassYear, ClassID, ClassName, DeadLine, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete from InternetStudy " +
-                "where QuestionClassYear ='" + RefYear.ToString() + "'";
-        if (!ms.GetAllColumnData(Query, data))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-        // 將資料儲存到資料庫
-        if (!CopyInternetStudyData(data))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-
-        State = 3;
-        // 3. 取得參考年度問卷10提的ID
-        ArrayList QuestionID = new ArrayList();
-        Query = "Select QuestionClassID from InternetStudy where QuestionClassYear ='" + RefYear.ToString() + "' order by QuestionClassID asc";
-        if (!ms.GetAllColumnData(Query, QuestionID))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-
-        // 4. 取得新增年度問卷10提的ID
-        ArrayList ThisYearQuestionID = new ArrayList();
-        Query = "Select QuestionClassID from InternetStudy where QuestionClassYear ='" + TbAddYear.Text.Trim() + "' order by QuestionClassID asc";
-        if (!ms.GetAllColumnData(Query, ThisYearQuestionID))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-
-        State = 4;
-        // 4. 取得問卷的題目內容、類型
-        if (!CopyInternetStudyDataContent(data, QuestionID, ThisYearQuestionID))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-
-        State = 5;
-        // 5. 取得問卷的答案選項
-        if (!CopyInternetStudyAnswerItem(data, QuestionID, ThisYearQuestionID))
-        {
-            goto ADDNEYQUESTIONNAIRE;
-        }
-
-        return true;
-
-    ADDNEYQUESTIONNAIRE:
-
-        if (2 < State)
-        {
-            Query = "delete from InternetStudy where QuestionClassYear='" + TbAddYear.Text.Trim() + "'";
-            ms.WriteData(Query, sb);
-        }
-        for (int i = 0; i < ClassMaxNumbers; i++)
-        {
-            Query = "insert into InternetStudy (QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete) VALUES ('" +
-                    TbAddYear.Text + "','" +
-                    i + "','" +
-                    " N / A" + "','" +
-                    TbAddYear.Text + "-12-31" + "','" +
-                    "" + "','" +
-                    "0" + "','" +
-                    "" + "','" +
-                    "False" + "')";
-            if (!ms.WriteData(Query, sb))
-                return false;
-            sb.Clear();
-        }
-
-        return true;
-    }
-
-    private bool GetRecentYear(ArrayList YearTable, StringBuilder Status)
-    {
-        int UserInputYear = Convert.ToInt32(TbAddYear.Text);
-        foreach (string[] Year in YearTable)
-        {
-            if (Convert.ToInt32(Year[0]) < UserInputYear)
-            {
-                Status.Append(Year[0]);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private bool CopyInternetStudyData(ArrayList QuestionData)
-    {
-        ManageSQL ms = new ManageSQL();
-        StringBuilder STATUS = new StringBuilder();
-        foreach (string[] data in QuestionData)
-        {
-            Query = "insert into InternetStudy (QuestionClassYear, ClassID, ClassName, Deadline, ClassDescription, PassScore, QuestionURL, QuestionAddedComplete) VALUES (N'" +
-                    TbAddYear.Text + "',N'" +
-                    data[2] + "',N'" +
-                    data[3] + "',N'" +
-                    TbAddYear.Text + "-12-31" + "',N'" +
-                    data[5] + "',N'" +
-                    data[6] + "',N'" +
-                    data[7] + "',N'" +
-                    data[8] + "')";
-            if (!ms.WriteData(Query, STATUS))
-                return false;
-        }
-        return true;
-    }
-
     private bool CopyInternetStudyDataContent(ArrayList _data, ArrayList QuestionID, ArrayList ThisYearQuestionID)
     {
         ManageSQL ms = new ManageSQL();
@@ -392,40 +260,6 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
         return true;
     }
 
-    private void AddYearQuestionnaire()
-    {
-        ManageSQL ms = new ManageSQL();
-        StringBuilder sb = new StringBuilder();
-        BaseClass bc = new BaseClass();
-        int YearNumber = -1;
-
-        if (TbAddYear.Text == "")
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoYear + "');", true);
-        else if (Int32.TryParse(TbAddYear.Text, out YearNumber))
-        {
-            string query = "select count(QuestionClassYear) from InternetStudy where QuestionClassYear='" + YearNumber + "'";
-            if (ms.GetRowNumbers(query, sb))
-            {
-                if (Convert.ToInt32(sb.ToString()) == 0)
-                {
-                    sb.Clear();
-                    if (AddClassData())
-                    {
-                        Session["QuestionClassYear"] = TbAddYear.Text;
-                        Response.Redirect("InternetStudyEditAddYear.aspx");
-                    }
-                }
-                else
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMExistYear + "');", true);
-                sb.Clear();
-            }
-        }
-        else
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('" + Resources.Resource.SMNoNumber + "');", true);
-        }
-    }
-
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
@@ -467,10 +301,6 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
             Session["ViewInternetStudyYearQuery"] = Query;
             TbYearA.Text = "";
             TbYearB.Text = "";
-        }
-        else if (ibt.ID == "ImgBtnAddYear")
-        {
-            AddYearQuestionnaire();
         }
     }
     protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)

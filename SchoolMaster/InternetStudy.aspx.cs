@@ -27,10 +27,6 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-
-        //Session["UserID"] = "fuck";
-        
 
         if (!IsPostBack)
         {

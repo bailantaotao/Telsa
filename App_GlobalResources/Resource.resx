@@ -124,7 +124,7 @@
     <value>网路自学</value>
   </data>
   <data name="HyKPI" xml:space="preserve">
-    <value>KPI</value>
+    <value>學校現有發展水平</value>
   </data>
   <data name="HyQuestionnaire" xml:space="preserve">
     <value>调查问卷管理</value>
@@ -491,5 +491,92 @@
   </data>
   <data name="TipViewQuestion" xml:space="preserve">
     <value>自学教材试题查看</value>
+  </data>
+  <data name="ButtonStartInput" xml:space="preserve">
+    <value>开始输入</value>
+  </data>
+  <data name="TipKPIAccessmentStandards" xml:space="preserve">
+    <value>评量标准</value>
+  </data>
+  <data name="TipKpiAnswer" xml:space="preserve">
+    <value>KPI自我诊断输入</value>
+  </data>
+  <data name="TipKPIDescription" xml:space="preserve">
+    <value>叙述</value>
+  </data>
+  <data name="TipKPIError" xml:space="preserve">
+    <value>取得资料时发生错误</value>
+  </data>
+  <data name="TipKpiManage" xml:space="preserve">
+    <value>KPI管理</value>
+  </data>
+  <data name="TipKpiScoreSearch" xml:space="preserve">
+    <value>KPI自我诊断成绩查询</value>
+  </data>
+  <data name="TipKPIFinish" xml:space="preserve">
+    <value>你已完成此操作</value>
+  </data>
+  <data name="TipKpiCycle" xml:space="preserve">
+    <value>周期</value>
+  </data>
+  <data name="TipKpiDeadline" xml:space="preserve">
+    <value>提交截止时间</value>
+  </data>
+  <data name="TipKpiLevel" xml:space="preserve">
+    <value>总分等级</value>
+  </data>
+  <data name="TipKpiList" xml:space="preserve">
+    <value>KPI自评列表</value>
+  </data>
+  <data name="TipKpiOperation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="TipKpiSN" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="TipKpiState" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="TipKpiYear" xml:space="preserve">
+    <value>KPI自评年份</value>
+  </data>
+  <data name="TipKPIComplete" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="TipKPIInComplete" xml:space="preserve">
+    <value>未完成</value>
+  </data>
+  <data name="TipKPIViewScore" xml:space="preserve">
+    <value>查看自评</value>
+  </data>
+  <data name="TipKPIDimensionName" xml:space="preserve">
+    <value>维度名称</value>
+  </data>
+  <data name="TipKPITotalScore" xml:space="preserve">
+    <value>总分</value>
+  </data>
+  <data name="TipKPIView" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="TipKPIDomain" xml:space="preserve">
+    <value>领域</value>
+  </data>
+  <data name="TipKPIScore" xml:space="preserve">
+    <value>评分</value>
+  </data>
+  <data name="TipKPIRealScore" xml:space="preserve">
+    <value>实际得分：</value>
+  </data>
+  <data name="TipKPISchoolNo" xml:space="preserve">
+    <value>学校代号： xxx</value>
+  </data>
+  <data name="TipKPISchoolScoreLevel" xml:space="preserve">
+    <value>学校总分等级：</value>
+  </data>
+  <data name="TipKPIDimension" xml:space="preserve">
+    <value>维度：</value>
+  </data>
+  <data name="TipKPINoAnswer" xml:space="preserve">
+    <value>您目前尚未作答</value>
   </data>
 </root>
