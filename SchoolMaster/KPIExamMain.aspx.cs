@@ -328,7 +328,14 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
                     "False')";
             if (!ms.WriteData(query, sb))
                 return;
+            status = getCycle(ref cycle, schoolName, ref KPIID);
+            if (!status)
+            {
+                return;
+            }
         }
+
+
                 
 
         //if(!ms.WriteData(query, sb))
