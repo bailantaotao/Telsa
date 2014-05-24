@@ -579,4 +579,7 @@
   <data name="TipKPINoAnswer" xml:space="preserve">
     <value>您目前尚未作答</value>
   </data>
+  <data name="TipKPICancelQuestionnaire" xml:space="preserve">
+    <value>開始進行問卷填寫，如放棄作答請直接點選取消即可</value>
+  </data>
 </root>
