@@ -68,7 +68,7 @@ public partial class SchoolMaster_UserControlQuestionAnswer : System.Web.UI.User
             }
             else
             {
-                pLabel[i].Text = eventArgs.AnswerItem[i].ToString();
+                pLabel[i].Text = eventArgs.AnswerItem[i].ToString() + "<br>";
             }
         }
     }

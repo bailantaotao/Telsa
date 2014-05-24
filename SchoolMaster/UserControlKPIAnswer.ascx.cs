@@ -47,7 +47,7 @@ public partial class SchoolMaster_UserControlKPIAnswer : System.Web.UI.UserContr
                     int Index = 0;
                     foreach (string desc in eventArgs.DescriptionItem)
                     {
-                        LbDescription.Text += "(" + (++Index) + ")- " + desc;
+                        LbDescription.Text += "(" + (++Index) + ")- " + desc + "<br />";
                     }
                 }
             }
