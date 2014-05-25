@@ -579,7 +579,34 @@
   <data name="TipKPINoAnswer" xml:space="preserve">
     <value>您目前尚未作答</value>
   </data>
+  <data name="BtnKPINotify" xml:space="preserve">
+    <value>发送系统通知</value>
+  </data>
+  <data name="DdlTypeCycle" xml:space="preserve">
+    <value>周期</value>
+  </data>
+  <data name="DdlTypeProvince" xml:space="preserve">
+    <value>省分</value>
+  </data>
+  <data name="DdlTypeSchoolname" xml:space="preserve">
+    <value>学校名称</value>
+  </data>
+  <data name="DdlTypeScoreLevel" xml:space="preserve">
+    <value>等级</value>
+  </data>
+  <data name="DdlTypeYear" xml:space="preserve">
+    <value>年度</value>
+  </data>
   <data name="TipKPICancelQuestionnaire" xml:space="preserve">
     <value>開始進行問卷填寫，如放棄作答請直接點選取消即可</value>
+  </data>
+  <data name="BtnKPINotifySingleSchool" xml:space="preserve">
+    <value>发送单校系统通知</value>
+  </data>
+  <data name="TipKPIAtLeastOne" xml:space="preserve">
+    <value>至少选择一个资料列</value>
+  </data>
+  <data name="TipKPINoRecord" xml:space="preserve">
+    <value>没有记录</value>
   </data>
 </root>
