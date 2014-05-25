@@ -14,7 +14,9 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     private string Query = string.Empty;
     private const string QuestionYear = "Year";
     private const string QuestionCycle = "Cycle";
+    private const string QuestionSchoolname = "schoolName";
     private const string QuestionDimension = "Dimension";
+    private const string QuestionScoreLevel = "ScoreLevel";
     private string Year = string.Empty;
     private string Cycle = string.Empty;
     private string ClassID = "ClassID";
@@ -25,9 +27,9 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["Year"]) || string.IsNullOrEmpty(Request["Cycle"]))
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
-        if (!Session["ClassCode"].ToString().Equals("0"))
+        if (!Session["ClassCode"].ToString().Equals("1"))
             Response.Redirect("../SessionOut.aspx");
         
 
@@ -46,8 +48,8 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                 SearchType();
             LoadInternetStudy(1);
         }
-        LbSchoolName.Text = Session["schoolName"].ToString();
-        LbSchoolScoreLevel.Text = Session["ScoreLevel"].ToString();
+        LbSchoolName.Text = Request["schoolName"].ToString();
+        LbSchoolScoreLevel.Text = Request["ScoreLevel"].ToString();
         LbRealScore.Text = Score.ToString();
         LbYear.Text = Year;
         LbCycle.Text = Cycle;
@@ -57,7 +59,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     private bool getKPIMainRecordID(StringBuilder sb)
     {
         ManageSQL ms = new ManageSQL();
-        string query = "select KPIRecordMain.ID from KPIRecordMain where KPIYear = '" + Year + "' and Cycle = '" + Cycle + "' and KPIRecordMain.SchoolName = N'" + Session["schoolName"].ToString() + "' ";
+        string query = "select KPIRecordMain.ID from KPIRecordMain where KPIYear = '" + Year + "' and Cycle = '" + Cycle + "' and KPIRecordMain.SchoolName = N'" + Request["schoolName"].ToString() + "' ";
         if (!ms.GetOneData(query, sb))
             return false;
         return true;
@@ -73,7 +75,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                 "left join KPIRecordDimensionsScore on KPIRecordDimensionsScore.DimensionID = KPIDimensionsNameMapping.DimensionsID " +
                 "and KPIRecordDimensionsScore.ID ='" + sb.ToString() + "' " +   
                 "left join KPIRecordMain on KPIRecordMain.ID = KPIRecordDimensionsScore.ID " +
-                "where KPIRecordMain.SchoolName = N'" + Session["schoolName"].ToString() + "' " +
+                "where KPIRecordMain.SchoolName = N'" + Request["schoolName"].ToString() + "' " +
                 "order by KPIDimensionsNameMapping.DimensionsID asc";
     }
 
@@ -167,7 +169,8 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                     string EncryptYearID = GetEncryptionString(QuestionYear, Year);
                     string EncryptCycleID = GetEncryptionString(QuestionCycle, Cycle);
                     string EncryptDimensionID = GetEncryptionString(QuestionDimension, domainid[0]);
-
+                    string EncryptSchoolname = GetEncryptionString(QuestionSchoolname, Request["schoolName"].ToString());
+                    string EncryptScoreLevel = GetEncryptionString(QuestionScoreLevel, Request["ScoreLevel"].ToString());
                     
 
                     if (i >= data.Count || !domainid[0].Equals(((string[])(data[i]))[4]))
@@ -181,7 +184,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         LbCompleted.Text += "0" + "</td>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                        LbCompleted.Text += "<a href='KPIExamScoreViewDomain.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptDimensionID + "'>" + Resources.Resource.TipKPIView + "</a>";
+                        LbCompleted.Text += "<a href='KPIExamScoreViewDomain.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptDimensionID + "&" + EncryptSchoolname + "&" + EncryptScoreLevel + "'>" + Resources.Resource.TipKPIView + "</a>";
                         LbCompleted.Text += "</td>";
                         LbCompleted.Text += "</tr>";
                         Flag++;
@@ -211,7 +214,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                     bool isComplete = false;
                     isBool = bool.TryParse((((string[])(data[i]))[3]), out isComplete);
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += "<a href='KPIExamScoreViewDomain.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptDimensionID + "'>" + Resources.Resource.TipKPIView + "</a>";
+                    LbCompleted.Text += "<a href='KPIExamScoreViewDomain.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptDimensionID + "&" + EncryptSchoolname + "&" + EncryptScoreLevel + "'>" + Resources.Resource.TipKPIView + "</a>";
                     LbCompleted.Text += "</td>";
 
                     LbCompleted.Text += "</tr>";
@@ -252,6 +255,6 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     }
     protected void BtnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("KPIExamScoreView.aspx");
+        Response.Redirect("KPIExamMain.aspx");
     }
 }
