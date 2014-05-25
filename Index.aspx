@@ -54,31 +54,31 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/InternetStudy.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlMonitor" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyFollowingMonitor %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlInstitution" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyRuleManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
             </div>
         </div>
