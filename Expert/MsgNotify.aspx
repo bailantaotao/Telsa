@@ -9,10 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <script language="javascript" type="text/javascript">
-        function Conversion2() {
-            var year = parseInt(document.getElementById('ViewDay').value.substr(0, 4)) - 1911;
-            document.getElementById('ViewDay').value = year + document.getElementById('ViewDay').value.substr(4, 8);
-        }
+        
     </script>
 </head>
 <body>
@@ -44,7 +41,7 @@
                 <td>
                     <asp:TextBox ID="TbExpirationDate" runat="server" Width="400px"></asp:TextBox>
                     <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="TbExpirationDate"
-                                    Enabled="True" TargetControlID="TbExpirationDate" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
+                                    Enabled="True" TargetControlID="TbExpirationDate" Format="yyyy/MM/dd"></asp:CalendarExtender>
                 </td>
             </tr>
             <tr>
@@ -55,7 +52,7 @@
             <tr>
                 <td colspan="2">             
                     <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnSend %>" OnClick="BtnSend_Click" />
-                    <asp:Button ID="BtnCancel" Text="<%$ Resources:Resource, BtnCancel %>" runat="server" OnClick="BtnCancel_Click" OnClientClick="return confirm('<%$ Resources:Resource, BtnCloseMsg %>'" />   
+                    <asp:Button ID="BtnCancel" Text="<%$ Resources:Resource, BtnCancel %>" runat="server" OnClick="BtnCancel_Click"/>   
                 </td>
             </tr>
         </table>

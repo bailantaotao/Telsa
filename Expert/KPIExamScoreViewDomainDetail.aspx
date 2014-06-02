@@ -84,13 +84,6 @@
                     <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipKpiManage %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <img src="../Image/zh-TW/TipBlack.png" />
-                </div>
-                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyBtnStudy" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipKpiAnswer %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="~/SchoolMaster/KPIExamMain.aspx"></asp:HyperLink>
-                </div>
-                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipRed.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
@@ -178,8 +171,11 @@
                             </td>
                         </tr>--%>
                        <tr>
+                           <td align="left">
+                               <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnKPINotifySingleSchool%>" OnClick="BtnNotify_Click" />
+                           </td>
                            <td align="right">
-                               <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnBack_Click" />
+                               <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack%>" OnClick="BtnBack_Click" />
                            </td>
                        </tr>
                     </table>
