@@ -29,7 +29,7 @@
             <tr>
                 <td colspan="3">
                     <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-    BorderWidth="1px" CellPadding="5" CellSpacing="1">
+                            BorderWidth="1px" CellPadding="5" CellSpacing="1">
                         <RowStyle BackColor="#ffffff" ForeColor="Black" />
                         <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                         <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
@@ -49,14 +49,6 @@
                             <asp:BoundField DataField="TotalScore" HeaderText="总分" ItemStyle-Width="70" />
                         </Columns>
                     </asp:GridView>
-                    <%--<asp:UpdatePanel ID="UpdateCompleted" runat="server">
-                        <ContentTemplate>
-                            <asp:Panel ID="PnSchool" runat="server"></asp:Panel>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="DdlPageSelect" EventName="SelectedIndexChanged" />
-                        </Triggers>
-                    </asp:UpdatePanel>--%>
                 </td>
             </tr>
         </table>

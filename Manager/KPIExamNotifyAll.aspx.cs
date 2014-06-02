@@ -76,7 +76,7 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
         dt.Columns.AddRange(new DataColumn[3] { new DataColumn("SchoolName"), new DataColumn("ScoreLevel"), new DataColumn("TotalScore") });
         foreach (string[] d in data)
         {
-            dt.Rows.Add(d[0], string.IsNullOrEmpty(d[1]) ? "E" : d[1], string.IsNullOrEmpty(d[1]) ? "0" : d[2]);
+            dt.Rows.Add(d[0], string.IsNullOrEmpty(d[2]) ? "E" : d[2], string.IsNullOrEmpty(d[1]) ? "0" : d[1]);
         }
             
         GvSchool.DataSource = dt;

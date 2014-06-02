@@ -34,8 +34,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("1"))
-            Response.Redirect("../SessionOut.aspx");      
-
+            Response.Redirect("../SessionOut.aspx");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -151,5 +150,27 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
     protected void BtnBack_Click(object sender, EventArgs e)
     {
         Response.Redirect("KPIExamScoreViewDomain.aspx?" + QuestionYear + "=" + Year + "&" + QuestionCycle + "=" + Cycle + "&" + QuestionDimension + "=" + Dimension + "&" + QuestionSchoolname + "=" + SchoolName + "&" + QuestionScoreLevel + "=" + ScoreLevel );    
+    }
+    protected void BtnNotify_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        if (getSchoolMaster(sb))
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgNotify.aspx?" + "SM=" + sb.ToString() + "', '', config='height=500,width=700')", true);
+        else
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('No data');", true);
+    }
+
+    private bool getSchoolMaster(StringBuilder sb)
+    {
+        ManageSQL ms = new ManageSQL();
+        string query = "select UserID from Account where School=N'" + Request["schoolName"].ToString() + "'";
+        if (ms.GetOneData(query, sb))
+        {
+            if (string.IsNullOrEmpty(sb.ToString()))
+                return false;
+            return true;
+        }
+        return false;
+
     }
 }

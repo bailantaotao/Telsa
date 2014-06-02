@@ -36,7 +36,7 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                 }
             }
         }
@@ -105,26 +105,26 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
 
                         if (!ms.WriteData(Query, sb))
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                             break;
                         }
 
                         if (string.IsNullOrEmpty(sb.ToString()))
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                             break;
                         }
 
                         if (Convert.ToInt32(sb.ToString()) == 0)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                             break;
                         }
 
                         Query = "select top 1 EmailID from MsgSubject order by EmailID desc";
                         if (!ms.GetOneData(Query, sb))
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                             break;
                         }
 
@@ -168,23 +168,23 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
 
                 if (!ms.WriteData(Query, sb))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                 }
 
                 if (string.IsNullOrEmpty(sb.ToString()))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                 }
 
                 if (Convert.ToInt32(sb.ToString()) == 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                 }
 
                 Query = "select top 1 EmailID from MsgSubject order by EmailID desc";
                 if (!ms.GetOneData(Query, sb))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close()", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                 }
 
                 Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID) VALUES ('" +
@@ -217,6 +217,6 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
     {
         if(Session["NotifyAll"] != null)
             Session.Remove("NotifyAll");
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Close", "window.close()", true);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Close", "window.close();", true);
     }
 }
