@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProvinceIndex.aspx.cs" Inherits="ProvinceIndex" %>
 
 <!DOCTYPE html>
 
@@ -54,12 +54,12 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
-                <img src="Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/InternetStudy.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
+                <img src="../Image/zh-TW/TipWhite.png" />
+                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Expert/ViewInternetStudyScore.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
+                <img src="../Image/zh-TW/TipWhite.png" />
+                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrL="~/Expert/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="Image/zh-TW/TipWhite.png" />
@@ -104,25 +104,30 @@
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">
                         <tr>
-                            <td colspan="2" align="left" style="vertical-align:top;">
+                            <td colspan="3" align="left" style="vertical-align:top;">
                                 公佈欄
                             </td>                            
                         </tr>
                         <tr>
-                            <td colspan="2" style="height=200px;">
+                            <td colspan="3" style="height=200px;">
                                 <asp:Panel ID="PnSystem" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
 
                                 </asp:Panel>
                             </td>
                         </tr>
                         <tr>
-                            <td align="left" style="width: 50%">
-                                <asp:Panel ID="PnProvinceMsg" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
+                            <td align="left" style="width: 33%">
+                                <asp:Panel ID="PnSchoolMaster" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
 
                                 </asp:Panel>
                             </td>
-                            <td align="left" style="width: 50%">
-                                <asp:Panel ID="PnMingderMsg" runat="server" ScrollBars="Auto" Height="200px" CssClass="paneltop">
+                            <td align="left" style="width: 33%">
+                                <asp:Panel ID="PnMingde" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
+
+                                </asp:Panel>
+                            </td>
+                            <td align="left" style="width: 33%">
+                                <asp:Panel ID="PnSystemManager" runat="server" ScrollBars="Auto" Height="200px" CssClass="paneltop">
                                     
                                 </asp:Panel>
                             </td>

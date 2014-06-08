@@ -609,4 +609,13 @@
   <data name="TipKPINoRecord" xml:space="preserve">
     <value>没有记录</value>
   </data>
+  <data name="TipSystemMsg" xml:space="preserve">
+    <value>捐方信息公告</value>
+  </data>
+  <data name="TipSchoolMasterMsg" xml:space="preserve">
+    <value>校长用户传送之讯息</value>
+  </data>
+  <data name="TipSystemManagerMsg" xml:space="preserve">
+    <value>管理者传送之讯息</value>
+  </data>
 </root>

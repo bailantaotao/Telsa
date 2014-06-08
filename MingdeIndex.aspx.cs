@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Index : System.Web.UI.Page
+public partial class MingdeIndex : System.Web.UI.Page
 {
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
@@ -14,7 +14,9 @@ public partial class Index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-            Response.Redirect("SessionOut.aspx");
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("1"))
+            Response.Redirect("../SessionOut.aspx");
 
         LbWelcome.Text = Resources.Resource.TipWelcome + " " + Session["UserName"].ToString() ;
         LbOpenPermission.Text = Resources.Resource.TipOpenPermission + Session["OpenPermissionDate"].ToString();
@@ -30,7 +32,7 @@ public partial class Index : System.Web.UI.Page
         IndexFactory MingdeExpert = new ConcreateFactory(Session["UserID"].ToString());
         MingdeExpert.prepareNotification(IndexFactory.DATA_TYPE.MingdeExpert);
         data = (ArrayList)MingdeExpert.notificationSet.Clone();
-        LoadMsg(PnMingderMsg, data, IndexFactory.DATA_TYPE.MingdeExpert);
+        LoadMsg(PnSystemManager, data, IndexFactory.DATA_TYPE.MingdeExpert);
 
         IndexFactory System = new ConcreateFactory(Session["UserID"].ToString());
         System.prepareNotification(IndexFactory.DATA_TYPE.System);

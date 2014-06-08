@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SystemManagerIndex.aspx.cs" Inherits="SystemManagerIndex" %>
 
 <!DOCTYPE html>
 
@@ -54,12 +54,12 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
-                <img src="Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/InternetStudy.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
+                <img src="../Image/zh-TW/TipWhite.png" />
+                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Manager/InternetStudyEdit.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
+                <img src="../Image/zh-TW/TipWhite.png" />
+                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Manager/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="Image/zh-TW/TipWhite.png" />
@@ -116,14 +116,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="left" style="width: 50%">
-                                <asp:Panel ID="PnProvinceMsg" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
+                            <td align="left" colspan="2" style="width: 33%">
+                                <asp:Panel ID="PnMingde" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
 
-                                </asp:Panel>
-                            </td>
-                            <td align="left" style="width: 50%">
-                                <asp:Panel ID="PnMingderMsg" runat="server" ScrollBars="Auto" Height="200px" CssClass="paneltop">
-                                    
                                 </asp:Panel>
                             </td>
                         </tr>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MingdeIndex.aspx.cs" Inherits="MingdeIndex" %>
 
 <!DOCTYPE html>
 
@@ -54,12 +54,12 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
-                <img src="Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/InternetStudy.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
+                <img src="../Image/zh-TW/TipWhite.png" />
+                <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Expert/ViewInternetStudyScore.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
+                <img src="../Image/zh-TW/TipWhite.png" />
+                <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrL="~/Expert/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="Image/zh-TW/TipWhite.png" />
@@ -122,7 +122,7 @@
                                 </asp:Panel>
                             </td>
                             <td align="left" style="width: 50%">
-                                <asp:Panel ID="PnMingderMsg" runat="server" ScrollBars="Auto" Height="200px" CssClass="paneltop">
+                                <asp:Panel ID="PnSystemManager" runat="server" ScrollBars="Auto" Height="200px" CssClass="paneltop">
                                     
                                 </asp:Panel>
                             </td>

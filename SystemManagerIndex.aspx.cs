@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Index : System.Web.UI.Page
+public partial class SystemManagerIndex : System.Web.UI.Page
 {
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
@@ -14,7 +14,9 @@ public partial class Index : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-            Response.Redirect("SessionOut.aspx");
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("2"))
+            Response.Redirect("../SessionOut.aspx");
 
         LbWelcome.Text = Resources.Resource.TipWelcome + " " + Session["UserName"].ToString() ;
         LbOpenPermission.Text = Resources.Resource.TipOpenPermission + Session["OpenPermissionDate"].ToString();
@@ -22,15 +24,10 @@ public partial class Index : System.Web.UI.Page
 
         //LoadMsg(true, PnMingderMsg);
         //LoadMsg(false, PnProvinceMsg);
-        IndexFactory Expert = new ConcreateFactory(Session["UserID"].ToString());
-        Expert.prepareNotification(IndexFactory.DATA_TYPE.Expert);
-        ArrayList data = (ArrayList)Expert.notificationSet.Clone();
-        LoadMsg(PnProvinceMsg, data, IndexFactory.DATA_TYPE.Expert);
-
         IndexFactory MingdeExpert = new ConcreateFactory(Session["UserID"].ToString());
         MingdeExpert.prepareNotification(IndexFactory.DATA_TYPE.MingdeExpert);
-        data = (ArrayList)MingdeExpert.notificationSet.Clone();
-        LoadMsg(PnMingderMsg, data, IndexFactory.DATA_TYPE.MingdeExpert);
+        ArrayList data = (ArrayList)MingdeExpert.notificationSet.Clone();
+        LoadMsg(PnMingde, data, IndexFactory.DATA_TYPE.MingdeExpert);
 
         IndexFactory System = new ConcreateFactory(Session["UserID"].ToString());
         System.prepareNotification(IndexFactory.DATA_TYPE.System);
@@ -56,7 +53,7 @@ public partial class Index : System.Web.UI.Page
         Introduction.Text += "<br />";
         Introduction.Text += "---------------------------------------------------------<br />";
         if (type != IndexFactory.DATA_TYPE.System)
-            Introduction.Width = 362;
+            Introduction.Width = 724;
         pn.Controls.Add(Introduction);
 
         if (data.Count == 0)
@@ -71,7 +68,7 @@ public partial class Index : System.Web.UI.Page
             lb.Text += Resources.Resource.TipSubject + "：" + box[0] + "<br />";
             lb.Text += Resources.Resource.TipMessage + "：" + box[1] + "<br />";
             if (type != IndexFactory.DATA_TYPE.System)
-                lb.Width = 362;
+                lb.Width = 724;
             pn.Controls.Add(lb);
         }
 

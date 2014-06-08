@@ -89,6 +89,14 @@ public partial class _Default : System.Web.UI.Page
                         if (ms.GetOneData(IsMingder, sb))
                         {
                             Session["IsMingDer"] = sb.ToString();
+                            if (sb.ToString().ToLower().Equals("true"))
+                            {
+                                Response.Redirect("MingdeIndex.aspx");
+                            }
+                            else
+                            {
+                                Response.Redirect("ProvinceIndex.aspx");
+                            }
                         }
                     }
                     if (Session["ClassCode"].ToString().Equals("0"))
@@ -98,8 +106,8 @@ public partial class _Default : System.Web.UI.Page
                         Response.Redirect("Index.aspx");
                     }
                     else if (Session["ClassCode"].ToString().Equals("1"))
-                    {
-                        Response.Redirect("Expert/ViewInternetStudyScore.aspx");
+                    {                        
+                        //Response.Redirect("Expert/ViewInternetStudyScore.aspx");
                         /*
                         if (Session["IsMingDer"].ToString().Equals("True"))
                             ClientScriptArea.Text = bc.responseMsg("你是明德專家");
@@ -110,7 +118,8 @@ public partial class _Default : System.Web.UI.Page
                     else if (Session["ClassCode"].ToString().Equals("2"))
                     {
                         //ClientScriptArea.Text = bc.responseMsg("你是系統管理員");
-                        Response.Redirect("Manager/InternetStudyEdit.aspx");
+                        //Response.Redirect("Manager/InternetStudyEdit.aspx");
+                        Response.Redirect("SystemManagerIndex.aspx");
                     }
                     //Response.Redirect("Index.aspx");
                     
