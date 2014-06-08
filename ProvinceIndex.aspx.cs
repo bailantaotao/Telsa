@@ -24,22 +24,22 @@ public partial class ProvinceIndex : System.Web.UI.Page
 
         //LoadMsg(true, PnMingderMsg);
         //LoadMsg(false, PnProvinceMsg);
-        IndexFactory ShoolMaster = new ConcreateFactory(Session["UserID"].ToString());
+        IndexFactory ShoolMaster = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
         ShoolMaster.prepareNotification(IndexFactory.DATA_TYPE.SchoolMaster);
         ArrayList data = (ArrayList)ShoolMaster.notificationSet.Clone();
         LoadMsg(PnSchoolMaster, data, IndexFactory.DATA_TYPE.SchoolMaster);
 
-        IndexFactory MingdeExpert = new ConcreateFactory(Session["UserID"].ToString());
+        IndexFactory MingdeExpert = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
         MingdeExpert.prepareNotification(IndexFactory.DATA_TYPE.MingdeExpert);
         data = (ArrayList)MingdeExpert.notificationSet.Clone();
         LoadMsg(PnMingde, data, IndexFactory.DATA_TYPE.MingdeExpert);
 
-        IndexFactory SystemManager = new ConcreateFactory(Session["UserID"].ToString());
+        IndexFactory SystemManager = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
         SystemManager.prepareNotification(IndexFactory.DATA_TYPE.SystemManager);
         data = (ArrayList)SystemManager.notificationSet.Clone();
         LoadMsg(PnSystemManager, data, IndexFactory.DATA_TYPE.SystemManager);
 
-        IndexFactory System = new ConcreateFactory(Session["UserID"].ToString());
+        IndexFactory System = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
         System.prepareNotification(IndexFactory.DATA_TYPE.System);
         data = (ArrayList)System.notificationSet.Clone();
         LoadMsg(PnSystem, data, IndexFactory.DATA_TYPE.System);
@@ -51,7 +51,7 @@ public partial class ProvinceIndex : System.Web.UI.Page
         Label Introduction = new Label();
         if (type == IndexFactory.DATA_TYPE.MingdeExpert)
             Introduction.Text = Resources.Resource.TipMingderMsg;
-        else if (type == IndexFactory.DATA_TYPE.Expert)
+        else if (type == IndexFactory.DATA_TYPE.FromExpertToMingde)
             Introduction.Text = Resources.Resource.TipProvinceMsg;
         else if (type == IndexFactory.DATA_TYPE.System)
             Introduction.Text = Resources.Resource.TipSystemMsg;
@@ -59,6 +59,8 @@ public partial class ProvinceIndex : System.Web.UI.Page
             Introduction.Text = Resources.Resource.TipSchoolMasterMsg;
         else if (type == IndexFactory.DATA_TYPE.SystemManager)
             Introduction.Text = Resources.Resource.TipSystemManagerMsg;
+        else if (type == IndexFactory.DATA_TYPE.ProvinceAnnocement)
+            Introduction.Text = Resources.Resource.TipProvinceAnnocement;
 
         Introduction.Text += "<br />";
         Introduction.Text += "---------------------------------------------------------<br />";
@@ -88,5 +90,15 @@ public partial class ProvinceIndex : System.Web.UI.Page
     protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("Default.aspx");
+    }
+
+    protected void BtnSendMsg_Click(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgNotify.aspx', '', config='height=500,width=700')", true);
+    }
+
+    protected void BtnSendAnnocement_Click(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgAnnocement.aspx', '', config='height=500,width=700')", true);
     }
 }

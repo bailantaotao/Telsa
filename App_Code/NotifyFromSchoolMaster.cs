@@ -25,7 +25,8 @@ public class NotifyFromSchoolMaster : Notify
             "where " +
             "MsgUserData.ReceiverID='" + UserID + "' and " +
             "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-            "Account.ClassCode='" + "0" + "'";
+            "Account.ClassCode='" + "0" + "' " +
+            "MsgUserData.Annocement = 'false'";
     }
 
 }

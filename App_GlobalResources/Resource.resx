@@ -618,4 +618,16 @@
   <data name="TipSystemManagerMsg" xml:space="preserve">
     <value>管理者传送之讯息</value>
   </data>
+  <data name="TipSendMsg" xml:space="preserve">
+    <value>发送讯息</value>
+  </data>
+  <data name="TipReceiverError" xml:space="preserve">
+    <value>请选择一个接收者</value>
+  </data>
+  <data name="TipProvinceAnnocement" xml:space="preserve">
+    <value>省方信息公告</value>
+  </data>
+  <data name="BtnSendAnnocement" xml:space="preserve">
+    <value>发送公告</value>
+  </data>
 </root>

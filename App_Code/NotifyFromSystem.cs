@@ -23,7 +23,9 @@ public class NotifyFromSystem : Notify
         "left join Account on Account.UserID = MsgUserData.SenderID " +
         "left join ExpertAuthority on Account.UserID = ExpertAuthority.UserID " +
         "where " +
+        "MsgUserData.ReceiverID='" + UserID + "' and " +
         "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-        "Account.ClassCode='" + "2" + "'";
+        "Account.ClassCode='" + "2" + "' and " + 
+        "MsgUserData.Annocement = 'True'";
     }
 }

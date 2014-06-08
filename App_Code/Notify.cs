@@ -9,7 +9,8 @@ using System.Web;
 public abstract class Notify
 {
     public string UserID = string.Empty;
-    
+    public string Zipcode = string.Empty;
+
 	public Notify(string UserID)
 	{
 		//
@@ -17,6 +18,11 @@ public abstract class Notify
 		//
         this.UserID = UserID;
 	}
+    public Notify()
+    {
+ 
+    }
+
     public abstract string NotifyMessage();
 
     //public abstract string ShoolMasterNotify();

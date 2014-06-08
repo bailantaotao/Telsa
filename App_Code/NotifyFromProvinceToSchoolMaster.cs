@@ -6,15 +6,22 @@ using System.Web;
 /// <summary>
 /// NotifyProvince 的摘要描述
 /// </summary>
-public class NotifyFromProvince: Notify
+public class NotifyFromProvinceToSchoolMaster: Notify
 {
-    public NotifyFromProvince(string UserID)
+    public NotifyFromProvinceToSchoolMaster(string UserID)
         : base(UserID)
 	{
 		//
 		// TODO: 在這裡新增建構函式邏輯
 		//
 	}
+
+    public NotifyFromProvinceToSchoolMaster(string UserID, string Zipcode)
+    {
+        this.UserID = UserID;
+        this.Zipcode = Zipcode;
+    }
+
     public override string NotifyMessage()
     {
         return "select Subjects, Msg, UserName, SendTime from MsgUserData " +
@@ -24,6 +31,8 @@ public class NotifyFromProvince: Notify
        "where " +
        "MsgUserData.ReceiverID='" + UserID + "' and " +
        "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-       "ExpertAuthority.IsMingDer='" + false + "'";
+       "ExpertAuthority.IsMingDer='" + false + "' " +
+       "Account.zipcode='"+Zipcode+"' " +
+       "MsgUserData.Annocement = 'false'";
     }
 }

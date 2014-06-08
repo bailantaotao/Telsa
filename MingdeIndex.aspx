@@ -83,8 +83,13 @@
             </div>
         </div>
         <div id="BlockRight">
-            <div style="text-align:right">
-                <asp:ImageButton ID="ImgBtnLogout" runat="server"  ImageUrl="<%$ Resources:Resource, ImgIndexUrlLogout%>" OnClick="ImgBtnLogout_Click"/>
+            <div style="text-align:right; height:37px">
+                <div style="float:right;">
+                    <asp:ImageButton ID="ImgBtnLogout" runat="server"  ImageUrl="<%$ Resources:Resource, ImgIndexUrlLogout%>" OnClick="ImgBtnLogout_Click"/>
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="BtnSendMsg" runat="server" Text="<%$ Resources:Resource, TipSendMsg%>" OnClick="BtnSendMsg_Click" />
+                </div>
             </div>
             <div id="BlockRightUp">
                 <div style="text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">

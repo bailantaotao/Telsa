@@ -6,8 +6,9 @@ using System.Web;
 /// <summary>
 /// CreateReceiver 的摘要描述
 /// </summary>
-public class CreateReceiver
+public abstract class CreateReceiver
 {
+    public string Zipcode = string.Empty;
     public CreateReceiver()
 	{
 		//

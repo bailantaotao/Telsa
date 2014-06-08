@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// NotifyMingde 的摘要描述
+/// NotifyFromProvinceAnnocement 的摘要描述
 /// </summary>
-public class NotifyFromMingde : Notify
+public class NotifyFromProvinceAnnocement : Notify
 {
-    public NotifyFromMingde(string UserID)
+	public NotifyFromProvinceAnnocement(string UserID)
         : base(UserID)
 	{
 		//
@@ -25,7 +25,7 @@ public class NotifyFromMingde : Notify
                 "where " +
                 "MsgUserData.ReceiverID='" + UserID + "' and " +
                 "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-                "ExpertAuthority.IsMingDer='" + true + "' " +
-                "MsgUserData.Annocement = 'false'";
+                "Account.ClassCode='" + "1" + "' and " + 
+                "MsgUserData.Annocement = 'True'";
     }
 }
