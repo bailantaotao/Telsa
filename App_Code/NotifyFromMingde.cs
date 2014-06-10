@@ -25,7 +25,7 @@ public class NotifyFromMingde : Notify
                 "where " +
                 "MsgUserData.ReceiverID='" + UserID + "' and " +
                 "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-                "ExpertAuthority.IsMingDer='" + true + "' and" +
+                "ExpertAuthority.IsMingDer='" + true + "' and " +
                 "MsgUserData.Annocement = 'false'";
     }
 }

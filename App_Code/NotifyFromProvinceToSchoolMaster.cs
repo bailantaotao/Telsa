@@ -31,7 +31,7 @@ public class NotifyFromProvinceToSchoolMaster: Notify
        "where " +
        "MsgUserData.ReceiverID='" + UserID + "' and " +
        "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-       "ExpertAuthority.IsMingDer='" + false + "' and" +
+       "ExpertAuthority.IsMingDer='" + false + "' and " +
        "Account.zipcode='"+Zipcode+"' and" +
        "MsgUserData.Annocement = 'false'";
     }
