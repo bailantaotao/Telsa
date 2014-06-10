@@ -33,6 +33,7 @@ public partial class SystemManagerIndex : System.Web.UI.Page
         System.prepareNotification(IndexFactory.DATA_TYPE.System);
         data = (ArrayList)System.notificationSet.Clone();
         LoadMsg(PnSystem, data, IndexFactory.DATA_TYPE.System);
+
     }
 
     private void LoadMsg(Panel pn, ArrayList data, IndexFactory.DATA_TYPE type)

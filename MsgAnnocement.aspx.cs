@@ -66,6 +66,8 @@ public partial class MsgAnnocement : System.Web.UI.Page
                 receiverCollection = new AddMultiReceiver(receiverCollection).CopySet();
                 receiverCollection.prepareReceiver(IndexFactory.DATA_TYPE.SchoolMaster);
                 receiverCollection = new AddMultiReceiver(receiverCollection).CopySet();
+                receiverCollection.prepareReceiver(IndexFactory.DATA_TYPE.SystemManager);
+                receiverCollection = new AddMultiReceiver(receiverCollection).CopySet();
                 receiverCollection.completeMultiCal();
             }
             else if (Session["ClassCode"].ToString().Equals("1"))
