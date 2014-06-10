@@ -103,7 +103,7 @@
                                 <asp:Label ID="LbSchoolName" runat="server" Text=""></asp:Label>
                             </td>
                             <td align="right"> 
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipKPISchoolNo %>"></asp:Label>                                
+                                <asp:Label ID="LbSchoolNo" runat="server" Text="<%$ Resources:Resource, TipKPISchoolNo %>"></asp:Label>                                
                             </td>
                         </tr>
                        <tr>

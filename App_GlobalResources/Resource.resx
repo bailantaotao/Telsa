@@ -568,7 +568,7 @@
     <value>实际得分：</value>
   </data>
   <data name="TipKPISchoolNo" xml:space="preserve">
-    <value>学校代号： xxx</value>
+    <value>学校代号： </value>
   </data>
   <data name="TipKPISchoolScoreLevel" xml:space="preserve">
     <value>学校总分等级：</value>

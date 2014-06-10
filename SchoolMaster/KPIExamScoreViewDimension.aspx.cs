@@ -29,8 +29,8 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
-        
 
+        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + Session["UserID"].ToString();
     }
 
     protected void Page_Load(object sender, EventArgs e)
