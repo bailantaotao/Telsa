@@ -52,7 +52,7 @@ public partial class MsgNotify : System.Web.UI.Page
         {
             receiverCollection.prepareReceiver(IndexFactory.DATA_TYPE.FromExpertToSchoolMaster);
             receiverCollection = new AddMultiReceiver(receiverCollection).CopySet();
-            receiverCollection.prepareReceiver(IndexFactory.DATA_TYPE.FromExpertToMingde);
+            receiverCollection.prepareReceiver(IndexFactory.DATA_TYPE.MingdeExpert);
             receiverCollection = new AddMultiReceiver(receiverCollection).CopySet();
             receiverCollection.completeMultiCal();
         }
