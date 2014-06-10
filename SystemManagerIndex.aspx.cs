@@ -14,9 +14,9 @@ public partial class SystemManagerIndex : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-            Response.Redirect("../SessionOut.aspx");
+            Response.Redirect("SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
-            Response.Redirect("../SessionOut.aspx");
+            Response.Redirect("SessionOut.aspx");
 
         LbWelcome.Text = Resources.Resource.TipWelcome + " " + Session["UserName"].ToString() ;
         LbOpenPermission.Text = Resources.Resource.TipOpenPermission + Session["OpenPermissionDate"].ToString();

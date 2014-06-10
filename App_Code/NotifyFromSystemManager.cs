@@ -24,6 +24,7 @@ public class NotifyFromSystemManager : Notify
             "where " +
             "MsgUserData.ReceiverID='" + UserID + "' and " +
             "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-            "Account.ClassCode='" + "2" + "'";
+            "Account.ClassCode='" + "2" + "' and " +
+            "MsgUserData.Annocement = 'False'"; 
     }
 }
