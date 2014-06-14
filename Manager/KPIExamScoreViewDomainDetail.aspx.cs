@@ -34,8 +34,8 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
-            Response.Redirect("../SessionOut.aspx");      
-
+            Response.Redirect("../SessionOut.aspx");
+        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + Session["UserID"].ToString();
     }
 
     protected void Page_Load(object sender, EventArgs e)

@@ -20,35 +20,51 @@ public partial class Index : System.Web.UI.Page
         LbOpenPermission.Text = Resources.Resource.TipOpenPermission + Session["OpenPermissionDate"].ToString();
         LbLastLogin.Text = Resources.Resource.TipLastLogin + Session["LastLoginTime"].ToString();
 
-        LoadMsg(true, PnMingderMsg);
-        LoadMsg(false, PnProvinceMsg);
+        //LoadMsg(true, PnMingderMsg);
+        //LoadMsg(false, PnProvinceMsg);
+        IndexFactory Expert = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
+        Expert.prepareNotification(IndexFactory.DATA_TYPE.FromExpertToMingde);
+        ArrayList data = (ArrayList)Expert.notificationSet.Clone();
+        LoadMsg(PnProvinceMsg, data, IndexFactory.DATA_TYPE.FromExpertToMingde);
+
+        IndexFactory MingdeExpert = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
+        MingdeExpert.prepareNotification(IndexFactory.DATA_TYPE.MingdeExpert);
+        data = (ArrayList)MingdeExpert.notificationSet.Clone();
+        LoadMsg(PnMingderMsg, data, IndexFactory.DATA_TYPE.MingdeExpert);
+
+        IndexFactory System = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
+        System.prepareNotification(IndexFactory.DATA_TYPE.System);
+        data = (ArrayList)System.notificationSet.Clone();
+        LoadMsg(PnSystem, data, IndexFactory.DATA_TYPE.System);
+
+        IndexFactory ProvinceAnnocement = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
+        ProvinceAnnocement.prepareNotification(IndexFactory.DATA_TYPE.ProvinceAnnocement);
+        data = (ArrayList)ProvinceAnnocement.notificationSet.Clone();
+        LoadMsg(PnProvince, data, IndexFactory.DATA_TYPE.ProvinceAnnocement);
     }
 
-    private void LoadMsg(bool IsMingder, Panel pn)
+    private void LoadMsg(Panel pn, ArrayList data, IndexFactory.DATA_TYPE type)
     {
-        ManageSQL ms = new ManageSQL();
-        ArrayList data = new ArrayList();
-        string query = "select Subjects, Msg, UserName, SendTime from MsgUserData " +
-                        "left join MsgSubject on MsgUserData.EmailID = MsgSubject.EmailID " +
-                        "left join Account on Account.UserID = MsgUserData.SenderID " +
-                        "left join ExpertAuthority on Account.UserID = ExpertAuthority.UserID " +
-                        "where " +
-                        "MsgUserData.ReceiverID = '" + Session["UserID"].ToString() + "' and " +
-                        "GETDATE() <= MsgSubject.NotifyDeadLine and " +
-                        "ExpertAuthority.IsMingDer = '"+IsMingder+"'";
-
         
         Label Introduction = new Label();
-        Introduction.Text = (IsMingder == true) ? Introduction.Text = Resources.Resource.TipMingderMsg : Resources.Resource.TipProvinceMsg;
+        if (type == IndexFactory.DATA_TYPE.MingdeExpert)
+            Introduction.Text = Resources.Resource.TipMingderMsg;
+        else if (type == IndexFactory.DATA_TYPE.FromExpertToMingde)
+            Introduction.Text = Resources.Resource.TipProvinceMsg;
+        else if (type == IndexFactory.DATA_TYPE.System)
+            Introduction.Text = Resources.Resource.TipSystemMsg;
+        else if (type == IndexFactory.DATA_TYPE.SchoolMaster)
+            Introduction.Text = Resources.Resource.TipSchoolMasterMsg;
+        else if (type == IndexFactory.DATA_TYPE.SystemManager)
+            Introduction.Text = Resources.Resource.TipSystemManagerMsg;
+        else if (type == IndexFactory.DATA_TYPE.ProvinceAnnocement)
+            Introduction.Text = Resources.Resource.TipProvinceAnnocement;
+
         Introduction.Text += "<br />";
         Introduction.Text += "---------------------------------------------------------<br />";
-        Introduction.Width = 362;
+        if (type != IndexFactory.DATA_TYPE.System)
+            Introduction.Width = 362;
         pn.Controls.Add(Introduction);
-
-        if (!ms.GetAllColumnData(query, data))
-        {
-            return;
-        }
 
         if (data.Count == 0)
         {
@@ -61,7 +77,8 @@ public partial class Index : System.Web.UI.Page
             lb.Text = box[2] + " " + box[3].Split(' ')[0] + "<br />";
             lb.Text += Resources.Resource.TipSubject + "：" + box[0] + "<br />";
             lb.Text += Resources.Resource.TipMessage + "：" + box[1] + "<br />";
-            lb.Width = 362;
+            if (type != IndexFactory.DATA_TYPE.System)
+                lb.Width = 362;
             pn.Controls.Add(lb);
         }
 
@@ -71,5 +88,10 @@ public partial class Index : System.Web.UI.Page
     protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("Default.aspx");
+    }
+
+    protected void BtnSendMsg_Click(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgNotify.aspx', '', config='height=500,width=700')", true);
     }
 }
