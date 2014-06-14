@@ -128,11 +128,12 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
                             break;
                         }
 
-                        Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID) VALUES ('" +
+                        Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID, Annocement) VALUES ('" +
                                 userid + "','" +
                                 "False" + "','" +
                                 sb.ToString() + "','" +
-                                Session["UserID"].ToString() + "')";
+                                Session["UserID"].ToString() + "','" +
+                                "false" + "')";
 
                         if (!ms.WriteData(Query, sb))
                         {
@@ -187,11 +188,12 @@ public partial class Manager_MsgNotify : System.Web.UI.Page
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('oops, we have an error.');window.opener=null;window.close();", true);
                 }
 
-                Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID) VALUES ('" +
+                Query = "insert into MsgUserData (ReceiverID, ReceiverIsReadMsg, EmailID, SenderID, Annocement) VALUES ('" +
                         Request["SM"].ToString() + "','" +
                         "False" + "','" +
                         sb.ToString() + "','" +
-                        Session["UserID"].ToString() + "')";
+                        Session["UserID"].ToString() + "','" +
+                        "false" + "')";
 
                 if (!ms.WriteData(Query, sb))
                 {

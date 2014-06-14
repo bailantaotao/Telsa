@@ -83,8 +83,13 @@
             </div>
         </div>
         <div id="BlockRight">
-            <div style="text-align:right">
-                <asp:ImageButton ID="ImgBtnLogout" runat="server"  ImageUrl="<%$ Resources:Resource, ImgIndexUrlLogout%>" OnClick="ImgBtnLogout_Click"/>
+            <div style="text-align:right; height:37px">
+                <div style="float:right;">
+                    <asp:ImageButton ID="ImgBtnLogout" runat="server"  ImageUrl="<%$ Resources:Resource, ImgIndexUrlLogout%>" OnClick="ImgBtnLogout_Click"/>
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="BtnSendMsg" runat="server" Text="<%$ Resources:Resource, TipSendMsg%>" OnClick="BtnSendMsg_Click" />
+                </div>
             </div>
             <div id="BlockRightUp">
                 <div style="text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
@@ -104,8 +109,20 @@
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">
                         <tr>
-                            <td colspan="2" align="left" style="height:200px; vertical-align:top;">
+                            <td colspan="2" align="left" style="vertical-align:top;">
                                 公佈欄
+                            </td>                            
+                        </tr>
+                        <tr>
+                            <td align="left" style="width: 50%">
+                                <asp:Panel ID="PnSystem" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
+
+                                </asp:Panel>
+                            </td>
+                            <td align="left" style="width: 50%">
+                                <asp:Panel ID="PnProvince" runat="server" ScrollBars="Auto"  Height="200px" CssClass="paneltop">
+
+                                </asp:Panel>
                             </td>
                         </tr>
                         <tr>
