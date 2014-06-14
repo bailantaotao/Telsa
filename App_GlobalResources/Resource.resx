@@ -630,4 +630,13 @@
   <data name="BtnSendAnnocement" xml:space="preserve">
     <value>发送公告</value>
   </data>
+  <data name="DdlTypeState" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="TipKPIStateFinish" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="TipKPIStateUnFinish" xml:space="preserve">
+    <value>未完成</value>
+  </data>
 </root>

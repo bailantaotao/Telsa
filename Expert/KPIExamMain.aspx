@@ -115,7 +115,7 @@
                             <td>
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlYear" runat="server" AutoPostBack="true" Width="120px"></asp:DropDownList>
+                                        <asp:DropDownList ID="DdlYear" runat="server" AutoPostBack="true" Width="80px"></asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
@@ -125,7 +125,7 @@
                             <td>
                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlScoreLevel" runat="server" AutoPostBack="true" Width="120px"></asp:DropDownList>
+                                        <asp:DropDownList ID="DdlScoreLevel" runat="server" AutoPostBack="true" Width="80px"></asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
@@ -135,7 +135,18 @@
                             <td>
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSchoolName" runat="server" AutoPostBack="true" Width="120px"></asp:DropDownList>
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" AutoPostBack="true" Width="80px"></asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td>
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlQuestionnaireState" runat="server" AutoPostBack="true" Width="80px"></asp:DropDownList>
+
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
