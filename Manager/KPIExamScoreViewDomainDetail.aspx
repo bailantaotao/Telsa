@@ -93,10 +93,15 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    
+                   
                 </div>
                 <div id="BlockRightDownDataDisplay">
                    <table style="width: 735px">
+                     <td>
+                    </td>
+                    <td align="right">
+                               <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnKPINotifySingleSchool %>" OnClick="BtnNotify_Click" />
+                    </td>
                        <tr>
                             <td align="left">                                
                                 <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipSchool %>"></asp:Label>                                
@@ -171,9 +176,7 @@
                             </td>
                         </tr>--%>
                        <tr>
-                           <td align="left">
-                               <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnKPINotifySingleSchool %>" OnClick="BtnNotify_Click" />
-                           </td>
+                           
                            <td align="right">
                                <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnBack_Click" />
                            </td>

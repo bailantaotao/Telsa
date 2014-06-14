@@ -142,12 +142,7 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td>                                
-                                <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                             <td>
                                 <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlCycle" runat="server" AutoPostBack="true" Width="120px"></asp:DropDownList>
@@ -157,6 +152,12 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
+                            <td>                                
+                                <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
+                            </td>
+                        </tr>
+                        <tr>
+                           
                         </tr>
                     </table>
                 </div>

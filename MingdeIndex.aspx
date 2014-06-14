@@ -54,11 +54,11 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Expert/ViewInternetStudyScore.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
             <div class ="Option">
-                <img src="../Image/zh-TW/TipWhite.png" />
+                <img src="Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlKPI" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrL="~/Expert/KPIExamMain.aspx" Text="<%$ Resources:Resource, HyKPI %>"></asp:HyperLink>
             </div>
             <div class ="Option">

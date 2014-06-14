@@ -142,11 +142,6 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td>                                
-                                <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                                     <ContentTemplate>
@@ -157,6 +152,12 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
+                            <td>                                
+                                <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
+                            </td>
+                        </tr>
+                        <tr>
+                          
                         </tr>
                     </table>
                 </div>
