@@ -74,13 +74,14 @@ public partial class Expert_MsgNotify : System.Web.UI.Page
         ArrayList tmp = new ArrayList();
         for (int i = 0; i < dt.Rows.Count; i++)
         {
-            string query = "select UserID from Account where school =N'" + dt.Rows[0]["SchoolName"].ToString() + "'";
+            string query = "select UserID from Account where school =N'" + dt.Rows[i]["SchoolName"].ToString() + "'";
             ms.GetAllColumnData(query, tmp);
+            data.Add(((string[])tmp[0])[0]);
         }
-        foreach (string[] userid in tmp)
-        {
-            data.Add(userid[0]);
-        }
+        //foreach (string[] userid in tmp)
+        //{
+        //    data.Add(userid[0]);
+        //}
     }
 
     protected void BtnSend_Click(object sender, EventArgs e)
