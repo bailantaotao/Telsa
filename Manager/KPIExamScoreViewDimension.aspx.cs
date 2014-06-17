@@ -176,7 +176,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                     if (i >= data.Count || !domainid[0].Equals(((string[])(data[i]))[4]))
                     {
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                        LbCompleted.Text += (j+1).ToString() + "</td>";
+                        LbCompleted.Text += (j + 1).ToString() + "<font color='red'>*</font>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         LbCompleted.Text += domainid[1] + "</td>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
@@ -198,7 +198,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
 
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += (j+1).ToString() + "</td>";
+                    LbCompleted.Text += (j + 1).ToString() + (((((string[])(data[i]))[3]).ToString().ToLower().Equals("false")) ? "<font color='red'>*</font>" : "") + "</td>";
 
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
