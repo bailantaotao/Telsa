@@ -32,7 +32,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
         if (!Session["ClassCode"].ToString().Equals("1"))
             Response.Redirect("../SessionOut.aspx");
 
-        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + Session["UserID"].ToString();
+        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + getSchoolID();
 
     }
 
@@ -55,6 +55,18 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
         LbYear.Text = Year;
         LbCycle.Text = Cycle;
 
+    }
+
+    private string getSchoolID()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select userid from account where School = N'" + Request["schoolName"].ToString() + "'";
+        if (ms.GetOneData(query, sb))
+        {
+            return sb.ToString();
+        }
+        return string.Empty;
     }
 
     private bool getKPIMainRecordID(StringBuilder sb)

@@ -35,7 +35,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + Session["UserID"].ToString();
+        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + getSchoolID();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -58,6 +58,18 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
         LbYear.Text = Year;
         LbCycle.Text = Cycle;
         LbDimension.Text = getDimensionName();
+    }
+
+    private string getSchoolID()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select userid from account where School = N'" + Request["schoolName"].ToString() + "'";
+        if (ms.GetOneData(query, sb))
+        {
+            return sb.ToString();
+        }
+        return string.Empty;
     }
 
     private string getDimensionName()
@@ -211,6 +223,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
                 i++;
                     
             }
+            PageOrder.Text = "1 / 1";
             goto FINALLY;
         }
     NODATA:
