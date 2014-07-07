@@ -32,7 +32,8 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         Year,
         ScoreLevel,
         SchoolName,
-        Cycle
+        Cycle,
+        State
     }
 
     protected void Page_Init(object sender, EventArgs e)
@@ -55,7 +56,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         setDefault(DdlType.SchoolName);
         setDefault(DdlType.ScoreLevel);
         setDefault(DdlType.Year);
-
+        setDefault(DdlType.State);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -97,6 +98,9 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
                 break;
             case DdlType.Cycle:
                 setCycle();
+                break;
+            case DdlType.State:
+                setState();
                 break;
         }
     }
@@ -197,6 +201,14 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         DdlCycle.Items.Add("1");
         DdlCycle.Items.Add("2");
     }
+    private void setState()
+    {
+        
+        DdlQuestionnaireState.Items.Add(Resources.Resource.DdlTypeState);
+        DdlQuestionnaireState.Items.Add(new ListItem(Resources.Resource.TipKPIStateFinish, "True"));
+        DdlQuestionnaireState.Items.Add(new ListItem(Resources.Resource.TipKPIStateUnFinish, "False"));
+    }
+
 
     private bool getSchoolName(StringBuilder sb)
     {
@@ -213,19 +225,20 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Cycle, Zipcode.Name, Account.School, KPIRecordMain.ScoreLevel " +
+        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Cycle, Zipcode.Name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish " +
                 "from KPIRecordMain " +
                 "left join Account on Account.School = KPIRecordMain.SchoolName " +
                 "left join Zipcode on Account.ZipCode = ZIPCode.Zipcode ";
 
         string tmp = string.Empty;
-        string[] storeParam = new string[5];
-        string[] sqlParam = new string[]{"KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School","KPIRecordMain.Cycle","Zipcode.Name"};
+        string[] storeParam = new string[6];
+        string[] sqlParam = new string[] { "KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIRecordMain.Cycle", "KPIRecordMain.IsFinish", "Zipcode.Name" };
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlScoreLevel.SelectedIndex == 0 ? null : DdlScoreLevel.Items[DdlScoreLevel.SelectedIndex].ToString();
         storeParam[2] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
         storeParam[3] = DdlCycle.SelectedIndex == 0 ? null : DdlCycle.Items[DdlCycle.SelectedIndex].ToString();
-        storeParam[4] = DdlProvince.SelectedIndex == -1 ? null : (DdlProvince.SelectedIndex == 0 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+        storeParam[4] = DdlQuestionnaireState.SelectedIndex == 0 ? null : ((DdlQuestionnaireState.SelectedValue == "True") ? "True" : "False");
+        storeParam[5] = DdlProvince.SelectedIndex == -1 ? null : (DdlProvince.SelectedIndex == 0 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString());        
 
         for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length - 1); i++)
         {

@@ -101,12 +101,18 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
 
         if (data.Count == 0)
         {
-            GvSchool.Rows[0].Cells.Clear();
-            GvSchool.Rows[0].Cells.Add(new TableCell());
-            GvSchool.Rows[0].Cells[0].ColumnSpan = 4;
-            GvSchool.Rows[0].Cells[0].Text = Resources.Resource.TipKPINoRecord;
-            GvSchool.Rows[0].Cells[0].Style.Add("text-align", "center");
-            GvSchool.Rows[0].Cells[0].Width = 590;
+            GvSchool.DataSource = null;
+            GvSchool.DataBind();
+            
+            
+            
+            
+            //GvSchool.DataBind();
+            //GvSchool.Rows[0].Cells.Add(new TableCell());
+            //GvSchool.Rows[0].Cells[0].ColumnSpan = 4;
+            //GvSchool.Rows[0].Cells[0].Text = Resources.Resource.TipKPINoRecord;
+            //GvSchool.Rows[0].Cells[0].Style.Add("text-align", "center");
+            //GvSchool.Rows[0].Cells[0].Width = 590;
             return;
         }
 
