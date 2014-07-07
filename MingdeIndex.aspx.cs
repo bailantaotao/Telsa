@@ -25,14 +25,14 @@ public partial class MingdeIndex : System.Web.UI.Page
         //LoadMsg(true, PnMingderMsg);
         //LoadMsg(false, PnProvinceMsg);
         IndexFactory Expert = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
-        Expert.prepareNotification(IndexFactory.DATA_TYPE.FromExpertToSchoolMaster);
+        Expert.prepareNotification(IndexFactory.DATA_TYPE.FromExpertToMingde);
         ArrayList data = (ArrayList)Expert.notificationSet.Clone();
-        LoadMsg(PnProvinceMsg, data, IndexFactory.DATA_TYPE.FromExpertToSchoolMaster);
+        LoadMsg(PnProvinceMsg, data, IndexFactory.DATA_TYPE.FromExpertToMingde);
 
         IndexFactory MingdeExpert = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
-        MingdeExpert.prepareNotification(IndexFactory.DATA_TYPE.MingdeExpert);
+        MingdeExpert.prepareNotification(IndexFactory.DATA_TYPE.SystemManager);
         data = (ArrayList)MingdeExpert.notificationSet.Clone();
-        LoadMsg(PnSystemManager, data, IndexFactory.DATA_TYPE.MingdeExpert);
+        LoadMsg(PnSystemManager, data, IndexFactory.DATA_TYPE.SystemManager);
 
         IndexFactory System = new ConcreateFactory(Session["UserID"].ToString(), Session["Province"].ToString());
         System.prepareNotification(IndexFactory.DATA_TYPE.System);

@@ -31,7 +31,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + Session["UserID"].ToString();
+        LbSchoolNo.Text = Resources.Resource.TipKPISchoolNo + getSchoolID();
 
     }
 
@@ -55,6 +55,18 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
         LbCycle.Text = Cycle;
 
     }
+    private string getSchoolID()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select userid from account where School = N'" + Request["schoolName"].ToString() + "'";
+        if (ms.GetOneData(query, sb))
+        {
+            return sb.ToString();
+        }
+        return string.Empty;
+    }
+
 
     private bool getKPIMainRecordID(StringBuilder sb)
     {
@@ -176,7 +188,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                     if (i >= data.Count || !domainid[0].Equals(((string[])(data[i]))[4]))
                     {
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                        LbCompleted.Text += (j+1).ToString() + "</td>";
+                        LbCompleted.Text += (j + 1).ToString() + "<font color='red'>*</font>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         LbCompleted.Text += domainid[1] + "</td>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
@@ -198,7 +210,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
 
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += (j+1).ToString() + "</td>";
+                    LbCompleted.Text += (j + 1).ToString() + (((((string[])(data[i]))[3]).ToString().ToLower().Equals("false")) ? "<font color='red'>*</font>" : "") + "</td>";
 
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";

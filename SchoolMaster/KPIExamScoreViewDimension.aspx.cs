@@ -80,8 +80,8 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     private bool getDimensionRange(ArrayList data)
     {
         ManageSQL ms = new ManageSQL();
-        Query = "select dimensionsID, dimensionsName from KPIDimensionsNameMapping";
-        if (ms.GetAllColumnData(Query, data))
+        string query = "select dimensionsID, dimensionsName from KPIDimensionsNameMapping";
+        if (ms.GetAllColumnData(query, data))
         {
             return true;
         }
@@ -169,11 +169,11 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
                     string EncryptDimensionID = GetEncryptionString(QuestionDimension, domainid[0]);
 
                     
-
+                    /** 沒有做過的問卷都會跑到這 */
                     if (i >= data.Count || !domainid[0].Equals(((string[])(data[i]))[4]))
                     {
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                        LbCompleted.Text += (j+1).ToString() + "</td>";
+                        LbCompleted.Text += (j + 1).ToString() + "<font color='red'>*</font>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                         LbCompleted.Text += domainid[1] + "</td>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
@@ -195,7 +195,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
 
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
-                    LbCompleted.Text += (j+1).ToString() + "</td>";
+                    LbCompleted.Text += (j+1).ToString() + (((((string[])(data[i]))[3]).ToString().ToLower().Equals("false"))?"<font color='red'>*</font>":"") + "</td>";
 
 
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
