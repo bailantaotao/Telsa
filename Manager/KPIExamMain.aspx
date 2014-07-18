@@ -107,9 +107,7 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td colspan="2" align="right" width="50%">
-                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnKPINotify %>" OnClick="Button1_Click" />
-                            </td>
+                            
                         </tr>
                         <tr>
                             <td>

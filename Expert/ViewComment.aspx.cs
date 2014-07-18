@@ -27,14 +27,14 @@ public partial class Expert_ViewComment : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
 
         LbComplete.Text = "<table style='width:700px;'>";
-        LbComplete.Text += "<tr align='center' style='background-color:#6699FF;'>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<tr align='center' style='background-color:#00FFFF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += Resources.Resource.TipReceiver + "</td>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += Resources.Resource.TipNotifyTime + "</td>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += Resources.Resource.TipDeadline + "</td>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += Resources.Resource.TipMessage + "</td>";
         LbComplete.Text += "</tr>";
 
@@ -76,20 +76,20 @@ public partial class Expert_ViewComment : System.Web.UI.Page
             for (int i = Count; i < Max; i++)   
             {
                 LbComplete.Text += "<tr align='center' style='background-color:#B8CBD4;'>";
-                LbComplete.Text += "<td style='width: 30%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += "<td style='width: 30%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbComplete.Text += ((string[])(data[i]))[0] + "-" + ((string[])(data[i]))[1].Split(' ')[0] + "</td>";
-                LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbComplete.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
-                LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += "<td style='width: 10%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbComplete.Text += ((string[])(data[i]))[3].Split(' ')[0] + "</td>";
-                LbComplete.Text += "<td style='width: 50%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF; word-break: break-all; text-align:left;'>";
+                LbComplete.Text += "<td style='width: 50%;border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF; word-break: break-all; text-align:left;'>";
                 LbComplete.Text += ((string[])(data[i]))[4] + "</td>";
                 LbComplete.Text += "</tr>";
             }
         }
         else        
         {
-            LbComplete.Text += "<td colspan=3 align=center style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbComplete.Text += "<td colspan=3 align=center style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbComplete.Text += "No data</td>";
         }
         LbComplete.Text += "</table>";

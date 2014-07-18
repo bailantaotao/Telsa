@@ -27,12 +27,12 @@ public partial class Expert_ViewScore : System.Web.UI.Page
             UnPassContent = Request["UnPass"].ToString().Split(',');
 
         LbComplete.Text = "<table style='width:500px;'>";
-        LbComplete.Text += "<tr align='center' style='background-color:#6699FF;'>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<tr align='center' style='background-color:#00FFFF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += Resources.Resource.TipClassName + "</td>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += Resources.Resource.TipPassScore + "</td>";
-        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbComplete.Text += "校長分數" + "</td>";
         LbComplete.Text += "</tr>";
 
@@ -43,7 +43,7 @@ public partial class Expert_ViewScore : System.Web.UI.Page
         }
         else
         {
-            LbComplete.Text += "<td colspan=3 align=center style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbComplete.Text += "<td colspan=3 align=center style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbComplete.Text += "No data</td>";
         }
         LbComplete.Text += "</table>";
@@ -78,11 +78,11 @@ public partial class Expert_ViewScore : System.Web.UI.Page
                 ms.GetAllColumnData(Query, data);
                 int MaxScore = GetUserMaxScore(data);
                 LbComplete.Text += "<tr align='center' style='background-color:#B8CBD4'>";
-                LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbComplete.Text += ((string[])data[0])[0] + "</td>";
-                LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbComplete.Text += ((string[])data[0])[1] + "</td>";
-                LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbComplete.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbComplete.Text += MaxScore + "</td>";
                 LbComplete.Text += "</tr>";
             }

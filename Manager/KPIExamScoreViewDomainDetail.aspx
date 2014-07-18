@@ -99,9 +99,7 @@
                    <table style="width: 735px">
                      <td>
                     </td>
-                    <td align="right">
-                               <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnKPINotifySingleSchool %>" OnClick="BtnNotify_Click" />
-                    </td>
+                    
                        <tr>
                             <td align="left">                                
                                 <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipSchool %>"></asp:Label>                                
