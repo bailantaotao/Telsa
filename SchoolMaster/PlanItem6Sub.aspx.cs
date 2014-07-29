@@ -77,12 +77,12 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         if (Request["Title"].ToString().Equals("0"))
         {
             LbTitle.Text = "校长工作行动计划表";
-            schoolMasterTitle.Append("0");
+            schoolMasterTitle.Append("1");
         }
         else
         {
             LbTitle.Text = "副校长工作行动计划表";
-            schoolMasterTitle.Append("1");
+            schoolMasterTitle.Append("0");
         }
     }
 
@@ -335,7 +335,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         string query = "delete from PlanMasterWork where SN ='" + Session["UserPlanListSN"].ToString() + "'";
         ms.WriteData(query, sb);
         sb.Clear();
-        query = "insert into PlanMasterWork (SN, Title, WorkersID, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
+        query = "insert into PlanMasterWork (SN, TitleIsSM, WorkersID, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
                         Session["UserPlanListSN"].ToString() + "','" +
                         schoolMasterTitle.ToString() + "','" +
                         DdlName.SelectedValue + "','" +
@@ -362,7 +362,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     sb.Clear();
-                    query = "insert into PlanMasterWorkList (SN, NO, Target, Activity, StartTime, EndTime, FinishRate, Condition) VALUES ('" +
+                    query = "insert into PlanMasterWorkList (SN, NO, Target, Activity, StartTime, EndTime, FinishRate, Condition, TitleIsSM) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
                                     (i+1).ToString() + "','" + 
                                     ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text + "','" +
@@ -370,7 +370,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                                     ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "','" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text +  "')";
+                                    ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text +  "','" +
+                                    schoolMasterTitle.ToString() + "')";
 
                     ms.WriteData(query, sb);
                     

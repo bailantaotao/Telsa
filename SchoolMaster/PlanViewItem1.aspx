@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanItem1.aspx.cs" Inherits="SchoolMaster_PlanItem1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanViewItem1.aspx.cs" Inherits="SchoolMaster_PlanViewItem1" %>
 
 <!DOCTYPE html>
 
@@ -84,18 +84,18 @@
                     <asp:Label ID="LbLocation" runat="server" Text="<%$ Resources:Resource, TipPlanSDP %>" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <img src="../Image/zh-TW/TipRed.png" />
-                </div>
-                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="REd" Text="<%$ Resources:Resource, TipPlanDataInput %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="#"></asp:HyperLink>
-                </div>
-                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipPlanDataView %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipPlanDataInput %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
                          NavigateUrl="#"></asp:HyperLink>
+                </div>
+                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <img src="../Image/zh-TW/TipRed.png" />
+                </div>
+                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipPlanDataView %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                         NavigateUrl="PlanViewList.aspx"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
@@ -125,69 +125,22 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="PlanTitle" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanName %>" ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                    <asp:TextBox ID="TbName" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanGender %>"  ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbGender" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanNation %>"  ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbNation" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanCulture %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbCulture" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanProfessional %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbProfessional" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanTel %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbTel" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanAddress %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbAddress" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="SN" HeaderText="" Visible="false" ItemStyle-Width="70px" />
-                            <asp:TemplateField HeaderText="" ItemStyle-Width="50">
-                                <ItemTemplate>
-                                    <asp:Button ID="lbnView" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_Clicked" 
-                                        CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField DataField="Column1" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column2" HeaderText="姓名" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column3" HeaderText="性别" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column4" HeaderText="民族" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column5" HeaderText="文化程度" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column6" HeaderText="职业" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column7" HeaderText="电话" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column8" HeaderText="地址" ItemStyle-Width="70px" />
                         </Columns>
                     </asp:GridView>
                     
                 </div>
-                <div style="float:left; margin-top:20px">
-                    <asp:Button ID="BtnAdd" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
-                </div>
                 <table width="739px">
                     <tr>
-                        <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
-                        </td>
-                        <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                        <td width="90%" align="right" style="margin-right=20px;">
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>
                 </table>

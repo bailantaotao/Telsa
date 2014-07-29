@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanItem1.aspx.cs" Inherits="SchoolMaster_PlanItem1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanViewItem2.aspx.cs" Inherits="SchoolMaster_PlanViewItem2" %>
 
 <!DOCTYPE html>
 
@@ -103,91 +103,63 @@
                     <table width="739px">
                         <tr>
                             <td colspan="1" align="left">
-                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle1 %>"></asp:Label>                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="left">
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPlan1MemberLimit %>"></asp:Label>                                
+                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle2 %>"></asp:Label> 
+                                                               
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
-                        <EmptyDataTemplate>
-                            Sorry, No any data.
-                        </EmptyDataTemplate>
-                        <Columns>
-                            <asp:BoundField DataField="PlanTitle" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanName %>" ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                    <asp:TextBox ID="TbName" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanGender %>"  ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbGender" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanNation %>"  ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbNation" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanCulture %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbCulture" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanProfessional %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbProfessional" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanTel %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbTel" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanAddress %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbAddress" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="SN" HeaderText="" Visible="false" ItemStyle-Width="70px" />
-                            <asp:TemplateField HeaderText="" ItemStyle-Width="50">
-                                <ItemTemplate>
-                                    <asp:Button ID="lbnView" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_Clicked" 
-                                        CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
+                    <table width="739px">
+                        <tr>
+                            <td width="25%">办学理念：</td>
+                            <td width="75%" align="left">
+                                <asp:Label ID="LbIdea" runat="server" Text="Label"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%">校训：</td>
+                            <td width="75%" align="left">
+                                <asp:Label ID="LbMotto" runat="server" Text="Label"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%">校风：</td>
+                            <td width="75%" align="left">
+                                <asp:Label ID="LbSpirit" runat="server" Text="Label"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%">学校概况：</td>
+                            <td width="75%" align="left">
+                                <asp:Label ID="LbOverview" runat="server" Text="Label"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%">办学特色：</td>
+                            <td width="75%" align="left">
+                                <asp:Label ID="LbCharacteristic" runat="server" Text="Label"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%">学校发生的变化：</td>
+                            <td width="75%" align="left">
+                                <asp:Label ID="LbChange" runat="server" Text="Label"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
                     
-                </div>
-                <div style="float:left; margin-top:20px">
-                    <asp:Button ID="BtnAdd" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
                 </div>
                 <table width="739px">
                     <tr>
-                        <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                        <td width="90%">
+                            注：发生的变化栏中应着重描述本学年与上学年相比发生的变化
+                        </td>
+                        <td width="10%" align="right">
+                            
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>
                 </table>

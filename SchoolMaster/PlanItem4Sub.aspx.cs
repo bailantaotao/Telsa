@@ -73,7 +73,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
-        string query = "select Description from PlanSummaryDimensions where  SN= '" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='" + Request["NO"].ToString() + "' and NO='" + Request["DimensionsID"].ToString()+ "'";
+        string query = "select Description from PlanSummaryDimensions where  SN= '" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='" + Request["DimensionsID"].ToString() + "' and NO='" + Request["NO"].ToString() + "'";
 
         ms.GetOneData(query, sb);
         if (Request["DimensionsID"].ToString().Equals("1"))

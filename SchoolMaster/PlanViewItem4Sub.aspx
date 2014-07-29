@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanItem1.aspx.cs" Inherits="SchoolMaster_PlanItem1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanViewItem4Sub.aspx.cs" Inherits="SchoolMaster_PlanViewItem4Sub" %>
 
 <!DOCTYPE html>
 
@@ -103,12 +103,7 @@
                     <table width="739px">
                         <tr>
                             <td colspan="1" align="left">
-                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle1 %>"></asp:Label>                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="left">
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPlan1MemberLimit %>"></asp:Label>                                
+                                <asp:Label ID="LbTitle" runat="server" Text=""></asp:Label>                                
                             </td>
                         </tr>
                     </table>
@@ -125,69 +120,25 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="PlanTitle" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanName %>" ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                    <asp:TextBox ID="TbName" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanGender %>"  ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbGender" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanNation %>"  ItemStyle-Width="50px">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbNation" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanCulture %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbCulture" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanProfessional %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbProfessional" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanTel %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbTel" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanAddress %>"  ItemStyle-Width="50">
-                                <ItemTemplate>
-                                     <asp:TextBox ID="TbAddress" runat="server" Width="50px"></asp:TextBox>
-                                </ItemTemplate>
-                                <FooterStyle HorizontalAlign="Right" />
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="SN" HeaderText="" Visible="false" ItemStyle-Width="70px" />
-                            <asp:TemplateField HeaderText="" ItemStyle-Width="50">
-                                <ItemTemplate>
-                                    <asp:Button ID="lbnView" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_Clicked" 
-                                        CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField DataField="Column1" HeaderText="目标" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column2" HeaderText="活动与措施" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column3" HeaderText="开始时间" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column4" HeaderText="结束时间" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column5" HeaderText="负责人" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column6" HeaderText="预算" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column7" HeaderText="其中学校资源" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column8" HeaderText="其他资源" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column8" HeaderText="进展情况" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column8" HeaderText="时间" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column8" HeaderText="负责人" ItemStyle-Width="70px" />
                         </Columns>
                     </asp:GridView>
                     
                 </div>
-                <div style="float:left; margin-top:20px">
-                    <asp:Button ID="BtnAdd" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
-                </div>
                 <table width="739px">
                     <tr>
-                        <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
-                        </td>
-                        <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                        <td width="90%" align="right" style="margin-right=20px;">
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>
                 </table>

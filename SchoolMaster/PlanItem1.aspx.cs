@@ -107,6 +107,10 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 {
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
+                    for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
+                    {
+                        dt.Rows[i][8] = (i + 1).ToString();
+                    }
                     ViewState["dt"] = dt;
                     GvSchool.DataSource = dt;
                     GvSchool.DataBind();
@@ -173,6 +177,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dr["TbProfessional"] = string.Empty;
         dr["TbTel"] = string.Empty;
         dr["TbAddress"] = string.Empty;
+        dr["SN"] = "1";
         dt.Rows.Add(dr);
 
         dr = dt.NewRow();
@@ -184,6 +189,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dr["TbProfessional"] = string.Empty;
         dr["TbTel"] = string.Empty;
         dr["TbAddress"] = string.Empty;
+        dr["SN"] = "2";
         dt.Rows.Add(dr);
 
 
@@ -217,6 +223,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
                     drCurrentRow = dtCurrentTable.NewRow();
 
+                    drCurrentRow["SN"] = (i + 1).ToString();
                     drCurrentRow["PlanTitle"] = "成員";
                     dtCurrentTable.Rows[i - 1]["TbName"] = box1.Text;
                     dtCurrentTable.Rows[i - 1]["TbGender"] = box2.Text;
@@ -313,7 +320,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     sb.Clear();
-                    query = "insert into PlanMember (SN, PlanTitle, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanProfession, PlanTel, PlanAddress) VALUES ('" +
+                    query = "insert into PlanMember (SN, PlanTitle, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanProfession, PlanTel, PlanAddress, PlanNO) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
                                     dt.Rows[i][0].ToString() + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("TbName")).Text + "','" +
@@ -322,7 +329,8 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                                     ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text + "')";
+                                    ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text + "','"+
+                                    dt.Rows[i][8].ToString() + "')";
 
                     ms.WriteData(query, sb);
                     

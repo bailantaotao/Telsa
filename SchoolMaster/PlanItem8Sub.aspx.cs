@@ -78,12 +78,12 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
 
-        string query = "select Department from PlanOrganizationOutline where SN='" + Session["UserPlanListSN"].ToString() + "' and NO='" + Request["DepartmentNO"].ToString() + "'";
+        string query = "select Organization from PlanOrganizationOutline where SN='" + Session["UserPlanListSN"].ToString() + "' and NO='" + Request["DepartmentNO"].ToString() + "'";
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals(""))
             return;
         LbTitle.Text = sb.ToString() + "工作行动计画表";
-        schoolDepartmentNO.Append(Request["DepartmentNO"].ToString());
+        schoolDepartmentNO.Append(sb.ToString());
         
     }
 
