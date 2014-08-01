@@ -30,10 +30,10 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("0"))
+            Response.Redirect("../SessionOut.aspx");
         //if (ViewState["dt"] == null)
         //{
         //    setInitial();
@@ -167,6 +167,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("TbProfessional", typeof(string)));
         dt.Columns.Add(new DataColumn("TbTel", typeof(string)));
         dt.Columns.Add(new DataColumn("TbAddress", typeof(string)));
+        dt.Columns.Add(new DataColumn("SN", typeof(string)));
 
         dr = dt.NewRow();
         dr["PlanTitle"] = "主任";

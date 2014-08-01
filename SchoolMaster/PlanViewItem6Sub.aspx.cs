@@ -29,39 +29,27 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (ViewState["dt"] == null)
-        //{
-        //    setInitial();
-        //}
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("0"))
+            Response.Redirect("../SessionOut.aspx");
+
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["UserPlanListSN"] = 1;
-        //if (Request["Title"] == null)
-        //    return;
-        //if (!parseData("Title"))
-        //    return;
+        if (Request["Title"] == null)
+            return;
+        if (!parseData("Title"))
+            return;
 
-        //getTitle();
+        getTitle();
         getSemster();
         if (!IsPostBack)
         {
             setInitial();
         }
 
-        //NO = Request["NO"].ToString();
-        //DimensionsID = Request["DimensionsID"].ToString();
-        //getSchoolName(schoolName);
-        //LbSchoolName.Text = schoolName.ToString();
-        //LbSchoolSN.Text = Session["UserID"].ToString();
-        //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
-        //{
 
     }
     private bool parseData(string tag)
@@ -89,13 +77,14 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
 
     private void getSemster()
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanList.PlanSemester from PlanList " +
-                       "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
-                       "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        LbSemster.Text = sb.ToString();
+        //StringBuilder sb = new StringBuilder();
+        //ManageSQL ms = new ManageSQL();
+        //string query = "select PlanList.PlanSemester from PlanList " +
+        //               "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
+        //               "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
+        //ms.GetOneData(query, sb);
+        //LbSemster.Text = sb.ToString();
+        LbSemster.Text = "学期: " + Session["Semester"].ToString();
     }
 
     private bool getSchoolName(StringBuilder sb)
@@ -168,6 +157,6 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
 
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewMain.aspx");
+        Response.Redirect("PlanViewList.aspx");
     }
 }

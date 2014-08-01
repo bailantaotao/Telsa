@@ -106,7 +106,7 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         string query = "insert into PlanSummaryDimensions (SN, DimensionsID, NO, Description) VALUES ('" +
                                Session["UserPlanListSN"].ToString() + "','" +
-                               ID + "','" +
+                               DimensionsID + "','" +
                                NO + "','" +
                                description + "')";
         ms.WriteData(query, sb);
@@ -117,7 +117,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='1' and NO='1'";
+        ms.WriteData(query, sb);
+        writeData(1, 1, TbQuestion1.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=1&NO=1");
     }
     protected void btnView2_Click(object sender, EventArgs e)
@@ -126,7 +131,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='1' and NO='2'";
+        ms.WriteData(query, sb);
+        writeData(1, 2, TbQuestion2.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=1&NO=2");
     }
     protected void btnView3_Click(object sender, EventArgs e)
@@ -135,7 +145,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='1' and NO='3'";
+        ms.WriteData(query, sb);
+        writeData(1, 3, TbQuestion3.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=1&NO=3");
     }
     protected void btnView4_Click(object sender, EventArgs e)
@@ -144,7 +159,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='2' and NO='1'";
+        ms.WriteData(query, sb);
+        writeData(1, 1, TbQuestion4.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=2&NO=1");
     }
     protected void btnView5_Click(object sender, EventArgs e)
@@ -153,7 +173,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='2' and NO='2'";
+        ms.WriteData(query, sb);
+        writeData(2, 2, TbQuestion5.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=2&NO=2");
     }
     protected void btnView6_Click(object sender, EventArgs e)
@@ -162,7 +187,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='2' and NO='3'";
+        ms.WriteData(query, sb);
+        writeData(2, 3, TbQuestion6.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=2&NO=3");
     }
     protected void btnView7_Click(object sender, EventArgs e)
@@ -171,7 +201,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='3' and NO='1'";
+        ms.WriteData(query, sb);
+        writeData(3, 1, TbQuestion7.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=3&NO=1");
     }
     protected void btnView8_Click(object sender, EventArgs e)
@@ -180,7 +215,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='3' and NO='2'";
+        ms.WriteData(query, sb);
+        writeData(3, 2, TbQuestion8.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=3&NO=2");
     }
     protected void btnView9_Click(object sender, EventArgs e)
@@ -189,7 +229,12 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         {
             return;
         }
-
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        // 先刪除原本的
+        string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='3' and NO='3'";
+        ms.WriteData(query, sb);
+        writeData(3, 3, TbQuestion9.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=3&NO=3");
     }
 }

@@ -71,18 +71,18 @@ public partial class SchoolMaster_PlanItem2 : System.Web.UI.Page
     private bool haveEmptyData()
     {
         if (TbIdea.Text.Trim().Equals(""))
-            return false;
+            return true;
         if (TbMotto.Text.Trim().Equals(""))
-            return false;
+            return true;
         if (TbSpirit.Text.Trim().Equals(""))
-            return false;
+            return true;
         if (TbOverview.Text.Trim().Equals(""))
-            return false;
+            return true;
         if (TbCharacteristic.Text.Trim().Equals(""))
-            return false;
+            return true;
         if (TbChange.Text.Trim().Equals(""))
-            return false;
-        return true;
+            return true;
+        return false;
     }
 
     private void storeData()

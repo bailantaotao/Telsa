@@ -269,7 +269,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanMain.aspx");
+        Response.Redirect("PlanView.aspx");
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {

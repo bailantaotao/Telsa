@@ -121,8 +121,40 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
 
         Response.Redirect("PlanItem5.aspx");
     }
+
     protected void btnUpload_Click(object sender, EventArgs e)
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanItemUpload.aspx', '', config='height=500,width=550')", true);
+    }
+    protected void LkbPlanItem6_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanItem6.aspx");
+    }
+    protected void LkbPlanItem7_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanItem7.aspx");
+
+    }
+    protected void LkbPlanItem8_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanItem8.aspx");
     }
 }

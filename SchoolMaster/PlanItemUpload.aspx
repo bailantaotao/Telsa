@@ -47,7 +47,7 @@
             </tr>
             <tr>
                 <td colspan="3" align="center">
-                    <asp:Label ID="LbStatus" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="LbStatus" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
         </table>

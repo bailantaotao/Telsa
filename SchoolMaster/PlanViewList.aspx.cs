@@ -247,7 +247,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 {
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
 
-                    LbCompleted.Text += "<a href='PlanMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "'>";
+                    LbCompleted.Text += "<a href='PlanViewMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "'>";
                     // 代表還沒到deadline 可填寫問卷
                     // 如果是空的，代表使用者還沒填過
                     if (userData.Count == 0)

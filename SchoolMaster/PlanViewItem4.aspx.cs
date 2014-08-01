@@ -51,7 +51,7 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
 
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewMain.aspx");
+        Response.Redirect("PlanViewList.aspx");
     }
 
     private void setInitial()

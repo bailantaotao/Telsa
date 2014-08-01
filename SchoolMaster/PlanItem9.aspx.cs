@@ -45,7 +45,7 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
 
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanMain.aspx");
+        Response.Redirect("PlanList.aspx");
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {

@@ -75,15 +75,13 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
             try
             {
                 String yourAssignedValue = ((Button)sender).CommandArgument;
-                ManageSQL ms = new ManageSQL();
-                StringBuilder sb = new StringBuilder();
-                string query = "select count(*) from PlanDepartmentOutline where SN='" + Session["UserPlanListSN"].ToString() + "' and NO='"+(Convert.ToInt32(yourAssignedValue) + 1)+"'";
-                ms.GetOneData(query, sb);
-                if (sb.ToString().Equals("0"))
+               
+                if (Session["Store"] ==null)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您尚未储存无法进行修改');", true);
                 }
                 else {
+                    Session.Remove("Store");
                     Response.Redirect("PlanItem7Sub.aspx?DepartmentNO=" + (Convert.ToInt32(yourAssignedValue) + 1));
                 }
             }
@@ -117,6 +115,8 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
                 }
                 else
                 {
+                    if (Session["Store"] != null)
+                        Session.Remove("Store");
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
                     for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
@@ -197,6 +197,9 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
             DataRow drCurrentRow = null;
             if (dtCurrentTable.Rows.Count > 0)
             {
+                if (Session["Store"] != null)
+                    Session.Remove("Store");
+
                 for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                 {
                     //extract the TextBox values
@@ -222,7 +225,7 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanMain.aspx");
+        Response.Redirect("PlanList.aspx");
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
@@ -271,6 +274,7 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
                     
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
+                Session["Store"] = true;
             }
         }
     }

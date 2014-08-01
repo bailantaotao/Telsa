@@ -28,25 +28,20 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (ViewState["dt"] == null)
-        //{
-        //    setInitial();
-        //}
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("0"))
+            Response.Redirect("../SessionOut.aspx");
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["UserPlanListSN"] = 1;
-        //if (Request["Title"] == null)
-        //    return;
-        //if (!parseData("Title"))
-        //    return;
+        if (Request["Title"] == null)
+            return;
+        if (!parseData("Title"))
+            return;
 
-        //getTitle();
+        getTitle();
         getSemster();
         if (!IsPostBack)
         {
@@ -94,7 +89,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                        "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                        "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
         ms.GetOneData(query, sb);
-        LbSemster.Text = sb.ToString();
+        LbSemster.Text = "学期:"+sb.ToString();
     }
 
     private bool getSchoolName(StringBuilder sb)
@@ -335,10 +330,14 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         string query = "delete from PlanMasterWork where SN ='" + Session["UserPlanListSN"].ToString() + "'";
         ms.WriteData(query, sb);
         sb.Clear();
-        query = "insert into PlanMasterWork (SN, TitleIsSM, WorkersID, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
+        query = "insert into PlanMasterWork (SN, TitleIsSM, WorkersID, Name, Gender, Nation, Profession, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
                         Session["UserPlanListSN"].ToString() + "','" +
                         schoolMasterTitle.ToString() + "','" +
                         DdlName.SelectedValue + "','" +
+                        DdlName.SelectedValue + "','" +
+                        TbGender.Text.Trim() + "','" +
+                        TbAge.Text.Trim() + "','" +
+                        TbTitle.Text.Trim() + "','" +
                         TbAdvantage.Text.Trim() + "','" + 
                         TbProblem.Text.Trim() + "','" +
                         TbOpportunity.Text.Trim() + "','" +

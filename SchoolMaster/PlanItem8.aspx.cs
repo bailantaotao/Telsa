@@ -30,31 +30,18 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (ViewState["dt"] == null)
-        //{
-        //    setInitial();
-        //}
-
-
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("0"))
+            Response.Redirect("../SessionOut.aspx");
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["UserPlanListSN"] = "1";
         if (!IsPostBack)
         {
             setInitial();
         }
-        //getSchoolName(schoolName);
-        //LbSchoolName.Text = schoolName.ToString();
-        //LbSchoolSN.Text = Session["UserID"].ToString();
-        //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
-        //{
 
     }
 
@@ -75,15 +62,13 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
             try
             {
                 String yourAssignedValue = ((Button)sender).CommandArgument;
-                ManageSQL ms = new ManageSQL();
-                StringBuilder sb = new StringBuilder();
-                string query = "select count(*) from PlanOrganizationOutline where SN='" + Session["UserPlanListSN"].ToString() + "' and NO='" + (Convert.ToInt32(yourAssignedValue) + 1) + "'";
-                ms.GetOneData(query, sb);
-                if (sb.ToString().Equals("0"))
+
+                if (Session["Store"] == null)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您尚未储存无法进行修改');", true);
                 }
                 else {
+                    Session.Remove("Store");
                     Response.Redirect("PlanItem8Sub.aspx?DepartmentNO=" + (Convert.ToInt32(yourAssignedValue) + 1) + "");
                 }
             }
@@ -117,6 +102,8 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
                 }
                 else
                 {
+                    if(Session["Store"] !=null)
+                        Session.Remove("Store");
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
                     for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
@@ -197,6 +184,8 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
             DataRow drCurrentRow = null;
             if (dtCurrentTable.Rows.Count > 0)
             {
+                if (Session["Store"] != null)
+                    Session.Remove("Store");
                 for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                 {
                     //extract the TextBox values
@@ -222,7 +211,7 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanMain.aspx");
+        Response.Redirect("PlanList.aspx");
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
@@ -270,6 +259,7 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
                     ms.WriteData(query, sb);
                     
                 }
+                Session["Store"] = true;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
             }
         }
