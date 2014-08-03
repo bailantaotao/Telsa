@@ -88,22 +88,22 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         ManageSQL ms = new ManageSQL();
         string query = string.Empty;
-        query = "select count(*) from PlanMonitor where SN='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='" + DimensionsID + "' and NO='" + NO + "'";
-        ms.WriteData(query, sb);
-        if (sb.ToString().Equals("0"))
+        query = "select COUNT(*) from PlanMonitor where SN='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='" + DimensionsID + "' and NO='" + NO + "'";
+        ms.GetRowNumbers(query, sb);
+        if (sb.ToString().Equals("0") || sb.ToString().Equals("-1"))
         {
             query = "insert into PlanMonitor (SN, DimensionsID, NO, Solution, UnSolution) VALUES ('" +
                         Session["UserPlanListSN"].ToString() + "','" +
                         DimensionsID + "','" +
-                        NO + "','" +
-                        solution + "','" +
+                        NO + "',N'" +
+                        solution + "',N'" +
                         unsolution + "')";
             ms.WriteData(query, sb);
         }
         else
         {
-            query = "update PlanMonitor set Solution='" + solution + "', "+
-                                            "unsolution='" + unsolution + "' " +
+            query = "update PlanMonitor set Solution=N'" + solution + "', "+
+                                            "unsolution=N'" + unsolution + "' " +
                                             "where SN='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='" + DimensionsID + "' and NO='" + NO + "'";                                   
             ms.WriteData(query, sb);
         }

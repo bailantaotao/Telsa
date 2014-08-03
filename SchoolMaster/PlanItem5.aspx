@@ -141,7 +141,7 @@
                             <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="50px">
                                 <ItemTemplate>
                                      <asp:TextBox ID="column3" runat="server" Width="50px"></asp:TextBox>
-                                    <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="column3"
+                                    <asp:CalendarExtender ID="CalendarExtender3" runat="server" PopupButtonID="column3"
                                     Enabled="True" TargetControlID="column3" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />

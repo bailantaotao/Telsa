@@ -60,6 +60,7 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
     }
     private bool haveEmptyData()
     {
+        return false;
         for (int i = 0; i < form1.Controls.Count; i++)
         {
             switch (this.form1.Controls[i].GetType().ToString())
@@ -107,7 +108,7 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         string query = "insert into PlanSummaryDimensions (SN, DimensionsID, NO, Description) VALUES ('" +
                                Session["UserPlanListSN"].ToString() + "','" +
                                DimensionsID + "','" +
-                               NO + "','" +
+                               NO + "',N'" +
                                description + "')";
         ms.WriteData(query, sb);
     }

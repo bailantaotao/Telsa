@@ -80,7 +80,7 @@ public partial class SchoolMaster_PlanViewItem7Sub : System.Web.UI.Page
         if (sb.ToString().Equals(""))
             return;
         LbTitle.Text = sb.ToString() + "工作行动计画表";
-        schoolDepartmentNO.Append(sb.ToString());
+        schoolDepartmentNO.Append(Request["DepartmentNO"].ToString());
         
     }
 

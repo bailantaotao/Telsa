@@ -121,7 +121,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         ms.GetOneData(query, sb);
         Session["Semester"] = sb.ToString();
 
-        Response.Redirect("PlanItem5.aspx");
+        Response.Redirect("PlanViewItem5.aspx");
     }
     protected void btnUpload_Click(object sender, EventArgs e)
     {
@@ -223,7 +223,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         ms.GetOneData(query, sb);
         Session["Semester"] = sb.ToString();
 
-        Response.Redirect("PlanItem6.aspx");
+        Response.Redirect("PlanViewItem6.aspx");
     }
     protected void LkbPlanItem7_Click(object sender, EventArgs e)
     {
@@ -233,7 +233,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         ms.GetOneData(query, sb);
         Session["Semester"] = sb.ToString();
 
-        Response.Redirect("PlanItem7.aspx");
+        Response.Redirect("PlanViewItem7.aspx");
     }
     protected void LkbPlanItem8_Click(object sender, EventArgs e)
     {
@@ -243,10 +243,14 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         ms.GetOneData(query, sb);
         Session["Semester"] = sb.ToString();
 
-        Response.Redirect("PlanItem8.aspx");
+        Response.Redirect("PlanViewItem8.aspx");
     }
     protected void btnBack_Click(object sender, EventArgs e)
     {
         Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString());
+    }
+    protected void btnBack_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("PlanList.aspx");
     }
 }

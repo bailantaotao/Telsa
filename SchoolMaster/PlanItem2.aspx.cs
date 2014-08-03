@@ -70,6 +70,7 @@ public partial class SchoolMaster_PlanItem2 : System.Web.UI.Page
     }
     private bool haveEmptyData()
     {
+        return false;
         if (TbIdea.Text.Trim().Equals(""))
             return true;
         if (TbMotto.Text.Trim().Equals(""))
@@ -94,12 +95,12 @@ public partial class SchoolMaster_PlanItem2 : System.Web.UI.Page
         ms.WriteData(query, sb);
         sb.Clear();
         query = "insert into PlanCharacteristic (SN, Idea, Motto, Spirit, Profile, Characteristic, Change) VALUES ('" +
-                        Session["UserPlanListSN"].ToString() + "','" +
-                        TbIdea.Text.Trim() + "','" +
-                        TbMotto.Text.Trim() + "','" +
-                        TbSpirit.Text.Trim() + "','" +
-                        TbOverview.Text.Trim() + "','" +
-                        TbCharacteristic.Text.Trim() + "','" +
+                        Session["UserPlanListSN"].ToString() + "',N'" +
+                        TbIdea.Text.Trim() + "',N'" +
+                        TbMotto.Text.Trim() + "',N'" +
+                        TbSpirit.Text.Trim() + "',N'" +
+                        TbOverview.Text.Trim() + "',N'" +
+                        TbCharacteristic.Text.Trim() + "',N'" +
                         TbChange.Text.Trim() + "')";
         ms.WriteData(query, sb);
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanList.aspx';", true);

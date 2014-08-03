@@ -91,7 +91,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
             query = "insert into PlanListUser (PlanListSN, PlanStatus, PlanStartTime, PlanSchool) VALUES ('" +
                     Request["SN"].ToString() + "','" +
                     false + "','" +
-                    DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "','" +
+                    DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "',N'" +
                     schoolName.ToString() + "')";
             ms.WriteData(query, sb);
             query = "select top 1 (SN) from PlanListUser";
@@ -162,5 +162,9 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
     protected void btnBack_Click(object sender, EventArgs e)
     {
         Response.Redirect("PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString());
+    }
+    protected void btnBack_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("PlanList.aspx");
     }
 }

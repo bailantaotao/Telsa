@@ -243,7 +243,7 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
                     sb.Clear();
                     query = "insert into PlanOrganizationOutline (SN, NO, Organization) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
-                                    dt.Rows[i][1].ToString() + "','" +
+                                    dt.Rows[i][1].ToString() + "',N'" +
                                     dt.Rows[i][0].ToString() + "')";
 
                     ms.WriteData(query, sb);

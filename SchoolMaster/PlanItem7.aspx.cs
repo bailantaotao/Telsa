@@ -30,10 +30,10 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("0"))
+            Response.Redirect("../SessionOut.aspx");
 
     }
 
@@ -43,12 +43,6 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
         {
             setInitial();
         }
-        //getSchoolName(schoolName);
-        //LbSchoolName.Text = schoolName.ToString();
-        //LbSchoolSN.Text = Session["UserID"].ToString();
-        //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
-        //{
 
     }
 
@@ -253,7 +247,7 @@ public partial class SchoolMaster_PlanItem7 : System.Web.UI.Page
                     sb.Clear();
                     query = "insert into PlanDepartmentOutline (SN, NO, Department) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
-                                    dt.Rows[i][1].ToString() + "','" +
+                                    dt.Rows[i][1].ToString() + "',N'" +
                                     dt.Rows[i][0].ToString() + "')";
 
                     ms.WriteData(query, sb);

@@ -34,11 +34,6 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
-        //if (ViewState["dt"] == null)
-        //{
-        //    setInitial();
-        //}
-
 
     }
 
@@ -264,6 +259,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
     private bool haveEmptyData()
     {
+        return false;
         if (ViewState["dt"] != null)
         {
             DataTable dt = (DataTable)ViewState["dt"];
@@ -323,14 +319,14 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                     sb.Clear();
                     query = "insert into PlanMember (SN, PlanTitle, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanProfession, PlanTel, PlanAddress, PlanNO) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
-                                    dt.Rows[i][0].ToString() + "','" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[1].FindControl("TbName")).SelectedValue + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text + "','"+
+                                    dt.Rows[i][0].ToString() + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[1].FindControl("TbName")).SelectedValue + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text + "',N'"+
                                     dt.Rows[i][8].ToString() + "')";
 
                     ms.WriteData(query, sb);

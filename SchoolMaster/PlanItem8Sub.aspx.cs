@@ -49,14 +49,6 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
             setInitial();
         }
 
-        //NO = Request["NO"].ToString();
-        //DimensionsID = Request["DimensionsID"].ToString();
-        //getSchoolName(schoolName);
-        //LbSchoolName.Text = schoolName.ToString();
-        //LbSchoolSN.Text = Session["UserID"].ToString();
-        //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
-        //{
 
     }
     private bool parseData(string tag)
@@ -78,7 +70,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         if (sb.ToString().Equals(""))
             return;
         LbTitle.Text = sb.ToString() + "工作行动计画表";
-        schoolDepartmentNO.Append(sb.ToString());
+        schoolDepartmentNO.Append(Request["DepartmentNO"].ToString());
         
     }
 
@@ -338,12 +330,12 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         ms.WriteData(query, sb);
         sb.Clear();
         query = "insert into PlanOrganization (SN, DepartmentNO, WorkersID, PersonInCharge, Gender, Title, NumbersOfPeople) VALUES ('" +
-                        Session["UserPlanListSN"].ToString() + "','" +
-                        schoolDepartmentNO.ToString() + "','" +
-                        DdlName.SelectedValue + "','" +
-                        DdlName.SelectedValue + "','" +
-                        TbGender.Text.Trim() + "','" +
-                        TbTitle.Text.Trim() + "','" +
+                        Session["UserPlanListSN"].ToString() + "',N'" +
+                        schoolDepartmentNO.ToString() + "',N'" +
+                        DdlName.SelectedValue + "',N'" +
+                        DdlName.SelectedValue + "',N'" +
+                        TbGender.Text.Trim() + "',N'" +
+                        TbTitle.Text.Trim() + "',N'" +
                         TbNumbersOfPeople.Text + "')";
 
         ms.WriteData(query, sb);
@@ -366,12 +358,12 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
                     sb.Clear();
                     query = "insert into PlanOrganizationList (SN, DepartmentNO, Target, Activity, StartTime, EndTime, FinishRate, Condition) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
-                                    schoolDepartmentNO.ToString() + "','" + 
-                                    ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "','" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "','" +
+                                    schoolDepartmentNO.ToString() + "',N'" + 
+                                    ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text +  "')";
 
                     ms.WriteData(query, sb);

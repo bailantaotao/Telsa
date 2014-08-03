@@ -29,10 +29,6 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
-        //if (ViewState["dt"] == null)
-        //{
-        //    setInitial();
-        //}
 
 
     }
@@ -314,15 +310,15 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     sb.Clear();
-                    query = "insert into PlanCalendar (SN, WeekNO, StartTime, EndTime, WorkContent, PersonInCharge, FinishRate, EstimateContidion) VALUES ('" +
+                    query = "insert into PlanCalendar (SN, WeekNO, StartTime, EndTime, WorkContent, Leader, PersonInCharge, FinishRate, EstimateContidion) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
-                                    (i+1).ToString() + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "','" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "','" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[5].FindControl("column6")).SelectedValue + "','" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[6].FindControl("column7")).SelectedValue + "','" +
+                                    (i+1).ToString() + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[5].FindControl("column6")).SelectedValue + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[6].FindControl("column7")).SelectedValue + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text + "')";
 
                     ms.WriteData(query, sb);
