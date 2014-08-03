@@ -255,7 +255,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanMain.aspx");
+        Response.Redirect("PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString());
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {

@@ -105,6 +105,8 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
             ms.GetOneData(query, sb);
             Session["UserPlanListSN"] = sb.ToString();
         }
+        Session["PlanSN"] = Request["SN"].ToString();
+        Session["PlanYear"] = Request["YEAR"].ToString();
 
         return true;
     }
@@ -156,5 +158,9 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         Session["Semester"] = sb.ToString();
 
         Response.Redirect("PlanItem8.aspx");
+    }
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString());
     }
 }

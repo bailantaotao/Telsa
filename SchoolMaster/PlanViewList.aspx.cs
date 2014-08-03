@@ -34,8 +34,10 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
-
-
+        if (Session["PlanSN"] != null)
+            Session.Remove("PlanSN");
+        if(Session["PlanYear"] != null)
+            Session.Remove("PlanYear");
     }
 
     protected void Page_Load(object sender, EventArgs e)

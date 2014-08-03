@@ -104,9 +104,10 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
             //非0，所以有資料
             query = "select SN from PlanListUser where PlanListSN = '" + Request["SN"].ToString() + "'";
             ms.GetOneData(query, sb);
-            Session["UserPlanListSN"] = sb.ToString();
+            Session["UserPlanListSN"] = sb.ToString();            
         }
-
+        Session["PlanSN"] = Request["SN"].ToString();
+        Session["PlanYear"] = Request["YEAR"].ToString();
         return true;
     }
 
@@ -243,5 +244,9 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         Session["Semester"] = sb.ToString();
 
         Response.Redirect("PlanItem8.aspx");
+    }
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString());
     }
 }

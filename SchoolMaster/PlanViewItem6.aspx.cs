@@ -29,7 +29,7 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
     }
     protected void BtnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewList.aspx");
+        Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString());
     }
     private bool getSchoolName(StringBuilder sb)
     {
