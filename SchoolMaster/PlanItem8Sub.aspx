@@ -1,11 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanItem8Sub.aspx.cs" Inherits="SchoolMaster_PlanItem8Sub" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script language="javascript" type="text/javascript">
+        function Conversion2() {
+            //var year = parseInt(document.getElementById('column3').value.substr(0, 4)) - 1911;
+            //document.getElementById('column3').value = year + document.getElementById('column3').value.substr(4, 8);
+        }
+    </script>
     <style>
         #BlockLeft {
             float: left;
@@ -175,12 +181,16 @@
                             <asp:TemplateField HeaderText="开始时间"  ItemStyle-Width="50px">
                                 <ItemTemplate>
                                      <asp:TextBox ID="column3" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="column3"
+                                    Enabled="True" TargetControlID="column3" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="50">
                                 <ItemTemplate>
                                      <asp:TextBox ID="column4" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="column4"
+                                    Enabled="True" TargetControlID="column4" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
                             </asp:TemplateField>

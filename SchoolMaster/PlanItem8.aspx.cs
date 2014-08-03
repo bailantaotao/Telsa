@@ -61,16 +61,10 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
         {
             try
             {
-                String yourAssignedValue = ((Button)sender).CommandArgument;
-
-                if (Session["Store"] == null)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您尚未储存无法进行修改');", true);
-                }
-                else {
-                    Session.Remove("Store");
-                    Response.Redirect("PlanItem8Sub.aspx?DepartmentNO=" + (Convert.ToInt32(yourAssignedValue) + 1) + "");
-                }
+                storeData();
+                String yourAssignedValue = ((Button)sender).CommandArgument;                
+                Response.Redirect("PlanItem8Sub.aspx?DepartmentNO=" + (Convert.ToInt32(yourAssignedValue) + 1) + "");
+                
             }
             catch
             {
@@ -102,8 +96,6 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
                 }
                 else
                 {
-                    if(Session["Store"] !=null)
-                        Session.Remove("Store");
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
                     for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
@@ -184,8 +176,6 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
             DataRow drCurrentRow = null;
             if (dtCurrentTable.Rows.Count > 0)
             {
-                if (Session["Store"] != null)
-                    Session.Remove("Store");
                 for (int i = 1; i <= dtCurrentTable.Rows.Count; i++)
                 {
                     //extract the TextBox values
@@ -259,7 +249,6 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
                     ms.WriteData(query, sb);
                     
                 }
-                Session["Store"] = true;
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
             }
         }
