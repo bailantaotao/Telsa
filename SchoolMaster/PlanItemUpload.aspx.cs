@@ -34,16 +34,14 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
     }
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("0"))
+            Response.Redirect("../SessionOut.aspx");
 
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["UserID"] = "NM14001";
-
         if (Session["FileIsToLarge"] != null)
         {
             LbStatus.Text = "上传的档案过大，仅支援最大1MB";
@@ -83,24 +81,33 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         //如果事先宣告 using System.Text;
         StringBuilder sb = new StringBuilder();
 
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + (DdlUploadFile.SelectedIndex + 1).ToString();
+        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + (DdlUploadFile.SelectedIndex + 1).ToString() +"."+ FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length-1)];
         string pathToCheck = appPath + saveDir + fileName;
         //===========================================(Start)
-        if (System.IO.File.Exists(pathToCheck))
+        foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
         {
-            sb.Append("(既有档案已被复写)");
-            //int my_counter = 2;
-            //while (System.IO.File.Exists(pathToCheck))
-            //{
-            //    //--檔名相同的話，目前上傳的檔名（改成 tempfileName），
-            //    //  前面會用數字來代替。
-            //    tempfileName = my_counter.ToString() + "_" + fileName;
-            //    pathToCheck = appPath + saveDir + tempfileName;
-            //    my_counter = my_counter + 1;
-            //}
-            //fileName = tempfileName;
-            //LbStatus.Text += "<br>抱歉，您上傳的檔名發生衝突，檔名修改如下---- " + fileName;
+            if (file.Contains(fileName))
+            {
+                System.IO.File.Delete(file);
+                sb.Append("(既有档案已被复写)");
+                break;
+            }
         }
+        //if (System.IO.File.Exists(pathToCheck))
+        //{
+        //    sb.Append("(既有档案已被复写)");
+        //    //int my_counter = 2;
+        //    //while (System.IO.File.Exists(pathToCheck))
+        //    //{
+        //    //    //--檔名相同的話，目前上傳的檔名（改成 tempfileName），
+        //    //    //  前面會用數字來代替。
+        //    //    tempfileName = my_counter.ToString() + "_" + fileName;
+        //    //    pathToCheck = appPath + saveDir + tempfileName;
+        //    //    my_counter = my_counter + 1;
+        //    //}
+        //    //fileName = tempfileName;
+        //    //LbStatus.Text += "<br>抱歉，您上傳的檔名發生衝突，檔名修改如下---- " + fileName;
+        //}
         //===========================================(End)                
         //-- 完成檔案上傳的動作。
         string savePath = appPath + saveDir + fileName;

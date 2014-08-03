@@ -39,6 +39,7 @@ public partial class SchoolMaster_PlanViewItem3 : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            setPlanSchoolDirection();
             setInitial(GvInternalAdvantage, "PlanInternalAdvantage");
             setInitial(GvInternalDefect, "PlanInternalDefect");
             setInitial(GvExternalChallenge, "PlanExternalChallenge");
@@ -57,7 +58,14 @@ public partial class SchoolMaster_PlanViewItem3 : System.Web.UI.Page
         return true;
     }
 
-   
+    private void setPlanSchoolDirection()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select SchoolDirection from PlanSchoolDirection where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        LbSchoolDirection.Text = sb.ToString();
+    }
    
     private void setInitial(GridView gv, string targetViewState)
     {
