@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -142,6 +143,28 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("Department", typeof(string)));
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
 
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select Organization, NO " +
+                       "from PlanOrganizationOutline " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by NO asc";
+        ms.GetAllColumnData(query, data);
+        if (data.Count > 0)
+        {
+            for (int i = 0; i < data.Count; i++)
+            {
+                string[] d = (string[])data[i];
+                dr = dt.NewRow();
+                dr["Department"] = d[0];
+                dr["SN"] = d[1];
+                dt.Rows.Add(dr);
+            }
+            ViewState["dt"] = dt;
+
+            GvDepartment.DataSource = dt;
+            GvDepartment.DataBind();
+            return;
+        }
 
         dr = dt.NewRow();
         dr["Department"] = "数学组";

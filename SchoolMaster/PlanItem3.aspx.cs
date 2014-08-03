@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -37,10 +38,11 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            setInitial(GvInternalAdvantage, "InternalAdvantage");
-            setInitial(GvInternalDefect, "InternalDefect");
-            setInitial(GvExternalChallenge, "ExternalChallenge");
-            setInitial(GvExternalOpportunity, "ExternalOpportunity");
+            setPlanSchoolDirection();
+            setInitial(GvInternalAdvantage, "PlanInternalAdvantage");
+            setInitial(GvInternalDefect, "PlanInternalDefect");
+            setInitial(GvExternalChallenge, "PlanExternalChallenge");
+            setInitial(GvExternalOpportunity, "PlanExternalOpportunity");
         }
 
     }
@@ -63,49 +65,20 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             String yourAssignedValue = ((Button)sender).CommandArgument;
             if (btn.ID.ToString().Equals("BtnRemoveInternalAdvantage"))
             {
-                deleteRow(GvInternalAdvantage, "InternalAdvantage", yourAssignedValue);
+                deleteRow(GvInternalAdvantage, "PlanInternalAdvantage", yourAssignedValue);
             }
             else if (btn.ID.ToString().Equals("BtnRemoveInternalDefect"))
             {
-                deleteRow(GvInternalDefect, "InternalDefect", yourAssignedValue);
+                deleteRow(GvInternalDefect, "PlanInternalDefect", yourAssignedValue);
             }
             else if (btn.ID.ToString().Equals("BtnRemoveExternalChallenge"))
             {
-                deleteRow(GvExternalChallenge, "ExternalChallenge", yourAssignedValue);
+                deleteRow(GvExternalChallenge, "PlanExternalChallenge", yourAssignedValue);
             }
             else if (btn.ID.ToString().Equals("BtnRemoveExternalOpportunity"))
             {
-                deleteRow(GvExternalOpportunity, "ExternalOpportunity", yourAssignedValue);
+                deleteRow(GvExternalOpportunity, "PlanExternalOpportunity", yourAssignedValue);
             }
-
-            //if (Convert.ToInt32(yourAssignedValue) == 0)
-            //{
-            //    if (ViewState["InternalAdvantage"] == null)
-            //        return;
-
-            //    DataTable dt = (DataTable)ViewState["InternalAdvantage"];
-            //    if (dt.Rows.Count == 0)
-            //        return;
-
-            //    TextBox box1 = (TextBox)GvInternalAdvantage.Rows[Convert.ToInt32(yourAssignedValue)].Cells[0].FindControl("column1");
-            //    box1.Text = "";
-                                        
-            //}
-            //else
-            //{
-            //    DataTable dt = (DataTable)ViewState["InternalAdvantage"];
-            //    dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
-
-            //    for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
-            //    {
-            //        dt.Rows[i][0] = (i+1).ToString();
-            //    }
-            //    ViewState["InternalAdvantage"] = dt;
-            //    GvInternalAdvantage.DataSource = dt;
-            //    GvInternalAdvantage.DataBind();
-            //}
-            //SetPreviousData(GvInternalAdvantage);
-
         }
         catch
         {
@@ -172,6 +145,34 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
         dt.Columns.Add(new DataColumn("column1", typeof(string)));
 
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select NO, Description from " + targetViewState + " where SN ='" + Session["UserPlanListSN"].ToString() + "' order by NO asc";
+        ms.GetAllColumnData(query, data);
+        if (data.Count > 0)
+        {
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                string[] d = (string[])data[i];
+                dr = dt.NewRow();
+                dr["SN"] = d[0];
+                dt.Rows.Add(dr);
+            }
+            ViewState[targetViewState] = dt;
+
+            gv.DataSource = dt;
+            gv.DataBind();
+            for (int i = 0; i < data.Count; i++)
+            {
+                string[] d = (string[])data[i];
+                ((TextBox)gv.Rows[i].Cells[1].FindControl("column1")).Text = d[1];
+            }
+
+            return;
+        }
+
+
         dr = dt.NewRow();
         dr["SN"] = "1";
         dr["column1"] = string.Empty;
@@ -182,7 +183,14 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         gv.DataSource = dt;
         gv.DataBind();
     }
-
+    private void setPlanSchoolDirection()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select SchoolDirection from PlanSchoolDirection where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        TbSchoolDirection.Text = sb.ToString();
+    }
 
     protected void BtnAdd_Click(object sender, EventArgs e)
     {

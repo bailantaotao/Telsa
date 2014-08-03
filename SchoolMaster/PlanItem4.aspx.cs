@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        setInitial();
     }
 
 
@@ -58,6 +59,67 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
             storeData();
         }
     }
+    private void setInitial()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select DimensionsID, NO, Description from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' order by DimensionsID asc, NO asc";
+        ms.GetAllColumnData(query, data);
+
+        for (int i = 0; i < data.Count; i++)
+        {
+            string[] d = (string[])data[i];
+            if (d[0].Equals("1"))
+            {
+                if (d[1].Equals("1"))
+                {
+                    TbQuestion1.Text = d[2];
+                }
+                else if (d[1].Equals("1"))
+                {
+                    TbQuestion2.Text = d[2];
+                }
+                else if (d[1].Equals("1"))
+                {
+                    TbQuestion3.Text = d[2];
+                }
+            }
+            else if (d[0].Equals("2"))
+            {
+                if (d[1].Equals("1"))
+                {
+                    TbQuestion4.Text = d[2];
+                }
+                else if (d[1].Equals("1"))
+                {
+                    TbQuestion5.Text = d[2];
+                }
+                else if (d[1].Equals("1"))
+                {
+                    TbQuestion6.Text = d[2];
+                }
+
+            }
+            else if (d[0].Equals("3"))
+            {
+                if (d[1].Equals("1"))
+                {
+                    TbQuestion7.Text = d[2];
+                }
+                else if (d[1].Equals("1"))
+                {
+                    TbQuestion8.Text = d[2];
+                }
+                else if (d[1].Equals("1"))
+                {
+                    TbQuestion9.Text = d[2];
+                }
+
+            }
+        }
+
+    }
+
     private bool haveEmptyData()
     {
         return false;

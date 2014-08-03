@@ -134,8 +134,9 @@ public partial class SchoolMaster_PlanViewItem7Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column6", typeof(string)));
         data.Clear();
         query = "select Target, Activity, StartTime, EndTime, FinishRate, Condition " +
-                        "from PlanMasterWorkList " +
-                        "where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+                        "from PlanDepartmentList " +
+                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                        "DepartmentNO = '" + schoolDepartmentNO.ToString() + "'"; 
 
         ms.GetAllColumnData(query, data);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -40,15 +41,10 @@ public partial class SchoolMaster_PlanItem2 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        //getSchoolName(schoolName);
-        //LbSchoolName.Text = schoolName.ToString();
-        //LbSchoolSN.Text = Session["UserID"].ToString();
-        //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
-        //{
-
-        //}
+        if (!IsPostBack)
+        {
+            setInitial();
+        }
 
     }
 
@@ -68,6 +64,26 @@ public partial class SchoolMaster_PlanItem2 : System.Web.UI.Page
             storeData();
         }
     }
+
+    private void setInitial()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select Idea, Motto, Spirit, Profile, Characteristic, Change from PlanCharacteristic where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+        ms.GetAllColumnData(query, data);
+
+        for (int i = 0; i < data.Count; i++)
+        {
+            string[] d = (string[])data[i];
+            TbIdea.Text = d[0];
+            TbMotto.Text = d[1];
+            TbSpirit.Text = d[2];
+            TbOverview.Text = d[3];
+            TbCharacteristic.Text = d[4];
+            TbChange.Text = d[5];
+        }
+    }
+
     private bool haveEmptyData()
     {
         return false;

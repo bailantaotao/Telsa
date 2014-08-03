@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,10 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            setInitial();
+        }
     }
 
 
@@ -61,6 +65,122 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
     private bool haveEmptyData()
     {
         return false;
+    }
+
+    private void setInitial()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select DimensionsID, NO, Solution, UnSolution, CheckUser, TitleDepart, StartTime, EndTime, Support " +
+                       "from PlanMonitor " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by DimensionsID asc, NO asc";
+
+        ms.GetAllColumnData(query, data);
+
+        for (int i = 0; i < data.Count; i++)
+        {
+            string[] d = (string[])data[i];
+            if (d[0].Equals("1"))
+            {
+                if (d[1].Equals("1"))
+                {
+                    TbRC00.Text = d[2];
+                    TbRC01.Text = d[3];
+                    TbRC02.Text = d[4];
+                    TbRC03.Text = d[5];
+                    TbRC04.Text = d[6];
+                    TbRC05.Text = d[7];
+                    TbRC06.Text = d[8];
+                }
+                else if (d[1].Equals("2"))
+                {
+                    TbRC10.Text = d[2];
+                    TbRC11.Text = d[3];
+                    TbRC12.Text = d[4];
+                    TbRC13.Text = d[5];
+                    TbRC14.Text = d[6];
+                    TbRC15.Text = d[7];
+                    TbRC16.Text = d[8];
+                }
+                else if (d[1].Equals("3"))
+                {
+                    TbRC20.Text = d[2];
+                    TbRC21.Text = d[3];
+                    TbRC22.Text = d[4];
+                    TbRC23.Text = d[5];
+                    TbRC24.Text = d[6];
+                    TbRC25.Text = d[7];
+                    TbRC26.Text = d[8];
+                }
+            }
+            else if (d[0].Equals("2"))
+            {
+                if (d[1].Equals("1"))
+                {
+                    TbRC30.Text = d[2];
+                    TbRC31.Text = d[3];
+                    TbRC32.Text = d[4];
+                    TbRC33.Text = d[5];
+                    TbRC34.Text = d[6];
+                    TbRC35.Text = d[7];
+                    TbRC36.Text = d[8];
+                }
+                else if (d[1].Equals("2"))
+                {
+                    TbRC40.Text = d[2];
+                    TbRC41.Text = d[3];
+                    TbRC42.Text = d[4];
+                    TbRC43.Text = d[5];
+                    TbRC44.Text = d[6];
+                    TbRC45.Text = d[7];
+                    TbRC46.Text = d[8];
+                }
+                else if (d[1].Equals("3"))
+                {
+                    TbRC50.Text = d[2];
+                    TbRC51.Text = d[3];
+                    TbRC52.Text = d[4];
+                    TbRC53.Text = d[5];
+                    TbRC54.Text = d[6];
+                    TbRC55.Text = d[7];
+                    TbRC56.Text = d[8];
+                }
+            }
+            else if (d[0].Equals("3"))
+            {
+                if (d[1].Equals("1"))
+                {
+                    TbRC60.Text = d[2];
+                    TbRC61.Text = d[3];
+                    TbRC62.Text = d[4];
+                    TbRC63.Text = d[5];
+                    TbRC64.Text = d[6];
+                    TbRC65.Text = d[7];
+                    TbRC66.Text = d[8];
+                }
+                else if (d[1].Equals("2"))
+                {
+                    TbRC70.Text = d[2];
+                    TbRC71.Text = d[3];
+                    TbRC72.Text = d[4];
+                    TbRC73.Text = d[5];
+                    TbRC74.Text = d[6];
+                    TbRC75.Text = d[7];
+                    TbRC76.Text = d[8];
+                }
+                else if (d[1].Equals("3"))
+                {
+                    TbRC80.Text = d[2];
+                    TbRC81.Text = d[3];
+                    TbRC82.Text = d[4];
+                    TbRC83.Text = d[5];
+                    TbRC84.Text = d[6];
+                    TbRC85.Text = d[7];
+                    TbRC86.Text = d[8];
+                }
+            }
+        }
+
     }
 
     private void storeData()
@@ -107,8 +227,5 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
                                             "where SN='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='" + DimensionsID + "' and NO='" + NO + "'";                                   
             ms.WriteData(query, sb);
         }
-
-
-        
     }
 }

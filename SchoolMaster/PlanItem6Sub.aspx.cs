@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -45,6 +46,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         getSemster();
         if (!IsPostBack)
         {
+            setPersonal();
             setInitial();
         }
 
@@ -115,6 +117,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                             DropDownList box5 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[4].FindControl("column5");
                             TextBox box6 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[5].FindControl("column6");
 
+                            ((TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
+                            ((TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
+
                             box1.Text = "";
                             box2.Text = "";
                             box3.Text = "";
@@ -163,6 +168,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                     DropDownList box5 = (DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("column5");
                     TextBox box6 = (TextBox)GvSchool.Rows[rowIndex].Cells[5].FindControl("column6");
 
+                    ((TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
+                    ((TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
+
                     box1.Text = dt.Rows[i]["column1"].ToString();
                     box2.Text = dt.Rows[i]["column2"].ToString();
                     box3.Text = dt.Rows[i]["column3"].ToString();
@@ -175,6 +183,30 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
             }
         }
     }
+    private void setPersonal()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select Name, Gender, Nation, Profession, Advantage, Problem, DevelopOpportunity, Challenge " +
+                       "from PlanMasterWork " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                       "TitleIsSM = '" + schoolMasterTitle.ToString() + "'";
+
+        ms.GetAllColumnData(query, data);
+        if (data.Count > 0)
+        {
+            string[] d = (string[])data[0];
+            DdlName.SelectedValue = d[0];
+            TbGender.Text = d[1];
+            TbNation.Text = d[2];
+            TbProfession.Text = d[3];
+            TbAdvantage.Text = d[4];
+            TbProblem.Text = d[5];
+            TbOpportunity.Text = d[6];
+            TbChallenge.Text = d[7];
+        }
+    }
+
     private void setInitial()
     {
         DataTable dt = new DataTable();
@@ -186,6 +218,42 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column5", typeof(string)));
         dt.Columns.Add(new DataColumn("column6", typeof(string)));
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
+
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select NO, Target, Activity, StartTime, EndTime, FinishRate, Condition " +
+                        "from PlanMasterWorkList " +
+                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by No asc ";
+
+        ms.GetAllColumnData(query, data);
+        if (data.Count > 0)
+        {
+            for (int i = 0; i < data.Count; i++)
+            {
+                dr = dt.NewRow();
+                dt.Rows.Add(dr);
+            }
+            ViewState["dt"] = dt;
+
+            GvSchool.DataSource = dt;
+            GvSchool.DataBind();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                string[] d = (string[])data[i];
+                ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text = d[1];
+                ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text = d[2];
+                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[3];
+                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[4];
+                ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue = d[5];
+                ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text = d[6];
+
+                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
+                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
+            }
+            return;
+        }
+
 
         dr = dt.NewRow();
         dr["column1"] = string.Empty;
@@ -201,6 +269,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
 
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
+        ((TextBox)GvSchool.Rows[0].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
+        ((TextBox)GvSchool.Rows[0].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
     }
 
 
@@ -223,6 +293,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                     DropDownList box5 = (DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("column5");
                     TextBox box6 = (TextBox)GvSchool.Rows[rowIndex].Cells[5].FindControl("column6");
 
+                    ((TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
+                    ((TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
+
                     drCurrentRow = dtCurrentTable.NewRow();
 
                     drCurrentRow["SN"] = (i + 1).ToString();
@@ -232,7 +305,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                     dtCurrentTable.Rows[i - 1]["column4"] = box4.Text;
                     dtCurrentTable.Rows[i - 1]["column5"] = box5.SelectedValue;
                     dtCurrentTable.Rows[i - 1]["column6"] = box6.Text;
-                    
+
+
+
                     rowIndex++;
                 }
                 dtCurrentTable.Rows.Add(drCurrentRow);
@@ -295,9 +370,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         //    return true;
         if (TbGender.Text.Trim().Equals(""))
             return true;
-        if (TbTitle.Text.Trim().Equals(""))
+        if (TbProfession.Text.Trim().Equals(""))
             return true;
-        if (TbAge.Text.Trim().Equals(""))
+        if (TbNation.Text.Trim().Equals(""))
             return true;
         if (TbAdvantage.Text.Trim().Equals(""))
             return true;
@@ -329,8 +404,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                         DdlName.SelectedValue + "',N'" +
                         DdlName.SelectedValue + "',N'" +
                         TbGender.Text.Trim() + "',N'" +
-                        TbAge.Text.Trim() + "',N'" +
-                        TbTitle.Text.Trim() + "',N'" +
+                        TbNation.Text.Trim() + "',N'" +
+                        TbProfession.Text.Trim() + "',N'" +
                         TbAdvantage.Text.Trim() + "',N'" + 
                         TbProblem.Text.Trim() + "',N'" +
                         TbOpportunity.Text.Trim() + "',N'" +
@@ -359,8 +434,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                                     (i+1).ToString() + "',N'" + 
                                     ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text + "',N'" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text + "',N'" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text.Split(' ')[0] + "',N'" +
+                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text.Split(' ')[0] + "',N'" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text +  "',N'" +
                                     schoolMasterTitle.ToString() + "')";

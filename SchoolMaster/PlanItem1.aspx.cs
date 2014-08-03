@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -164,6 +165,51 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("TbAddress", typeof(string)));
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
 
+
+
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select PlanTitle, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanProfession, PlanTel, PlanAddress from PlanMember where SN ='" + Session["UserPlanListSN"].ToString() + "' order by PlanNo asc";
+        ms.GetAllColumnData(query, data);
+        if (data.Count > 0)
+        {
+            for (int i = 0; i < data.Count; i++)
+            {
+                string[] d = (string[])data[i];
+                dr = dt.NewRow();
+                dr["PlanTitle"] = d[0];
+                dr["TbName"] = string.Empty;
+                dr["TbGender"] = string.Empty;
+                dr["TbNation"] = string.Empty;
+                dr["TbCulture"] = string.Empty;
+                dr["TbProfessional"] = string.Empty;
+                dr["TbTel"] = string.Empty;
+                dr["TbAddress"] = string.Empty;
+                dr["SN"] = (i+1).ToString();
+                dt.Rows.Add(dr);
+            }
+            ViewState["dt"] = dt;
+
+            GvSchool.DataSource = dt;
+            GvSchool.DataBind();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                string[] d = (string[])data[i];
+                //dr["SN"] = (i + 1).ToString();
+                //dr["PlanTitle"] = d[0];
+                ((DropDownList)GvSchool.Rows[i].Cells[1].FindControl("TbName")).SelectedValue = d[1];
+                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text = d[2];
+                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).Text = d[3];
+                ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text = d[4];
+                ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text = d[5];
+                ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text = d[6];
+                ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text = d[7];
+            }
+
+            return;
+        }
+        
         dr = dt.NewRow();
         dr["PlanTitle"] = "主任";
         dr["TbName"] = string.Empty;
@@ -187,12 +233,13 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dr["TbAddress"] = string.Empty;
         dr["SN"] = "2";
         dt.Rows.Add(dr);
-
+        
 
         ViewState["dt"] = dt;
 
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
+
     }
 
 
