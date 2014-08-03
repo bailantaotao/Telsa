@@ -84,7 +84,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                         if (dt.Rows.Count > 0)
                         {
 
-                            TextBox box1 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[1].FindControl("TbName");
+                            DropDownList box1 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[1].FindControl("TbName");
                             TextBox box2 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[2].FindControl("TbGender");
                             TextBox box3 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[3].FindControl("TbNation");
                             TextBox box4 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[4].FindControl("TbCulture");
@@ -92,7 +92,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                             TextBox box6 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[6].FindControl("TbTel");
                             TextBox box7 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[7].FindControl("TbAddress");
 
-                            box1.Text = "";
+                            box1.SelectedIndex = 0;
                             box2.Text = "";
                             box3.Text = "";
                             box4.Text = "";
@@ -134,7 +134,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    TextBox box1 = (TextBox)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
+                    DropDownList box1 = (DropDownList)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
                     TextBox box2 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
                     TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
                     TextBox box4 = (TextBox)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture");
@@ -142,7 +142,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                     TextBox box6 = (TextBox)GvSchool.Rows[rowIndex].Cells[6].FindControl("TbTel");
                     TextBox box7 = (TextBox)GvSchool.Rows[rowIndex].Cells[7].FindControl("TbAddress");
 
-                    box1.Text = dt.Rows[i]["TbName"].ToString();
+                    box1.SelectedValue = dt.Rows[i]["TbName"].ToString();
                     box2.Text = dt.Rows[i]["TbGender"].ToString();
                     box3.Text = dt.Rows[i]["TbNation"].ToString();
                     box4.Text = dt.Rows[i]["TbCulture"].ToString();
@@ -214,7 +214,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 {
                     //extract the TextBox values
 
-                    TextBox box1 = (TextBox)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
+                    DropDownList box1 = (DropDownList)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
                     TextBox box2 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
                     TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
                     TextBox box4 = (TextBox)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture");
@@ -272,9 +272,9 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     bool flag = false;
-                    flag = isEmpty(((TextBox)GvSchool.Rows[i].Cells[1].FindControl("TbName")).Text);
-                    if (flag)
-                        return true;
+                    //flag = isEmpty(((TextBox)GvSchool.Rows[i].Cells[1].FindControl("TbName")).Text);
+                    //if (flag)
+                    //    return true;
                     flag = isEmpty(((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text);
                     if (flag)
                         return true;
@@ -324,7 +324,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                     query = "insert into PlanMember (SN, PlanTitle, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanProfession, PlanTel, PlanAddress, PlanNO) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
                                     dt.Rows[i][0].ToString() + "','" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("TbName")).Text + "','" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[1].FindControl("TbName")).SelectedValue + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).Text + "','" +
                                     ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text + "','" +

@@ -128,7 +128,10 @@
                             <asp:BoundField DataField="PlanTitle" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanName %>" ItemStyle-Width="50px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="TbName" runat="server" Width="50px"></asp:TextBox>
+                                    <%--<asp:TextBox ID="TbName" runat="server" Width="50px"></asp:TextBox>--%>
+                                    <asp:DropDownList ID="TbName" runat="server">
+                                        <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanGender %>"  ItemStyle-Width="50px">
