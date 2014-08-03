@@ -156,7 +156,10 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="50">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column5" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:TextBox ID="column5" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:DropDownList ID="column51" runat="server">
+                                        <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
                             </asp:TemplateField>
