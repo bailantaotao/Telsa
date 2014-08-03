@@ -129,7 +129,7 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Department" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Department" HeaderText="处室" ItemStyle-Width="70px" />
                             <asp:BoundField DataField="SN" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" />
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
