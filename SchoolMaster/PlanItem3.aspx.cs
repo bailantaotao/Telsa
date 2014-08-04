@@ -98,7 +98,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             if (dt.Rows.Count == 0)
                 return;
 
-            TextBox box1 = (TextBox)GvInternalAdvantage.Rows[Convert.ToInt32(rowIndex)].Cells[0].FindControl("column1");
+            TextBox box1 = (TextBox)gv.Rows[Convert.ToInt32(rowIndex)].Cells[0].FindControl("column1");
             box1.Text = "";
             ViewState[targetViewState] = dt;
         }
@@ -157,6 +157,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
                 string[] d = (string[])data[i];
                 dr = dt.NewRow();
                 dr["SN"] = d[0];
+                dr["column1"] = d[1];
                 dt.Rows.Add(dr);
             }
             ViewState[targetViewState] = dt;
@@ -198,7 +199,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         Button btn = (Button)sender;
         if (btn.ID.ToString().Equals("BtnAddInternalAdvantage"))
         {
-            addRow(GvInternalAdvantage, "InternalAdvantage");
+            addRow(GvInternalAdvantage, "PlanInternalAdvantage");
             //if (ViewState["InternalAdvantage"] == null)
             //    return;
 
@@ -227,15 +228,15 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         }
         else if (btn.ID.ToString().Equals("BtnAddInternalDefect"))
         {
-            addRow(GvInternalDefect, "InternalDefect");
+            addRow(GvInternalDefect, "PlanInternalDefect");
         }
         else if (btn.ID.ToString().Equals("BtnAddExternalChallenge"))
         {
-            addRow(GvExternalChallenge, "ExternalChallenge");
+            addRow(GvExternalChallenge, "PlanExternalChallenge");
         }
         else if (btn.ID.ToString().Equals("BtnAddExternalOpportunity"))
         {
-            addRow(GvExternalOpportunity, "ExternalOpportunity");
+            addRow(GvExternalOpportunity, "PlanExternalOpportunity");
         }
         
     }
@@ -282,10 +283,10 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         else
         {
             storeData();
-            storeData(GvInternalAdvantage, "InternalAdvantage", "PlanInternalAdvantage");
-            storeData(GvInternalDefect, "InternalDefect", "PlanInternalDefect");
-            storeData(GvExternalChallenge, "ExternalChallenge", "PlanExternalChallenge");
-            storeData(GvExternalOpportunity, "ExternalOpportunity", "PlanExternalOpportunity");
+            storeData(GvInternalAdvantage, "PlanInternalAdvantage", "PlanInternalAdvantage");
+            storeData(GvInternalDefect, "PlanInternalDefect", "PlanInternalDefect");
+            storeData(GvExternalChallenge, "PlanExternalChallenge", "PlanExternalChallenge");
+            storeData(GvExternalOpportunity, "PlanExternalOpportunity", "PlanExternalOpportunity");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanList.aspx';", true);
         }
     }

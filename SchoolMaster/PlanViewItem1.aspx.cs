@@ -42,7 +42,6 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["UserPlanListSN"] = 7;
         if (!IsPostBack)
         {
             setInitial();
