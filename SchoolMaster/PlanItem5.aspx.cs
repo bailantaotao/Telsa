@@ -89,16 +89,28 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                             box6.SelectedIndex = 0;
                             box7.SelectedIndex = 0;
                             box8.Text = "";
+
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][1] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][2] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][3] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][4] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][6] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][7] = "";
                         }
+                        ViewState["dt"] = dt;
+                        GvSchool.DataSource = dt;
+                        GvSchool.DataBind();
+                        SetPreviousData();
                     }
                 }
                 else
                 {
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
-                    for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        dt.Rows[i][0] = (i + 1).ToString();
+                        dt.Rows[i]["SN"] = (i + 1).ToString();
                     }
                     ViewState["dt"] = dt;
                     GvSchool.DataSource = dt;

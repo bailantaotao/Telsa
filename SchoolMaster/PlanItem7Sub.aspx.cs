@@ -135,16 +135,27 @@ public partial class SchoolMaster_PlanItem7Sub : System.Web.UI.Page
                             box4.Text = "";
                             box5.SelectedIndex = 0;
                             box6.Text = "";
+
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][0] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][1] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][2] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][3] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][4] = 0;
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
                         }
+                        ViewState["dt"] = dt;
+                        GvSchool.DataSource = dt;
+                        GvSchool.DataBind();
+                        SetPreviousData();
                     }
                 }
                 else
                 {
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
-                    for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        dt.Rows[i][7] = (i + 1).ToString();
+                        dt.Rows[i]["SN"] = (i + 1).ToString();
                     }
                     ViewState["dt"] = dt;
                     GvSchool.DataSource = dt;

@@ -142,7 +142,24 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                             box9.SelectedIndex = 0;
                             box10.Text = "";
                             box11.SelectedIndex = 0;
+
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][1] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][2] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][3] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][4] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][6] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][7] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][8] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][9] = 0;
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][10] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][11] = 0;
+
                         }
+                        ViewState["dt"] = dt;
+                        GvSchool.DataSource = dt;
+                        GvSchool.DataBind();
+                        SetPreviousData();
                     }
                 }
                 else

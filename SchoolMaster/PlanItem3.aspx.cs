@@ -97,10 +97,13 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             DataTable dt = (DataTable)ViewState[targetViewState];
             if (dt.Rows.Count == 0)
                 return;
-
+            dt.Rows[0][1] = "";
             TextBox box1 = (TextBox)gv.Rows[Convert.ToInt32(rowIndex)].Cells[0].FindControl("column1");
             box1.Text = "";
             ViewState[targetViewState] = dt;
+            gv.DataSource = dt;
+            gv.DataBind();
+            SetPreviousData(gv, targetViewState);
         }
         else
         {

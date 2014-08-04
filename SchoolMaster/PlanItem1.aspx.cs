@@ -114,9 +114,9 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 {
                     DataTable dt = (DataTable)ViewState["dt"];
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
-                    for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
+                    for (int i = 0; i < dt.Rows.Count; i++)
                     {
-                        dt.Rows[i][8] = (i + 1).ToString();
+                        dt.Rows[i]["SN"] = (i + 1).ToString();
                     }
                     ViewState["dt"] = dt;
                     GvSchool.DataSource = dt;
