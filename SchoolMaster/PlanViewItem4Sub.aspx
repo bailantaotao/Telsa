@@ -128,9 +128,9 @@
                             <asp:BoundField DataField="Column6" HeaderText="预算" ItemStyle-Width="70px" />
                             <asp:BoundField DataField="Column7" HeaderText="其中学校资源" ItemStyle-Width="70px" />
                             <asp:BoundField DataField="Column8" HeaderText="其他资源" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column8" HeaderText="进展情况" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column8" HeaderText="时间" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column8" HeaderText="负责人" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column9" HeaderText="进展情况" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column10" HeaderText="时间" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column11" HeaderText="负责人" ItemStyle-Width="70px" />
                         </Columns>
                     </asp:GridView>
                     
