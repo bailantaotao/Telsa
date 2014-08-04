@@ -189,7 +189,10 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
                     box4.Text = dt.Rows[i]["column4"].ToString();
                     box5.SelectedValue = dt.Rows[i]["column5"].ToString();
                     box6.Text = dt.Rows[i]["column6"].ToString();
-
+                    if (i < 1)
+                    {
+                        ((Button)GvSchool.Rows[i].Cells[6].FindControl("lbnView")).Text = "清空";
+                    }
                     rowIndex++;
                 }
             }
@@ -228,7 +231,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column6", typeof(string)));
         dt.Columns.Add(new DataColumn("column7", typeof(string)));
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
-
+        dt.Columns.Add(new DataColumn("btnClear", typeof(string)));
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         string query = "select Target, Activity, StartTime, EndTime, FinishRate, Condition " +
@@ -241,7 +244,15 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         {
             for (int i = 0; i < data.Count; i++)
             {
+                string[] d = (string[])data[i];
                 dr = dt.NewRow();
+                dr["column1"] = d[0];
+                dr["column2"] = d[1];
+                dr["column3"] = d[2];
+                dr["column4"] = d[3];
+                dr["column5"] = d[4];
+                dr["column6"] = d[5];
+                dr["btnClear"] = "清空";
                 dt.Rows.Add(dr);
             }
             ViewState["dt"] = dt;
@@ -261,6 +272,10 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
 
                 ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
                 ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
+                if (i < 1)
+                {
+                    ((Button)GvSchool.Rows[i].Cells[6].FindControl("lbnView")).Text = "清空";
+                }
             }
             return;
         }
@@ -273,6 +288,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         dr["column5"] = string.Empty;
         dr["column6"] = string.Empty;
         dr["SN"] = "1";
+        dr["btnClear"] = "清空";
         dt.Rows.Add(dr);
         
         ViewState["dt"] = dt;
@@ -281,6 +297,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         GvSchool.DataBind();
         ((TextBox)GvSchool.Rows[0].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
         ((TextBox)GvSchool.Rows[0].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
+        ((Button)GvSchool.Rows[0].Cells[6].FindControl("lbnView")).Text = "清空";
     }
 
 
