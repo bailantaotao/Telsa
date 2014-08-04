@@ -95,8 +95,19 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                             box5.Text = "";
                             box6.Text = "";
                             box7.Text = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][1] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][2] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][3] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][4] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][6] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][7] = "";
+
                         }
                         ViewState["dt"] = dt;
+                        GvSchool.DataSource = dt;
+                        GvSchool.DataBind();
+                        SetPreviousData();
                     }
                 }
                 else
@@ -130,6 +141,8 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+
+                    
                     DropDownList box1 = (DropDownList)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
                     TextBox box2 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
                     TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
