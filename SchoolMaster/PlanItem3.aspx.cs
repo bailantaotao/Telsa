@@ -39,10 +39,10 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         if (!IsPostBack)
         {
             setPlanSchoolDirection();
-            setInitial(GvInternalAdvantage, "PlanInternalAdvantage");
-            setInitial(GvInternalDefect, "PlanInternalDefect");
-            setInitial(GvExternalChallenge, "PlanExternalChallenge");
-            setInitial(GvExternalOpportunity, "PlanExternalOpportunity");
+            setInitial(GvInternalAdvantage, "PlanInternalAdvantage", "BtnRemoveInternalAdvantage");
+            setInitial(GvInternalDefect, "PlanInternalDefect", "BtnRemoveInternalDefect");
+            setInitial(GvExternalChallenge, "PlanExternalChallenge", "BtnRemoveExternalChallenge");
+            setInitial(GvExternalOpportunity, "PlanExternalOpportunity", "BtnRemoveExternalOpportunity");
         }
 
     }
@@ -141,12 +141,13 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         
 
     }
-    private void setInitial(GridView gv, string targetViewState)
+    private void setInitial(GridView gv, string targetViewState, string btnID)
     {
         DataTable dt = new DataTable();
         DataRow dr = null;
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
         dt.Columns.Add(new DataColumn("column1", typeof(string)));
+        dt.Columns.Add(new DataColumn("btnClear", typeof(string)));
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
@@ -161,6 +162,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
                 dr = dt.NewRow();
                 dr["SN"] = d[0];
                 dr["column1"] = d[1];
+                dr["btnClear"] = "清空";
                 dt.Rows.Add(dr);
             }
             ViewState[targetViewState] = dt;
@@ -171,6 +173,11 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             {
                 string[] d = (string[])data[i];
                 ((TextBox)gv.Rows[i].Cells[1].FindControl("column1")).Text = d[1];
+                if (i < 1)
+                {
+                    ((Button)gv.Rows[i].Cells[2].FindControl(btnID)).Text = "清空";
+                    ((Button)gv.Rows[i].Cells[2].FindControl(btnID)).Text = "清空";
+                }
             }
 
             return;
@@ -186,6 +193,8 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
 
         gv.DataSource = dt;
         gv.DataBind();
+
+        ((Button)gv.Rows[0].Cells[2].FindControl(btnID)).Text = "清空";
     }
     private void setPlanSchoolDirection()
     {
