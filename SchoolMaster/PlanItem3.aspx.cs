@@ -65,19 +65,19 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             String yourAssignedValue = ((Button)sender).CommandArgument;
             if (btn.ID.ToString().Equals("BtnRemoveInternalAdvantage"))
             {
-                deleteRow(GvInternalAdvantage, "PlanInternalAdvantage", yourAssignedValue);
+                deleteRow(GvInternalAdvantage, "PlanInternalAdvantage", yourAssignedValue, btn.ID);
             }
             else if (btn.ID.ToString().Equals("BtnRemoveInternalDefect"))
             {
-                deleteRow(GvInternalDefect, "PlanInternalDefect", yourAssignedValue);
+                deleteRow(GvInternalDefect, "PlanInternalDefect", yourAssignedValue, btn.ID);
             }
             else if (btn.ID.ToString().Equals("BtnRemoveExternalChallenge"))
             {
-                deleteRow(GvExternalChallenge, "PlanExternalChallenge", yourAssignedValue);
+                deleteRow(GvExternalChallenge, "PlanExternalChallenge", yourAssignedValue, btn.ID);
             }
             else if (btn.ID.ToString().Equals("BtnRemoveExternalOpportunity"))
             {
-                deleteRow(GvExternalOpportunity, "PlanExternalOpportunity", yourAssignedValue);
+                deleteRow(GvExternalOpportunity, "PlanExternalOpportunity", yourAssignedValue, btn.ID);
             }
         }
         catch
@@ -87,7 +87,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         
     }
 
-    private void deleteRow(GridView gv, string targetViewState, string rowIndex)
+    private void deleteRow(GridView gv, string targetViewState, string rowIndex, string btnID)
     {
         if (Convert.ToInt32(rowIndex) == 0)
         {
@@ -103,7 +103,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             ViewState[targetViewState] = dt;
             gv.DataSource = dt;
             gv.DataBind();
-            SetPreviousData(gv, targetViewState);
+            SetPreviousData(gv, targetViewState, btnID);
         }
         else
         {
@@ -117,12 +117,12 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             ViewState[targetViewState] = dt;
             gv.DataSource = dt;
             gv.DataBind();
-            SetPreviousData(gv, targetViewState);
+            SetPreviousData(gv, targetViewState, btnID);
             
         }
     }
 
-    private void SetPreviousData(GridView gv, string targetViewState)
+    private void SetPreviousData(GridView gv, string targetViewState, string btnID)
     {
         int rowIndex = 0;
         if (ViewState[targetViewState] == null)
@@ -136,6 +136,10 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         {
             TextBox box1 = (TextBox)gv.Rows[rowIndex].Cells[0].FindControl("column1");
             box1.Text = dt.Rows[i]["column1"].ToString();
+            if (i < 1)
+            {
+                ((Button)gv.Rows[i].Cells[2].FindControl(btnID)).Text = "清空";
+            }
             rowIndex++;
         }                        
         
@@ -211,7 +215,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         Button btn = (Button)sender;
         if (btn.ID.ToString().Equals("BtnAddInternalAdvantage"))
         {
-            addRow(GvInternalAdvantage, "PlanInternalAdvantage");
+            addRow(GvInternalAdvantage, "PlanInternalAdvantage", btn.ID);
             //if (ViewState["InternalAdvantage"] == null)
             //    return;
 
@@ -240,20 +244,20 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         }
         else if (btn.ID.ToString().Equals("BtnAddInternalDefect"))
         {
-            addRow(GvInternalDefect, "PlanInternalDefect");
+            addRow(GvInternalDefect, "PlanInternalDefect", btn.ID);
         }
         else if (btn.ID.ToString().Equals("BtnAddExternalChallenge"))
         {
-            addRow(GvExternalChallenge, "PlanExternalChallenge");
+            addRow(GvExternalChallenge, "PlanExternalChallenge", btn.ID);
         }
         else if (btn.ID.ToString().Equals("BtnAddExternalOpportunity"))
         {
-            addRow(GvExternalOpportunity, "PlanExternalOpportunity");
+            addRow(GvExternalOpportunity, "PlanExternalOpportunity", btn.ID);
         }
         
     }
 
-    private void addRow(GridView gv, string targetViewState)
+    private void addRow(GridView gv, string targetViewState, string btnID)
     {
         int rowIndex = 0;
         if (ViewState[targetViewState] == null)
@@ -280,7 +284,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         gv.DataSource = dtCurrentTable;
         gv.DataBind();
 
-        SetPreviousData(gv, targetViewState);
+        SetPreviousData(gv, targetViewState, btnID);
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {

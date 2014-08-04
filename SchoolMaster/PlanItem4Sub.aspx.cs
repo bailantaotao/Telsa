@@ -217,7 +217,10 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                     box9.SelectedValue = dt.Rows[i]["column9"].ToString();
                     box10.Text = dt.Rows[i]["column10"].ToString();
                     box11.SelectedValue = dt.Rows[i]["column11"].ToString();
-
+                    if (i < 1)
+                    {
+                        ((Button)GvSchool.Rows[i].Cells[11].FindControl("lbnView")).Text = "清空";
+                    }
                     rowIndex++;
                 }
             }

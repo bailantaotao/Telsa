@@ -158,7 +158,11 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                     box5.Text = dt.Rows[i]["TbProfessional"].ToString();
                     box6.Text = dt.Rows[i]["TbTel"].ToString();
                     box7.Text = dt.Rows[i]["TbAddress"].ToString();
-
+                    if (i < 2)
+                    {
+                        ((Button)GvSchool.Rows[i].Cells[8].FindControl("lbnView")).Text = "清空";
+                        ((Button)GvSchool.Rows[i].Cells[8].FindControl("lbnView")).Text = "清空";
+                    }
                     rowIndex++;
                 }
             }
