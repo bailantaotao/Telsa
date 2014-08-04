@@ -143,6 +143,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                             box10.Text = "";
                             box11.SelectedIndex = 0;
 
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][0] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][1] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][2] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][3] = "";
@@ -150,10 +151,9 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][6] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][7] = "";
-                            dt.Rows[Convert.ToInt32(yourAssignedValue)][8] = "";
-                            dt.Rows[Convert.ToInt32(yourAssignedValue)][9] = 0;
-                            dt.Rows[Convert.ToInt32(yourAssignedValue)][10] = "";
-                            dt.Rows[Convert.ToInt32(yourAssignedValue)][11] = 0;
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][8] = 0;
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][9] = "";
+                            dt.Rows[Convert.ToInt32(yourAssignedValue)][10] = 0;
 
                         }
                         ViewState["dt"] = dt;
@@ -238,6 +238,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column9", typeof(string)));
         dt.Columns.Add(new DataColumn("column10", typeof(string)));
         dt.Columns.Add(new DataColumn("column11", typeof(string)));
+        dt.Columns.Add(new DataColumn("btnClear", typeof(string)));
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
@@ -252,7 +253,21 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         {
             for (int i = 0; i < data.Count; i++)
             {
+                string[] d = (string[])data[i];
                 dr = dt.NewRow();
+                dr["column1"] = d[0];
+                dr["column2"] = d[1];
+                dr["column3"] = d[2];
+                dr["column4"] = d[3];
+                dr["column5"] = d[4];
+                dr["column6"] = d[5];
+                dr["column7"] = d[6];
+                dr["column8"] = d[7];
+                dr["column9"] = d[8];
+                dr["column10"] = d[9];
+                dr["column11"] = d[10];
+                dr["btnClear"] = "清空";
+
                 dt.Rows.Add(dr);
             }
             ViewState["dt"] = dt;
@@ -278,6 +293,11 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
                 ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
                 ((TextBox)GvSchool.Rows[i].Cells[9].FindControl("column10")).Attributes.Add("readonly", "true");
+
+                if (i < 1)
+                {
+                    ((Button)GvSchool.Rows[i].Cells[11].FindControl("lbnView")).Text = "清空";
+                }
             }
             return;
         }
@@ -296,6 +316,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         dr["column9"] = string.Empty;
         dr["column10"] = string.Empty;
         dr["column11"] = string.Empty;
+        dr["btnClear"] = "清空";
         dt.Rows.Add(dr);
         
 
@@ -307,6 +328,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         ((TextBox)GvSchool.Rows[0].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
         ((TextBox)GvSchool.Rows[0].Cells[3].FindControl("column4")).Attributes.Add("readonly", "true");
         ((TextBox)GvSchool.Rows[0].Cells[9].FindControl("column10")).Attributes.Add("readonly", "true");
+        ((Button)GvSchool.Rows[0].Cells[11].FindControl("lbnView")).Text = "清空";
     }
 
 
