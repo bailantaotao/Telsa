@@ -177,7 +177,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("TbTel", typeof(string)));
         dt.Columns.Add(new DataColumn("TbAddress", typeof(string)));
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
-
+        dt.Columns.Add(new DataColumn("btnClear", typeof(string)));
 
 
         ManageSQL ms = new ManageSQL();
@@ -191,14 +191,15 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 string[] d = (string[])data[i];
                 dr = dt.NewRow();
                 dr["PlanTitle"] = d[0];
-                dr["TbName"] = string.Empty;
-                dr["TbGender"] = string.Empty;
-                dr["TbNation"] = string.Empty;
-                dr["TbCulture"] = string.Empty;
-                dr["TbProfessional"] = string.Empty;
-                dr["TbTel"] = string.Empty;
-                dr["TbAddress"] = string.Empty;
+                dr["TbName"] = d[1];
+                dr["TbGender"] = d[2];
+                dr["TbNation"] = d[3];
+                dr["TbCulture"] = d[4];
+                dr["TbProfessional"] = d[5];
+                dr["TbTel"] = d[6];
+                dr["TbAddress"] = d[7];
                 dr["SN"] = (i+1).ToString();
+                dr["btnClear"] = "清空";
                 dt.Rows.Add(dr);
             }
             ViewState["dt"] = dt;
@@ -218,6 +219,11 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text = d[5];
                 ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text = d[6];
                 ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text = d[7];
+                if (i < 2)
+                {
+                    ((Button)GvSchool.Rows[i].Cells[8].FindControl("lbnView")).Text = "清空";
+                    ((Button)GvSchool.Rows[i].Cells[8].FindControl("lbnView")).Text = "清空";
+                }
             }
 
             return;
@@ -233,6 +239,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dr["TbTel"] = string.Empty;
         dr["TbAddress"] = string.Empty;
         dr["SN"] = "1";
+        dr["btnClear"] = "清空";
         dt.Rows.Add(dr);
 
         dr = dt.NewRow();
@@ -245,6 +252,7 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         dr["TbTel"] = string.Empty;
         dr["TbAddress"] = string.Empty;
         dr["SN"] = "2";
+        dr["btnClear"] = "清空";
         dt.Rows.Add(dr);
         
 
@@ -252,7 +260,8 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
-
+        ((Button)GvSchool.Rows[0].Cells[8].FindControl("lbnView")).Text = "清空";
+        ((Button)GvSchool.Rows[1].Cells[8].FindControl("lbnView")).Text = "清空";
     }
 
 
