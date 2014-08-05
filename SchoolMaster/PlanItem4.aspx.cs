@@ -159,8 +159,8 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         writeData(3, 1, TbQuestion7.Text.Trim());
         writeData(3, 2, TbQuestion8.Text.Trim());
         writeData(3, 3, TbQuestion9.Text.Trim());
-        
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanList.aspx';", true);
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
     }
 
     private void writeData(int DimensionsID, int NO, string description)

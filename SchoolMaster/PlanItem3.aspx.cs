@@ -215,7 +215,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         Button btn = (Button)sender;
         if (btn.ID.ToString().Equals("BtnAddInternalAdvantage"))
         {
-            addRow(GvInternalAdvantage, "PlanInternalAdvantage", btn.ID);
+            addRow(GvInternalAdvantage, "PlanInternalAdvantage", "BtnRemoveInternalAdvantage");
             //if (ViewState["InternalAdvantage"] == null)
             //    return;
 
@@ -244,15 +244,15 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         }
         else if (btn.ID.ToString().Equals("BtnAddInternalDefect"))
         {
-            addRow(GvInternalDefect, "PlanInternalDefect", btn.ID);
+            addRow(GvInternalDefect, "PlanInternalDefect", "BtnRemoveInternalDefect");
         }
         else if (btn.ID.ToString().Equals("BtnAddExternalChallenge"))
         {
-            addRow(GvExternalChallenge, "PlanExternalChallenge", btn.ID);
+            addRow(GvExternalChallenge, "PlanExternalChallenge", "BtnRemoveExternalChallenge");
         }
         else if (btn.ID.ToString().Equals("BtnAddExternalOpportunity"))
         {
-            addRow(GvExternalOpportunity, "PlanExternalOpportunity", btn.ID);
+            addRow(GvExternalOpportunity, "PlanExternalOpportunity", "BtnRemoveExternalOpportunity");
         }
         
     }
@@ -303,7 +303,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             storeData(GvInternalDefect, "PlanInternalDefect", "PlanInternalDefect");
             storeData(GvExternalChallenge, "PlanExternalChallenge", "PlanExternalChallenge");
             storeData(GvExternalOpportunity, "PlanExternalOpportunity", "PlanExternalOpportunity");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanList.aspx';", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
         }
     }
 

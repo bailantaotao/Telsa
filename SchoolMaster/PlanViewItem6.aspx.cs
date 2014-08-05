@@ -41,6 +41,6 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
     }
     protected void BtnView_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewItem6Sub.aspx?Title='"+RadioButtonList1.SelectedValue + "'");
+        Response.Redirect("PlanViewItem6Sub.aspx?Title="+RadioButtonList1.SelectedValue + "");
     }
 }
