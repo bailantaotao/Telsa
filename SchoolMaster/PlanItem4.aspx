@@ -124,24 +124,15 @@
                             <td width="70%" align="left">
                                 问题一<asp:TextBox ID="TbQuestion1" runat="server" Width="400px"></asp:TextBox>
                             </td>
-                            <td width="5%">
-                                <asp:Button ID="btnView1" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView1_Click" />
-                            </td>
                         </tr>
                         <tr>
                             <td width="70%" align="left">
                                 问题二<asp:TextBox ID="TbQuestion2" runat="server" Width="400px"></asp:TextBox>
                             </td>
-                           <td width="5%">
-                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
-                            </td>
                         </tr>
                         <tr>
                             <td width="70%" align="left">
                                 问题三<asp:TextBox ID="TbQuestion3" runat="server" Width="400px"></asp:TextBox>
-                            </td>
-                           <td width="5%">
-                                <asp:Button ID="Button2" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView3_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -149,24 +140,15 @@
                             <td width="70%" align="left">
                                 问题一<asp:TextBox ID="TbQuestion4" runat="server" Width="400px"></asp:TextBox>
                             </td>
-                            <td width="5%">
-                                <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView4_Click" />
-                            </td>
                         </tr>
                         <tr>
                             <td width="70%" align="left">
                                 问题二<asp:TextBox ID="TbQuestion5" runat="server" Width="400px"></asp:TextBox>
                             </td>
-                           <td width="5%">
-                                <asp:Button ID="Button4" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView5_Click" />
-                            </td>
                         </tr>
                         <tr>
                             <td width="70%" align="left">
                                 问题三<asp:TextBox ID="TbQuestion6" runat="server" Width="400px"></asp:TextBox>
-                            </td>
-                           <td width="5%">
-                                <asp:Button ID="Button5" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView6_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -174,24 +156,15 @@
                             <td width="70%" align="left">
                                 问题一<asp:TextBox ID="TbQuestion7" runat="server" Width="400px"></asp:TextBox>
                             </td>
-                            <td width="5%">
-                                <asp:Button ID="Button6" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView7_Click" />
-                            </td>
                         </tr>
                         <tr>
                             <td width="70%" align="left">
                                 问题二<asp:TextBox ID="TbQuestion8" runat="server" Width="400px"></asp:TextBox>
                             </td>
-                           <td width="5%">
-                                <asp:Button ID="Button7" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView8_Click" />
-                            </td>
                         </tr>
                         <tr>
                             <td width="70%" align="left">
                                 问题三<asp:TextBox ID="TbQuestion9" runat="server" Width="400px"></asp:TextBox>
-                            </td>
-                           <td width="5%">
-                                <asp:Button ID="Button8" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView9_Click" />
                             </td>
                         </tr>
                     </table>

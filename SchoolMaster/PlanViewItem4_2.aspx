@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanViewMain.aspx.cs" Inherits="SchoolMaster_PlanViewMain" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanViewItem4_2.aspx.cs" Inherits="SchoolMaster_PlanViewItem4" %>
 
 <!DOCTYPE html>
 
@@ -100,11 +100,11 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table align="left" width="739px">
+                    <table width="739px">
                         <tr>
-                            
-                            <td align="left">
-                                <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1" />
+                            <td colspan="1" align="left">
+                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle4 %>"></asp:Label> 
+                                                               
                             </td>
                         </tr>
                     </table>
@@ -112,91 +112,102 @@
                 <div id="BlockRightDownDataDisplay">
                     <table width="739px">
                         <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem1" runat="server" Text="<%$ Resources:Resource, LkbPlanItem1 %>" PostBackUrl="~/SchoolMaster/PlanViewItem1.aspx"></asp:LinkButton>
+                            <td width="25%">维度</td">
+                            <td width="70%" align="left">
+                                问题
                             </td>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem2" runat="server" Text="<%$ Resources:Resource, LkbPlanItem2 %>" PostBackUrl="~/SchoolMaster/PlanViewItem2.aspx"></asp:LinkButton>
+                            <td width="5%">
+                            </td>
+                        </tr>
+                        <tr >
+                            <td width="25%" rowspan="3">学科能力：</td">
+                            <td width="70%" align="left">
+                                问题一
+                                <asp:Label ID="LbQuestion1" runat="server" Text=""></asp:Label>
+                            </td>
+                            <td width="5%">
+                                <asp:Button ID="btnView1" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView1_Click" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem3" runat="server" Text="<%$ Resources:Resource, LkbPlanItem3 %>" PostBackUrl="~/SchoolMaster/PlanViewItem3.aspx"></asp:LinkButton>
+                            <td width="70%" align="left">
+                                问题二<asp:Label ID="LbQuestion2" runat="server" Text=""></asp:Label>
                             </td>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem4" runat="server" Text="<%$ Resources:Resource, LkbPlanItem4 %>" PostBackUrl="~/SchoolMaster/PlanViewItem4.aspx"></asp:LinkButton>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem4_2" runat="server" Text="<%$ Resources:Resource, LkbPlanItem4_2 %>" PostBackUrl="~/SchoolMaster/PlanViewItem4_2.aspx"></asp:LinkButton>
-                            </td>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem5" runat="server" Text="<%$ Resources:Resource, LkbPlanItem5 %>" OnClick="LkbPlanItem5_Click" ></asp:LinkButton>
+                           <td width="5%">
+                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem6" runat="server" Text="<%$ Resources:Resource, LkbPlanItem6 %>" OnClick="LkbPlanItem6_Click"></asp:LinkButton>
+                            <td width="70%" align="left">
+                                问题三<asp:Label ID="LbQuestion3" runat="server" Text=""></asp:Label>
                             </td>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem7" runat="server" Text="<%$ Resources:Resource, LkbPlanItem7 %>" OnClick="LkbPlanItem7_Click"></asp:LinkButton>
+                           <td width="5%">
+                                <asp:Button ID="Button2" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView3_Click" />
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem8" runat="server" Text="<%$ Resources:Resource, LkbPlanItem8 %>" OnClick="LkbPlanItem8_Click"></asp:LinkButton>
+                            <td width="25%" rowspan="3">人格陶冶：</td">
+                            <td width="70%" align="left">
+                                问题一<asp:Label ID="LbQuestion4" runat="server" Text=""></asp:Label>
                             </td>
-                            <td>
-                                <asp:LinkButton ID="LkbPlanItem9" runat="server" Text="<%$ Resources:Resource, LkbPlanItem9 %>" PostBackUrl="~/SchoolMaster/PlanViewItem9.aspx"></asp:LinkButton>
+                            <td width="5%">
+                                <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView4_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="70%" align="left">
+                                问题二<asp:Label ID="LbQuestion5" runat="server" Text=""></asp:Label>
+                            </td>
+                           <td width="5%">
+                                <asp:Button ID="Button4" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView5_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="70%" align="left">
+                                问题三<asp:Label ID="LbQuestion6" runat="server" Text=""></asp:Label>
+                            </td>
+                           <td width="5%">
+                                <asp:Button ID="Button5" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView6_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%" rowspan="3">学校管理：</td>
+                            <td width="70%" align="left">
+                                问题一<asp:Label ID="LbQuestion7" runat="server" Text=""></asp:Label>
+                            </td>
+                            <td width="5%">
+                                <asp:Button ID="Button6" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView7_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="70%" align="left">
+                                问题二<asp:Label ID="LbQuestion8" runat="server" Text=""></asp:Label>
+                            </td>
+                           <td width="5%">
+                                <asp:Button ID="Button7" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView8_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="70%" align="left">
+                                问题三<asp:Label ID="LbQuestion9" runat="server" Text=""></asp:Label>
+                            </td>
+                           <td width="5%">
+                                <asp:Button ID="Button8" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView9_Click" />
                             </td>
                         </tr>
                     </table>
-                    <table width="739px">
-                        <tr>
-                            <td align="left" width="10%">
-                                <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipPlanAttachment %>"></asp:Label>
-                            </td>
-                            <td align="left" width="90%">
-                                <%--<asp:Button ID="btnUpload" runat="server" Text="<%$ Resources:Resource, TipPlanUploadAttachment %>" OnClick="btnUpload_Click" />--%>
-                            </td>
-                        </tr>
-                    </table>
-                    <table width="739px">
-                        <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem1" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem1 %>" OnClick="LkbDownloadItem1_Click"></asp:LinkButton>
-                            </td>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem2" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem2 %>" OnClick="LkbDownloadItem2_Click">></asp:LinkButton>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem3" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem3 %>" OnClick="LkbDownloadItem3_Click"></asp:LinkButton>
-                            </td>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem4" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem4 %>" OnClick="LkbDownloadItem4_Click">></asp:LinkButton>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem5" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem5 %>" OnClick="LkbDownloadItem5_Click"></asp:LinkButton>
-                            </td>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem6" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem6 %>" OnClick="LkbDownloadItem6_Click">></asp:LinkButton>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem7" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem7 %>" OnClick="LkbDownloadItem7_Click"></asp:LinkButton>
-                            </td>
-                            <td>
-                                <asp:LinkButton ID="LkbDownloadItem8" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem8 %>" OnClick="LkbDownloadItem8_Click">></asp:LinkButton>
-                            </td>
-                        </tr>
-                    </table>
+                    
                 </div>
+                <table width="739px">
+                    <tr>
+                        <td width="80%">
+                            注：发生的变化栏中应着重描述本学年与上学年相比发生的变化
+                        </td>
+                        <td width="90%" align="right" style="margin-right=20px;">
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <asp:Literal ID="ClientScriptArea" runat="server"></asp:Literal> 

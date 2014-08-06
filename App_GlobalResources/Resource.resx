@@ -676,19 +676,19 @@
     <value>4. 学校发展中存在的主要问题</value>
   </data>
   <data name="LkbPlanItem5" xml:space="preserve">
-    <value>5. 学校周历表</value>
+    <value>6. 学校周历表</value>
   </data>
   <data name="LkbPlanItem6" xml:space="preserve">
-    <value>6. 校长工作行动计划表</value>
+    <value>7. 校长工作行动计划表</value>
   </data>
   <data name="LkbPlanItem7" xml:space="preserve">
-    <value>7. 学校管理部门工作行动计划表</value>
+    <value>8. 学校管理部门工作行动计划表</value>
   </data>
   <data name="LkbPlanItem8" xml:space="preserve">
-    <value>8. 教研组工作计划表</value>
+    <value>9. 教研组工作计划表</value>
   </data>
   <data name="LkbPlanItem9" xml:space="preserve">
-    <value>9. 监测评估表</value>
+    <value>10. 监测评估表</value>
   </data>
   <data name="TipPlanAttachment" xml:space="preserve">
     <value>附件:</value>
@@ -824,5 +824,8 @@
   </data>
   <data name="PlanTipUploadError" xml:space="preserve">
     <value>您尚未上传档案</value>
+  </data>
+  <data name="LkbPlanItem4_2" xml:space="preserve">
+    <value>5. 本学年目标与活动</value>
   </data>
 </root>
