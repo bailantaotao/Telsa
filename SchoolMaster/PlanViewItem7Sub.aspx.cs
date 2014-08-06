@@ -108,7 +108,7 @@ public partial class SchoolMaster_PlanViewItem7Sub : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select PersonInCharge, Gender, Title, NumbersOfPeople " +
+        string query = "select PersonInCharge, Gender, Title, NumbersOfPeople, Condition " +
                        "from PlanDepartment " +
                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
                        "DepartmentNO = '" + schoolDepartmentNO.ToString() + "'";
@@ -121,6 +121,7 @@ public partial class SchoolMaster_PlanViewItem7Sub : System.Web.UI.Page
             LbGender.Text = d[1];
             LbProfession.Text = d[2];
             LbNumbersOfPeople.Text = d[3];
+            LbAdvantage.Text = d[4];
         }
 
 
