@@ -40,7 +40,10 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        setInitial();
+        if (!IsPostBack)
+        {
+            setInitial();
+        }
     }
 
 
