@@ -103,12 +103,7 @@
                     <table width="739px">
                         <tr>
                             <td colspan="1" align="left">
-                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle1 %>"></asp:Label>                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="1" align="left">
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPlan1MemberLimit %>"></asp:Label>                                
+                                <asp:Label ID="Label2" runat="server" Text="学校发展计划执行评核输入（供校长于执行完成“确认”使用）"></asp:Label>                                
                             </td>
                         </tr>
                     </table>
