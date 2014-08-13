@@ -500,7 +500,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     sb.Clear();
-                    query = "insert into PlanTargetActivity (SN, DimensionsID, PlanSummaryDimensionsNO, Target, Activity, StartTime, EndTime, PersonInCharge, Budget, Resource, OtherResources, FinishRate, EstimateTime, EstimatePersonInCharge) VALUES ('" +
+                    query = "insert into PlanTargetActivity (SN, DimensionsID, PlanSummaryDimensionsNO, Target, Activity, StartTime, EndTime, PersonInCharge, Budget, Resource, OtherResources, FinishRate, EstimateTime, EstimatePersonInCharge, NO, Finish) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
                                     Request["DimensionsID"].ToString() + "','" +
                                     Request["NO"].ToString() + "',N'" + 
@@ -514,7 +514,9 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                                     ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text + "',N'" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[8].FindControl("column9")).SelectedValue + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[9].FindControl("column10")).Text.Split(' ')[0] + "',N'" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[10].FindControl("column11")).SelectedValue + "')";
+                                    ((DropDownList)GvSchool.Rows[i].Cells[10].FindControl("column11")).SelectedValue + "','" +
+                                    i + "','"+
+                                    false + "')";
 
                     ms.WriteData(query, sb);
                     

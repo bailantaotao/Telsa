@@ -151,6 +151,11 @@
                                 <asp:LinkButton ID="LkbPlanItem9" runat="server" Text="<%$ Resources:Resource, LkbPlanItem9 %>" PostBackUrl="~/SchoolMaster/PlanViewItem9.aspx"></asp:LinkButton>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <asp:LinkButton ID="LkbPlanItem11" runat="server" Text="<%$ Resources:Resource, LkbPlanItem11 %>" PostBackUrl="~/SchoolMaster/PlanViewItem11.aspx" ></asp:LinkButton>
+                            </td>
+                        </tr>
                     </table>
                     <table width="739px">
                         <tr>

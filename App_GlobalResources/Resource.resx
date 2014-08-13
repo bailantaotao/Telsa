@@ -828,4 +828,7 @@
   <data name="LkbPlanItem4_2" xml:space="preserve">
     <value>5. 本学年目标与活动</value>
   </data>
+  <data name="LkbPlanItem11" xml:space="preserve">
+    <value>11. SDP执行评核输入</value>
+  </data>
 </root>
