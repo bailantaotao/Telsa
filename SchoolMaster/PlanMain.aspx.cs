@@ -238,7 +238,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(2, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -247,7 +247,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(3, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -256,7 +256,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(4, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -265,7 +265,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(5, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -274,7 +274,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(6, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -283,7 +283,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(7, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -292,7 +292,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(8, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }

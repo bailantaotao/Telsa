@@ -42,7 +42,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        getSchoolName(schoolName);
+        //getSchoolName(schoolName);
                 
         if (!verifyValid())
         {
@@ -58,10 +58,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     private void SearchType()
     {
 
-        Query = "select planList.PlanYear, planlistuser.sn, planlistuser.planstatus from planlistuser " +
-                "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +                
-                "where PlanSchool = N'" + schoolName.ToString() + "'" +
-                "and PlanList.PlanYear = '" + Request["YEAR"].ToString() + "'";
+        Query = "select planyear, plansemester from planlist ";                                
     }
         
     private bool getSchoolName(StringBuilder sb)
@@ -199,7 +196,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(2, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -208,7 +205,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(3, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -217,7 +214,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(4, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -226,7 +223,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(5, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -235,7 +232,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(6, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -244,7 +241,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(7, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
@@ -253,7 +250,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
         if (getUploadDir(8, sb, sbOutFile))
-            Response.Redirect(sb.ToString());
+            xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
