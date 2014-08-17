@@ -831,4 +831,7 @@
   <data name="LkbPlanItem11" xml:space="preserve">
     <value>11. SDP执行评核输入</value>
   </data>
+  <data name="TipPlanDataAdd" xml:space="preserve">
+    <value>计画有效期限输入</value>
+  </data>
 </root>
