@@ -42,7 +42,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //getSchoolName(schoolName);
+        getSchoolName(schoolName);
                 
         if (!verifyValid())
         {
@@ -58,7 +58,10 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     private void SearchType()
     {
 
-        Query = "select planyear, plansemester from planlist ";                                
+        Query = "select planList.PlanYear, planlistuser.sn, planlistuser.planstatus from planlistuser " +
+                "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +                
+                "where PlanSchool = N'" + schoolName.ToString() + "'" +
+                "and PlanList.PlanYear = '" + Request["YEAR"].ToString() + "'";
     }
         
     private bool getSchoolName(StringBuilder sb)
