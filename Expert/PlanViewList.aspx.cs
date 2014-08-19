@@ -125,7 +125,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlProvince.Items.Add("None");
             return;
         }
-        DdlProvince.Items.Add("年分");
+                DdlProvince.Items.Add(Resources.Resource.DdlTypeProvince);
         foreach (string[] province in data)
         {
             DdlProvince.Items.Add(province[0]);
@@ -147,7 +147,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlYear.Items.Add("None");
             return;
         }
-        //DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
+        DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
         foreach (string[] province in data)
         {
             DdlYear.Items.Add(province[0]);
