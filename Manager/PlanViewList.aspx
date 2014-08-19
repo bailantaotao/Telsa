@@ -102,36 +102,68 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left" colspan="5">省分
-                                <asp:DropDownList ID="DdlProvince" runat="server" Width="80px">
-                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                </asp:DropDownList>
+                            <td align="left" colspan="5">
+                                <asp:UpdatePanel ID="UpProvince" runat="server" Visible="true">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
                         </tr>
                         <tr>
-                            <td align="left">年份
-                                <asp:DropDownList ID="DdlYear" runat="server" Width="80px">
-                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                </asp:DropDownList>
+                            <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlYear" runat="server" Width="80px">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
-                            <td align="left">学期
-                                <asp:DropDownList ID="DdlSemester" runat="server" Width="80px">
-                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                    <asp:ListItem Value="1" Text="1"></asp:ListItem>
-                                    <asp:ListItem Value="2" Text="2"></asp:ListItem>
-                                </asp:DropDownList>
+                            <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlSemester" runat="server" Width="80px">
+                                            <asp:ListItem Value="0" Text="学期"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text="1"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
-                            <td align="left">状态
-                                <asp:DropDownList ID="DdlStatus" runat="server" Width="80px">
-                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                    <asp:ListItem Value="True" Text="已提交"></asp:ListItem>
-                                    <asp:ListItem Value="False" Text="未提交"></asp:ListItem>
-                                </asp:DropDownList>
+                            <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlStatus" runat="server" Width="80px">
+                                            <asp:ListItem Value="0" Text="状态"></asp:ListItem>
+                                            <asp:ListItem Value="True" Text="已提交"></asp:ListItem>
+                                            <asp:ListItem Value="False" Text="未提交"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
-                            <td align="left">学校名称
-                                <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px">
-                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                </asp:DropDownList>
+                            <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </td>
                             <td>
                                 <asp:Button ID="BtnSearch" runat="server" Text="查询" OnClick="BtnSearch_Click" />

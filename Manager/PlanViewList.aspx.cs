@@ -53,16 +53,16 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         LbSchoolMaster.Text = Session["UserName"].ToString();
         if (!IsPostBack)
         {
-            
+            setDefault(DdlType.Province);
+            setDefault(DdlType.SchoolName);
+            setDefault(DdlType.Year);
             if (Session["PlanList"] != null)
                 Query = Session["PlanList"].ToString();
             else
                 SearchType();
             
             LoadInternetStudy(1);
-            setDefault(DdlType.Province);
-            setDefault(DdlType.SchoolName);
-            setDefault(DdlType.Year);
+            
         }
 
     }
@@ -98,7 +98,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlProvince.Items.Add("None");
             return;
         }
-        //DdlProvince.Items.Add(Resources.Resource.DdlTypeProvince);
+        DdlProvince.Items.Add(Resources.Resource.DdlTypeProvince);
         foreach (string[] province in data)
         {
             DdlProvince.Items.Add(province[0]);
@@ -120,7 +120,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlYear.Items.Add("None");
             return;
         }
-        //DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
+        DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
         foreach (string[] province in data)
         {
             DdlYear.Items.Add(province[0]);
@@ -147,7 +147,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlSchoolName.Items.Add("None");
             return;
         }
-        //DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
         foreach (string[] province in data)
         {
             DdlSchoolName.Items.Add(province[0]);
@@ -380,24 +380,24 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                     LbCompleted.Text += "<a href='PlanViewMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "'>";
                     // 代表還沒到deadline 可填寫問卷
                     // 如果是空的，代表使用者還沒填過
-                    if (userData.Count == 0)
-                    {
-                        LbCompleted.Text += Resources.Resource.TipPlanModified;
-                    }
-                    else
-                    {
-                        //如果不是空的，則檢查是為true或false   
-                        if (((string[])(userData[0]))[2].ToLower().Equals("true"))
-                        {
+                    //if (userData.Count == 0)
+                    //{
+                    //    LbCompleted.Text += Resources.Resource.TipPlanModified;
+                    //}
+                    //else
+                    //{
+                    //    //如果不是空的，則檢查是為true或false   
+                    //    if (((string[])(userData[0]))[2].ToLower().Equals("true"))
+                    //    {
                             //要換到view的頁面
                             LbCompleted.Text += Resources.Resource.TipPlanView;
-                        }
-                        else
-                        {
-                            LbCompleted.Text += Resources.Resource.TipPlanModified;
-                        }
+                    //    }
+                    //    else
+                    //    {
+                    //        LbCompleted.Text += Resources.Resource.TipPlanModified;
+                    //    }
 
-                    }
+                    //}
                     LbCompleted.Text += "</a>";
                 }
                 else
