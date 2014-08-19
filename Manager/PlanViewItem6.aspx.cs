@@ -24,7 +24,7 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
-        if (!Session["ClassCode"].ToString().Equals("0"))
+        if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
     }
     protected void BtnBack_Click(object sender, EventArgs e)

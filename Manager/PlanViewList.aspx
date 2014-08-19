@@ -95,14 +95,52 @@
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipPlanDataAdd %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="PlanViewList.aspx"></asp:HyperLink>
+                         NavigateUrl="PlanItemAdd.aspx"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td colspan="1" align="left" width="60%">
+                            <td align="left" colspan="5">省分
+                                <asp:DropDownList ID="DdlProvince" runat="server" Width="80px">
+                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">年份
+                                <asp:DropDownList ID="DdlYear" runat="server" Width="80px">
+                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td align="left">学期
+                                <asp:DropDownList ID="DdlSemester" runat="server" Width="80px">
+                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text="1"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td align="left">状态
+                                <asp:DropDownList ID="DdlStatus" runat="server" Width="80px">
+                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    <asp:ListItem Value="True" Text="已提交"></asp:ListItem>
+                                    <asp:ListItem Value="False" Text="未提交"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td align="left">学校名称
+                                <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px">
+                                    <asp:ListItem Value="0" Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:Button ID="BtnSearch" runat="server" Text="查询" OnClick="BtnSearch_Click" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="739px">
+                        <tr>
+                            <td colspan="1" align="left" width="60%">                                
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolName %>"></asp:Label>
                                 <asp:Label ID="LbSchoolName" runat="server" Text=""></asp:Label>
                             </td>

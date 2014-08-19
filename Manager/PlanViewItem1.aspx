@@ -95,7 +95,7 @@
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Black" Text="<%$ Resources:Resource, TipPlanDataAdd %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="PlanViewList.aspx"></asp:HyperLink>
+                         NavigateUrl="PlanItemAdd.aspx"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">

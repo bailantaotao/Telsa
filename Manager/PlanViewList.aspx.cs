@@ -26,13 +26,18 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
-
+    private enum DdlType
+    {
+        Province,
+        Year,
+        SchoolName,
+    }
 
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
-        if (!Session["ClassCode"].ToString().Equals("0"))
+        if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
         if (Session["PlanSN"] != null)
             Session.Remove("PlanSN");
@@ -55,20 +60,143 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 SearchType();
             
             LoadInternetStudy(1);
+            setDefault(DdlType.Province);
+            setDefault(DdlType.SchoolName);
+            setDefault(DdlType.Year);
+        }
+
+    }
+
+    private void setDefault(DdlType type)
+    {
+        switch (type)
+        {
+            case DdlType.Province:
+                setProvince();
+                break;
+            case DdlType.Year:
+                setYear();
+                break;
+            case DdlType.SchoolName:
+                setSchoolName();
+                break;
         }
     }
+    private void setProvince()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select zipcode.name from zipcode";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlProvince.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlProvince.Items.Add("None");
+            return;
+        }
+        //DdlProvince.Items.Add(Resources.Resource.DdlTypeProvince);
+        foreach (string[] province in data)
+        {
+            DdlProvince.Items.Add(province[0]);
+        }
+    }
+    private void setYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select KPIYear from KPIRecordMain group by KPIYear order by KPIYear asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlYear.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlYear.Items.Add("None");
+            return;
+        }
+        //DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
+        foreach (string[] province in data)
+        {
+            DdlYear.Items.Add(province[0]);
+        }
+    }
+    private void setSchoolName()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+
+        Query = "select School from Account " +
+                            "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
+                            "group by School ";
+        
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        //DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
+    
+
 
     private void SearchType()
     {
+        StringBuilder sb = new StringBuilder();
+        getSchoolName(sb);
+        Session["SchoolName"] = sb.ToString();
 
-        Query = "select SN, PlanYear, PlanDeadline, PlanSemester " +
-                "from PlanList ";
-                
+        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanList.PlanSemester " +
+                "from PlanList  " +
+                "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
+                "left join Account on PlanListUser.PlanSchool = Account.School " +
+                "left join ZIPCode on ZIPCode.ZIPCode = Account.Zipcode ";
 
-        //Query = "select planlistuser.sn, planList.PlanYear, planList.PlanDeadline, planlistuser.planstatus, planListUser.PlanSchool from planlistuser " +
-        //        "left join planlist on PlanListUser.PlanListSN = PlanList.SN "+
-        //        "where planlistuser.PlanSchool = N'" + schoolName.ToString() + "'";
-                
+        string tmp = string.Empty;
+        string[] storeParam = new string[5];
+        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Zipcode.Name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
+        storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
+        storeParam[1] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
+        storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
+        storeParam[3] = DdlSemester.SelectedIndex == 0 ? null : DdlSemester.Items[DdlSemester.SelectedIndex].ToString();
+        storeParam[4] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
+        
+        for (int i = 0; i <  storeParam.Length ; i++)
+        {
+            if (!string.IsNullOrEmpty(storeParam[i]))
+            {
+                if (string.IsNullOrEmpty(tmp))
+                {
+                    tmp += "where " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                }
+                else
+                {
+                    tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                }
+
+            }
+        }
+        Query += tmp;
+
+
+        Query += "order by PlanList.PlanYear desc, PlanList.PlanSemester asc ";
+        Session["PlanList"] = Query;
     }
         
     private bool getSchoolName(StringBuilder sb)
@@ -347,4 +475,9 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         Response.Redirect("../Default.aspx");
     }
 
+    protected void BtnSearch_Click(object sender, EventArgs e)
+    {
+        SearchType();
+        LoadInternetStudy(1);
+    }
 }

@@ -34,7 +34,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
-        if (!Session["ClassCode"].ToString().Equals("0"))
+        if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
 
 
@@ -304,6 +304,6 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     }
     protected void btnBack_Click1(object sender, EventArgs e)
     {
-        Response.Redirect("PlanList.aspx");
+        Response.Redirect("PlanViewList.aspx");
     }
 }
