@@ -67,9 +67,9 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         getSchoolName(schoolName);
-        LbSchoolName.Text = schoolName.ToString();
-        LbSchoolSN.Text = Session["UserID"].ToString();
-        LbSchoolMaster.Text = Session["UserName"].ToString();
+        //LbSchoolName.Text = schoolName.ToString();
+        //LbSchoolSN.Text = Session["UserID"].ToString();
+        //LbSchoolMaster.Text = Session["UserName"].ToString();
         if (!IsPostBack)
         {
             setDefault(DdlType.SchoolName);
