@@ -24,6 +24,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     
 
     private StringBuilder schoolName = new StringBuilder();
+    private StringBuilder schoolID = new StringBuilder();
 
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
@@ -42,13 +43,14 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        getSchoolName(schoolName);
-                
+        
         if (!verifyValid())
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanErrorData + "');window.location='PlanList.aspx';", true);
             return;
         }
+        getSchoolName(schoolName);
+        getSchoolID(schoolID);
         if (!IsPostBack)
         {
                            
@@ -73,9 +75,18 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         return true;
     }
 
+    private bool getSchoolID(StringBuilder sb)
+    {
+        ManageSQL ms = new ManageSQL();
+        string query = "select UserID from Account where School = '" + Request["SCHOOLNAME"].ToString() + "'";
+        if (!ms.GetOneData(query, sb))
+            return false;
+        return true;
+    }
+
     private bool verifyValid()
     {
-        if (String.IsNullOrEmpty(Request["SN"]) || String.IsNullOrEmpty(Request["YEAR"]))
+        if (String.IsNullOrEmpty(Request["SN"]) || String.IsNullOrEmpty(Request["YEAR"]) || String.IsNullOrEmpty(Request["SCHOOLNAME"]))
             return false;
 
         StringBuilder sb = new StringBuilder();
@@ -109,6 +120,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         }
         Session["PlanSN"] = Request["SN"].ToString();
         Session["PlanYear"] = Request["YEAR"].ToString();
+        Session["SCHOOLNAME"] = Request["SCHOOLNAME"].ToString();
         return true;
     }
 
@@ -133,7 +145,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     {
         string saveDir = @"Upload\Stage3\";
         string appPath = Request.PhysicalApplicationPath;
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + targetIndex;
+        string fileName = schoolID.ToString() + DateTime.Now.ToString("yyyy") + getSemster() + targetIndex;
         string pathToCheck = appPath + saveDir + fileName;
         
         //===========================================(Start)
@@ -300,7 +312,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     }
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString());
+        Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString()+"&SCHOOLNAME="+Session["SCHOOLNAME"].ToString());
     }
     protected void btnBack_Click1(object sender, EventArgs e)
     {
