@@ -21,6 +21,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     private const string SN = "SN";
     private const string YEAR = "YEAR";
     private const string MODIFIED = "MODIFIED";
+    private const string SCHOOLNAME = "SCHOOLNAME";
 
     private StringBuilder schoolName = new StringBuilder();
 
@@ -296,6 +297,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
                 string EncryptSN = GetEncryptionString(SN, ((string[])(data[i]))[0]);
                 string EncryptYEAR = GetEncryptionString(YEAR, ((string[])(data[i]))[1]);
+                string EncryptSchoolName = GetEncryptionString(SCHOOLNAME, ((string[])(data[i]))[4]);
                 TimeSpan ts = TimeSpan.Zero;
                 try
                 {
@@ -382,7 +384,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 {
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
 
-                    LbCompleted.Text += "<a href='PlanViewMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "'>";
+                    LbCompleted.Text += "<a href='PlanViewMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>";
                     // 代表還沒到deadline 可填寫問卷
                     // 如果是空的，代表使用者還沒填過
                     //if (userData.Count == 0)
@@ -421,7 +423,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                         //if (((string[])(userData[0]))[2].ToLower().Equals("true"))
                         //{
                         //要換到view的頁面
-                        LbCompleted.Text += "<a href='PlanMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "'>" + Resources.Resource.TipPlanView + "</a>";
+                        LbCompleted.Text += "<a href='PlanMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
                         //}
                         //else
                         //{
