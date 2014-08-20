@@ -170,7 +170,7 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="739px">
+                    <%--<table width="739px">
                         <tr>
                             <td colspan="1" align="left" width="60%">                                
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolName %>"></asp:Label>
@@ -185,7 +185,7 @@
                                 <asp:Label ID="LbSchoolSN" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
-                    </table>
+                    </table>--%>
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">

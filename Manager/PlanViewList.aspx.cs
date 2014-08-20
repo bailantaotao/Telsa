@@ -48,10 +48,10 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         getSchoolName(schoolName);
-        LbSchoolName.Text = schoolName.ToString();
-        LbSchoolSN.Text = Session["UserID"].ToString();
-        LbSchoolMaster.Text = Session["UserName"].ToString();
-        if (!IsPostBack)
+        //LbSchoolName.Text = schoolName.ToString();
+        //LbSchoolSN.Text = Session["UserID"].ToString();
+        //LbSchoolMaster.Text = Session["UserName"].ToString();
+        //if (!IsPostBack)
         {
             setDefault(DdlType.Province);
             setDefault(DdlType.SchoolName);
@@ -163,7 +163,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanList.PlanSemester " +
+        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanList.PlanSemester, PlanListUser.PlanSchool  " +
                 "from PlanList  " +
                 "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                 "left join Account on PlanListUser.PlanSchool = Account.School " +
@@ -228,6 +228,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipPlanSemester + "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</td>";            
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -322,6 +324,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 LbCompleted.Text += ((string[])(data[i]))[1] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[2] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -445,7 +449,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
         NODATA:
             LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
-            LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
             LbCompleted.Text += "</tr>";
 
