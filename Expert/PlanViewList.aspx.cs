@@ -161,15 +161,16 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
         if (IsMingDer)
         {
-            Query = "select School from Account " +
+            Query = "select School from Account " +                                
                               "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
+                              "where School not like N'%專家%' and School not like N'%管理%' " + 
                               "group by School ";
         }
         else
         {
             Query = "select School from Account " +
                     "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
-                    "where Zipcode.name =N'" + LbProvince.Text + "'" +
+                    "where Zipcode.name =N'" + LbProvince.Text + "' and School not like N'%管理%' " +
                     "group by School ";
         }
 
