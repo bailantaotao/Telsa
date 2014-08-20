@@ -213,7 +213,7 @@ public partial class Manager_PlanItemAdd : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString());
+        Response.Redirect("PlanViewList.aspx");
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
