@@ -198,7 +198,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanList.PlanSemester " +
+        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanList.PlanSemester, PlanListUser.PlanSchool " +
                 "from PlanList  " +
                 "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                 "left join Account on PlanListUser.PlanSchool = Account.School " +
@@ -272,6 +272,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSN + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSchoolName + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipPlanSemester + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -369,7 +371,9 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[2] + "</td>";
+                LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 
                 if (ts.Days <= 0)
@@ -491,7 +495,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
         NODATA:
             LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
-            LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
             LbCompleted.Text += "</tr>";
 
