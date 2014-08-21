@@ -41,6 +41,14 @@
             margin-left:40px;
             text-align:left;
         }
+        table, td, tr{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .empty {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -100,7 +108,7 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table width="739px">
+                    <table width="739px" class="empty">
                         <tr>
                             <td colspan="1" align="left">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle9 %>"></asp:Label> 
@@ -350,7 +358,7 @@
                     </table>
                     
                 </div>
-                <table width="739px">
+                <table width="739px" class="empty">
                     <tr>
                         <td width="90%" align="right">
                             <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
