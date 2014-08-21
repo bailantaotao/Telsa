@@ -14,6 +14,9 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
     private int DataPage = 0, Flag = 0, Count = 0;
     private string Query = string.Empty;
 
+    private const int NATION = 0;
+    private const int CULTURE = 1;
+
     private bool IsMingDer = false;
     private string sn = string.Empty;
     private string year = string.Empty;
@@ -81,17 +84,22 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                         {
 
                             DropDownList box1 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[1].FindControl("TbName");
-                            TextBox box2 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[2].FindControl("TbGender");
-                            TextBox box3 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[3].FindControl("TbNation");
-                            TextBox box4 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[4].FindControl("TbCulture");
+                            DropDownList box2 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[2].FindControl("TbGender");
+
+                            setConfig(((DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[3].FindControl("TbNation")), NATION);
+                            DropDownList box3 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[3].FindControl("TbNation");
+
+                            setConfig(((DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[4].FindControl("TbCulture")), CULTURE);
+                            DropDownList box4 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[4].FindControl("TbCulture");
+
                             TextBox box5 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[5].FindControl("TbProfessional");
                             TextBox box6 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[6].FindControl("TbTel");
                             TextBox box7 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[7].FindControl("TbAddress");
 
                             box1.SelectedIndex = 0;
-                            box2.Text = "";
-                            box3.Text = "";
-                            box4.Text = "";
+                            box2.SelectedIndex = 0;
+                            box3.SelectedIndex = 0;
+                            box4.SelectedIndex = 0;
                             box5.Text = "";
                             box6.Text = "";
                             box7.Text = "";
@@ -131,6 +139,25 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
             }
         }
     }
+    public void setConfig(DropDownList ddl, int config)
+    {
+        string query = "select * from ";
+        if (config == NATION)
+            query += "PlanNationMappingTable";
+        else if(config == CULTURE)
+            query += "PlanCultureMappingTable";
+        
+        
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        ms.GetAllColumnData(query, data);
+        
+        foreach (string[] t in data)
+        {
+            ddl.Items.Add(new ListItem(t[0], t[0]));
+        }        
+    }
+
     private void SetPreviousData()
     {
         int rowIndex = 0;
@@ -144,17 +171,22 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
                     
                     DropDownList box1 = (DropDownList)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
-                    TextBox box2 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
-                    TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
-                    TextBox box4 = (TextBox)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture");
+                    DropDownList box2 = (DropDownList)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
+
+                    setConfig(((DropDownList)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation")), NATION);
+                    DropDownList box3 = (DropDownList)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
+
+                    setConfig(((DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture")), CULTURE);
+                    DropDownList box4 = (DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture");
+
                     TextBox box5 = (TextBox)GvSchool.Rows[rowIndex].Cells[5].FindControl("TbProfessional");
                     TextBox box6 = (TextBox)GvSchool.Rows[rowIndex].Cells[6].FindControl("TbTel");
                     TextBox box7 = (TextBox)GvSchool.Rows[rowIndex].Cells[7].FindControl("TbAddress");
 
                     box1.SelectedValue = dt.Rows[i]["TbName"].ToString();
-                    box2.Text = dt.Rows[i]["TbGender"].ToString();
-                    box3.Text = dt.Rows[i]["TbNation"].ToString();
-                    box4.Text = dt.Rows[i]["TbCulture"].ToString();
+                    box2.SelectedValue = dt.Rows[i]["TbGender"].ToString();
+                    box3.SelectedValue = dt.Rows[i]["TbNation"].ToString();
+                    box4.SelectedValue = dt.Rows[i]["TbCulture"].ToString();
                     box5.Text = dt.Rows[i]["TbProfessional"].ToString();
                     box6.Text = dt.Rows[i]["TbTel"].ToString();
                     box7.Text = dt.Rows[i]["TbAddress"].ToString();
@@ -217,9 +249,14 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                 //dr["SN"] = (i + 1).ToString();
                 //dr["PlanTitle"] = d[0];
                 ((DropDownList)GvSchool.Rows[i].Cells[1].FindControl("TbName")).SelectedValue = d[1];
-                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text = d[2];
-                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).Text = d[3];
-                ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text = d[4];
+                ((DropDownList)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).SelectedValue = d[2];
+
+                setConfig(((DropDownList)GvSchool.Rows[i].Cells[3].FindControl("TbNation")), NATION);
+                ((DropDownList)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).SelectedValue = d[3];
+
+                setConfig(((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")), CULTURE);
+                ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).SelectedValue = d[4];
+
                 ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text = d[5];
                 ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text = d[6];
                 ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text = d[7];
@@ -266,6 +303,10 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
         GvSchool.DataBind();
         ((Button)GvSchool.Rows[0].Cells[8].FindControl("lbnView")).Text = "清空";
         ((Button)GvSchool.Rows[1].Cells[8].FindControl("lbnView")).Text = "清空";
+        setConfig(((DropDownList)GvSchool.Rows[0].Cells[3].FindControl("TbNation")), NATION);
+        setConfig(((DropDownList)GvSchool.Rows[1].Cells[3].FindControl("TbNation")), NATION);
+        setConfig(((DropDownList)GvSchool.Rows[0].Cells[3].FindControl("TbCulture")), CULTURE);
+        setConfig(((DropDownList)GvSchool.Rows[1].Cells[3].FindControl("TbCulture")), CULTURE);
     }
 
 
@@ -283,9 +324,15 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                     //extract the TextBox values
 
                     DropDownList box1 = (DropDownList)GvSchool.Rows[rowIndex].Cells[1].FindControl("TbName");
-                    TextBox box2 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
-                    TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
-                    TextBox box4 = (TextBox)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture");
+                    DropDownList box2 = (DropDownList)GvSchool.Rows[rowIndex].Cells[2].FindControl("TbGender");
+
+                    setConfig(((DropDownList)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation")), NATION);
+                    DropDownList box3 = (DropDownList)GvSchool.Rows[rowIndex].Cells[3].FindControl("TbNation");
+
+                    setConfig(((DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture")), CULTURE);
+                    DropDownList box4 = (DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("TbCulture");
+
+
                     TextBox box5 = (TextBox)GvSchool.Rows[rowIndex].Cells[5].FindControl("TbProfessional");
                     TextBox box6 = (TextBox)GvSchool.Rows[rowIndex].Cells[6].FindControl("TbTel");
                     TextBox box7 = (TextBox)GvSchool.Rows[rowIndex].Cells[7].FindControl("TbAddress");
@@ -394,9 +441,9 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
                                     Session["UserPlanListSN"].ToString() + "','" +
                                     dt.Rows[i][0].ToString() + "',N'" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[1].FindControl("TbName")).SelectedValue + "',N'" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).Text + "',N'" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).Text + "',N'" +
-                                    ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).Text + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[2].FindControl("TbGender")).SelectedValue + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[3].FindControl("TbNation")).SelectedValue + "',N'" +
+                                    ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("TbCulture")).SelectedValue + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("TbProfessional")).Text + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("TbTel")).Text + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("TbAddress")).Text + "',N'"+
