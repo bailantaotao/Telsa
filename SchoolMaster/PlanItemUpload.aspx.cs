@@ -86,7 +86,7 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         //===========================================(Start)
         foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
         {
-            if (file.Contains(fileName))
+            if (file.Contains(fileName.Substring(0, fileName.LastIndexOf('.'))))
             {
                 System.IO.File.Delete(file);
                 sb.Append("(既有档案已被复写)");
