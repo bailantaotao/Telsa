@@ -109,30 +109,40 @@
                     </table>
                 </div>
                 <div class="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvInternalAdvantage" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
+                    <asp:GridView ID="GvInternalAdvantage" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+                        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                        <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="#" ItemStyle-Width="20px" />
+                            <asp:BoundField DataField="SN" HeaderText="S" ItemStyle-Width="20px" >
+<ItemStyle Width="20px"></ItemStyle>
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="优势（内部因素）" ItemStyle-Width="50px">
                                 <ItemTemplate>
                                     <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
                                     <asp:Button ID="BtnRemoveInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_InternalAdvantageClicked" 
                                         CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                         </Columns>
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                        <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                        <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                        <SortedDescendingHeaderStyle BackColor="#93451F" />
                     </asp:GridView>
                     
                 </div>
@@ -140,30 +150,40 @@
                     <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
                 </div>
                 <div class="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvInternalDefect" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
+                    <asp:GridView ID="GvInternalDefect" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+                        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                        <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="#" ItemStyle-Width="20px" />
+                            <asp:BoundField DataField="SN" HeaderText="W" ItemStyle-Width="20px" >
+<ItemStyle Width="20px"></ItemStyle>
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="劣势（內部因素）" ItemStyle-Width="50px">
                                 <ItemTemplate>
                                     <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
                                     <asp:Button ID="BtnRemoveInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_InternalAdvantageClicked" 
                                         CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                         </Columns>
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                        <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                        <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                        <SortedDescendingHeaderStyle BackColor="#93451F" />
                     </asp:GridView>
                     
                 </div>
@@ -171,30 +191,40 @@
                     <asp:Button ID="BtnAddInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
                 </div>
                 <div class="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvExternalChallenge" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
+                    <asp:GridView ID="GvExternalChallenge" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+                        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                        <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="#" ItemStyle-Width="20px" />
+                            <asp:BoundField DataField="SN" HeaderText="O" ItemStyle-Width="20px" >
+<ItemStyle Width="20px"></ItemStyle>
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="机遇（外部因素）" ItemStyle-Width="50px">
                                 <ItemTemplate>
                                     <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
                                     <asp:Button ID="BtnRemoveExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_InternalAdvantageClicked" 
                                         CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                         </Columns>
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                        <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                        <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                        <SortedDescendingHeaderStyle BackColor="#93451F" />
                     </asp:GridView>
                     
                 </div>
@@ -202,30 +232,40 @@
                     <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
                 </div>
                 <div class="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvExternalOpportunity" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
+                    <asp:GridView ID="GvExternalOpportunity" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+                        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                        <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="#" ItemStyle-Width="20px" />
+                            <asp:BoundField DataField="SN" HeaderText="T" ItemStyle-Width="20px" >
+<ItemStyle Width="20px"></ItemStyle>
+                            </asp:BoundField>
                             <asp:TemplateField HeaderText="挑战（外部因素）" ItemStyle-Width="50px">
                                 <ItemTemplate>
                                     <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
                                     <asp:Button ID="BtnRemoveExternalOpportunity" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_InternalAdvantageClicked" 
                                         CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                         </Columns>
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                        <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                        <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                        <SortedDescendingHeaderStyle BackColor="#93451F" />
                     </asp:GridView>
                     
                 </div>
