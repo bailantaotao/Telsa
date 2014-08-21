@@ -133,7 +133,7 @@
     <value>规章制度管理</value>
   </data>
   <data name="HySchoolDevelop" xml:space="preserve">
-    <value>学校发展计画</value>
+    <value>学校发展计划</value>
   </data>
   <data name="HyStudentManage" xml:space="preserve">
     <value>学生资料管理</value>
@@ -643,7 +643,7 @@
     <value>1. 学校基本情况统计表和相关讯息表</value>
   </data>
   <data name="LkbDownloadItem2" xml:space="preserve">
-    <value>2. 本学年学校发展计画财务预算与支出情况统计表</value>
+    <value>2. 本学年学校发展计划财务预算与支出情况统计表</value>
   </data>
   <data name="LkbDownloadItem3" xml:space="preserve">
     <value>3. 本学年学校财务收支情况统计表</value>
@@ -658,10 +658,10 @@
     <value>6. 本学年贫困学生救助情况统计表</value>
   </data>
   <data name="LkbDownloadItem7" xml:space="preserve">
-    <value>7. 本学年学校发展计画实施情况自评表</value>
+    <value>7. 本学年学校发展计划实施情况自评表</value>
   </data>
   <data name="LkbDownloadItem8" xml:space="preserve">
-    <value>8. 本学年制定和实施学校发展计画进程表</value>
+    <value>8. 本学年制定和实施学校发展计划进程表</value>
   </data>
   <data name="LkbPlanItem1" xml:space="preserve">
     <value>1. 学校发展管理委员会成员名单</value>
@@ -697,13 +697,13 @@
     <value>返回</value>
   </data>
   <data name="TipPlanDataInput" xml:space="preserve">
-    <value>学校发展计画输入</value>
+    <value>学校发展计划输入</value>
   </data>
   <data name="TipPlanDataView" xml:space="preserve">
-    <value>学校发展计画观看</value>
+    <value>学校发展计划观看</value>
   </data>
   <data name="TipPlanDeadline" xml:space="preserve">
-    <value>计画提交有限期限</value>
+    <value>计划提交有限期限</value>
   </data>
   <data name="TipPlanErrorData" xml:space="preserve">
     <value>错误的资料</value>
@@ -733,7 +733,7 @@
     <value>序号</value>
   </data>
   <data name="TipPlanStatus" xml:space="preserve">
-    <value>计画状态</value>
+    <value>计划状态</value>
   </data>
   <data name="TipPlanSubmited" xml:space="preserve">
     <value>已提交</value>
@@ -748,7 +748,7 @@
     <value>查看</value>
   </data>
   <data name="TipPlanYear" xml:space="preserve">
-    <value>计画年分</value>
+    <value>计划年分</value>
   </data>
   <data name="BtnPlanCancel" xml:space="preserve">
     <value>取消</value>
@@ -790,7 +790,7 @@
     <value>职务</value>
   </data>
   <data name="TipPlanTitle1" xml:space="preserve">
-    <value>学校发展计画管理委员会组成人员名单</value>
+    <value>学校发展计划管理委员会组成人员名单</value>
   </data>
   <data name="TipPlanEmptyData" xml:space="preserve">
     <value>有资料为空</value>
@@ -832,6 +832,6 @@
     <value>11. SDP执行评核输入</value>
   </data>
   <data name="TipPlanDataAdd" xml:space="preserve">
-    <value>计画有效期限输入</value>
+    <value>计划有效期限输入</value>
   </data>
 </root>
