@@ -109,33 +109,55 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
+                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+                        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                        <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Column1" HeaderText="NO" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column2" HeaderText="维度" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column3" HeaderText="问题" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column4" HeaderText="目标" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column5" HeaderText="活动与措施" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column6" HeaderText="开始时间" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column7" HeaderText="结束时间" ItemStyle-Width="70px" />
-                            <asp:BoundField DataField="Column8" HeaderText="负责人" ItemStyle-Width="70px" />
+                            <asp:BoundField DataField="Column1" HeaderText="NO" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column2" HeaderText="维度" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column3" HeaderText="问题" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column4" HeaderText="目标" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column5" HeaderText="活动与措施" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column6" HeaderText="开始时间" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column7" HeaderText="结束时间" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Column8" HeaderText="负责人" ItemStyle-Width="70px" >
+<ItemStyle Width="70px"></ItemStyle>
+                            </asp:BoundField>
                              <asp:TemplateField HeaderText="完成确认"  ItemStyle-Width="50">
                                 <ItemTemplate>
                                      <%--<asp:TextBox ID="column9" runat="server" Width="50px"></asp:TextBox>--%>
                                     <asp:CheckBox ID="column9" runat="server" />                                    
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                         </Columns>
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                        <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                        <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                        <SortedDescendingHeaderStyle BackColor="#93451F" />
                     </asp:GridView>
                     
                 </div>

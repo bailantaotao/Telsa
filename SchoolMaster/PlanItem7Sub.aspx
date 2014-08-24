@@ -156,13 +156,12 @@
                             </td>
                         </tr>
                     </table>
-                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-            BorderWidth="1px" CellPadding="5" CellSpacing="1">
-                        <RowStyle BackColor="#ffffff" ForeColor="Black" />
-                        <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-                        <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
-                        <HeaderStyle BackColor="#efefef" Font-Bold="True" />
-                        <AlternatingRowStyle BackColor="#f7fafe" />
+                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+                        <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+                        <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+                        <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
@@ -171,12 +170,16 @@
                                 <ItemTemplate>
                                     <asp:TextBox ID="column1" runat="server" Width="50px"></asp:TextBox>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="活动与措施"  ItemStyle-Width="50px">
                                 <ItemTemplate>
                                      <asp:TextBox ID="column2" runat="server" Width="50px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="开始时间"  ItemStyle-Width="50px">
                                 <ItemTemplate>
@@ -185,6 +188,8 @@
                                     Enabled="True" TargetControlID="column3" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="50">
                                 <ItemTemplate>
@@ -193,6 +198,8 @@
                                     Enabled="True" TargetControlID="column4" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="完成率"  ItemStyle-Width="50">
                                 <ItemTemplate>
@@ -211,21 +218,34 @@
                                     </asp:DropDownList>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="完成情況"  ItemStyle-Width="50">
                                 <ItemTemplate>
                                      <asp:TextBox ID="column6" runat="server" Width="50px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
                                     <asp:Button ID="lbnView" runat="server" Text="<%$ Resources:Resource, TipPlanDelete %>" OnClick="btn_Clicked" 
                                         CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
                                 </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="SN" HeaderText="#" ItemStyle-Width="20px" Visible="false"/>
+                            <asp:BoundField DataField="SN" HeaderText="#" ItemStyle-Width="20px" Visible="false">
+<ItemStyle Width="20px"></ItemStyle>
+                            </asp:BoundField>
                         </Columns>
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FFF1D4" />
+                        <SortedAscendingHeaderStyle BackColor="#B95C30" />
+                        <SortedDescendingCellStyle BackColor="#F1E5CE" />
+                        <SortedDescendingHeaderStyle BackColor="#93451F" />
                     </asp:GridView>
                     
                 </div>
