@@ -114,7 +114,7 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px" class="table">
+                                        <table width="739px" class="table">
                         <tr>
                             <td width="25%" class="table">维度</td">
                             <td width="70%" align="left" class="table">
@@ -129,7 +129,6 @@
                                 问题一<asp:Label ID="TbQuestion1" runat="server" Width="450px"></asp:Label>
                             </td>
                             <td width="5%" class="table">
-                                <asp:Button ID="btnView1" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView1_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -137,7 +136,7 @@
                                 <asp:Label ID="LbTarget1" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView1_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -145,7 +144,6 @@
                                 问题二<asp:Label ID="TbQuestion2" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -161,7 +159,6 @@
                                 问题三<asp:Label ID="TbQuestion3" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button2" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView3_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -169,7 +166,7 @@
                                 <asp:Label ID="LbTarget3" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView3_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -178,7 +175,6 @@
                                 问题一<asp:Label ID="TbQuestion4" runat="server" Width="450px"></asp:Label>
                             </td>
                             <td width="5%" class="table">
-                                <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView4_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -186,7 +182,7 @@
                                 <asp:Label ID="LbTarget4" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button12" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button12" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView4_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -194,7 +190,6 @@
                                 问题二<asp:Label ID="TbQuestion5" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button4" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView5_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -202,7 +197,7 @@
                                 <asp:Label ID="LbTarget5" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView5_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -210,7 +205,6 @@
                                 问题三<asp:Label ID="TbQuestion6" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button5" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView6_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -218,7 +212,7 @@
                                 <asp:Label ID="LbTarget6" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button14" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button14" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView6_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -227,7 +221,6 @@
                                 问题一<asp:Label ID="TbQuestion7" runat="server" Width="450px"></asp:Label>
                             </td>
                             <td width="5%" class="table">
-                                <asp:Button ID="Button6" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView7_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -235,7 +228,7 @@
                                 <asp:Label ID="LbTarget7" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView7_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -243,7 +236,6 @@
                                 问题二<asp:Label ID="TbQuestion8" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button7" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView8_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -251,7 +243,7 @@
                                 <asp:Label ID="LbTarget8" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button16" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button16" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView8_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -259,7 +251,6 @@
                                 问题三<asp:Label ID="TbQuestion9" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button8" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView9_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -267,7 +258,7 @@
                                 <asp:Label ID="LbTarget9" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button17" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button17" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView9_Click" />
                             </td>
                         </tr>
                     </table>

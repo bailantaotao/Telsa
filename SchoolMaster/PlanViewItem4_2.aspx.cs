@@ -55,9 +55,22 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
 
     private void setInitial()
     {
+        LbTarget1.Text = "目标一";
+        LbTarget2.Text = "目标二";
+        LbTarget3.Text = "目标三";
+        LbTarget4.Text = "目标一";
+        LbTarget5.Text = "目标二";
+        LbTarget6.Text = "目标三";
+        LbTarget7.Text = "目标一";
+        LbTarget8.Text = "目标二";
+        LbTarget9.Text = "目标三";
+
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select DimensionsID, NO, Description from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' order by DimensionsID asc, NO asc";
+        string query = "select PlanSummaryDimensions.DimensionsID, PlanSummaryDimensions.NO, PlanSummaryDimensions.Description, PlanTargetActivity.Target from PlanSummaryDimensions " +
+            "left join PlanTargetActivity on PlanTargetActivity.SN = PlanSummaryDimensions.SN and PlanTargetActivity.PlanSummaryDimensionsNO = PlanSummaryDimensions.NO " +
+            "and PlanTargetActivity.DimensionsID = PlanSummaryDimensions.DimensionsID " +
+            " where PlanSummaryDimensions.SN ='" + Session["UserPlanListSN"].ToString() + "' order by DimensionsID asc, NO asc";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
@@ -67,30 +80,36 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
             {
                 if (d[1].Equals("1"))
                 {
-                    LbQuestion1.Text = d[2];
+                    TbQuestion1.Text = d[2];
+                    LbTarget1.Text += "<br />" + d[3];
                 }
                 else if (d[1].Equals("2"))
                 {
-                    LbQuestion2.Text = d[2];
+                    TbQuestion2.Text = d[2];
+                    LbTarget2.Text += "<br />" + d[3];
                 }
                 else if (d[1].Equals("3"))
                 {
-                    LbQuestion3.Text = d[2];
+                    TbQuestion3.Text = d[2];
+                    LbTarget3.Text += "<br />" + d[3];
                 }
             }
             else if (d[0].Equals("2"))
             {
                 if (d[1].Equals("1"))
                 {
-                    LbQuestion4.Text = d[2];
+                    TbQuestion4.Text = d[2];
+                    LbTarget4.Text += "<br />" + d[3];
                 }
                 else if (d[1].Equals("2"))
                 {
-                    LbQuestion5.Text = d[2];
+                    TbQuestion5.Text = d[2];
+                    LbTarget5.Text += "<br />" + d[3];
                 }
                 else if (d[1].Equals("3"))
                 {
-                    LbQuestion6.Text = d[2];
+                    TbQuestion6.Text = d[2];
+                    LbTarget6.Text += "<br />" + d[3];
                 }
 
             }
@@ -98,18 +117,21 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
             {
                 if (d[1].Equals("1"))
                 {
-                    LbQuestion7.Text = d[2];
+                    TbQuestion7.Text = d[2];
+                    LbTarget7.Text += "<br />" + d[3];
                 }
                 else if (d[1].Equals("2"))
                 {
-                    LbQuestion8.Text = d[2];
+                    TbQuestion8.Text = d[2];
+                    LbTarget8.Text += "<br />" + d[3];
                 }
                 else if (d[1].Equals("3"))
                 {
-                    LbQuestion9.Text = d[2];
+                    TbQuestion9.Text = d[2];
+                    LbTarget9.Text += "<br />" + d[3];
                 }
 
-            }          
+            }
         }
 
     }
