@@ -211,7 +211,10 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Zipcode.Name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
-        storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
+        if(IsMingDer)
+            storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
+        else
+            storeParam[2] = DdlProvince.SelectedIndex == -1 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
         storeParam[3] = DdlSemester.SelectedIndex == 0 ? null : DdlSemester.Items[DdlSemester.SelectedIndex].ToString();
         storeParam[4] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
 
