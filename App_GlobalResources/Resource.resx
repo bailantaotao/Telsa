@@ -664,31 +664,31 @@
     <value>8. 本学年制定和实施学校发展计划进程表</value>
   </data>
   <data name="LkbPlanItem1" xml:space="preserve">
-    <value>1. 学校发展管理委员会成员名单</value>
+    <value>学校发展管理委员会成员名单</value>
   </data>
   <data name="LkbPlanItem2" xml:space="preserve">
-    <value>2. 学校办学理念及办学特色</value>
+    <value>第一部分 学校办学理念及办学特色</value>
   </data>
   <data name="LkbPlanItem3" xml:space="preserve">
-    <value>3. 本学年学校发展现状分析</value>
+    <value>第二部分 本学年学校发展现状分析</value>
   </data>
   <data name="LkbPlanItem4" xml:space="preserve">
-    <value>4. 学校发展中存在的主要问题</value>
+    <value>第三部分 学校发展中存在的主要问题</value>
   </data>
   <data name="LkbPlanItem5" xml:space="preserve">
-    <value>6. 学校周历表</value>
+    <value>第五部分 学校周历表</value>
   </data>
   <data name="LkbPlanItem6" xml:space="preserve">
-    <value>7. 校长工作行动计划表</value>
+    <value>第六部分 校长工作行动计划表</value>
   </data>
   <data name="LkbPlanItem7" xml:space="preserve">
-    <value>8. 学校管理部门工作行动计划表</value>
+    <value>第七部分 学校管理部门工作行动计划表</value>
   </data>
   <data name="LkbPlanItem8" xml:space="preserve">
-    <value>9. 教研组工作计划表</value>
+    <value>第八部分 教研组工作计划表</value>
   </data>
   <data name="LkbPlanItem9" xml:space="preserve">
-    <value>10. 监测评估表</value>
+    <value>第九部分 监测评估表</value>
   </data>
   <data name="TipPlanAttachment" xml:space="preserve">
     <value>附件:</value>
@@ -826,10 +826,10 @@
     <value>您尚未上传档案</value>
   </data>
   <data name="LkbPlanItem4_2" xml:space="preserve">
-    <value>5. 本学年目标与活动</value>
+    <value>第四部分 本学年目标与活动</value>
   </data>
   <data name="LkbPlanItem11" xml:space="preserve">
-    <value>11. SDP执行评核输入</value>
+    <value>SDP执行评核输入</value>
   </data>
   <data name="TipPlanDataAdd" xml:space="preserve">
     <value>计划有效期限输入</value>

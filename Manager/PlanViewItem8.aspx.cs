@@ -101,7 +101,7 @@ public partial class SchoolMaster_PlanViewItem8 : System.Web.UI.Page
   
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString());
+        Response.Redirect("PlanViewMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "&SCHOOLNAME=" + Session["SCHOOLNAME"].ToString());
     }
    
 }
