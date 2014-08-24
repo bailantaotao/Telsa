@@ -139,8 +139,8 @@
                 <table width="739px">
                     <tr>
                         <td width="100%" align="left">
-                            注: 1. 學校假期中有活動也可填寫在週曆表中<br />
-                            &nbsp&nbsp&nbsp&nbsp&nbsp 2. 週曆表示對目標的進一步細化
+                            注: 1. 学校假期中有活动也可填写在周历表中<br />
+                            &nbsp&nbsp&nbsp&nbsp&nbsp 2. 周历表示对目标的进一步细化
                         </td>
                     </tr>
                     <tr>
