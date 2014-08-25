@@ -41,6 +41,10 @@
             margin-left:40px;
             text-align:left;
         }
+        .table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -110,40 +114,40 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="739px" class="table">
                         <tr>
-                            <td width="25%">办学理念：</td>
-                            <td width="75%" align="left">
+                            <td width="25%" class="table">办学理念：</td>
+                            <td width="75%" align="left" class="table">
                                 <asp:TextBox ID="TbIdea" runat="server" Width="540px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%">校训：</td>
-                            <td width="75%" align="left">
+                            <td width="25%" class="table">校训：</td>
+                            <td width="75%" align="left" class="table">
                                 <asp:TextBox ID="TbMotto" runat="server" Width="540px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%">校风：</td>
-                            <td width="75%" align="left">
+                            <td width="25%" class="table">校风：</td>
+                            <td width="75%" align="left" class="table">
                                 <asp:TextBox ID="TbSpirit" runat="server" Width="540px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%">学校概况：</td>
-                            <td width="75%" align="left">
+                            <td width="25%" class="table">学校概况：</td>
+                            <td width="75%" align="left" class="table">
                                 <asp:TextBox ID="TbOverview" runat="server" Width="540px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%">办学特色：</td>
-                            <td width="75%" align="left">
+                            <td width="25%" class="table">办学特色：</td>
+                            <td width="75%" align="left" class="table">
                                 <asp:TextBox ID="TbCharacteristic" runat="server" Width="540px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%">学校发生的变化：</td>
-                            <td width="75%" align="left">
+                            <td width="25%" class="table">学校发生的变化：</td>
+                            <td width="75%" align="left" class="table">
                                 <asp:TextBox ID="TbChange" runat="server" Width="540px"></asp:TextBox>
                             </td>
                         </tr>
