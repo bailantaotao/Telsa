@@ -49,16 +49,16 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
         if (ms.GetAllColumnData(Query, data))
         {
             LbCompleted.Text = "<table style='width:750px;'>";
-            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
             LbCompleted.Text += "No</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
             LbCompleted.Text += Resources.Resource.TipClassName  + "</td>";
             //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             //LbCompleted.Text += "完成閱讀期限</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
             LbCompleted.Text += Resources.Resource.TipAdd + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
             LbCompleted.Text += Resources.Resource.TipEdit + "</td>";
             LbCompleted.Text += "</tr>";
 
@@ -81,7 +81,7 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                     LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
                     
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
 
                     //if(isDigit)
                     //    LbCompleted.Text += (DBClassID + 1).ToString() + "</td>";
@@ -97,26 +97,26 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
                         LbCompleted.Text += "<a href='#'>" + (i + 1).ToString() + "</a></td>";
                     }
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
 
-                    //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                     //LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
 
                     // 如果已經新增過該類別之問題，則只能做修改
                     if (DBAddedComplete)
                     {
-                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                         LbCompleted.Text += "<a href='#'><img src='../Image/zh-TW/ButtonAddGary.png'></a></td>";
-                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                         LbCompleted.Text += "<a href='InternetStudyEditModify.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
                     }
                     else
                     {
-                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                         LbCompleted.Text += "<a href='InternetStudyEditAddClass.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'><img src='../Image/zh-TW/ButtonAddBlack.png'></a></td>";
 
-                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                         LbCompleted.Text += "<a href='#'><img src='../Image/zh-TW/ButtonAddGary.png'></a></td>";
                     }
                     LbCompleted.Text += "</tr>";
@@ -144,8 +144,8 @@ public partial class Manager_InternetStudyEditAddYear : System.Web.UI.Page
             }
             else
             {
-                LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "<tr align='center' style='background-color:#0000FF;' colspan = '5'>";
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #0000FF;'>";
                 LbCompleted.Text += Resources.Resource.TipInputDataError + "</td>";
                 LbCompleted.Text += "</tr>";
             }

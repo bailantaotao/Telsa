@@ -133,7 +133,7 @@
     <value>规章制度管理</value>
   </data>
   <data name="HySchoolDevelop" xml:space="preserve">
-    <value>学校发展计画</value>
+    <value>学校发展计划</value>
   </data>
   <data name="HyStudentManage" xml:space="preserve">
     <value>学生资料管理</value>
@@ -638,5 +638,200 @@
   </data>
   <data name="TipKPIStateUnFinish" xml:space="preserve">
     <value>未完成</value>
+  </data>
+  <data name="LkbDownloadItem1" xml:space="preserve">
+    <value>1. 学校基本情况统计表和相关讯息表</value>
+  </data>
+  <data name="LkbDownloadItem2" xml:space="preserve">
+    <value>2. 本学年学校发展计划财务预算与支出情况统计表</value>
+  </data>
+  <data name="LkbDownloadItem3" xml:space="preserve">
+    <value>3. 本学年学校财务收支情况统计表</value>
+  </data>
+  <data name="LkbDownloadItem4" xml:space="preserve">
+    <value>4. 本年流动学生登记表</value>
+  </data>
+  <data name="LkbDownloadItem5" xml:space="preserve">
+    <value>5. 本学年教职工培训情况登记表</value>
+  </data>
+  <data name="LkbDownloadItem6" xml:space="preserve">
+    <value>6. 本学年贫困学生救助情况统计表</value>
+  </data>
+  <data name="LkbDownloadItem7" xml:space="preserve">
+    <value>7. 本学年学校发展计划实施情况自评表</value>
+  </data>
+  <data name="LkbDownloadItem8" xml:space="preserve">
+    <value>8. 本学年制定和实施学校发展计划进程表</value>
+  </data>
+  <data name="LkbPlanItem1" xml:space="preserve">
+    <value>学校发展管理委员会成员名单</value>
+  </data>
+  <data name="LkbPlanItem2" xml:space="preserve">
+    <value>第一部分 学校办学理念及办学特色</value>
+  </data>
+  <data name="LkbPlanItem3" xml:space="preserve">
+    <value>第二部分 本学年学校发展现状分析</value>
+  </data>
+  <data name="LkbPlanItem4" xml:space="preserve">
+    <value>第三部分 学校发展中存在的主要问题</value>
+  </data>
+  <data name="LkbPlanItem5" xml:space="preserve">
+    <value>第五部分 学校周历表</value>
+  </data>
+  <data name="LkbPlanItem6" xml:space="preserve">
+    <value>第六部分 校长工作行动计划表</value>
+  </data>
+  <data name="LkbPlanItem7" xml:space="preserve">
+    <value>第七部分 学校管理部门工作行动计划表</value>
+  </data>
+  <data name="LkbPlanItem8" xml:space="preserve">
+    <value>第八部分 教研组工作计划表</value>
+  </data>
+  <data name="LkbPlanItem9" xml:space="preserve">
+    <value>第九部分 监测评估表</value>
+  </data>
+  <data name="TipPlanAttachment" xml:space="preserve">
+    <value>附件:</value>
+  </data>
+  <data name="TipPlanBack" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="TipPlanDataInput" xml:space="preserve">
+    <value>学校发展计划输入</value>
+  </data>
+  <data name="TipPlanDataView" xml:space="preserve">
+    <value>学校发展计划观看</value>
+  </data>
+  <data name="TipPlanDeadline" xml:space="preserve">
+    <value>计划提交有限期限</value>
+  </data>
+  <data name="TipPlanErrorData" xml:space="preserve">
+    <value>错误的资料</value>
+  </data>
+  <data name="TipPlanExpired" xml:space="preserve">
+    <value>已过期</value>
+  </data>
+  <data name="TipPlanModified" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="TipPlanSchoolMaster" xml:space="preserve">
+    <value>校长:</value>
+  </data>
+  <data name="TipPlanSchoolName" xml:space="preserve">
+    <value>学校名称:</value>
+  </data>
+  <data name="TipPlanSchoolSN" xml:space="preserve">
+    <value>学校代号:</value>
+  </data>
+  <data name="TipPlanSDP" xml:space="preserve">
+    <value>SDP管理</value>
+  </data>
+  <data name="TipPlanSemester" xml:space="preserve">
+    <value>学期</value>
+  </data>
+  <data name="TipPlanSN" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="TipPlanStatus" xml:space="preserve">
+    <value>计划状态</value>
+  </data>
+  <data name="TipPlanSubmited" xml:space="preserve">
+    <value>已提交</value>
+  </data>
+  <data name="TipPlanUnsubmit" xml:space="preserve">
+    <value>未提交</value>
+  </data>
+  <data name="TipPlanUploadAttachment" xml:space="preserve">
+    <value>上传附件</value>
+  </data>
+  <data name="TipPlanView" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="TipPlanYear" xml:space="preserve">
+    <value>计划年分</value>
+  </data>
+  <data name="BtnPlanCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="BtnPlanStore" xml:space="preserve">
+    <value>储存</value>
+  </data>
+  <data name="TipPlan1MemberLimit" xml:space="preserve">
+    <value>成员选择：女性至少三分之一</value>
+  </data>
+  <data name="TipPlanAdd" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="TipPlanAddress" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="TipPlanCulture" xml:space="preserve">
+    <value>文化程度</value>
+  </data>
+  <data name="TipPlanDelete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="TipPlanGender" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="TipPlanName" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="TipPlanNation" xml:space="preserve">
+    <value>民族</value>
+  </data>
+  <data name="TipPlanProfessional" xml:space="preserve">
+    <value>职业</value>
+  </data>
+  <data name="TipPlanTel" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="TipPlanTitle" xml:space="preserve">
+    <value>职务</value>
+  </data>
+  <data name="TipPlanTitle1" xml:space="preserve">
+    <value>学校发展计划管理委员会组成人员名单</value>
+  </data>
+  <data name="TipPlanEmptyData" xml:space="preserve">
+    <value>有资料为空</value>
+  </data>
+  <data name="TipPlanOperationSuccess" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="TipPlanTitle2" xml:space="preserve">
+    <value>学校办学理念及办学特色</value>
+  </data>
+  <data name="BtnPlanView" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="TipPlanTitle4" xml:space="preserve">
+    <value>学校发展中存在的主要问题</value>
+  </data>
+  <data name="TipPlanTitle5" xml:space="preserve">
+    <value>学校周历表</value>
+  </data>
+  <data name="TipPlanTitle9" xml:space="preserve">
+    <value>监测评估输入</value>
+  </data>
+  <data name="TipPlanTitle3" xml:space="preserve">
+    <value>本学年学校发展现况分析</value>
+  </data>
+  <data name="TipPlanTitle7" xml:space="preserve">
+    <value>学校管理部门设定</value>
+  </data>
+  <data name="TipPlanTitle8" xml:space="preserve">
+    <value>教研组设定</value>
+  </data>
+  <data name="PlanTipUploadError" xml:space="preserve">
+    <value>您尚未上传档案</value>
+  </data>
+  <data name="LkbPlanItem4_2" xml:space="preserve">
+    <value>第四部分 本学年目标与活动</value>
+  </data>
+  <data name="LkbPlanItem11" xml:space="preserve">
+    <value>SDP执行评核输入</value>
+  </data>
+  <data name="TipPlanDataAdd" xml:space="preserve">
+    <value>计划有效期限输入</value>
   </data>
 </root>

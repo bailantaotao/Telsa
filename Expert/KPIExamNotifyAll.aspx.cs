@@ -167,4 +167,8 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.close()", true);
     }
+    protected void BtnCancel_Click(object sender, ImageClickEventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.close()", true);
+    }
 }

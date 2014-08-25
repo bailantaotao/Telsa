@@ -117,18 +117,18 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
         Query = "select QuestionAddedComplete from InternetStudy where QuestionClassYear='" + pQuestionClassYear + "' group by QuestionAddedComplete";
 
         LbCompleted.Text = "<table style='width:700px;'>";
-        LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
-        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += "No</td>";
-        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipClassName + "</td>";
-        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipDeadline + "</td>";
-        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipAnswerState + "</td>";
-        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipUserScore + "</td>";
-        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipComment + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -172,25 +172,25 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
 
                                 LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
 
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
 
                                 LbCompleted.Text += (i + 1).ToString() + "</td>";
 
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                                 
                                 LbCompleted.Text += "<a href='InternetStudyQuestionnaire.aspx?" + EncryptQuestionClassID + "&" + EncryptQuestionClassYear + "&" + EncryptClassID + "'>" + ((string[])(QuestionCollection[i]))[3] + "</a></td>";
 
 
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                                 LbCompleted.Text += ((string[])(QuestionCollection[i]))[4].Split(' ')[0] + "</td>";
 
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                                 LbCompleted.Text += (data == null) ? Resources.Resource.TipUnPass : (MaxScore >= Convert.ToInt32(((string[])(QuestionCollection[i]))[5])) ? Resources.Resource.TipPass : Resources.Resource.TipUnPass + "</td>";
 
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                                 LbCompleted.Text += (data == null) ? "......" : (MaxScore == -1) ? "......" : MaxScore + "</td>";
 
-                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
 
                                 if (UserIsReview)
                                     LbCompleted.Text += "<a href='InternetStudyComment.aspx?" + EncryptQuestionClassID + "'>" + Resources.Resource.TipComment + "</a></td>";
@@ -203,8 +203,8 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                         }
                         else
                         {
-                            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                            LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+                            LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                             LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
                             LbCompleted.Text += "</tr>";
 
@@ -212,8 +212,8 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                     }
                     else
                     {
-                        LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                        LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                        LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+                        LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
                         LbCompleted.Text += "</tr>";
 
@@ -221,8 +221,8 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
                 }
                 else
                 {
-                    LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                    LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+                    LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
                     LbCompleted.Text += "</tr>";
 
@@ -230,8 +230,8 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
             }
             else
             {
-                LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+                LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
                 LbCompleted.Text += "</tr>";
 
@@ -239,8 +239,8 @@ public partial class SchoolMaster_InternetStudy : System.Web.UI.Page
         }
         else
         {
-            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-            LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+            LbCompleted.Text += "<td colspan='6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
             LbCompleted.Text += "</tr>";
 

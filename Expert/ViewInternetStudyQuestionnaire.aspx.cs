@@ -63,12 +63,12 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
         if (ms.GetAllColumnData(Query, data))
         {
             LbCompleted.Text = "<table style='width:750px;'>";
-            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += "No</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipClassName + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipDeadline + "</td>";
             //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             //LbCompleted.Text += Resources.Resource.TipAdd + "</td>";
@@ -129,11 +129,11 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
                     bool IsAdded = false, DBAddedComplete = false;
                     IsAdded = bool.TryParse(((string[])(data[i]))[5], out DBAddedComplete);
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     LbCompleted.Text += (i + 1).ToString() + "</td>";
 
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     // 如果已經新增過該類別之問題，才可以做檢視的動作
                     if (DBAddedComplete)
                     {
@@ -144,7 +144,7 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
                         LbCompleted.Text += "<a href='#'>" + ((string[])(data[i]))[3] + "</a></td>";
                     }
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     LbCompleted.Text += ((string[])(data[i]))[4].Split(' ')[0] + "</td>";
 
                     //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
@@ -178,8 +178,8 @@ public partial class Expert_ViewInternetStudyQuestionnaire : System.Web.UI.Page
             }
             else
             {
-                LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td colspan = '3' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+                LbCompleted.Text += "<td colspan = '3' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += Resources.Resource.SMNowYearNoData + "</td>";
                 LbCompleted.Text += "</tr>";
 
