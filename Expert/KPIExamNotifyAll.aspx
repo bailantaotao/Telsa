@@ -8,8 +8,8 @@
     <title></title>
 </head>
 <body>
+<div style="background-color: #CAE8F5">
     <form id="form1" runat="server">
-    <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true">
         </asp:ScriptManager>
         <table width="739px">
@@ -20,10 +20,14 @@
                     <asp:DropDownList ID="DdlProvince" runat="server" Width="200px" AutoPostBack="true" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged"></asp:DropDownList>
                 </td>
                 <td width="20%">
-                    <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnKPINotify %>" OnClick="BtnSend_Click" />
+                    <asp:ImageButton ID="BtnSend" runat="server" 
+                        ImageUrl="~/Image/zh-CN/TipSystemMessage.png" OnClick="BtnSend_Click" 
+                        BorderStyle="None" />
                 </td>
                 <td>
-                    <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnCancel %>" OnClick="BtnCancel_Click" />
+                    <asp:ImageButton ID="BtnCancel" runat="server" 
+                        ImageUrl="~/Image/zh-CN/ButtonCancelOrange.png" OnClick="BtnCancel_Click" 
+                        BorderStyle="None" />
                 </td>
             </tr>
             <tr>

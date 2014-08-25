@@ -59,7 +59,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Manager/PlanViewList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -99,9 +99,7 @@
                    <table style="width: 735px">
                      <td>
                     </td>
-                    <td align="right">
-                               <asp:Button ID="BtnSend" runat="server" Text="<%$ Resources:Resource, BtnKPINotifySingleSchool %>" OnClick="BtnNotify_Click" />
-                    </td>
+                    
                        <tr>
                             <td align="left">                                
                                 <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipSchool %>"></asp:Label>                                

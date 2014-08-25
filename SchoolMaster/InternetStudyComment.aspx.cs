@@ -124,8 +124,8 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
             }
             else
             {
-                LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+                LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += Resources.Resource.TipNoComment + "</td>";
                 LbCompleted.Text += "</tr>";
 

@@ -99,12 +99,12 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
             {
                 goto NODATA;
             }
-            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipNo + Domain;
             LbCompleted.Text += Resources.Resource.TipKPIDomain + "- ";
             LbCompleted.Text += DomainName.ToString() + "</td>";            
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipKPIScore + "</td>";
             LbCompleted.Text += "</tr>";
 
@@ -119,11 +119,11 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
                     if (!tmp[0].Equals(Domain))
                         continue;
                     
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     LbCompleted.Text += "(" + tmp[0] + "-" + tmp[1] + ")";
                     LbCompleted.Text += tmp[2] + "</td>";
 
-                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     LbCompleted.Text += string.IsNullOrEmpty(tmp[3])?"0":tmp[3] + "</td>";
                     LbCompleted.Text += "</tr>";
                     
@@ -131,8 +131,8 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
                 goto FINALLY;
             }
         NODATA:
-            LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-            LbCompleted.Text += "<td colspan = '4' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+            LbCompleted.Text += "<td colspan = '4' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipKPINoAnswer + "</td>";
             LbCompleted.Text += "</tr>";
         FINALLY:
