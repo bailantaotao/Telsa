@@ -95,6 +95,14 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
+                        <tr>
                             <td align="left" width="30%">
                                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
                                     <asp:ListItem Value="0" Selected="True">校长</asp:ListItem>
