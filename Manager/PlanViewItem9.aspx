@@ -108,17 +108,17 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table width="739px" class=".empty">
+                    <table width="739px" class="empty">
                         <tr>
-                            <td align="left" width="20%" class=".empty">
+                            <td align="left" width="20%" class="empty">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
-                            <td align="left" width="60%" class=".empty">
+                            <td align="left" width="60%" class="empty">
                                 学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1" align="left" class=".empty">
+                            <td colspan="1" align="left" class="empty">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle9 %>"></asp:Label> 
                                                                
                             </td>
@@ -366,9 +366,9 @@
                     </table>
                     
                 </div>
-                <table width="739px" class=".empty">
+                <table width="739px" class="empty">
                     <tr>
-                        <td width="90%" align="right" style="margin-right=20px;" class=".empty">
+                        <td width="90%" align="right" style="margin-right=20px;" class="empty">
                             <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>
