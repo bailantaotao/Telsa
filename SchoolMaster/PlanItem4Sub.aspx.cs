@@ -396,14 +396,14 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
-        if (!isDigit())
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('预算必须是数字');", true);
-        }
-        else
-        {
+        //if (!isDigit())
+        //{
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('预算必须是数字');", true);
+        //}
+        //else
+        //{
             storeData();
-        }
+        //}
     }
     private bool isDigit()
     {
