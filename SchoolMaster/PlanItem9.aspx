@@ -110,9 +110,16 @@
                 <div id="BlockRightDownController">
                     <table width="739px" class="empty">
                         <tr>
-                            <td colspan="1" align="left">
-                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle9 %>"></asp:Label> 
-                                                               
+                            <td align="left" width="20%" class="empty">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%" class="empty">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left" class="empty">
+                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle9 %>"></asp:Label>                                                                
                             </td>
                         </tr>
                     </table>
@@ -360,10 +367,10 @@
                 </div>
                 <table width="739px" class="empty">
                     <tr>
-                        <td width="90%" align="right">
+                        <td width="90%" align="right" class="empty">
                             <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
                         </td>
-                        <td width="10%" align="left" style="margin-left=20px;">
+                        <td width="10%" align="left" style="margin-left=20px;" class="empty">
                             <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>

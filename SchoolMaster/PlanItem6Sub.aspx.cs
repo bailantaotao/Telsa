@@ -33,6 +33,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
+        LbNO.Text = Session["Semester"].ToString();
+        LbYear.Text = Session["PlanYear"].ToString();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -77,13 +79,13 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
 
     private void getSemster()
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanList.PlanSemester from PlanList " +
-                       "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
-                       "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        LbSemster.Text = "学期:"+sb.ToString();
+        //StringBuilder sb = new StringBuilder();
+        //ManageSQL ms = new ManageSQL();
+        //string query = "select PlanList.PlanSemester from PlanList " +
+        //               "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
+        //               "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
+        //ms.GetOneData(query, sb);
+        //LbSemster.Text = "学期:"+sb.ToString();
     }
 
     private bool getSchoolName(StringBuilder sb)

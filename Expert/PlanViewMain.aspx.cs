@@ -318,4 +318,69 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     {
         Response.Redirect("PlanViewList.aspx");
     }
+    protected void LkbPlanItem2_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanViewItem2.aspx");
+    }
+    protected void LkbPlanItem3_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanViewItem3.aspx");
+
+    }
+    protected void LkbPlanItem4_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanViewItem4.aspx");
+
+    }
+    protected void LkbPlanItem4_2_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanViewItem4_2.aspx");
+
+    }
+    protected void LkbPlanItem9_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanViewItem9.aspx");
+
+    }
+    protected void LkbPlanItem11_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanViewItem11.aspx");
+
+    }
 }

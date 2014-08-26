@@ -111,22 +111,22 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem2" runat="server" Text="<%$ Resources:Resource, LkbPlanItem2 %>" PostBackUrl="~/Expert/PlanViewItem2.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem2" runat="server" Text="<%$ Resources:Resource, LkbPlanItem2 %>"  OnClick="LkbPlanItem2_Click"></asp:LinkButton>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem3" runat="server" Text="<%$ Resources:Resource, LkbPlanItem3 %>" PostBackUrl="~/Expert/PlanViewItem3.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem3" runat="server" Text="<%$ Resources:Resource, LkbPlanItem3 %>"  OnClick="LkbPlanItem3_Click"></asp:LinkButton>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem4" runat="server" Text="<%$ Resources:Resource, LkbPlanItem4 %>" PostBackUrl="~/Expert/PlanViewItem4.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem4" runat="server" Text="<%$ Resources:Resource, LkbPlanItem4 %>"  OnClick="LkbPlanItem4_Click"></asp:LinkButton>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem4_2" runat="server" Text="<%$ Resources:Resource, LkbPlanItem4_2 %>" PostBackUrl="~/Expert/PlanViewItem4_2.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem4_2" runat="server" Text="<%$ Resources:Resource, LkbPlanItem4_2 %>"  OnClick="LkbPlanItem4_2_Click"></asp:LinkButton>
                             </td>
                         </tr>
                         <tr>
@@ -151,12 +151,12 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem9" runat="server" Text="<%$ Resources:Resource, LkbPlanItem9 %>" PostBackUrl="~/Expert/PlanViewItem9.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem9" runat="server" Text="<%$ Resources:Resource, LkbPlanItem9 %>"  OnClick="LkbPlanItem9_Click"></asp:LinkButton>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem11" runat="server" Text="<%$ Resources:Resource, LkbPlanItem11 %>" PostBackUrl="~/Expert/PlanViewItem11.aspx" ></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem11" runat="server" Text="<%$ Resources:Resource, LkbPlanItem11 %>"  OnClick="LkbPlanItem11_Click" ></asp:LinkButton>
                             </td>
                         </tr>
                     </table>

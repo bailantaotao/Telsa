@@ -36,6 +36,8 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        LbNO.Text = Session["Semester"].ToString();
+        LbYear.Text = Session["PlanYear"].ToString();
         if (Request["NO"] == null || Request["DimensionsID"] == null)
             return;
         if (!parseData("NO") || !parseData("DimensionsID"))
