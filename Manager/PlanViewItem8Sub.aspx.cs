@@ -43,7 +43,8 @@ public partial class SchoolMaster_PlanViewItem8Sub : System.Web.UI.Page
             return;
 
         getTitle();
-        getSemster();
+        LbNO.Text = Session["Semester"].ToString();
+        LbYear.Text = Session["PlanYear"].ToString();
 
         if (!IsPostBack)
         {
@@ -84,7 +85,7 @@ public partial class SchoolMaster_PlanViewItem8Sub : System.Web.UI.Page
         //               "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
         //ms.GetOneData(query, sb);
         //LbSemster.Text = "学期: " + sb.ToString();
-        LbSemster.Text = "学期: " + Session["Semester"].ToString();
+        //LbSemster.Text = "学期: " + Session["Semester"].ToString();
     }
 
     private bool getSchoolName(StringBuilder sb)
