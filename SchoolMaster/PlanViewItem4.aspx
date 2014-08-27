@@ -41,6 +41,10 @@
             margin-left:40px;
             text-align:left;
         }
+        .table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -118,61 +122,59 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="739px" class="table">
                         <tr>
-                            <td width="25%">维度</td">
-                            <td width="70%" align="left">
+                            <td width="25%" class="table">维度</td">
+                            <td width="70%" align="left" class="table">
                                 问题
-                            </td>
-                            <td width="5%">
                             </td>
                         </tr>
                         <tr >
-                            <td width="25%" rowspan="3">学科能力：</td">
-                            <td width="70%" align="left">
+                            <td width="25%" rowspan="3" class="table">学科能力：</td">
+                            <td width="70%" align="left" class="table">
                                 问题一
                                 <asp:Label ID="LbQuestion1" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="70%" align="left">
+                            <td width="70%" align="left" class="table">
                                 问题二<asp:Label ID="LbQuestion2" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="70%" align="left">
+                            <td width="70%" align="left" class="table">
                                 问题三<asp:Label ID="LbQuestion3" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%" rowspan="3">人格陶冶：</td">
-                            <td width="70%" align="left">
+                            <td width="25%" rowspan="3" class="table">人格陶冶：</td">
+                            <td width="70%" align="left" class="table">
                                 问题一<asp:Label ID="LbQuestion4" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="70%" align="left">
+                            <td width="70%" align="left" class="table">
                                 问题二<asp:Label ID="LbQuestion5" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="70%" align="left">
+                            <td width="70%" align="left" class="table">
                                 问题三<asp:Label ID="LbQuestion6" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="25%" rowspan="3">学校管理：</td>
-                            <td width="70%" align="left">
+                            <td width="25%" rowspan="3" class="table">学校管理：</td>
+                            <td width="70%" align="left" class="table">
                                 问题一<asp:Label ID="LbQuestion7" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="70%" align="left">
+                            <td width="70%" align="left" class="table">
                                 问题二<asp:Label ID="LbQuestion8" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td width="70%" align="left">
+                            <td width="70%" align="left" class="table">
                                 问题三<asp:Label ID="LbQuestion9" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
