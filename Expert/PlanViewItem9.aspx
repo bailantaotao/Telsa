@@ -1,11 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PlanViewItem9.aspx.cs" Inherits="SchoolMaster_PlanViewItem9" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script language="javascript" type="text/javascript">
+        function Conversion2() {
+            //var year = parseInt(document.getElementById('column3').value.substr(0, 4)) - 1911;
+            //document.getElementById('column3').value = year + document.getElementById('column3').value.substr(4, 8);
+        }
+    </script>
     <style>
         #BlockLeft {
             float: left;
@@ -119,6 +125,7 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
+                    <asp:Panel ID="Panel1" runat="server">
                     <table width="739px">
                         <tr>
                             <td width="7%" rowspan="2">问题维度</td>
@@ -147,19 +154,28 @@
                                 <asp:Label ID="LbRC01" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC02" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC021" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC02" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC03" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC031" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC03" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC04" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC041" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC04" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="LbRC04"
+                                    Enabled="True" TargetControlID="LbRC04" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC05" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC051" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC05" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="LbRC05"
+                                    Enabled="True" TargetControlID="LbRC05" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC06" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC061" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC06" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -171,19 +187,28 @@
                                 <asp:Label ID="LbRC11" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC12" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC121" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC12" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC13" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC131" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC13" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC14" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC141" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC14" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender3" runat="server" PopupButtonID="LbRC14"
+                                    Enabled="True" TargetControlID="LbRC14" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC15" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC151" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC15" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender4" runat="server" PopupButtonID="LbRC15"
+                                    Enabled="True" TargetControlID="LbRC15" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC16" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC161" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC16" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -195,19 +220,28 @@
                                 <asp:Label ID="LbRC21" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC22" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC221" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC22" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC23" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC231" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC23" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC24" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC241" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC24" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender5" runat="server" PopupButtonID="LbRC24"
+                                    Enabled="True" TargetControlID="LbRC24" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC25" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC251" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC25" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender6" runat="server" PopupButtonID="LbRC25"
+                                    Enabled="True" TargetControlID="LbRC25" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC26" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC261" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC26" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                          <tr>
@@ -220,19 +254,28 @@
                                 <asp:Label ID="LbRC31" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC32" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC321" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC32" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC33" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC331" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC33" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC34" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC341" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC34" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender7" runat="server" PopupButtonID="LbRC34"
+                                    Enabled="True" TargetControlID="LbRC34" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC35" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC351" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC35" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender8" runat="server" PopupButtonID="LbRC35"
+                                    Enabled="True" TargetControlID="LbRC35" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC36" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC361" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC36" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -244,19 +287,28 @@
                                 <asp:Label ID="LbRC41" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC42" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC421" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC42" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC43" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC431" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC43" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC44" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC441" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC44" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender9" runat="server" PopupButtonID="LbRC44"
+                                    Enabled="True" TargetControlID="LbRC44" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC45" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC451" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC45" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender10" runat="server" PopupButtonID="LbRC45"
+                                    Enabled="True" TargetControlID="LbRC45" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC46" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC461" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC46" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -268,19 +320,28 @@
                                 <asp:Label ID="LbRC51" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC52" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC521" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC52" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC53" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC531" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC53" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC54" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC541" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC54" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender11" runat="server" PopupButtonID="LbRC54"
+                                    Enabled="True" TargetControlID="LbRC54" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC55" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC551" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC55" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender12" runat="server" PopupButtonID="LbRC55"
+                                    Enabled="True" TargetControlID="LbRC55" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC56" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC561" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC56" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                          <tr>
@@ -293,19 +354,28 @@
                                 <asp:Label ID="LbRC61" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC62" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC621" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC62" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC63" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC631" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC63" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC64" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC641" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC64" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender13" runat="server" PopupButtonID="LbRC64"
+                                    Enabled="True" TargetControlID="LbRC64" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC65" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC651" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC65" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender14" runat="server" PopupButtonID="LbRC65"
+                                    Enabled="True" TargetControlID="LbRC65" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC66" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC661" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC66" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -317,19 +387,28 @@
                                 <asp:Label ID="LbRC71" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC72" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC721" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC72" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC73" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC731" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC73" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC74" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC741" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC74" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender15" runat="server" PopupButtonID="LbRC74"
+                                    Enabled="True" TargetControlID="LbRC74" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC75" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC751" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC75" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender16" runat="server" PopupButtonID="LbRC75"
+                                    Enabled="True" TargetControlID="LbRC75" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC76" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC761" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC76" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -341,28 +420,40 @@
                                 <asp:Label ID="LbRC81" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC82" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC821" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:DropDownList ID="LbRC82" runat="server" Width="70px"></asp:DropDownList>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC83" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC831" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC83" runat="server" Width="70px"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC84" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC841" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC84" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender17" runat="server" PopupButtonID="LbRC84"
+                                    Enabled="True" TargetControlID="LbRC84" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC85" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC851" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC85" runat="server" Width="70px"></asp:TextBox>
+                                <asp:CalendarExtender ID="CalendarExtender18" runat="server" PopupButtonID="LbRC85"
+                                    Enabled="True" TargetControlID="LbRC85" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                             </td>
                             <td>
-                                <asp:Label ID="LbRC86" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="LbRC861" runat="server" Width="70px" Visible="false"></asp:Label>
+                                <asp:TextBox ID="LbRC86" runat="server" Width="70px"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
-                    
+                    </asp:Panel>
                 </div>
                 <table width="739px" class="empty">
                     <tr>
-                        <td width="90%" align="right" style="margin-right=20px;" class="empty">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                        <td width="90%" align="right" class="empty">
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                        </td>
+                        <td width="10%" align="left" style="margin-left=20px;" class="empty">
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>
                 </table>
