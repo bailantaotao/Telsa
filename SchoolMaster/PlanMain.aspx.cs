@@ -368,4 +368,15 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
 
         Response.Redirect("PlanItem11.aspx");
     }
+    protected void LkbPlanItem1_Click(object sender, EventArgs e)
+    {
+        StringBuilder sb = new StringBuilder();
+        ManageSQL ms = new ManageSQL();
+        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        Session["Semester"] = sb.ToString();
+
+        Response.Redirect("PlanItem1.aspx");
+        
+    }
 }

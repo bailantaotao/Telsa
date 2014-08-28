@@ -113,7 +113,7 @@
                     <table width="739px">
                         <tr>
                             <td align="left">
-                                <asp:LinkButton ID="LkbPlanItem1" runat="server" Text="<%$ Resources:Resource, LkbPlanItem1 %>" PostBackUrl="~/Manager/PlanViewItem1.aspx"></asp:LinkButton>
+                                <asp:LinkButton ID="LkbPlanItem1" runat="server" Text="<%$ Resources:Resource, LkbPlanItem1 %>" OnClick="LkbPlanItem1_Click"></asp:LinkButton>
                             </td>
                         </tr>
                         <tr>
