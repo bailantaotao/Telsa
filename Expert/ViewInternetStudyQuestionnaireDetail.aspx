@@ -106,7 +106,7 @@
                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipTitle %>" Font-Size="<%$ Resources:Resource, TextSizeTip %>"></asp:Label>
                             </td>
                             <td style="width: 80%; border: thin solid Gray;">
-                                <asp:Label ID="LbTitle" runat="server" Text="Label" style="word-break:break-all"></asp:Label>
+                                <asp:Label ID="LbTitle" runat="server" Text="" style="word-break:break-all"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -114,7 +114,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipDescription %>" Font-Size="<%$ Resources:Resource, TextSizeTip %>"></asp:Label>
                             </td>
                             <td style="height: 80px: 80%; border: thin solid Gray;">
-                                <asp:Label ID="LbDescription" runat="server" Text="Label" style="word-break:break-all"></asp:Label>
+                                <asp:Label ID="LbDescription" runat="server" Text="" style="word-break:break-all"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -122,7 +122,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="<%$ Resources:Resource, TipPassScore %>" Font-Size="<%$ Resources:Resource, TextSizeTip %>"></asp:Label>
                             </td>
                             <td style="width: 80%; border: thin solid Gray;">
-                                <asp:Label ID="LbPassScore" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbPassScore" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>

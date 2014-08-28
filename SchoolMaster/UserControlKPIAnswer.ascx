@@ -8,7 +8,7 @@
 <table width="739px" align="left" runat="server" style="border: groove 5px">
     <tr>
         <td colspan="4" style="padding: 5px; line-height: 20px; border-bottom: groove 3px" class="style1">
-            <asp:Label ID="LbQuestion" runat="server" Text="Label" style="word-break:break-all"></asp:Label>
+            <asp:Label ID="LbQuestion" runat="server" Text="" style="word-break:break-all"></asp:Label>
         </td>
     </tr>
     <tr>

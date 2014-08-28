@@ -223,7 +223,7 @@
                 <table width="739px" style="margin-top:20px">
                     <tr>
                         <td colspan="2" align="left">
-                            学校发展方向: <asp:Label ID="LbSchoolDirection" runat="server" Text="Label"></asp:Label>
+                            学校发展方向: <asp:Label ID="LbSchoolDirection" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>
