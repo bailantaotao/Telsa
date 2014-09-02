@@ -132,7 +132,9 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
         data.Clear();
         query = "select NO, Target, Activity, StartTime, EndTime, FinishRate, Condition " +
                         "from PlanMasterWorkList " +
-                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by No asc ";
+                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                        "TitleIsSM = '" + schoolMasterTitle.ToString() + "' " +
+                        "order by No asc ";
 
         ms.GetAllColumnData(query, data);
 

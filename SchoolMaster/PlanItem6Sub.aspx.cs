@@ -241,7 +241,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         ArrayList data = new ArrayList();
         string query = "select Target, Activity, StartTime, EndTime, FinishRate, Condition " +
                         "from PlanMasterWorkList " +
-                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by No asc ";
+                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' and "+
+                        "TitleIsSM = '" + schoolMasterTitle.ToString() + "' " + 
+                        "order by No asc ";
 
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
