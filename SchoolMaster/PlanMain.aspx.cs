@@ -82,7 +82,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         string query = "select Count(PlanStatus) "+
                         "from PlanlistUser "+
                         "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +
-                        "where PlanListUser.PlanListSN ='" + Request["SN"].ToString() + "' and PlanList.planyear = '" + Request["YEAR"].ToString() + "'";
+                        "where PlanListUser.PlanListSN ='" + Request["SN"].ToString() + "' and PlanList.planyear = '" + Request["YEAR"].ToString() + "' and PlanListUser.PlanSchool=N'" + Session["schoolName"].ToString() + "'";
         if (!ms.GetOneData(query, sb))
             return false;
 
@@ -102,7 +102,7 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
         else
         {
             //非0，所以有資料
-            query = "select SN from PlanListUser where PlanListSN = '" + Request["SN"].ToString() + "'";
+            query = "select SN from PlanListUser where PlanListSN = '" + Request["SN"].ToString() + "' and PlanSchool=N'" + Session["schoolName"].ToString() + "'";
             ms.GetOneData(query, sb);
             Session["UserPlanListSN"] = sb.ToString();
         }
