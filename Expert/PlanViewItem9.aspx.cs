@@ -377,7 +377,7 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                         TitleDepart + "',N'" +
                         StartTime + "',N'" +
                         EndTime + "',N'" +
-                        Support + "',N'" + 
+                        Support + 
                         "')";
             ms.WriteData(query, sb);
         }
