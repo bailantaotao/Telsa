@@ -239,11 +239,11 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(tmp))
             {
-                Query += "where Zipcode.Name=N'" + LbProvince.Text + "' ";
+                Query += "where Zipcode.Name=N'" + LbProvince.Text + "' and PlanSchool <> ''";
             }
             else
             {
-                Query += "and  Zipcode.Name=N'" + LbProvince.Text + "' ";
+                Query += "and  Zipcode.Name=N'" + LbProvince.Text + "' and PlanSchool <> ''";
             }
         }
 
