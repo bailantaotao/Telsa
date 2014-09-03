@@ -95,11 +95,14 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left">
+                            <td align="left" width="40%">
                                 <asp:Label ID="LbTitle" runat="server" Text=""></asp:Label>                                
                             </td>
-                            <td align="left">
-                                <asp:Label ID="LbSemster" runat="server" Text=""></asp:Label>                                
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="40%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
                             </td>
                         </tr>
                     </table>
@@ -111,25 +114,25 @@
                                 负责人姓名
                             </td>
                             <td width="15%" align="left">
-                                <asp:Label ID="LbName" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbName" runat="server" Text=""></asp:Label>
                             </td>
                             <td width="10%">
                                 性别
                             </td>
                             <td width="15%" align="left">
-                                <asp:Label ID="LbGender" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbGender" runat="server" Text=""></asp:Label>
                             </td>
                             <td width="10%">
                                 职称
                             </td>
                             <td width="15%" align="left">
-                                <asp:Label ID="LbProfession" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbProfession" runat="server" Text=""></asp:Label>
                             </td>
                             <td width="10%">
                                 部门人数
                             </td>
                             <td width="15%" align="left">
-                                <asp:Label ID="LbNumbersOfPeople" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbNumbersOfPeople" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -139,7 +142,7 @@
                         </tr>
                         <tr>
                             <td colspan="8" align="left">
-                                <asp:Label ID="LbAdvantage" runat="server" Text="Label"  style="word-break:break-all"></asp:Label>
+                                <asp:Label ID="LbAdvantage" runat="server" Text=""  style="word-break:break-all"></asp:Label>
                             </td>
                         </tr>
                     </table>

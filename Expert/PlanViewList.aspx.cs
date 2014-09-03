@@ -170,7 +170,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         {
             Query = "select School from Account " +
                     "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
-                    "where Zipcode.name =N'" + LbProvince.Text + "' and School not like N'%管理%' " +
+                    "where Zipcode.name =N'" + LbProvince.Text + "' and School not like N'%專家%' and School not like N'%管理%' " +
                     "group by School ";
         }
 
@@ -239,11 +239,11 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(tmp))
             {
-                Query += "where Zipcode.Name=N'" + LbProvince.Text + "' ";
+                Query += "where Zipcode.Name=N'" + LbProvince.Text + "' and PlanSchool <> ''";
             }
             else
             {
-                Query += "and  Zipcode.Name=N'" + LbProvince.Text + "' ";
+                Query += "and  Zipcode.Name=N'" + LbProvince.Text + "' and PlanSchool <> ''";
             }
         }
 

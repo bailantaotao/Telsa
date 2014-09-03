@@ -78,6 +78,7 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
         string query = "select school from Account where UserID = '" + Session["UserID"].ToString() + "'";
         if (!ms.GetOneData(query, sb))
             return false;
+        Session["schoolName"] = sb.ToString();
         return true;
     }
 

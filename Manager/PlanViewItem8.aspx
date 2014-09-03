@@ -59,7 +59,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/PlanList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Manager/PlanViewList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -101,6 +101,14 @@
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
                     <table width="739px">
+                        <tr>
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="1" align="left">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle8 %>"></asp:Label>                                

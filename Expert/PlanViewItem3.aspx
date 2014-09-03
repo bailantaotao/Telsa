@@ -95,6 +95,14 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="1" align="left">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle3 %>"></asp:Label>                                
                             </td>
@@ -208,7 +216,7 @@
                 <table width="739px" style="margin-top:20px">
                     <tr>
                         <td colspan="2" align="left">
-                            学校发展方向: <asp:Label ID="LbSchoolDirection" runat="server" Text="Label"></asp:Label>
+                            学校发展方向: <asp:Label ID="LbSchoolDirection" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>

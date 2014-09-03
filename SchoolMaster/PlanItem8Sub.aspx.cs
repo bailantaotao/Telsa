@@ -43,7 +43,8 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
             return;
 
         getTitle();
-        getSemster();
+        LbNO.Text = Session["Semester"].ToString();
+        LbYear.Text = Session["PlanYear"].ToString();
 
         if (!IsPostBack)
         {
@@ -78,13 +79,13 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
 
     private void getSemster()
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanList.PlanSemester from PlanList " +
-                       "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
-                       "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        LbSemster.Text = "学期: " + sb.ToString();
+        //StringBuilder sb = new StringBuilder();
+        //ManageSQL ms = new ManageSQL();
+        //string query = "select PlanList.PlanSemester from PlanList " +
+        //               "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
+        //               "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
+        //ms.GetOneData(query, sb);
+        //LbSemster.Text = "学期: " + Session["Semester"].ToString();
     }
 
     private bool getSchoolName(StringBuilder sb)
@@ -229,7 +230,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column4", typeof(string)));
         dt.Columns.Add(new DataColumn("column5", typeof(string)));
         dt.Columns.Add(new DataColumn("column6", typeof(string)));
-        dt.Columns.Add(new DataColumn("column7", typeof(string)));
+
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
         dt.Columns.Add(new DataColumn("btnClear", typeof(string)));
         ManageSQL ms = new ManageSQL();
@@ -440,7 +441,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
             {
                 ManageSQL ms = new ManageSQL();
                 // 先刪除原本的
-                string query = "delete from PlanOrganizationList where SN ='" + Session["UserPlanListSN"].ToString() + "' and DepartmentNO='" + schoolDepartmentNO.ToString() + "'";
+                string query = "delete from PlanOrganizationList where SN ='" + Session["UserPlanListSN"].ToString() + "' and OrganizationNO='" + schoolDepartmentNO.ToString() + "'";
                 ms.WriteData(query, sb);
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
