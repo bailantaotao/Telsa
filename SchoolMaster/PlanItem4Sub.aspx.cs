@@ -36,6 +36,8 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        LbNO.Text = Session["Semester"].ToString();
+        LbYear.Text = Session["PlanYear"].ToString();
         if (Request["NO"] == null || Request["DimensionsID"] == null)
             return;
         if (!parseData("NO") || !parseData("DimensionsID"))
@@ -396,14 +398,14 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
-        if (!isDigit())
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('预算必须是数字');", true);
-        }
-        else
-        {
+        //if (!isDigit())
+        //{
+        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('预算必须是数字');", true);
+        //}
+        //else
+        //{
             storeData();
-        }
+        //}
     }
     private bool isDigit()
     {

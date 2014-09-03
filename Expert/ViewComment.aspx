@@ -18,7 +18,7 @@
             <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPage %>"></asp:Label>
         </div>
         <div>
-            <asp:Label ID="LbComplete" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="LbComplete" runat="server" Text=""></asp:Label>
         </div>
     </div>
     </form>

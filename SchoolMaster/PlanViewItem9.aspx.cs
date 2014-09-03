@@ -40,6 +40,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        LbNO.Text = Session["Semester"].ToString();
+        LbYear.Text = Session["PlanYear"].ToString();
         setInitial();
     }
 
@@ -70,8 +72,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC01.Text = d[3];
                     LbRC02.Text = d[4];
                     LbRC03.Text = d[5];
-                    LbRC04.Text = d[6];
-                    LbRC05.Text = d[7];
+                    LbRC04.Text = splitData(d[6]);
+                    LbRC05.Text = splitData(d[7]);
                     LbRC06.Text = d[8];
                 }
                 else if (d[1].Equals("2"))
@@ -80,8 +82,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC11.Text = d[3];
                     LbRC12.Text = d[4];
                     LbRC13.Text = d[5];
-                    LbRC14.Text = d[6];
-                    LbRC15.Text = d[7];
+                    LbRC14.Text = splitData(d[6]);
+                    LbRC15.Text = splitData(d[7]);
                     LbRC16.Text = d[8];
                 }
                 else if (d[1].Equals("3"))
@@ -90,8 +92,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC21.Text = d[3];
                     LbRC22.Text = d[4];
                     LbRC23.Text = d[5];
-                    LbRC24.Text = d[6];
-                    LbRC25.Text = d[7];
+                    LbRC24.Text = splitData(d[6]);
+                    LbRC25.Text = splitData(d[7]);
                     LbRC26.Text = d[8];
                 }
             }
@@ -103,8 +105,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC31.Text = d[3];
                     LbRC32.Text = d[4];
                     LbRC33.Text = d[5];
-                    LbRC34.Text = d[6];
-                    LbRC35.Text = d[7];
+                    LbRC34.Text = splitData(d[6]);
+                    LbRC35.Text = splitData(d[7]);
                     LbRC36.Text = d[8];
                 }
                 else if (d[1].Equals("2"))
@@ -113,8 +115,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC41.Text = d[3];
                     LbRC42.Text = d[4];
                     LbRC43.Text = d[5];
-                    LbRC44.Text = d[6];
-                    LbRC45.Text = d[7];
+                    LbRC44.Text = splitData(d[6]);
+                    LbRC45.Text = splitData(d[7]);
                     LbRC46.Text = d[8];
                 }
                 else if (d[1].Equals("3"))
@@ -123,8 +125,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC51.Text = d[3];
                     LbRC52.Text = d[4];
                     LbRC53.Text = d[5];
-                    LbRC54.Text = d[6];
-                    LbRC55.Text = d[7];
+                    LbRC54.Text = splitData(d[6]);
+                    LbRC55.Text = splitData(d[7]);
                     LbRC56.Text = d[8];
                 }
             }
@@ -136,8 +138,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC61.Text = d[3];
                     LbRC62.Text = d[4];
                     LbRC63.Text = d[5];
-                    LbRC64.Text = d[6];
-                    LbRC65.Text = d[7];
+                    LbRC64.Text = splitData(d[6]);
+                    LbRC65.Text = splitData(d[7]);
                     LbRC66.Text = d[8];
                 }
                 else if (d[1].Equals("2"))
@@ -146,8 +148,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC71.Text = d[3];
                     LbRC72.Text = d[4];
                     LbRC73.Text = d[5];
-                    LbRC74.Text = d[6];
-                    LbRC75.Text = d[7];
+                    LbRC74.Text = splitData(d[6]);
+                    LbRC75.Text = splitData(d[7]);
                     LbRC76.Text = d[8];
                 }
                 else if (d[1].Equals("3"))
@@ -156,12 +158,21 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
                     LbRC81.Text = d[3];
                     LbRC82.Text = d[4];
                     LbRC83.Text = d[5];
-                    LbRC84.Text = d[6];
-                    LbRC85.Text = d[7];
+                    LbRC84.Text = splitData(d[6]);
+                    LbRC85.Text = splitData(d[7]);
                     LbRC86.Text = d[8];
                 }
             }
         }
 
+    }
+    private string splitData(string date)
+    {
+        string[] tmp = date.Split(' ');
+        if (tmp.Length > 0)
+        {
+            return tmp[0];
+        }
+        return "";
     }
 }

@@ -194,7 +194,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
             }
         }
-        Query += tmp;
+        Query += (tmp.Length > 0) ? tmp + "PlanSchool <> '' " : "where PlanSchool <> '' ";
+        
 
 
         Query += "order by PlanList.PlanYear desc, PlanList.PlanSemester asc ";

@@ -99,6 +99,14 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="1" align="left">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle2 %>"></asp:Label> 
                                                                
@@ -111,37 +119,37 @@
                         <tr>
                             <td width="25%" class="table">办学理念：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:Label ID="LbIdea" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbIdea" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">校训：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:Label ID="LbMotto" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbMotto" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">校风：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:Label ID="LbSpirit" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbSpirit" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">学校概况：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:Label ID="LbOverview" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbOverview" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">办学特色：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:Label ID="LbCharacteristic" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbCharacteristic" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">学校发生的变化：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:Label ID="LbChange" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="LbChange" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                     </table>

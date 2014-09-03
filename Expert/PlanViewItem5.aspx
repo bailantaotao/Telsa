@@ -95,10 +95,13 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left" width="20%">
+                            <td align="left" width="40%">
                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipPlanTitle5 %>"></asp:Label>   
+                            </td>                            
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
-                            <td align="left" width="80%">
+                            <td align="left" width="40%">
                                 学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
                             </td>
                         </tr>

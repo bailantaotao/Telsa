@@ -67,7 +67,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/PlanList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Manager/PlanViewList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -108,9 +108,17 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table width="739px" class=".empty">
+                    <table width="739px" class="empty">
                         <tr>
-                            <td colspan="1" align="left">
+                            <td align="left" width="20%" class="empty">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%" class="empty">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" align="left" class="empty">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle9 %>"></asp:Label> 
                                                                
                             </td>
@@ -358,9 +366,9 @@
                     </table>
                     
                 </div>
-                <table width="739px" class=".empty">
+                <table width="739px" class="empty">
                     <tr>
-                        <td width="90%" align="right" style="margin-right=20px;">
+                        <td width="90%" align="right" style="margin-right=20px;" class="empty">
                             <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
                         </td>
                     </tr>

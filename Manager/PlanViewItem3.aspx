@@ -59,7 +59,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/PlanList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlSchoolDevelop" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Manager/PlanViewList.aspx" Text="<%$ Resources:Resource, HySchoolDevelop %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -102,7 +102,15 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td colspan="1" align="left">
+                            <td align="left" width="20%">
+                                年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
+                            </td>
+                            <td align="left" width="60%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle3 %>"></asp:Label>                                
                             </td>
                         </tr>
@@ -215,7 +223,7 @@
                 <table width="739px" style="margin-top:20px">
                     <tr>
                         <td colspan="2" align="left">
-                            学校发展方向: <asp:Label ID="LbSchoolDirection" runat="server" Text="Label"></asp:Label>
+                            学校发展方向: <asp:Label ID="LbSchoolDirection" runat="server" Text=""></asp:Label>
                         </td>
                     </tr>
                     <tr>

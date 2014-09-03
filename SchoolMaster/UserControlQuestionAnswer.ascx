@@ -3,7 +3,7 @@
     <tr>
         <td colspan="4" style="padding: 5px; height: auto; line-height: 20px;">
             <asp:Label ID="LbQuestionNumber" runat="server" Text="<%$ Resources:Resource, TipQuestion %>" Font-Size="Larger"></asp:Label>
-            <asp:Label ID="LbQuestion" runat="server" Text="Label" style="word-break:break-all"></asp:Label>
+            <asp:Label ID="LbQuestion" runat="server" Text="" style="word-break:break-all"></asp:Label>
         </td>
     </tr>
     <tr>
