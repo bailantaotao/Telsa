@@ -121,6 +121,6 @@ public partial class SchoolMaster_PlanItem2 : System.Web.UI.Page
                         TbCharacteristic.Text.Trim() + "',N'" +
                         TbChange.Text.Trim() + "')";
         ms.WriteData(query, sb);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
     }
 }
