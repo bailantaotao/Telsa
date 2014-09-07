@@ -181,41 +181,66 @@
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem1" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem1 %>" OnClick="LkbDownloadItem1_Click"></asp:LinkButton>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach1.doc"><font color=參考範例</a>
+                            </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach1.doc"><font color="red">參考範例</font></a>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem2" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem2 %>" OnClick="LkbDownloadItem2_Click">></asp:LinkButton>
                             </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach2.doc"><font color="red">參考範例</font></a>
+                            </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem3" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem3 %>" OnClick="LkbDownloadItem3_Click"></asp:LinkButton>
+                            </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach3.doc"><font color="red">參考範例</font></a>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem4" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem4 %>" OnClick="LkbDownloadItem4_Click">></asp:LinkButton>
                             </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach4.doc"><font color="red">參考範例</font></a>
+                            </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem5" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem5 %>" OnClick="LkbDownloadItem5_Click"></asp:LinkButton>
+                            </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach5.doc"><font color="red">參考範例</font></a>
                             </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem6" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem6 %>" OnClick="LkbDownloadItem6_Click">></asp:LinkButton>
                             </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach6.doc"><font color="red">參考範例</font></a>
+                            </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem7" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem7 %>" OnClick="LkbDownloadItem7_Click"></asp:LinkButton>
                             </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach7.doc"><font color="red">參考範例</font></a>
+                            </td>
                         </tr>
                         <tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem8" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem8 %>" OnClick="LkbDownloadItem8_Click">></asp:LinkButton>
+                            </td>
+                            <td>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp<a href="../template/stage3/attach8.doc"><font color="red">參考範例</font></a>
                             </td>
                         </tr>
                     </table>
