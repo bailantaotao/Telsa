@@ -234,6 +234,10 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</td>";            
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</td>";
+            // +[20140906, HungTao] add function for plan complete numbers
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += Resources.Resource.TipFinishRate + "</td>";
+            // -[20140906, HungTao] add function for plan complete numbers
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipPlanStatus + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -290,7 +294,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 string userQuery = "select planList.PlanYear, planlistuser.sn, planlistuser.planstatus from planlistuser " +
                                     "left join planlist on PlanListUser.PlanListSN = PlanList.SN " + 
                                     "where " +
-                                    "planlistuser.PlanSchool = N'" + schoolName.ToString() + "' and " +
+                                    "planlistuser.PlanSchool = N'" + ((string[])(data[i]))[4] + "' and " +
                                     "PlanList.PlanYear = '" + ((string[])(data[i]))[1] + "'";
                 ms.GetAllColumnData(userQuery, userData);
 
@@ -331,6 +335,40 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[2] + "</td>";
+
+                // +[20140906, HungTao] add function for plan complete numbers
+                string whetherDo = "select Count(PlanStatus) " +
+                       "from PlanlistUser " +
+                       "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +
+                       "where PlanListUser.PlanListSN ='" + ((string[])(data[i]))[0] + "' and PlanList.planyear = '" + ((string[])(data[i]))[1] + "' and PlanListUser.PlanSchool=N'" + ((string[])(data[i]))[4] + "'";
+                StringBuilder TotalTargetNumbers = new StringBuilder();
+                ms.GetRowNumbers(whetherDo, TotalTargetNumbers);
+                if (TotalTargetNumbers.ToString().Equals("0"))
+                {
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                    LbCompleted.Text += "0 / 0</td>";
+                }
+                else
+                {
+                    string tmpSemester = ((string[])(data[i]))[3];
+                    int intSemester = -1;
+                    bool isDigit = Int32.TryParse(tmpSemester, out intSemester);
+                    if (isDigit)
+                    {
+                        string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[intSemester - 1]))[1] + "' ";
+                        ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
+                        queryTargetNumbers += "and Finish='True'";
+                        StringBuilder FinishTargetNumbers = new StringBuilder();
+                        ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
+
+
+
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                        LbCompleted.Text += FinishTargetNumbers.ToString() + " / " + TotalTargetNumbers.ToString() + "</td>";
+                    }
+                }
+                // -[20140906, HungTao] add function for plan complete numbers
+
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 
                 if (ts.Days <= 0)
