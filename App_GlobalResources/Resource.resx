@@ -142,7 +142,7 @@
     <value>您输入的年份目前已存在</value>
   </data>
   <data name="SMNowYearNoData" xml:space="preserve">
-    <value>此年度您还没有新增，请按下新增年度开始</value>
+    <value>此学年您还没有新增，请按下新增年度开始</value>
   </data>
   <data name="SMNoYear" xml:space="preserve">
     <value>请输入年份后再按下确定</value>
@@ -181,7 +181,7 @@
     <value>共</value>
   </data>
   <data name="TipYear" xml:space="preserve">
-    <value>年度：</value>
+    <value>学年：</value>
   </data>
   <data name="BtnBack" xml:space="preserve">
     <value>回到上一页</value>
@@ -388,7 +388,7 @@
     <value>现在还没有任何评论，请马上评论吧！</value>
   </data>
   <data name="TipQuestionnaireNotCompelet" xml:space="preserve">
-    <value>此年度尚未產生問卷，或問卷未制定完畢</value>
+    <value>此学年尚未產生問卷，或問卷未制定完畢</value>
   </data>
   <data name="TipFinishRate" xml:space="preserve">
     <value>完成度</value>
@@ -517,7 +517,7 @@
     <value>你已完成此操作</value>
   </data>
   <data name="TipKpiCycle" xml:space="preserve">
-    <value>周期</value>
+    <value>学期</value>
   </data>
   <data name="TipKpiDeadline" xml:space="preserve">
     <value>提交截止时间</value>
@@ -583,7 +583,7 @@
     <value>发送系统通知</value>
   </data>
   <data name="DdlTypeCycle" xml:space="preserve">
-    <value>周期</value>
+    <value>学期</value>
   </data>
   <data name="DdlTypeProvince" xml:space="preserve">
     <value>省分</value>
@@ -595,7 +595,7 @@
     <value>等级</value>
   </data>
   <data name="DdlTypeYear" xml:space="preserve">
-    <value>年度</value>
+    <value>学年</value>
   </data>
   <data name="TipKPICancelQuestionnaire" xml:space="preserve">
     <value>開始進行問卷填寫，如放棄作答請直接點選取消即可</value>
