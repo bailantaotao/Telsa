@@ -401,20 +401,56 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
 
         //新增資料到KPIRecordDomainScore裡面
         //怕有重複的，先刪除舊有資料
-        query = "delete from KPIRecordDomainScore where ID='" + KPIID + "' and DomainID='" + DdlDomain.SelectedValue + "'";
-        ms.WriteData(query, sb);
+        // +[20140911, HungTao] 加入count計算目前使用者填寫幾次
+        query = "select count(*) from KPIRecordDomainScore where ID='" + KPIID + "' and DomainID='" + DdlDomain.SelectedValue + "'";
+        ms.GetRowNumbers(query, sb);
+        if (sb.ToString().Equals("0"))
+        {
+            query = "insert into KPIRecordDomainScore (ID, DomainID, TotalScore, ScoreLevel, FinishTime, DimensionID, FilledCount) VALUES ('" +
+                    KPIID + "','" +
+                    DdlDomain.SelectedValue + "','" +
+                    KPIScore + "','" +
+                    KPILevel + "','" +
+                    DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "','" +
+                    DdlDimension.SelectedValue + "','" +
+                    1 + "')";
+        }
+        else
+        {
+            query = "select FilledCount from KPIRecordDomainScore where ID='" + KPIID + "' and DomainID='" + DdlDomain.SelectedValue + "' and DimensionID = '" + DdlDimension.SelectedValue + "'";
+            ms.GetOneData(query, sb);
 
-        query = "insert into KPIRecordDomainScore (ID, DomainID, TotalScore, ScoreLevel, FinishTime, DimensionID) VALUES ('" +
-                KPIID + "','" +
-                DdlDomain.SelectedValue + "','" +
-                KPIScore +"','"+
-                KPILevel + "','" +
-                DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "','" +
-                DdlDimension.SelectedValue + "')";
+            bool isDigit = false;
+            int count = -99;
+            isDigit = Int32.TryParse(sb.ToString(), out count);
+
+            query = "update KPIRecordDomainScore set " +
+                    "TotalScore = '" + KPIScore + "', " +
+                    "ScoreLevel = '" + KPILevel + "', " +
+                    "FinishTime = '" + DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "', " +
+                    "FilledCount = '" + (isDigit ? ++count : 1) + "' " +
+                    "where " +
+                    "ID = '" + KPIID + "' and " +
+                    "DomainID = '" + DdlDomain.SelectedValue + "' and " +
+                    "DimensionID = '" + DdlDimension.SelectedValue + "' ";
+        }
 
         if (!ms.WriteData(query, sb))
             return;
+        //query = "delete from KPIRecordDomainScore where ID='" + KPIID + "' and DomainID='" + DdlDomain.SelectedValue + "'";
+        //ms.WriteData(query, sb);
 
+        //query = "insert into KPIRecordDomainScore (ID, DomainID, TotalScore, ScoreLevel, FinishTime, DimensionID) VALUES ('" +
+        //        KPIID + "','" +
+        //        DdlDomain.SelectedValue + "','" +
+        //        KPIScore +"','"+
+        //        KPILevel + "','" +
+        //        DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "','" +
+        //        DdlDimension.SelectedValue + "')";
+
+        //if (!ms.WriteData(query, sb))
+        //    return;
+        // -[20140911, HungTao] 加入count計算目前使用者填寫幾次
 
 
         /**********************************************************************************************/

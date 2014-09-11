@@ -128,6 +128,12 @@
                                 <asp:Label ID="LbSchoolScoreLevel" runat="server" Text=""></asp:Label>                                  
                             </td>
                         </tr>
+                       <tr>
+                            <td align="left" colspan="2">                                
+                                <asp:Label ID="Label2" runat="server" Text="已提交次数："></asp:Label>                                
+                                <asp:Label ID="LbSubmitCount" runat="server" Text=""></asp:Label>                                  
+                            </td>
+                        </tr>
                         <tr>
                             <td align="left">
                                 <%--<asp:UpdatePanel ID="UpdateTotalCount" runat="server">
