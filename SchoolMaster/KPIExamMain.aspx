@@ -100,6 +100,10 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
+                    <div style="float:left; padding-left:30px; width:709px; text-align:left">
+                        <asp:Label ID="Label2" runat="server" Text="已提交次数："></asp:Label>                                
+                        <asp:Label ID="LbSubmitCount" runat="server" Text=""></asp:Label>  
+                    </div>
                     <div style="float:left; padding-left:30px">
                         <asp:DropDownList ID="DdlDimension" runat="server" Width="120px"  AutoPostBack="true" OnSelectedIndexChanged="DdlDimension_SelectedIndexChanged">
                             <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>

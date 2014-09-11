@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="KPIExamStart.aspx.cs" Inherits="SchoolMaster_KPIExamStart" %>
-
+<%@ Register Src="UserControlKPIAnswer.ascx" TagName="SchoolMaster_UserControlKPIAnswer" TagPrefix="SchoolMaster_UserControlKPIAnswer" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
