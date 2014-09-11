@@ -305,7 +305,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             storeData(GvInternalDefect, "PlanInternalDefect", "PlanInternalDefect");
             storeData(GvExternalChallenge, "PlanExternalChallenge", "PlanExternalChallenge");
             storeData(GvExternalOpportunity, "PlanExternalOpportunity", "PlanExternalOpportunity");
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
         }
     }
 
@@ -375,7 +375,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
             //        ms.WriteData(query, sb);
                     
             //    }
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');window.location='PlanList.aspx';", true);
+            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='PlanList.aspx';", true);
             //}
             //writeData((DataTable)ViewState["InternalAdvantage"], "PlanInternalAdvantage");
             

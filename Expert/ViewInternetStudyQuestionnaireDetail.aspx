@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ViewInternetStudyQuestionnaireDetail.aspx.cs" Inherits="Expert_ViewInternetStudyQuestionnaireDetail" %>
-
+<%@ Register Src="UserControlQuestionDisplay.ascx" TagName="Expert_UserControlQuestionDisplay" TagPrefix="Expert_UserControlQuestionDisplay" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

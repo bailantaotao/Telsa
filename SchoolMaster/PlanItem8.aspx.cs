@@ -274,7 +274,7 @@ public partial class SchoolMaster_PlanItem8 : System.Web.UI.Page
                     ms.WriteData(query, sb);
                     
                 }
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " ", true);
             }
         }
     }
