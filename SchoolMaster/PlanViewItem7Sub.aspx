@@ -196,7 +196,7 @@
                 <table width="739px">
                     <tr>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

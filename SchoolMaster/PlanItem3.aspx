@@ -155,7 +155,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvInternalDefect" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -196,7 +196,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvExternalChallenge" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -237,7 +237,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvExternalOpportunity" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -278,7 +278,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddExternalOpportunity" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddExternalOpportunity" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <table width="739px" style="margin-top:20px">
                     <tr>
@@ -293,10 +293,10 @@
                     </tr>
                     <tr>
                         <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click"  Font-Size="14pt"/>
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

@@ -104,7 +104,7 @@
                         <tr>
                             
                             <td align="left">
-                                <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1" />
+                                <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1"  Font-Size="14pt"/>
                             </td>
                         </tr>
                     </table>

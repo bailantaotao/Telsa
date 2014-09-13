@@ -117,8 +117,8 @@
                                 </asp:RadioButtonList>
                             </td>
                             <td align="left" width="70%">
-                                <asp:Button ID="BtnView" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="BtnView_Click" />
-                                <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnBack_Click" />
+                                <asp:Button ID="BtnView" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="BtnView_Click"  Font-Size="14pt"/>
+                                <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnBack_Click" Font-Size="14pt" />
                             </td>
                         </tr>
                     </table>

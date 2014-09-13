@@ -450,10 +450,10 @@
                 <table width="739px" class="empty">
                     <tr>
                         <td width="90%" align="right" class="empty">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" Font-Size="14pt" />
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;" class="empty">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

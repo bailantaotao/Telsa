@@ -231,7 +231,7 @@
                     
                 </div>
                 <div style="float:left; margin-top:20px">
-                    <asp:Button ID="BtnAdd" runat="server" Text="新增周次" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAdd" runat="server" Text="新增周次" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <table width="739px">
                     <tr>
@@ -242,10 +242,10 @@
                     </tr>
                     <tr>
                         <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click"  Font-Size="14pt"/>
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

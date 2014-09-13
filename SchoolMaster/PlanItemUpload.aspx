@@ -15,13 +15,13 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <table width="500px">
+        <table width="550px">
             <tr>
                 <td width="20%">
                     上传项目:
                 </td>                
                 <td colspan="2" class="auto-style1">
-                    <asp:DropDownList ID="DdlUploadFile" runat="server">
+                    <asp:DropDownList ID="DdlUploadFile" runat="server"  Font-Size="14pt">
                         <asp:ListItem Value="0">学校基本情况统计表和相关讯息表</asp:ListItem>
                         <asp:ListItem Value="1">本学年学校发展计画财务预算与支出情况统计表</asp:ListItem>
                         <asp:ListItem Value="2">本学年学校财务收支情况统计表</asp:ListItem>
@@ -36,13 +36,13 @@
             <tr>
                 <td>上传档案</td>
                 <td class="auto-style1">
-                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                    <asp:FileUpload ID="FileUpload1" runat="server"  Font-Size="14pt"/>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td colspan="2" class="auto-style1">
-                    <asp:Button ID="BtnUpload" runat="server" Text="<%$ Resources:Resource, TipPlanUploadAttachment %>" OnClick="BtnUpload_Click" />
+                    <asp:Button ID="BtnUpload" runat="server" Text="<%$ Resources:Resource, TipPlanUploadAttachment %>" OnClick="BtnUpload_Click"  Font-Size="14pt"/>
                 </td>
             </tr>
             <tr>

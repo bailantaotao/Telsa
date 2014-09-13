@@ -144,7 +144,7 @@
                                 <asp:Label ID="LbTarget1" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView1_Click" />
+                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView1_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                         <tr>
@@ -159,7 +159,7 @@
                                 <asp:Label ID="LbTarget2" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button10" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click" />
+                                <asp:Button ID="Button10" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView2_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                         <tr>
@@ -174,7 +174,7 @@
                                 <asp:Label ID="LbTarget3" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView3_Click" />
+                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView3_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                         <tr>
@@ -190,7 +190,7 @@
                                 <asp:Label ID="LbTarget4" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button12" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView4_Click" />
+                                <asp:Button ID="Button12" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView4_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                         <tr>
@@ -205,7 +205,7 @@
                                 <asp:Label ID="LbTarget5" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView5_Click" />
+                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView5_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                         <tr>
@@ -220,7 +220,7 @@
                                 <asp:Label ID="LbTarget6" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button14" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView6_Click" />
+                                <asp:Button ID="Button14" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView6_Click" Font-Size="14pt" />
                             </td>
                         </tr>
                         <tr>
@@ -236,7 +236,7 @@
                                 <asp:Label ID="LbTarget7" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView7_Click" />
+                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView7_Click" Font-Size="14pt" />
                             </td>
                         </tr>
                         <tr>
@@ -251,7 +251,7 @@
                                 <asp:Label ID="LbTarget8" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button16" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView8_Click" />
+                                <asp:Button ID="Button16" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView8_Click" Font-Size="14pt" />
                             </td>
                         </tr>
                         <tr>
@@ -266,7 +266,7 @@
                                 <asp:Label ID="LbTarget9" runat="server" Width="450px"></asp:Label>
                             </td>
                            <td width="5%" class="table">
-                                <asp:Button ID="Button17" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView9_Click" />
+                                <asp:Button ID="Button17" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="btnView9_Click" Font-Size="14pt" />
                             </td>
                         </tr>
                     </table>
@@ -278,7 +278,7 @@
                             注：发生的变化栏中应着重描述本学年与上学年相比发生的变化
                         </td>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>
