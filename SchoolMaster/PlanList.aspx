@@ -102,17 +102,20 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td colspan="1" align="left" width="60%">
-                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolName %>"></asp:Label>
+                            <td colspan="2" align="left" width="60%">
+                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolName %>" ForeColor="Blue"></asp:Label>
                                 <asp:Label ID="LbSchoolName" runat="server" Text=""></asp:Label>
                             </td>
-                            <td colspan="1" align="right" width="20%">
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolMaster %>"></asp:Label>
-                                <asp:Label ID="LbSchoolMaster" runat="server" Text=""></asp:Label>
-                            </td>
-                            <td colspan="1" align="right" width="20%">
-                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolSN %>"></asp:Label>
+                            
+                        </tr>
+                        <tr>
+                            <td align="left" width="10%">
+                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolSN %>" ForeColor="Blue"></asp:Label>
                                 <asp:Label ID="LbSchoolSN" runat="server" Text=""></asp:Label>
+                            </td>
+                            <td align="left" width="20%">
+                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolMaster %>" ForeColor="Blue"></asp:Label>
+                                <asp:Label ID="LbSchoolMaster" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                     </table>

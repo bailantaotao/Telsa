@@ -92,23 +92,23 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         if (ms.GetAllColumnData(Query, data))
         {
             LbCompleted.Text = "<table style='width:750px;'>";
-            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSN + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanYear + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</td>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#0008ff;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</font></td>";
             // +[20140906, HungTao] add function for plan complete numbers
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipFinishRate + "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipFinishRate + "</font></td>";
             // -[20140906, HungTao] add function for plan complete numbers
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanStatus + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanStatus + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += "</font></td>";
             LbCompleted.Text += "</tr>";
 
             LbTotalCount.Text = Resources.Resource.TipTotal + " " + data.Count.ToString() + " " + Resources.Resource.TipNumbers;
