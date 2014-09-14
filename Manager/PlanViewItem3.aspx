@@ -28,7 +28,8 @@
             height:55px;
         }
         .BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
+            margin-bottom:20px
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -127,11 +128,11 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="S" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="S" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="column1" HeaderText="优势（内部因素）" ItemStyle-Width="550px" >                            
-<ItemStyle Width="550px"></ItemStyle>
+                            <asp:BoundField DataField="column1" HeaderText="优势（内部因素）" ItemStyle-Width="670px" >                            
+<ItemStyle Width="670px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
@@ -153,11 +154,11 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="W" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="W" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="column1" HeaderText="劣势（內部因素）" ItemStyle-Width="550px" >
-<ItemStyle Width="550px"></ItemStyle>
+                            <asp:BoundField DataField="column1" HeaderText="劣势（內部因素）" ItemStyle-Width="670px" >
+<ItemStyle Width="670px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
@@ -179,11 +180,11 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="O" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="O" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="column1" HeaderText="机遇（外部因素）" ItemStyle-Width="550px" >
-<ItemStyle Width="550px"></ItemStyle>
+                            <asp:BoundField DataField="column1" HeaderText="机遇（外部因素）" ItemStyle-Width="670px" >
+<ItemStyle Width="670px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
@@ -205,11 +206,11 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="T" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="T" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="column1" HeaderText="挑战（外部因素）" ItemStyle-Width="550px" >
-<ItemStyle Width="550px"></ItemStyle>
+                            <asp:BoundField DataField="column1" HeaderText="挑战（外部因素）" ItemStyle-Width="670px" >
+<ItemStyle Width="670px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
