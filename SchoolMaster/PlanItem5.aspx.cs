@@ -197,13 +197,13 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                 string[] d = (string[])data[i];
                 dr = dt.NewRow();
                 dr["SN"] = d[0];
-                dr["column2"] = d[1];
-                dr["column3"] = d[2];
+                dr["column2"] = d[1].Contains(BaseClass.standardTimestamp) ? "" : d[1].Split(' ')[0];
+                dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
                 dr["column4"] = d[3];
                 dr["column5"] = d[4];
                 dr["column6"] = d[5];
                 dr["column7"] = d[6];
-                dr["column8"] = d[7];
+                dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
                 dr["btnClear"] = "清空";
                 dt.Rows.Add(dr);
             }
@@ -216,13 +216,13 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
             {
                 string[] d = (string[])data[i];
                 dr = dt.NewRow();
-                ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text = d[1];
-                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2];
+                ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text = d[1].Contains(BaseClass.standardTimestamp) ? "" : d[1].Split(' ')[0];
+                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
                 ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[3];
                 ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).Text = d[4];
                 ((DropDownList)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text = d[5];
                 ((DropDownList)GvSchool.Rows[i].Cells[6].FindControl("column7")).Text = d[6];
-                ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text = d[7];
+                ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
 
                 ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Attributes.Add("readonly", "true");
                 ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
