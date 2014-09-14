@@ -263,14 +263,14 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 dr = dt.NewRow();
                 dr["column1"] = d[0];
                 dr["column2"] = d[1];
-                dr["column3"] = d[2];
-                dr["column4"] = d[3];
+                dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2];
+                dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3];
                 dr["column5"] = d[4];
                 dr["column6"] = d[5];
                 dr["column7"] = d[6];
                 dr["column8"] = d[7];
                 dr["column9"] = d[8];
-                dr["column10"] = d[9];
+                dr["column10"] = d[9].Contains(BaseClass.standardTimestamp) ? "" : d[9]; 
                 dr["column11"] = d[10];
                 dr["btnClear"] = "清空";
                 dr["finish"] = d[11];
