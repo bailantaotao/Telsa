@@ -142,12 +142,12 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
         {
             string[] d = (string[])data[i];
             dr = dt.NewRow();
-            dr["column1"] = d[0];
-            dr["column2"] = d[1];
-            dr["column3"] = d[2];
-            dr["column4"] = d[3];
-            dr["column5"] = d[4];
-            dr["column6"] = d[5];
+            dr["column1"] = d[1];
+            dr["column2"] = d[2];
+            dr["column3"] = d[3];
+            dr["column4"] = d[4];
+            dr["column5"] = d[5];
+            dr["column6"] = d[6];
             dt.Rows.Add(dr);
         }
         
