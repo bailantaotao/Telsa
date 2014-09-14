@@ -28,7 +28,8 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
+            text-align:left;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -117,7 +118,7 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="739px" style="margin-left:20px"">
                         <tr>
                             <td>
                                 名称：
@@ -126,6 +127,8 @@
                             </td>
                         </tr>
                     </table>
+                </div>
+                <div style="float: left; margin-left:20px">
                     <asp:GridView ID="GvDepartment" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
             BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
@@ -136,10 +139,10 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Department" HeaderText="处室" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Department" HeaderText="处室" ItemStyle-Width="120px" >
+<ItemStyle Width="120px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="SN" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" >
+                            <asp:BoundField DataField="SN" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" Visible="false" >
 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
