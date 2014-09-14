@@ -98,13 +98,13 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
             dr = dt.NewRow();
             
             dr["Column1"] = d[0];
-            dr["Column2"] = d[1];
-            dr["Column3"] = d[2];
-            dr["Column4"] = d[3];
-            dr["Column5"] = d[4];
-            dr["Column6"] = d[5];
-            dr["Column7"] = d[6];
-            dr["Column8"] = d[7];
+            dr["Column2"] = d[1].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[1];
+            dr["Column3"] = d[2].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[2];
+            dr["Column4"] = d[3].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[3];
+            dr["Column5"] = d[4].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[4];
+            dr["Column6"] = d[5].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[5];
+            dr["Column7"] = d[6].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[6];
+            dr["Column8"] = d[7].Equals(Resources.Resource.TipPlzChoose) ? Resources.Resource.TipNotWrite : d[7];
             dt.Rows.Add(dr);
         }
 
