@@ -263,14 +263,14 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 dr = dt.NewRow();
                 dr["column1"] = d[0];
                 dr["column2"] = d[1];
-                dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2];
-                dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3];
+                dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
+                dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3].Split(' ')[0];
                 dr["column5"] = d[4];
                 dr["column6"] = d[5];
                 dr["column7"] = d[6];
                 dr["column8"] = d[7];
                 dr["column9"] = d[8];
-                dr["column10"] = d[9].Contains(BaseClass.standardTimestamp) ? "" : d[9]; 
+                dr["column10"] = d[9].Contains(BaseClass.standardTimestamp) ? "" : d[9].Split(' ')[0];
                 dr["column11"] = d[10];
                 dr["btnClear"] = "清空";
                 dr["finish"] = d[11];
@@ -287,14 +287,14 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 string[] d = (string[])data[i];
                 ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text = d[0];
                 ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text = d[1];
-                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2];
-                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3];
+                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
+                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3].Split(' ')[0];
                 ((TextBox)GvSchool.Rows[i].Cells[4].FindControl("column5")).Text = d[4];
                 ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text = d[5];
                 ((TextBox)GvSchool.Rows[i].Cells[6].FindControl("column7")).Text = d[6];
                 ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text = d[7];
                 ((DropDownList)GvSchool.Rows[i].Cells[8].FindControl("column9")).SelectedValue = d[8];
-                ((TextBox)GvSchool.Rows[i].Cells[9].FindControl("column10")).Text = d[9].Contains(BaseClass.standardTimestamp) ? "" : d[9]; 
+                ((TextBox)GvSchool.Rows[i].Cells[9].FindControl("column10")).Text = d[9].Contains(BaseClass.standardTimestamp) ? "" : d[9].Split(' ')[0];
                 ((DropDownList)GvSchool.Rows[i].Cells[10].FindControl("column11")).SelectedValue = d[10];
 
                 ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Attributes.Add("readonly", "true");
