@@ -125,7 +125,7 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="750px">
                         <tr>
                             <td width="7%" rowspan="2">问题维度</td>
                             <td width="7%" rowspan="2">问题序号</td>

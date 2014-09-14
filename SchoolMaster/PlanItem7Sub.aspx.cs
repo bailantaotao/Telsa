@@ -62,6 +62,7 @@ public partial class SchoolMaster_PlanItem7Sub : System.Web.UI.Page
         //if (!IsPostBack)
         //{
 
+        GvSchool.Attributes.Add("style", "word-break:break-all;word-wrap:break-word");
     }
     private bool parseData(string tag)
     {
