@@ -244,10 +244,11 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column10", typeof(string)));
         dt.Columns.Add(new DataColumn("column11", typeof(string)));
         dt.Columns.Add(new DataColumn("btnClear", typeof(string)));
+        dt.Columns.Add(new DataColumn("finish", typeof(string)));
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Target, Activity, StartTime, EndTime, PersonInCharge, Budget, Resource, OtherResources, FinishRate, EstimateTime, EstimatePersonInCharge " +
+        string query = "select Target, Activity, StartTime, EndTime, PersonInCharge, Budget, Resource, OtherResources, FinishRate, EstimateTime, EstimatePersonInCharge, Finish " +
                         "from PlanTargetActivity " +
                         "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
                         "DimensionsID = '" + Request["DimensionsID"].ToString() + "' and " +
@@ -272,6 +273,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 dr["column10"] = d[9];
                 dr["column11"] = d[10];
                 dr["btnClear"] = "清空";
+                dr["finish"] = d[11];
 
                 dt.Rows.Add(dr);
             }
@@ -322,6 +324,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         dr["column10"] = string.Empty;
         dr["column11"] = string.Empty;
         dr["btnClear"] = "清空";
+        dr["finish"] = "False";
         dt.Rows.Add(dr);
         
 
@@ -518,7 +521,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                                     ((TextBox)GvSchool.Rows[i].Cells[9].FindControl("column10")).Text.Split(' ')[0] + "',N'" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[10].FindControl("column11")).SelectedValue + "','" +
                                     i + "','"+
-                                    false + "')";
+                                    dt.Rows[i]["finish"].ToString() + "')";
 
                     ms.WriteData(query, sb);
                     
