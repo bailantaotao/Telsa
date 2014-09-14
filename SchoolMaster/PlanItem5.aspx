@@ -34,7 +34,7 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -131,12 +131,12 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="周次" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="周次" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="开始时间"  ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="开始时间"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column2" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column2" runat="server" Width="80px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="column2"
                                     Enabled="True" TargetControlID="column2" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
@@ -144,9 +144,9 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column3" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column3" runat="server" Width="80px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender3" runat="server" PopupButtonID="column3"
                                     Enabled="True" TargetControlID="column3" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
@@ -154,18 +154,18 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="工作内容"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="工作内容"  ItemStyle-Width="100px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column4" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column4" runat="server" Width="100px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="主管领导"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="主管领导"  ItemStyle-Width="90px">
                                 <ItemTemplate>
                                      <%--<asp:TextBox ID="column5" runat="server" Width="50px"></asp:TextBox>--%>
-                                    <asp:DropDownList ID="column5" runat="server">
+                                    <asp:DropDownList ID="column5" runat="server" Width="90px">
                                         <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
                                     </asp:DropDownList>
                                 </ItemTemplate>
@@ -173,10 +173,10 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="90px">
                                 <ItemTemplate>
                                      <%--<asp:TextBox ID="column6" runat="server" Width="50px"></asp:TextBox>--%>
-                                    <asp:DropDownList ID="column6" runat="server">
+                                    <asp:DropDownList ID="column6" runat="server" Width="90px">
                                         <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
                                     </asp:DropDownList>
                                 </ItemTemplate>
@@ -184,10 +184,10 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="完成率"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="完成率"  ItemStyle-Width="80px">
                                 <ItemTemplate>
                                      <%--<asp:TextBox ID="column7" runat="server" Width="50px"></asp:TextBox>--%>
-                                    <asp:DropDownList ID="column7" runat="server">
+                                    <asp:DropDownList ID="column7" runat="server" Width="80px">
                                         <asp:ListItem Value="0"></asp:ListItem>
                                         <asp:ListItem Value="10"></asp:ListItem>
                                         <asp:ListItem Value="20"></asp:ListItem>
@@ -205,9 +205,9 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="完成情况及效果评估"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="完成情况及效果评估"  ItemStyle-Width="110px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column8" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column8" runat="server" Width="110px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
