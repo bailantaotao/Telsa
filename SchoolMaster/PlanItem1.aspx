@@ -127,7 +127,7 @@
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
                         <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                         <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
-                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White"/>
                         <EmptyDataTemplate>
                             Sorry, No any data.
                         </EmptyDataTemplate>
@@ -157,9 +157,9 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanNation %>"  ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanNation %>"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                     <asp:DropDownList ID="TbNation" runat="server" Width="50px">
+                                     <asp:DropDownList ID="TbNation" runat="server" Width="80px">
                                          <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
                                      </asp:DropDownList>
                                 </ItemTemplate>
@@ -185,17 +185,17 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanTel %>"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanTel %>"  ItemStyle-Width="90">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="TbTel" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="TbTel" runat="server" Width="90px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanAddress %>"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanAddress %>"  ItemStyle-Width="150">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="TbAddress" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="TbAddress" runat="server" Width="150px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
