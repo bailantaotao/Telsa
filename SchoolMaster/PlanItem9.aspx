@@ -28,7 +28,7 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -44,6 +44,7 @@
         table, td, tr{
             border: 1px solid black;
             border-collapse: collapse;
+            word-break:break-all;word-wrap:break-word;
         }
         .empty {
             border: 1px solid white;
@@ -159,10 +160,10 @@
                                 <asp:Label ID="TbRC03" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="TbRC04" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="TbRC04" runat="server" Width="100px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="TbRC05" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="TbRC05" runat="server" Width="100px"></asp:Label>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC06" runat="server" Width="70px"></asp:Label>
