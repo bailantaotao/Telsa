@@ -28,7 +28,8 @@
             height:55px;
         }
         .BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
+            margin-bottom:20px
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -127,12 +128,12 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="S" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="S" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="优势（内部因素）" ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="优势（内部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -155,7 +156,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvInternalDefect" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -168,12 +169,12 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="W" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="W" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="劣势（內部因素）" ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="劣势（內部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -196,7 +197,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvExternalChallenge" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -209,12 +210,12 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="O" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="O" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="机遇（外部因素）" ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="机遇（外部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -237,7 +238,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvExternalOpportunity" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -250,12 +251,12 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="SN" HeaderText="T" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="SN" HeaderText="T" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="挑战（外部因素）" ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="挑战（外部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="550px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -278,7 +279,7 @@
                     
                 </div>
                 <div style="float:left;">
-                    <asp:Button ID="BtnAddExternalOpportunity" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAddExternalOpportunity" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <table width="739px" style="margin-top:20px">
                     <tr>
@@ -293,10 +294,10 @@
                     </tr>
                     <tr>
                         <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click"  Font-Size="14pt"/>
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

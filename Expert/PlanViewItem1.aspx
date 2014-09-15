@@ -134,8 +134,8 @@
                             <asp:BoundField DataField="Column3" HeaderText="性别" ItemStyle-Width="70px" >
 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column4" HeaderText="民族" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column4" HeaderText="民族" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Column5" HeaderText="文化程度" ItemStyle-Width="70px" >
 <ItemStyle Width="70px"></ItemStyle>
@@ -143,11 +143,11 @@
                             <asp:BoundField DataField="Column6" HeaderText="职业" ItemStyle-Width="70px" >
 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column7" HeaderText="电话" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column7" HeaderText="电话" ItemStyle-Width="90px" >
+<ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column8" HeaderText="地址" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column8" HeaderText="地址" ItemStyle-Width="150px" >
+<ItemStyle Width="150px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
@@ -161,7 +161,7 @@
                 <table width="739px">
                     <tr>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

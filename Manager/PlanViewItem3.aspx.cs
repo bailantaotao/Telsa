@@ -86,7 +86,7 @@ public partial class SchoolMaster_PlanViewItem3 : System.Web.UI.Page
             string[] d = (string[])data[i];
             dr = dt.NewRow();
             dr["SN"] = d[0];
-            dr["column1"] = d[1];
+            dr["column1"] = d[1].Equals("") ? Resources.Resource.TipNotWrite : d[1];
             dt.Rows.Add(dr);
         }
 

@@ -28,7 +28,7 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -44,6 +44,7 @@
         table, td, tr{
             border: 1px solid black;
             border-collapse: collapse;
+            word-break:break-all;word-wrap:break-word;
         }
         .empty {
             border: 1px solid white;
@@ -125,7 +126,7 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="750px">
                         <tr>
                             <td width="7%" rowspan="2">问题维度</td>
                             <td width="7%" rowspan="2">问题序号</td>
@@ -159,10 +160,10 @@
                                 <asp:Label ID="TbRC03" runat="server" Width="70px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="TbRC04" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="TbRC04" runat="server" Width="100px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="TbRC05" runat="server" Width="70px"></asp:Label>
+                                <asp:Label ID="TbRC05" runat="server" Width="100px"></asp:Label>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC06" runat="server" Width="70px"></asp:Label>
@@ -368,10 +369,10 @@
                 <table width="739px" class="empty">
                     <tr>
                         <td width="90%" align="right" class="empty">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click"  Font-Size="14pt"/>
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;" class="empty">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

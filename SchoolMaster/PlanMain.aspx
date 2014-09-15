@@ -104,7 +104,7 @@
                         <tr>
                             
                             <td align="left">
-                                <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1" />
+                                <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1" Font-Size="14pt"/>
                             </td>
                         </tr>
                     </table>
@@ -173,7 +173,7 @@
                                 <asp:Label ID="Label1" runat="server" Text="<%$ Resources:Resource, TipPlanAttachment %>"></asp:Label>
                             </td>
                             <td align="left" width="90%">
-                                <asp:Button ID="btnUpload" runat="server" Text="<%$ Resources:Resource, TipPlanUploadAttachment %>" OnClick="btnUpload_Click" />
+                                <asp:Button ID="btnUpload" runat="server" Text="<%$ Resources:Resource, TipPlanUploadAttachment %>" OnClick="btnUpload_Click"  Font-Size="14pt" />
                             </td>
                         </tr>
                     </table>

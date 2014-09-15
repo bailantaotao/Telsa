@@ -82,13 +82,13 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
             string[] d = (string[])data[i];
             dr = dt.NewRow();
             dr["column1"] = d[0];
-            dr["column2"] = d[1];
-            dr["column3"] = d[2];
+            dr["column2"] = d[1].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[1].Split(' ')[0];
+            dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[2].Split(' ')[0];
             dr["column4"] = d[3];
-            dr["column5"] = d[4];
-            dr["column6"] = d[5];
+            dr["column5"] = (d[4].Equals(Resources.Resource.TipPlzChoose) || d[4].Equals("")) ? Resources.Resource.TipNotWrite : d[4];
+            dr["column6"] = (d[5].Equals(Resources.Resource.TipPlzChoose) || d[5].Equals("")) ? Resources.Resource.TipNotWrite : d[5];
             dr["column7"] = d[6];
-            dr["column8"] = d[7];
+            dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
             dt.Rows.Add(dr);
         }
         ViewState["dt"] = dt;

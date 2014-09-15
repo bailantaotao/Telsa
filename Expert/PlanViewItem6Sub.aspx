@@ -28,7 +28,7 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -40,6 +40,10 @@
             line-height: 50px;
             margin-left:40px;
             text-align:left;
+        }
+        .table {
+            border: 1px solid black;
+            border-collapse: collapse;
         }
     </style>
 </head>
@@ -108,73 +112,73 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="739px" class="table">
                         <tr>
-                            <td width="10%">
+                            <td width="10%" class="table">
                                 姓名
                             </td>
-                            <td width="15%">
+                            <td width="15%" class="table">
                                 <asp:Label ID="LbName" runat="server" Text=""></asp:Label>
                             </td>
-                            <td width="10%">
+                            <td width="10%" class="table">
                                 性别
                             </td>
-                            <td width="15%">
+                            <td width="15%" class="table">
                                 <asp:Label ID="LbGender" runat="server" Text=""></asp:Label>                                
                             </td>
-                            <td width="10%">
+                            <td width="10%" class="table">
                                 民族
                             </td>
-                            <td width="15%">
+                            <td width="15%" class="table">
                                 <asp:Label ID="LbNation" runat="server" Text=""></asp:Label>
                             </td>
-                            <td width="10%">
+                            <td width="10%" class="table">
                                 职称
                             </td>
-                            <td width="15%">
+                            <td width="15%" class="table">
                                 <asp:Label ID="LbProfession" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="8" align="left">
+                            <td colspan="8" align="left" class="table">
                                 现况分析:
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" class="table">
                                 个人优势
                             </td>
-                            <td colspan="6" align="left">
+                            <td colspan="6" align="left" class="table">
                                 <asp:Label ID="LbAdvantage" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" class="table">
                                 存在的问题 
                             </td>
-                            <td colspan="6" align="left">
+                            <td colspan="6" align="left" class="table">
                                 <asp:Label ID="LbProblem" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" class="table">
                                 发展的机遇 
                             </td>
-                            <td colspan="6" align="left">
+                            <td colspan="6" align="left" class="table">
                                 <asp:Label ID="LbOpportunity" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" class="table">
                                 面临的挑战
                             </td>
-                            <td colspan="6" align="left">
+                            <td colspan="6" align="left" class="table">
                                 <asp:Label ID="LbChallenge" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                     </table>
                     <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
-            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84" Width="760px">
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
                         <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                         <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
@@ -183,23 +187,23 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Column1" HeaderText="目标" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column1" HeaderText="目标" ItemStyle-Width="140px">
+<ItemStyle Width="140px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column2" HeaderText="活动与措施" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column2" HeaderText="活动与措施" ItemStyle-Width="140px" >
+<ItemStyle Width="140px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column3" HeaderText="开始时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column3" HeaderText="开始时间" ItemStyle-Width="90px" >
+<ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column4" HeaderText="结束时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column4" HeaderText="结束时间" ItemStyle-Width="90px" >
+<ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Column5" HeaderText="完成率" ItemStyle-Width="70px" >
 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column6" HeaderText="完成情況" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column6" HeaderText="完成情況" ItemStyle-Width="130px" >
+<ItemStyle Width="130px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
@@ -213,7 +217,7 @@
                 <table width="739px">
                     <tr>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>
