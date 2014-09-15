@@ -110,14 +110,14 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
         if (data.Count > 0)
         {
             string[] d = (string[])data[0];
-            LbName.Text = d[0];
-            LbGender.Text = d[1];
-            LbNation.Text = d[2];
-            LbProfession.Text = d[3];
-            LbAdvantage.Text = d[4];
-            LbProblem.Text = d[5];
-            LbOpportunity.Text = d[6];
-            LbChallenge.Text = d[7];
+            LbName.Text = (d[0].Equals(Resources.Resource.TipPlzChoose) || d[0].Equals("")) ? Resources.Resource.TipNotWrite : d[0];
+            LbGender.Text = (d[1].Equals(Resources.Resource.TipPlzChoose) || d[1].Equals("")) ? Resources.Resource.TipNotWrite : d[1];
+            LbNation.Text = (d[2].Equals(Resources.Resource.TipPlzChoose) || d[2].Equals("")) ? Resources.Resource.TipNotWrite : d[2];
+            LbProfession.Text = (d[3].Equals(Resources.Resource.TipPlzChoose) || d[3].Equals("")) ? Resources.Resource.TipNotWrite : d[3];
+            LbAdvantage.Text = (d[4].Equals(Resources.Resource.TipPlzChoose) || d[4].Equals("")) ? Resources.Resource.TipNotWrite : d[4];
+            LbProblem.Text = (d[5].Equals(Resources.Resource.TipPlzChoose) || d[5].Equals("")) ? Resources.Resource.TipNotWrite : d[5];
+            LbOpportunity.Text = (d[6].Equals(Resources.Resource.TipPlzChoose) || d[6].Equals("")) ? Resources.Resource.TipNotWrite : d[6];
+            LbChallenge.Text = (d[7].Equals(Resources.Resource.TipPlzChoose) || d[7].Equals("")) ? Resources.Resource.TipNotWrite : d[7];
         }
         
 
@@ -144,8 +144,8 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
             dr = dt.NewRow();
             dr["column1"] = d[1];
             dr["column2"] = d[2];
-            dr["column3"] = d[3];
-            dr["column4"] = d[4];
+            dr["column3"] = d[3].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[3].Split(' ')[0];
+            dr["column4"] = d[4].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[4].Split(' ')[0];
             dr["column5"] = d[5];
             dr["column6"] = d[6];
             dt.Rows.Add(dr);
