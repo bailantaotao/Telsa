@@ -254,8 +254,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                 dr = dt.NewRow();
                 dr["column1"] = d[0];
                 dr["column2"] = d[1];
-                dr["column3"] = d[2];
-                dr["column4"] = d[3];
+                dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
+                dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3].Split(' ')[0];
                 dr["column5"] = d[4];
                 dr["column6"] = d[5];
                 dr["btnClear"] = "清空";
@@ -272,8 +272,8 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
                 string[] d = (string[])data[i];
                 ((TextBox)GvSchool.Rows[i].Cells[0].FindControl("column1")).Text = d[0];
                 ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text = d[1];
-                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2];
-                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[3];
+                ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
+                ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[3].Contains(BaseClass.standardTimestamp) ? "" : d[3].Split(' ')[0];
                 ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue = d[4];
                 ((TextBox)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text = d[5];
 

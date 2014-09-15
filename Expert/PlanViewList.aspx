@@ -100,7 +100,7 @@
                                 <asp:Label ID="LbProvince" runat="server" Text=""></asp:Label>
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="false">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px">
+                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -110,14 +110,14 @@
                                 
                             </td>
                             <td colspan="1" align="right">
-                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnKPINotify %>" OnClick="Button1_Click" />
+                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnKPINotify %>" OnClick="Button1_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                         <tr>
                             <td align="left" width="90px">
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlYear" runat="server" Width="80px">
+                                        <asp:DropDownList ID="DdlYear" runat="server" Width="80px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -128,7 +128,7 @@
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSemester" runat="server" Width="80px">
+                                        <asp:DropDownList ID="DdlSemester" runat="server" Width="80px" Font-Size="14pt">
                                             <asp:ListItem Value="0" Text="学期"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="1"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="2"></asp:ListItem>
@@ -142,7 +142,7 @@
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlStatus" runat="server" Width="80px">
+                                        <asp:DropDownList ID="DdlStatus" runat="server" Width="80px" Font-Size="14pt">
                                             <asp:ListItem Value="0" Text="状态"></asp:ListItem>
                                             <asp:ListItem Value="True" Text="已提交"></asp:ListItem>
                                             <asp:ListItem Value="False" Text="未提交"></asp:ListItem>
@@ -156,7 +156,7 @@
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px">
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -165,7 +165,7 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td>
-                                <asp:Button ID="BtnSearch" runat="server" Text="查询" OnClick="BtnSearch_Click" />
+                                <asp:Button ID="BtnSearch" runat="server" Text="查询" OnClick="BtnSearch_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                     </table>

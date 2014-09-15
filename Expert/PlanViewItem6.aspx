@@ -103,15 +103,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="left" width="30%">
+                            <td align="left" width="30%" style="padding-top:20px">
                                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
                                     <asp:ListItem Value="0" Selected="True">校长</asp:ListItem>
                                     <asp:ListItem Value="1" Selected="True">副校长</asp:ListItem>
                                 </asp:RadioButtonList>
                             </td>
-                            <td align="left" width="70%">
-                                <asp:Button ID="BtnView" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="BtnView_Click" />
-                                <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnBack_Click" />
+                            <td align="left" width="70%" style="padding-top:20px">
+                                <asp:Button ID="BtnView" runat="server" Text="<%$ Resources:Resource, BtnPlanView %>" OnClick="BtnView_Click"  Font-Size="14pt"/>
+                                <asp:Button ID="BtnBack" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnBack_Click"  Font-Size="14pt"/>
                             </td>
                         </tr>
                     </table>

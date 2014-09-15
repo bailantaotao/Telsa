@@ -9,6 +9,8 @@ using System.Web;
 /// </summary>
 public class BaseClass
 {
+    public static string standardTimestamp = "1900/1/1";
+
     private int i, k, toint, tochar;
     private string cryption;
     private const int BaseYear = 0;

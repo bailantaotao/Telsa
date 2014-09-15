@@ -28,7 +28,8 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
+            text-align:left;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -100,7 +101,7 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table width="739px">
+                    <table width="739px" style="margin-left:20px"">
                         <tr>
                             <td align="left" width="20%">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
@@ -116,7 +117,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="BlockRightDownDataDisplay">
+                <div id="BlockRightDownDataDisplay" style="float: left; margin-left:20px">
                     <asp:GridView ID="GvDepartment" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
             BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
@@ -127,8 +128,8 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Column1" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column1" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="120px" >
+<ItemStyle Width="120px"></ItemStyle>
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="" ItemStyle-Width="50">
                                 <ItemTemplate>
@@ -150,7 +151,7 @@
                 <table width="739px">
                     <tr>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

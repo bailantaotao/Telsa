@@ -111,7 +111,7 @@
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
-            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84" Width="890px">
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
                         <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                         <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
@@ -120,38 +120,38 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Column1" HeaderText="目标" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column1" HeaderText="目标" ItemStyle-Width="100px" >
+<ItemStyle Width="100px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column2" HeaderText="活动与措施" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column2" HeaderText="活动与措施" ItemStyle-Width="130px" >
+<ItemStyle Width="130px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column3" HeaderText="开始时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column3" HeaderText="开始时间" ItemStyle-Width="100px" >
+<ItemStyle Width="100px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column4" HeaderText="结束时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column4" HeaderText="结束时间" ItemStyle-Width="100px" >
+<ItemStyle Width="100px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column5" HeaderText="负责人" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column5" HeaderText="负责人" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Column6" HeaderText="预算" ItemStyle-Width="70px" >
 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column7" HeaderText="其中学校资源" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column7" HeaderText="其中学校资源" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column8" HeaderText="其他资源" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column8" HeaderText="其他资源" ItemStyle-Width="50px" >
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column9" HeaderText="进展情况" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column9" HeaderText="进展情况" ItemStyle-Width="50px" >
+<ItemStyle Width="50px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column10" HeaderText="时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column10" HeaderText="时间" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column11" HeaderText="负责人" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column11" HeaderText="负责人" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
@@ -165,7 +165,7 @@
                 <table width="739px">
                     <tr>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" Font-Size="14pt" />
                         </td>
                     </tr>
                 </table>

@@ -88,31 +88,31 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
                 {
                     TbRC00.Text = d[2];
                     TbRC01.Text = d[3];
-                    TbRC02.Text = d[4];
-                    TbRC03.Text = d[5];
-                    TbRC04.Text = d[6];
-                    TbRC05.Text = d[7];
-                    TbRC06.Text = d[8];
+                    TbRC02.Text = externalFeedBack(d[4]);
+                    TbRC03.Text = externalFeedBack(d[5]);
+                    TbRC04.Text = splitData(d[6]);
+                    TbRC05.Text = splitData(d[7]);
+                    TbRC06.Text = externalFeedBack(d[8]);
                 }
                 else if (d[1].Equals("2"))
                 {
                     TbRC10.Text = d[2];
                     TbRC11.Text = d[3];
-                    TbRC12.Text = d[4];
-                    TbRC13.Text = d[5];
-                    TbRC14.Text = d[6];
-                    TbRC15.Text = d[7];
-                    TbRC16.Text = d[8];
+                    TbRC12.Text = externalFeedBack(d[4]);
+                    TbRC13.Text = externalFeedBack(d[5]);
+                    TbRC14.Text = splitData(d[6]);
+                    TbRC15.Text = splitData(d[7]);
+                    TbRC16.Text = externalFeedBack(d[8]);
                 }
                 else if (d[1].Equals("3"))
                 {
                     TbRC20.Text = d[2];
                     TbRC21.Text = d[3];
-                    TbRC22.Text = d[4];
-                    TbRC23.Text = d[5];
-                    TbRC24.Text = d[6];
-                    TbRC25.Text = d[7];
-                    TbRC26.Text = d[8];
+                    TbRC22.Text = externalFeedBack(d[4]);
+                    TbRC23.Text = externalFeedBack(d[5]);
+                    TbRC24.Text = splitData(d[6]);
+                    TbRC25.Text = splitData(d[7]);
+                    TbRC26.Text = externalFeedBack(d[8]);
                 }
             }
             else if (d[0].Equals("2"))
@@ -121,31 +121,31 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
                 {
                     TbRC30.Text = d[2];
                     TbRC31.Text = d[3];
-                    TbRC32.Text = d[4];
-                    TbRC33.Text = d[5];
-                    TbRC34.Text = d[6];
-                    TbRC35.Text = d[7];
-                    TbRC36.Text = d[8];
+                    TbRC32.Text = externalFeedBack(d[4]);
+                    TbRC33.Text = externalFeedBack(d[5]);
+                    TbRC34.Text = splitData(d[6]);
+                    TbRC35.Text = splitData(d[7]);
+                    TbRC36.Text = externalFeedBack(d[8]);
                 }
                 else if (d[1].Equals("2"))
                 {
                     TbRC40.Text = d[2];
                     TbRC41.Text = d[3];
-                    TbRC42.Text = d[4];
-                    TbRC43.Text = d[5];
-                    TbRC44.Text = d[6];
-                    TbRC45.Text = d[7];
-                    TbRC46.Text = d[8];
+                    TbRC42.Text = externalFeedBack(d[4]);
+                    TbRC43.Text = externalFeedBack(d[5]);
+                    TbRC44.Text = splitData(d[6]);
+                    TbRC45.Text = splitData(d[7]);
+                    TbRC46.Text = externalFeedBack(d[8]);
                 }
                 else if (d[1].Equals("3"))
                 {
                     TbRC50.Text = d[2];
                     TbRC51.Text = d[3];
-                    TbRC52.Text = d[4];
-                    TbRC53.Text = d[5];
-                    TbRC54.Text = d[6];
-                    TbRC55.Text = d[7];
-                    TbRC56.Text = d[8];
+                    TbRC52.Text = externalFeedBack(d[4]);
+                    TbRC53.Text = externalFeedBack(d[5]);
+                    TbRC54.Text = splitData(d[6]);
+                    TbRC55.Text = splitData(d[7]);
+                    TbRC56.Text = externalFeedBack(d[8]);
                 }
             }
             else if (d[0].Equals("3"))
@@ -154,35 +154,53 @@ public partial class SchoolMaster_PlanItem9 : System.Web.UI.Page
                 {
                     TbRC60.Text = d[2];
                     TbRC61.Text = d[3];
-                    TbRC62.Text = d[4];
-                    TbRC63.Text = d[5];
-                    TbRC64.Text = d[6];
-                    TbRC65.Text = d[7];
-                    TbRC66.Text = d[8];
+                    TbRC62.Text = externalFeedBack(d[4]);
+                    TbRC63.Text = externalFeedBack(d[5]);
+                    TbRC64.Text = splitData(d[6]);
+                    TbRC65.Text = splitData(d[7]);
+                    TbRC66.Text = externalFeedBack(d[8]);
                 }
                 else if (d[1].Equals("2"))
                 {
                     TbRC70.Text = d[2];
                     TbRC71.Text = d[3];
-                    TbRC72.Text = d[4];
-                    TbRC73.Text = d[5];
-                    TbRC74.Text = d[6];
-                    TbRC75.Text = d[7];
-                    TbRC76.Text = d[8];
+                    TbRC72.Text = externalFeedBack(d[4]);
+                    TbRC73.Text = externalFeedBack(d[5]);
+                    TbRC74.Text = splitData(d[6]);
+                    TbRC75.Text = splitData(d[7]);
+                    TbRC76.Text = externalFeedBack(d[8]);
                 }
                 else if (d[1].Equals("3"))
                 {
                     TbRC80.Text = d[2];
                     TbRC81.Text = d[3];
-                    TbRC82.Text = d[4];
-                    TbRC83.Text = d[5];
-                    TbRC84.Text = d[6];
-                    TbRC85.Text = d[7];
-                    TbRC86.Text = d[8];
+                    TbRC82.Text = externalFeedBack(d[4]);
+                    TbRC83.Text = externalFeedBack(d[5]);
+                    TbRC84.Text = splitData(d[6]);
+                    TbRC85.Text = splitData(d[7]);
+                    TbRC86.Text = externalFeedBack(d[8]);
                 }
             }
         }
 
+    }
+
+    private string externalFeedBack(string data)
+    {
+        return data.Equals("") ? Resources.Resource.TipNotWrite : data;
+    }
+
+    private string splitData(string date)
+    {
+        if (date.Contains(BaseClass.standardTimestamp))
+            return Resources.Resource.TipNotWrite;
+
+        string[] tmp = date.Split(' ');
+        if (tmp.Length > 0)
+        {
+            return tmp[0];
+        }
+        return "";
     }
 
     private void storeData()

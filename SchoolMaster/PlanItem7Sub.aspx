@@ -34,7 +34,7 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:10px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -46,6 +46,10 @@
             line-height: 50px;
             margin-left:40px;
             text-align:left;
+        }
+        .table {
+            border: 1px solid black;
+            border-collapse: collapse;
         }
     </style>
 </head>
@@ -121,40 +125,40 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table width="739px">
+                    <table width="739px" class="table">
                         <tr>
-                            <td width="10%">
-                                负责人姓名
+                            <td width="100px" class="table">
+                                负责人
                             </td>
-                            <td width="15%">
-                                <asp:DropDownList ID="DdlName" runat="server"></asp:DropDownList>
+                            <td width="80px" class="table">
+                                <asp:DropDownList ID="DdlName" runat="server" Width="80px"></asp:DropDownList>
                             </td>
-                            <td width="10%">
-                                性别
-                            </td>
-                            <td width="15%">
-                                <asp:TextBox ID="TbGender" runat="server" Height="17px" Width="90px"></asp:TextBox>
-                            </td>
-                            <td width="10%">
+                            <td width="50px" class="table">
                                 职称
                             </td>
-                            <td width="15%">
+                            <td width="90px" class="table">
                                 <asp:TextBox ID="TbTitle" runat="server" Height="16px" Width="90px"></asp:TextBox>
                             </td>
-                            <td width="10%">
+                            <td width="50px" class="table">
+                                性别
+                            </td>
+                            <td width="50px" class="table">
+                                <asp:TextBox ID="TbGender" runat="server" Height="17px" Width="50px"></asp:TextBox>
+                            </td>
+                            <td width="100px" class="table">
                                 部门人数
                             </td>
-                            <td width="15%">
-                                <asp:TextBox ID="TbNumbersOfPeople" runat="server" Height="16px" Width="90px"></asp:TextBox>
+                            <td width="50px" class="table">
+                                <asp:TextBox ID="TbNumbersOfPeople" runat="server" Height="16px" Width="50px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="8" align="left">
+                            <td colspan="8" align="left" class="table">
                                 现况分析:
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="8">
+                            <td colspan="8" class="table">
                                 <asp:TextBox ID="TbAdvantage" runat="server" Width="700px" Height="100px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
@@ -169,24 +173,24 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:TemplateField HeaderText="目标" ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="目标" ItemStyle-Width="145px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="145px"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="活动与措施"  ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="活动与措施"  ItemStyle-Width="145px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column2" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column2" runat="server" Width="145px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="开始时间"  ItemStyle-Width="50px">
+                            <asp:TemplateField HeaderText="开始时间"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column3" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column3" runat="server" Width="80px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender1" runat="server" PopupButtonID="column3"
                                     Enabled="True" TargetControlID="column3" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
@@ -194,9 +198,9 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="结束时间"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column4" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column4" runat="server" Width="80px"></asp:TextBox>
                                     <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="column4"
                                     Enabled="True" TargetControlID="column4" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
                                 </ItemTemplate>
@@ -204,9 +208,9 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="完成率"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="完成率"  ItemStyle-Width="70px">
                                 <ItemTemplate>
-                                    <asp:DropDownList ID="column5" runat="server">
+                                    <asp:DropDownList ID="column5" runat="server" Width="70px">
                                         <asp:ListItem Value="0">0</asp:ListItem>
                                         <asp:ListItem Value="10">10</asp:ListItem>
                                         <asp:ListItem Value="20">20</asp:ListItem>
@@ -224,9 +228,9 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="完成情況"  ItemStyle-Width="50">
+                            <asp:TemplateField HeaderText="完成情況"  ItemStyle-Width="100px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column6" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="column6" runat="server" Width="100px"></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
@@ -253,15 +257,15 @@
                     
                 </div>
                 <div style="float:left; margin-top:20px">
-                    <asp:Button ID="BtnAdd" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click" />
+                    <asp:Button ID="BtnAdd" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <table width="739px">
                     <tr>
                         <td width="90%" align="right">
-                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click" />
+                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, BtnPlanStore %>" OnClick="BtnStore_Click"  Font-Size="14pt"/>
                         </td>
                         <td width="10%" align="left" style="margin-left=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnPlanCancel %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

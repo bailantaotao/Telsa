@@ -109,7 +109,7 @@
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
-            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84">
+            BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84" Width="760px">
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
                         <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
                         <PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" />
@@ -118,30 +118,30 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="Column1" HeaderText="周次" ItemStyle-Width="20px" >
-<ItemStyle Width="20px"></ItemStyle>
+                            <asp:BoundField DataField="Column1" HeaderText="周次" ItemStyle-Width="30px" >
+<ItemStyle Width="30px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column2" HeaderText="开始时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column2" HeaderText="开始时间" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column3" HeaderText="结束时间" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column3" HeaderText="结束时间" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column4" HeaderText="工作内容" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column4" HeaderText="工作内容" ItemStyle-Width="100px" >
+<ItemStyle Width="100px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column5" HeaderText="主管领导" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column5" HeaderText="主管领导" ItemStyle-Width="90px" >
+<ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column6" HeaderText="负责人" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column6" HeaderText="负责人" ItemStyle-Width="90px" >
+<ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column7" HeaderText="完成率" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
+                            <asp:BoundField DataField="Column7" HeaderText="完成率" ItemStyle-Width="80px" >
+<ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column8" HeaderText="完成情况及效果评估" ItemStyle-Width="70px" >
+                            <asp:BoundField DataField="Column8" HeaderText="完成情况及效果评估" ItemStyle-Width="110px" >
                             
-<ItemStyle Width="70px"></ItemStyle>
+<ItemStyle Width="110px"></ItemStyle>
                             </asp:BoundField>
                             
                         </Columns>
@@ -162,7 +162,7 @@
                     </tr>
                     <tr>
                         <td width="90%" align="right" style="margin-right=20px;">
-                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click"  Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>

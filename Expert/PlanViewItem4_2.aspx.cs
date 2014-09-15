@@ -82,36 +82,36 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
             {
                 if (d[1].Equals("1"))
                 {
-                    TbQuestion1.Text = d[2];
-                    LbTarget1.Text += "<br />" + d[3];
+                    TbQuestion1.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget1.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
                 else if (d[1].Equals("2"))
                 {
-                    TbQuestion2.Text = d[2];
-                    LbTarget2.Text += "<br />" + d[3];
+                    TbQuestion2.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget2.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
                 else if (d[1].Equals("3"))
                 {
-                    TbQuestion3.Text = d[2];
-                    LbTarget3.Text += "<br />" + d[3];
+                    TbQuestion3.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget3.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
             }
             else if (d[0].Equals("2"))
             {
                 if (d[1].Equals("1"))
                 {
-                    TbQuestion4.Text = d[2];
-                    LbTarget4.Text += "<br />" + d[3];
+                    TbQuestion4.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget4.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
                 else if (d[1].Equals("2"))
                 {
-                    TbQuestion5.Text = d[2];
-                    LbTarget5.Text += "<br />" + d[3];
+                    TbQuestion5.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget5.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
                 else if (d[1].Equals("3"))
                 {
-                    TbQuestion6.Text = d[2];
-                    LbTarget6.Text += "<br />" + d[3];
+                    TbQuestion6.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget6.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
 
             }
@@ -119,18 +119,18 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
             {
                 if (d[1].Equals("1"))
                 {
-                    TbQuestion7.Text = d[2];
-                    LbTarget7.Text += "<br />" + d[3];
+                    TbQuestion7.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget7.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
                 else if (d[1].Equals("2"))
                 {
-                    TbQuestion8.Text = d[2];
-                    LbTarget8.Text += "<br />" + d[3];
+                    TbQuestion8.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget8.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
                 else if (d[1].Equals("3"))
                 {
-                    TbQuestion9.Text = d[2];
-                    LbTarget9.Text += "<br />" + d[3];
+                    TbQuestion9.Text = (d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2]);
+                    LbTarget9.Text += "<br />" + (d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3]);
                 }
 
             }
