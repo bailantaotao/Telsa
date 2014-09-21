@@ -28,8 +28,8 @@
             height:55px;
         }
         .BlockRightDownDataDisplay {
-            padding-top:10px;
-            margin-bottom:20px
+            margin-top:30px;
+            margin-bottom:0px
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -155,8 +155,8 @@
                     </asp:GridView>
                     
                 </div>
-                <div style="float:left;">
-                    <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
+                <div style="float:left;margin-bottom:20px">
+                    <asp:Button ID="BtnAddInternalAdvantage" runat="server" Text="新增优势项目" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvInternalDefect" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -196,8 +196,8 @@
                     </asp:GridView>
                     
                 </div>
-                <div style="float:left;">
-                    <asp:Button ID="BtnAddInternalDefect" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
+                <div style="float:left;margin-bottom:20px">
+                    <asp:Button ID="BtnAddInternalDefect" runat="server" Text="新增劣势项目" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvExternalChallenge" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -237,8 +237,8 @@
                     </asp:GridView>
                     
                 </div>
-                <div style="float:left;">
-                    <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
+                <div style="float:left;margin-bottom:20px">
+                    <asp:Button ID="BtnAddExternalChallenge" runat="server" Text="新增机遇项目" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <div class="BlockRightDownDataDisplay">
                     <asp:GridView ID="GvExternalOpportunity" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
@@ -278,8 +278,8 @@
                     </asp:GridView>
                     
                 </div>
-                <div style="float:left;">
-                    <asp:Button ID="BtnAddExternalOpportunity" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
+                <div style="float:left;margin-bottom:20px">
+                    <asp:Button ID="BtnAddExternalOpportunity" runat="server" Text="新增挑战项目" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <table width="739px" style="margin-top:20px">
                     <tr>
