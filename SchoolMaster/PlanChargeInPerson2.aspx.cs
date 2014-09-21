@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
+public partial class SchoolMaster_PlanChargeInPerson2 : System.Web.UI.Page
 {
     private const int ClassMaxNumbers = 10;
     private int DataPage = 0, Flag = 0, Count = 0;
@@ -150,7 +150,7 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
         //               "PlanTargetActivityNO = '" + Request["PTAN"].ToString() + "' order by NO asc";
 
         //ms.GetAllColumnData(query, data);
-        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge2"];
 
         
         for (int i = 0; i < personIncharge.Count; i++)
@@ -288,7 +288,7 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge2"];
 
         for (int i = 0; i < personIncharge.Count; i++)
         {
@@ -309,7 +309,7 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
                 }
 
                 personIncharge.Insert(i, data);
-                Session["PersonInCharge"] = personIncharge;
+                Session["PersonInCharge2"] = personIncharge;
             }
         }
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.opener=null;window.close();", true);
