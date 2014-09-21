@@ -837,4 +837,7 @@
   <data name="TipNotWrite" xml:space="preserve">
     <value>未填写</value>
   </data>
+  <data name="BtnClick" xml:space="preserve">
+    <value>点击</value>
+  </data>
 </root>
