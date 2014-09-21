@@ -734,7 +734,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         {
             String yourAssignedValue = ((LinkButton)sender).CommandArgument;
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanChargeInPerson.aspx?DID=" + DID + "&PSDN=" + PSDN + "&PTAN=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanChargeInPerson.aspx?param1=" + DID + "&param2=" + PSDN + "&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
         }
     }
 
@@ -744,7 +744,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
         {
             String yourAssignedValue = ((LinkButton)sender).CommandArgument;
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanChargeInPerson2.aspx?DID=" + DID + "&PSDN=" + PSDN + "&PTAN=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanChargeInPerson2.aspx?param1=" + DID + "&param2=" + PSDN + "&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
         }
     }
     

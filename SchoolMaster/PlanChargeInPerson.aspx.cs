@@ -53,18 +53,20 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
 
     public void getRequest()
     {
-        
-        if (Request["DID"] == null)
+        // param1 = DID
+        // param2 = PSDN
+        // param3 = PTAN
+        if (Request["param1"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('你没有权利进行接下来的操作');window.opener=null;window.close();", true);
             return;
         }
-        if (Request["PSDN"] == null)
+        if (Request["param2"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('你没有权利进行接下来的操作');window.opener=null;window.close();", true);
             return;
         }
-        if (Request["PTAN"] == null)
+        if (Request["param3"] == null)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('你没有权利进行接下来的操作');window.opener=null;window.close();", true);
             return;
@@ -155,7 +157,7 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
         
         for (int i = 0; i < personIncharge.Count; i++)
         {
-            if (i.ToString().Equals(Request["PTAN"].ToString()))
+            if (i.ToString().Equals(Request["param3"].ToString()))
             {
                 PersonInCharge collection = personIncharge[i];
                 if (collection.data.Count > 0)
@@ -292,7 +294,7 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
 
         for (int i = 0; i < personIncharge.Count; i++)
         {
-            if (i.ToString().Equals(Request["PTAN"].ToString()))
+            if (i.ToString().Equals(Request["param3"].ToString()))
             {
                 personIncharge.RemoveAt(i);
                 PersonInCharge data = new PersonInCharge();
