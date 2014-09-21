@@ -139,9 +139,12 @@
                             <asp:BoundField DataField="Column4" HeaderText="结束时间" ItemStyle-Width="100px" >
 <ItemStyle Width="100px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column5" HeaderText="负责人" ItemStyle-Width="80px" >
-<ItemStyle Width="80px"></ItemStyle>
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="80px">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LkbChoosePersonInCharge" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge" Text="请选择" Width="60px"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Column6" HeaderText="预算" ItemStyle-Width="70px" >
 <ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
@@ -157,9 +160,12 @@
                             <asp:BoundField DataField="Column10" HeaderText="时间" ItemStyle-Width="80px" >
 <ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column11" HeaderText="负责人" ItemStyle-Width="80px" >
-<ItemStyle Width="80px"></ItemStyle>
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="80px">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LkbChoosePersonInCharge2" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge2" Text="请选择" Width="60px"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                         </Columns>
                         <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
                         <SortedAscendingCellStyle BackColor="#FFF1D4" />
