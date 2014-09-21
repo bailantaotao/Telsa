@@ -39,9 +39,15 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
     {
         LbNO.Text = Session["Semester"].ToString();
         LbYear.Text = Session["PlanYear"].ToString();
-        setInitial();
+        
         if (!IsPostBack)
         {
+            if (Session["PersonInCharge"] == null)
+            {
+                List<PersonInCharge> personInCharge = new List<PersonInCharge>();
+                Session["PersonInCharge"] = personInCharge;
+            }
+            setInitial();
         }
 
     }
@@ -71,11 +77,12 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select WeekNO, StartTime, EndTime, WorkContent, Leader, PersonInCharge, FinishRate, EstimateContidion " +
+        string query = "select WeekNO, StartTime, EndTime, WorkContent, Leader, 1, FinishRate, EstimateContidion " +
                         "from PlanCalendar " +
                         "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by WeekNo asc " ;
 
         ms.GetAllColumnData(query, data);
+        List<PersonInCharge> personInCharge = (List<PersonInCharge>)Session["PersonInCharge"];
 
         for (int i = 0; i < data.Count; i++)
         {
@@ -90,17 +97,66 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
             dr["column7"] = d[6];
             dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
             dt.Rows.Add(dr);
+            personInCharge.Add(new PersonInCharge());
         }
+        Session["PersonInCharge"] = personInCharge;
+        setPersonInChargeData();
         ViewState["dt"] = dt;
 
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
     }
+    private void setPersonInChargeData()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select WeekNo, No, PlanCalendarPersonInCharge " +
+                       "from PlanCalendarPersonInCharge " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by WeekNo asc ";
 
+        ms.GetAllColumnData(query, data);
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
+        if (personIncharge != null)
+        {
+            for (int i = 0; i < personIncharge.Count; i++)
+            {
+
+                PersonInCharge pic = new PersonInCharge();
+                for (int j = 0; j < data.Count; j++)
+                {
+                    string[] DBData = (string[])data[j];
+                    if ((i + 1).ToString().Equals(DBData[0]))
+                    {
+                        pic.data.Add(new string[] { DBData[1], DBData[2] });
+                    }
+                }
+                if (pic.data.Count > 0)
+                {
+                    personIncharge.RemoveAt(i);
+                    personIncharge.Insert(i, pic);
+                    Session["PersonInCharge"] = personIncharge;
+                }
+
+            }
+        }
+
+    }
 
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
+        if (Session["PersonInCharge"] != null)
+            Session.Remove("PersonInCharge");
         Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString()+"&SCHOOLNAME="+Session["SCHOOLNAME"].ToString());
+    }
+
+    protected void btn_AddPersonInCharge(object sender, EventArgs e)
+    {
+        if (sender is LinkButton)
+        {
+            String yourAssignedValue = ((LinkButton)sender).CommandArgument;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanViewChargeInPerson.aspx?param1=0&param2=0&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
+        }
     }
    
 }

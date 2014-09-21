@@ -133,9 +133,12 @@
                             <asp:BoundField DataField="Column5" HeaderText="主管领导" ItemStyle-Width="90px" >
 <ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="Column6" HeaderText="负责人" ItemStyle-Width="90px" >
-<ItemStyle Width="90px"></ItemStyle>
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="80px">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LkbChoosePersonInCharge" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge" Text="请选择" Width="60px"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Column7" HeaderText="完成率" ItemStyle-Width="80px" >
 <ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
