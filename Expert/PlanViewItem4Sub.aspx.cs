@@ -42,12 +42,22 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
             return;
 
         getTitle();
-        setInitial();
         LbNO.Text = Session["Semester"].ToString();
         LbYear.Text = Session["PlanYear"].ToString();
 
         if (!IsPostBack)
         {
+            if (Session["PersonInCharge"] == null)
+            {
+                List<PersonInCharge> personInCharge = new List<PersonInCharge>();
+                Session["PersonInCharge"] = personInCharge;
+            }
+            if (Session["PersonInCharge2"] == null)
+            {
+                List<PersonInCharge> personInCharge2 = new List<PersonInCharge>();
+                Session["PersonInCharge2"] = personInCharge2;
+            }
+            setInitial();
         }
 
         //NO = Request["NO"].ToString();
@@ -119,13 +129,15 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("column11", typeof(string)));
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Target, Activity, StartTime, EndTime, PersonInCharge, Budget, Resource, OtherResources, FinishRate, EstimateTime, EstimatePersonInCharge " +
+        string query = "select Target, Activity, StartTime, EndTime, 1, Budget, Resource, OtherResources, FinishRate, EstimateTime, 1 " +
                         "from PlanTargetActivity " +
                         "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
                         "DimensionsID = '" + Request["DimensionsID"].ToString() + "' and " +
                         "PlanSummaryDimensionsNO = '" + Request["NO"].ToString() + "' ";
 
         ms.GetAllColumnData(query, data);
+        List<PersonInCharge> personInCharge = (List<PersonInCharge>)Session["PersonInCharge"];
+        List<PersonInCharge> personInCharge2 = (List<PersonInCharge>)Session["PersonInCharge2"];
 
         for (int i = 0; i < data.Count; i++)
         {
@@ -135,24 +147,130 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
             dr["column2"] = d[1].Equals("") ? Resources.Resource.TipNotWrite : d[1];
             dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[2];
             dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[3];
-            dr["column5"] = (d[4].Equals(Resources.Resource.TipPlzChoose) || d[4].Equals("")) ? Resources.Resource.TipNotWrite : d[4];
+            //dr["column5"] = (d[4].Equals(Resources.Resource.TipPlzChoose) || d[4].Equals("")) ? Resources.Resource.TipNotWrite : d[4];
             dr["column6"] = d[5].Equals("0") ? Resources.Resource.TipNotWrite : d[5];
             dr["column7"] = d[6].Equals("") ? Resources.Resource.TipNotWrite : d[6];
             dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
             dr["column9"] = d[8].Equals("") ? Resources.Resource.TipNotWrite : d[8];
             dr["column10"] = d[9].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[9];
-            dr["column11"] = (d[10].Equals(Resources.Resource.TipPlzChoose) || d[10].Equals("")) ? Resources.Resource.TipNotWrite : d[10];
+            //dr["column11"] = (d[10].Equals(Resources.Resource.TipPlzChoose) || d[10].Equals("")) ? Resources.Resource.TipNotWrite : d[10];
             dt.Rows.Add(dr);
+            personInCharge.Add(new PersonInCharge());
+            personInCharge2.Add(new PersonInCharge());
         }
+        Session["PersonInCharge"] = personInCharge;
+        Session["PersonInCharge2"] = personInCharge2;
+        setPersonInChargeData();
+        setPersonInChargeData2();
         ViewState["dt"] = dt;
 
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
     }
 
+    private void setPersonInChargeData()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select PlanTargetActivityNO, NO, PersonInCharge " +
+                       "from PlanTargetActivityPersonInCharge " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                       "DimensionsID = '" + Request["DimensionsID"].ToString() + "' and " +
+                       "PlanSummaryDimensionsNO = '" + Request["NO"].ToString() + "' " +
+                       "order by PlanTargetActivityNO asc, No asc";
+
+        ms.GetAllColumnData(query, data);
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
+        if (personIncharge != null)
+        {
+            for (int i = 0; i < personIncharge.Count; i++)
+            {
+
+                PersonInCharge pic = new PersonInCharge();
+                for (int j = 0; j < data.Count; j++)
+                {
+                    string[] DBData = (string[])data[j];
+                    if (i.ToString().Equals(DBData[0]))
+                    {
+                        pic.data.Add(new string[] { DBData[1], DBData[2] });
+                    }
+                }
+                if (pic.data.Count > 0)
+                {
+                    personIncharge.RemoveAt(i);
+                    personIncharge.Insert(i, pic);
+                    Session["PersonInCharge"] = personIncharge;
+                }
+
+            }
+        }
+
+    }
+    private void setPersonInChargeData2()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select PlanTargetActivityNO, NO, PersonInCharge " +
+                       "from PlanTargetActivityPersonInCharge2 " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                       "DimensionsID = '" + Request["DimensionsID"].ToString() + "' and " +
+                       "PlanSummaryDimensionsNO = '" + Request["NO"].ToString() + "' " +
+                       "order by PlanTargetActivityNO asc, No asc";
+
+        ms.GetAllColumnData(query, data);
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge2"];
+        if (personIncharge != null)
+        {
+            for (int i = 0; i < personIncharge.Count; i++)
+            {
+
+                PersonInCharge pic = new PersonInCharge();
+                for (int j = 0; j < data.Count; j++)
+                {
+                    string[] DBData = (string[])data[j];
+                    if (i.ToString().Equals(DBData[0]))
+                    {
+                        pic.data.Add(new string[] { DBData[1], DBData[2] });
+                    }
+                }
+                if (pic.data.Count > 0)
+                {
+                    personIncharge.RemoveAt(i);
+                    personIncharge.Insert(i, pic);
+                    Session["PersonInCharge2"] = personIncharge;
+                }
+
+            }
+        }
+
+    }
+
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
+        if (Session["PersonInCharge"] != null)
+            Session.Remove("PersonInCharge");
+        if (Session["PersonInCharge2"] != null)
+            Session.Remove("PersonInCharge2");
         Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString()+"&SCHOOLNAME="+Session["SCHOOLNAME"].ToString());
     }
-    
+
+    protected void btn_AddPersonInCharge(object sender, EventArgs e)
+    {
+        if (sender is LinkButton)
+        {
+            String yourAssignedValue = ((LinkButton)sender).CommandArgument;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanViewChargeInPerson.aspx?param1=0&param2=0&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
+        }
+    }
+    protected void btn_AddPersonInCharge2(object sender, EventArgs e)
+    {
+        if (sender is LinkButton)
+        {
+            String yourAssignedValue = ((LinkButton)sender).CommandArgument;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanViewChargeInPerson2.aspx?param1=0&param2=0&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
+        }
+    }
+
 }
