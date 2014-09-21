@@ -40,6 +40,11 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
         LbYear.Text = Session["PlanYear"].ToString();
         if (!IsPostBack)
         {
+            if (Session["PersonInCharge"] == null)
+            {
+                List<PersonInCharge> personInCharge = new List<PersonInCharge>();
+                Session["PersonInCharge"] = personInCharge;
+            }
             setInitial();
         }
 
@@ -75,7 +80,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                             TextBox box3 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[2].FindControl("column3");
                             TextBox box4 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[3].FindControl("column4");
                             DropDownList box5 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[4].FindControl("column5");
-                            DropDownList box6 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[5].FindControl("column6");
+                            //DropDownList box6 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[5].FindControl("column6");
                             DropDownList box7 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[6].FindControl("column7");
                             TextBox box8 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[7].FindControl("column8");
 
@@ -87,7 +92,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                             box3.Text = "";
                             box4.Text = "";
                             box5.SelectedIndex = 0;
-                            box6.SelectedIndex = 0;
+                            //box6.SelectedIndex = 0;
                             box7.SelectedIndex = 0;
                             box8.Text = "";
 
@@ -95,7 +100,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][2] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][3] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][4] = "";
-                            dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
+                            //dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][6] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][7] = "";
 
@@ -143,7 +148,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                     TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("column3");
                     TextBox box4 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("column4");
                     DropDownList box5 = (DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("column5");
-                    DropDownList box6 = (DropDownList)GvSchool.Rows[rowIndex].Cells[5].FindControl("column6");
+                    //DropDownList box6 = (DropDownList)GvSchool.Rows[rowIndex].Cells[5].FindControl("column6");
                     DropDownList box7 = (DropDownList)GvSchool.Rows[rowIndex].Cells[6].FindControl("column7");
                     TextBox box8 = (TextBox)GvSchool.Rows[rowIndex].Cells[7].FindControl("column8");
 
@@ -156,7 +161,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                     box3.Text = dt.Rows[i]["column3"].ToString();
                     box4.Text = dt.Rows[i]["column4"].ToString();
                     box5.SelectedValue = dt.Rows[i]["column5"].ToString();
-                    box6.SelectedValue = dt.Rows[i]["column6"].ToString();
+                    //box6.SelectedValue = dt.Rows[i]["column6"].ToString();
                     box7.SelectedValue = dt.Rows[i]["column7"].ToString();
                     box8.Text = dt.Rows[i]["column8"].ToString();
                     if (i < 1)
@@ -184,7 +189,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select WeekNO, StartTime, EndTime, WorkContent, Leader, PersonInCharge, FinishRate, EstimateContidion " +
+        string query = "select WeekNO, StartTime, EndTime, WorkContent, Leader, 1, FinishRate, EstimateContidion " +
                         "from PlanCalendar " +
                         "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by WeekNo asc ";
 
@@ -192,6 +197,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
 
         if (data.Count > 0)
         {
+            List<PersonInCharge> personInCharge = (List<PersonInCharge>)Session["PersonInCharge"];
             for (int i = 0; i < data.Count; i++)
             {
                 string[] d = (string[])data[i];
@@ -201,12 +207,15 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                 dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
                 dr["column4"] = d[3];
                 dr["column5"] = d[4];
-                dr["column6"] = d[5];
+                //dr["column6"] = d[5];
                 dr["column7"] = d[6];
                 dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
                 dr["btnClear"] = "清空";
                 dt.Rows.Add(dr);
+                personInCharge.Add(new PersonInCharge());
             }
+            Session["PersonInCharge"] = personInCharge;
+
             ViewState["dt"] = dt;
 
             GvSchool.DataSource = dt;
@@ -220,7 +229,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                 ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text = d[2].Contains(BaseClass.standardTimestamp) ? "" : d[2].Split(' ')[0];
                 ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text = d[3];
                 ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).Text = d[4];
-                ((DropDownList)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text = d[5];
+                //((DropDownList)GvSchool.Rows[i].Cells[5].FindControl("column6")).Text = d[5];
                 ((DropDownList)GvSchool.Rows[i].Cells[6].FindControl("column7")).Text = d[6];
                 ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
 
@@ -231,9 +240,11 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                     ((Button)GvSchool.Rows[i].Cells[8].FindControl("lbnView")).Text = "清空";
                 }
             }
-
+            setPersonInChargeData();
             return;
         }
+
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
 
         dr = dt.NewRow();
         dr["SN"] = "1";
@@ -246,7 +257,10 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
         dr["column8"] = string.Empty;
         dr["btnClear"] = "清空";
         dt.Rows.Add(dr);
-        
+
+        personIncharge.Add(new PersonInCharge());
+        Session["PersonInCharge"] = personIncharge;
+
         ViewState["dt"] = dt;
 
         GvSchool.DataSource = dt;
@@ -257,6 +271,41 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
         ((Button)GvSchool.Rows[0].Cells[8].FindControl("lbnView")).Text = "清空";
     }
 
+    private void setPersonInChargeData()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string query = "select WeekNo, No, PlanCalendarPersonInCharge " +
+                       "from PlanCalendarPersonInCharge " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by WeekNo asc ";                       
+
+        ms.GetAllColumnData(query, data);
+        List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
+        if (personIncharge != null)
+        {
+            for (int i = 0; i < personIncharge.Count; i++)
+            {
+
+                PersonInCharge pic = new PersonInCharge();
+                for (int j = 0; j < data.Count; j++)
+                {
+                    string[] DBData = (string[])data[j];
+                    if ((i+1).ToString().Equals(DBData[0]))
+                    {
+                        pic.data.Add(new string[] { DBData[1], DBData[2] });
+                    }
+                }
+                if (pic.data.Count > 0)
+                {
+                    personIncharge.RemoveAt(i);
+                    personIncharge.Insert(i, pic);
+                    Session["PersonInCharge"] = personIncharge;
+                }
+
+            }
+        }
+
+    }
 
     protected void BtnAdd_Click(object sender, EventArgs e)
     {
@@ -275,7 +324,7 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                     TextBox box3 = (TextBox)GvSchool.Rows[rowIndex].Cells[2].FindControl("column3");
                     TextBox box4 = (TextBox)GvSchool.Rows[rowIndex].Cells[3].FindControl("column4");
                     DropDownList box5 = (DropDownList)GvSchool.Rows[rowIndex].Cells[4].FindControl("column5");
-                    DropDownList box6 = (DropDownList)GvSchool.Rows[rowIndex].Cells[5].FindControl("column6");
+                    //DropDownList box6 = (DropDownList)GvSchool.Rows[rowIndex].Cells[5].FindControl("column6");
                     DropDownList box7 = (DropDownList)GvSchool.Rows[rowIndex].Cells[6].FindControl("column7");
                     TextBox box8 = (TextBox)GvSchool.Rows[rowIndex].Cells[7].FindControl("column8");
 
@@ -290,12 +339,16 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                     dtCurrentTable.Rows[i - 1]["column3"] = box3.Text;
                     dtCurrentTable.Rows[i - 1]["column4"] = box4.Text;
                     dtCurrentTable.Rows[i - 1]["column5"] = box5.SelectedValue;
-                    dtCurrentTable.Rows[i - 1]["column6"] = box6.SelectedValue;
+                    //dtCurrentTable.Rows[i - 1]["column6"] = box6.SelectedValue;
                     dtCurrentTable.Rows[i - 1]["column7"] = box7.SelectedValue;
                     dtCurrentTable.Rows[i - 1]["column8"] = box8.Text;
 
                     rowIndex++;
                 }
+                List<PersonInCharge> personInCharge = (List<PersonInCharge>)Session["PersonInCharge"];
+                personInCharge.Add(new PersonInCharge());
+                Session["PersonInCharge"] = personInCharge;
+
                 dtCurrentTable.Rows.Add(drCurrentRow);
                 ViewState["dt"] = dtCurrentTable;
 
@@ -308,6 +361,8 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
+        if (Session["PersonInCharge"] != null)
+            Session.Remove("PersonInCharge");
         Response.Redirect("PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString());
     }
     protected void BtnStore_Click(object sender, EventArgs e)
@@ -319,6 +374,8 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
         else
         {
             storeData();
+            if (Session["PersonInCharge"] != null)
+                Session.Remove("PersonInCharge");
         }
     }
 
@@ -385,22 +442,59 @@ public partial class SchoolMaster_PlanItem5 : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     sb.Clear();
-                    query = "insert into PlanCalendar (SN, WeekNO, StartTime, EndTime, WorkContent, Leader, PersonInCharge, FinishRate, EstimateContidion) VALUES ('" +
+                    query = "insert into PlanCalendar (SN, WeekNO, StartTime, EndTime, WorkContent, Leader, FinishRate, EstimateContidion) VALUES ('" +
                                     Session["UserPlanListSN"].ToString() + "','" +
                                     (i+1).ToString() + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[1].FindControl("column2")).Text.Split(' ')[0] + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[2].FindControl("column3")).Text.Split(' ')[0] + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[3].FindControl("column4")).Text + "',N'" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[4].FindControl("column5")).SelectedValue + "',N'" +
-                                    ((DropDownList)GvSchool.Rows[i].Cells[5].FindControl("column6")).SelectedValue + "',N'" +
                                     ((DropDownList)GvSchool.Rows[i].Cells[6].FindControl("column7")).SelectedValue + "',N'" +
                                     ((TextBox)GvSchool.Rows[i].Cells[7].FindControl("column8")).Text + "')";
 
                     ms.WriteData(query, sb);
-                    
+
+                    List<PersonInCharge> personIncharge = (List<PersonInCharge>)Session["PersonInCharge"];
+                    if (personIncharge != null)
+                    {
+                        //foreach (PersonInCharge PersonInChargeInfo in personIncharge)
+                        //{
+                        // 先刪除原本的
+                        query = "delete from PlanCalendarPersonInCharge where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                                "WeekNo = '" + (i+1).ToString() + "'";
+                        ms.WriteData(query, sb);
+
+
+                        PersonInCharge pic = personIncharge[i];
+                        for (int j = 0; j < pic.data.Count; j++)
+                        {
+                            sb.Clear();
+                            string[] tmp = (string[])pic.data[j];
+                            query = "insert into PlanCalendarPersonInCharge (SN, WeekNo, No, PlanCalendarPersonInCharge) VALUES ('" +
+                                            Session["UserPlanListSN"].ToString() + "','" +
+                                            (i+1).ToString() + "','" +                                            
+                                            tmp[0].ToString() + "',N'" +
+                                            tmp[1].ToString() + "')";
+
+                            ms.WriteData(query, sb);
+
+                        }
+
+                        //}
+                    }
                 }
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "';", true);
             }
+        }
+    }
+
+    protected void btn_AddPersonInCharge(object sender, EventArgs e)
+    {
+        if (sender is LinkButton)
+        {
+            String yourAssignedValue = ((LinkButton)sender).CommandArgument;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanChargeInPerson.aspx?param1=0&param2=0&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
         }
     }
 }
