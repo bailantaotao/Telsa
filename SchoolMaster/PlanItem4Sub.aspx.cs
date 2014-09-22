@@ -677,7 +677,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                                                 Request["DimensionsID"].ToString() + "','" +
                                                 Request["NO"].ToString() + "','" +
                                                 i + "',N'" +
-                                                tmp[0].ToString() + "','" +
+                                                tmp[0].ToString() + "',N'" +
                                                 tmp[1].ToString() + "')";
 
                                 ms.WriteData(query, sb);
@@ -710,7 +710,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                                             Request["DimensionsID"].ToString() + "','" +
                                             Request["NO"].ToString() + "','" +
                                             i + "',N'" +
-                                            tmp[0].ToString() + "','" +
+                                            tmp[0].ToString() + "',N'" +
                                             tmp[1].ToString() + "')";
 
                             ms.WriteData(query, sb);
