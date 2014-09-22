@@ -91,4 +91,8 @@ public partial class SystemManagerIndex : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgAnnocement.aspx', '', config='height=500,width=700')", true);
     }
+    protected void BtnImportProvinceData_Click(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('Manager/ImportExcel.aspx', '', config='height=200,width=300')", true);
+    }
 }
