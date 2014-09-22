@@ -52,7 +52,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         //LbSchoolName.Text = schoolName.ToString();
         //LbSchoolSN.Text = Session["UserID"].ToString();
         //LbSchoolMaster.Text = Session["UserName"].ToString();
-        if (!IsPostBack)
+        //if (!IsPostBack)
         {
             setDefault(DdlType.Province);
             setDefault(DdlType.SchoolName);
@@ -462,7 +462,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                         //if (((string[])(userData[0]))[2].ToLower().Equals("true"))
                         //{
                         //要換到view的頁面
-                        LbCompleted.Text += "<a href='PlanMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
+                        LbCompleted.Text += "<a href='PlanViewMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
                         //}
                         //else
                         //{
