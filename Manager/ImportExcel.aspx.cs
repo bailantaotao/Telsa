@@ -44,6 +44,7 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         Session["UserID"] = "123";
         if (!IsPostBack)
         {
+            DdlProvince.Items.Add(new ListItem(Resources.Resource.TipPlzChoose, "0"));
             initYear();
             initProvince();
         }
@@ -110,7 +111,7 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         //如果事先宣告 using System.Text;
         StringBuilder sb = new StringBuilder();
 
-        string fileName = Session["UserID"].ToString() +"_"+ DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + (DdlProvince.SelectedIndex + 1).ToString() + (DdlYear.SelectedIndex + 1).ToString() + "." + FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length - 1)];
+        string fileName = Session["UserID"].ToString() +"_"+ DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + (DdlProvince.SelectedIndex).ToString("00") +"_" +DdlYear.SelectedValue + "." + FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length - 1)];
         string pathToCheck = appPath + saveDir + fileName;
         //===========================================(Start)
         //foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
