@@ -44,6 +44,7 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         Session["UserID"] = "123";
         if (!IsPostBack)
         {
+            initYear();
             initProvince();
         }
     }
@@ -55,11 +56,18 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
             Session.Remove("FileIsToLarge");
         }
     }
-
+    public void initYear()
+    {
+        string year = DateTime.Now.ToString("yyyy");
+        int minYear = Convert.ToInt32(year) - 1;
+        int maxYear = Convert.ToInt32(year) + 10;
+        for (int i = minYear; i < maxYear; i++)
+            DdlYear.Items.Add(i.ToString());
+    }
     public void initProvince()
     {
         ManageSQL ms = new ManageSQL();
-        string query = "select Zipcode, Name from ZIPCode ";
+        string query = "select ID, Name from Area where ID <= 31 order by id ";
         ArrayList data = new ArrayList();
 
         ms.GetAllColumnData(query, data);
