@@ -212,7 +212,7 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         if (data.Count > 0)
         {
             string[] d = (string[])data[0];
-            DdlName.SelectedValue = d[0];
+            DdlName.Text = d[0];
             TbGender.Text = d[1];
             TbTitle.Text = d[2];
             TbNumbersOfPeople.Text = d[3];
@@ -418,11 +418,10 @@ public partial class SchoolMaster_PlanItem8Sub : System.Web.UI.Page
         string query = "delete from PlanOrganization where SN ='" + Session["UserPlanListSN"].ToString() + "'";
         ms.WriteData(query, sb);
         sb.Clear();
-        query = "insert into PlanOrganization (SN, OrganizationNO, WorkersID, PersonInCharge, Gender, Title, NumbersOfPeople, Condition) VALUES ('" +
+        query = "insert into PlanOrganization (SN, OrganizationNO, PersonInCharge, Gender, Title, NumbersOfPeople, Condition) VALUES ('" +
                         Session["UserPlanListSN"].ToString() + "',N'" +
                         schoolDepartmentNO.ToString() + "',N'" +
-                        DdlName.SelectedValue + "',N'" +
-                        DdlName.SelectedValue + "',N'" +
+                        DdlName.Text + "',N'" +
                         TbGender.Text.Trim() + "',N'" +
                         TbTitle.Text.Trim() + "',N'" +
                         TbNumbersOfPeople.Text.Trim() + "',N'" +

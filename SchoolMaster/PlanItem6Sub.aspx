@@ -131,7 +131,7 @@
                                 姓名
                             </td>
                             <td width="15%" class="table">
-                                <asp:DropDownList ID="DdlName" runat="server" Width="100px"></asp:DropDownList>
+                                <asp:TextBox ID="DdlName" runat="server" Width="100px"></asp:TextBox>
                             </td>
                             <td width="10%" class="table">
                                 性别

@@ -77,6 +77,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         }
     }
 
+
     private void getSemster()
     {
         //StringBuilder sb = new StringBuilder();
@@ -213,7 +214,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         if (data.Count > 0)
         {
             string[] d = (string[])data[0];
-            DdlName.SelectedValue = d[0];
+            DdlName.Text = d[0];
             TbGender.Text = d[1];
             TbNation.Text = d[2];
             TbProfession.Text = d[3];
@@ -434,11 +435,10 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
         string query = "delete from PlanMasterWork where SN ='" + Session["UserPlanListSN"].ToString() + "'";
         ms.WriteData(query, sb);
         sb.Clear();
-        query = "insert into PlanMasterWork (SN, TitleIsSM, WorkersID, Name, Gender, Nation, Profession, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
+        query = "insert into PlanMasterWork (SN, TitleIsSM, Name, Gender, Nation, Profession, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
                         Session["UserPlanListSN"].ToString() + "',N'" +
                         schoolMasterTitle.ToString() + "',N'" +
-                        DdlName.SelectedValue + "',N'" +
-                        DdlName.SelectedValue + "',N'" +
+                        DdlName.Text + "',N'" +
                         TbGender.Text.Trim() + "',N'" +
                         TbNation.Text.Trim() + "',N'" +
                         TbProfession.Text.Trim() + "',N'" +
