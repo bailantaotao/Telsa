@@ -200,6 +200,8 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < dt.Rows.Count; i++)
         {
+            if (dt.Rows[i]["Shl_No"].ToString().Equals(""))
+                continue;
             string query = "select count(UserID) from Account where UserID ='"+ dt.Rows[i]["User_ID"].ToString()+"'";
             ms.GetRowNumbers(query, sb);
             if (sb.ToString().Equals("0"))
