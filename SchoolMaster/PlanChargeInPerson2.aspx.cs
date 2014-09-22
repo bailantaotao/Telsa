@@ -46,7 +46,8 @@ public partial class SchoolMaster_PlanChargeInPerson2 : System.Web.UI.Page
         getRequest();
         if (!IsPostBack)
         {
-            setInitial();            
+            setInitial();
+            setPIC();
         }
 
     }
@@ -73,6 +74,29 @@ public partial class SchoolMaster_PlanChargeInPerson2 : System.Web.UI.Page
         }
 
 
+
+    }
+
+    public void setPIC()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select UserName from account where zipcode = '" + Session["Province"].ToString() + "' order by id asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlPersonInCharge.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlPersonInCharge.Items.Add("None");
+            return;
+        }
+        foreach (string[] province in data)
+        {
+            DdlPersonInCharge.Items.Add(province[0]);
+        }
 
     }
 
