@@ -80,7 +80,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
 
     private string SearchProvince()
     {
-        string query = "select zipcode.name from zipcode where zipcode.zipcode='" + Session["Province"].ToString() + "'";
+        string query = "select Area.name from Area where Area.id='" + Session["Province"].ToString() + "'";
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
         ms.GetOneData(query, sb);
@@ -115,7 +115,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select zipcode.name from zipcode";
+        Query = "select Area.name from area where ID <= 31 order by id asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -184,14 +184,14 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         if (IsMingDer)
         {
             Query = "select School from Account " +
-                              "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
+                              "left join area on Account.zipcode = area.id " +
                               "group by School ";
         }
         else
         {
             Query = "select School from Account " +
-                    "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
-                    "where Zipcode.name =N'" + LbProvince.Text + "'" +
+                    "left join area on Account.zipcode = area.id " +
+                    "where area.name =N'" + LbProvince.Text + "'" +
                     "group by School ";
         }
 
@@ -245,14 +245,14 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Cycle, Zipcode.Name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish " +
+        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Cycle, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish " +
                 "from KPIRecordMain " +
                 "left join Account on Account.School = KPIRecordMain.SchoolName " +
-                "left join Zipcode on Account.ZipCode = ZIPCode.Zipcode ";
+                "left join area on Account.ZipCode = area.id ";
 
         string tmp = string.Empty;
         string[] storeParam = new string[6];
-        string[] sqlParam = new string[] { "KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIRecordMain.Cycle", "KPIRecordMain.IsFinish", "Zipcode.Name" };
+        string[] sqlParam = new string[] { "KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIRecordMain.Cycle", "KPIRecordMain.IsFinish", "area.name" };
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlScoreLevel.SelectedIndex == 0 ? null : DdlScoreLevel.Items[DdlScoreLevel.SelectedIndex].ToString();
         storeParam[2] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
@@ -281,11 +281,11 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         {
             if (string.IsNullOrEmpty(tmp))
             {
-                Query += "where Zipcode.Name=N'" + LbProvince.Text + "' ";                
+                Query += "where area.name=N'" + LbProvince.Text + "' ";                
             }
             else
             {
-                Query += "and  Zipcode.Name=N'" + LbProvince.Text + "' ";
+                Query += "and  area.name=N'" + LbProvince.Text + "' ";
             }
         }
 

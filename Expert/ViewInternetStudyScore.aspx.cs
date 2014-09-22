@@ -71,7 +71,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
 
     private string SearchProvince()
     {
-        string query = "select zipcode.name from zipcode where zipcode.zipcode='" + Session["Province"].ToString() + "'";
+        string query = "select area.name from area where area.id='" + Session["Province"].ToString() + "'";
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
         ms.GetOneData(query, sb);
@@ -104,7 +104,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select zipcode.name from zipcode";
+        Query = "select area.name from area where ID <= 31 order by id asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -277,9 +277,9 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             {
                 Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "left join ZipCode on ZipCode.ZipCode = Account.Zipcode " +
-                        "where zipcode.name like N'%" + DdlProvince.SelectedValue + "%' " +
-                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, ZipCode.Name";
+                        "left join area on area.id = Account.Zipcode " +
+                        "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, area.name";
             }
         }
         else

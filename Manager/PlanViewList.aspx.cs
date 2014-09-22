@@ -52,7 +52,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         //LbSchoolName.Text = schoolName.ToString();
         //LbSchoolSN.Text = Session["UserID"].ToString();
         //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
+        if (!IsPostBack)
         {
             setDefault(DdlType.Province);
             setDefault(DdlType.SchoolName);
@@ -87,7 +87,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select zipcode.name from zipcode";
+        Query = "select name from Area where ID <= 31 order by id asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -133,7 +133,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         ArrayList data = new ArrayList();
 
         Query = "select School from Account " +
-                            "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
+                            "left join Area on Account.zipcode = Area.ID " +
                             "where School not like N'%專家%' and School not like N'%管理%' " +
                             "group by School ";
         
@@ -168,11 +168,11 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 "from PlanList  " +
                 "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                 "left join Account on PlanListUser.PlanSchool = Account.School " +
-                "left join ZIPCode on ZIPCode.ZIPCode = Account.Zipcode ";
+                "left join Area on Area.ID = Account.Zipcode ";
 
         string tmp = string.Empty;
         string[] storeParam = new string[5];
-        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Zipcode.Name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
+        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Area.name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
         storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
@@ -194,7 +194,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
             }
         }
-        Query += (tmp.Length > 0) ? tmp + "PlanSchool <> '' " : "where PlanSchool <> '' ";
+        Query += (tmp.Length > 0) ? tmp + "and PlanSchool <> '' " : "where PlanSchool <> '' ";
         
 
 

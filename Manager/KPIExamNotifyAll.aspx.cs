@@ -27,7 +27,7 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string Query = "select zipcode.name from zipcode";
+        string Query = "select area.name from area where ID <= 31 order by id asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -50,11 +50,11 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
 
-        string query = "select SchoolName, TotalScore, ScoreLevel, zipcode.name " +
+        string query = "select SchoolName, TotalScore, ScoreLevel, area.name " +
                         "from KPIRecordMain " +
                         "left join Account on account.school = kpirecordmain.schoolname " +
-                        "left join zipcode on zipcode.zipcode = account.zipcode " +
-                        "where zipcode.name=N'" + DdlProvince.Items[DdlProvince.SelectedIndex] + "'";
+                        "left join area on area.id = account.zipcode " +
+                        "where area.name=N'" + DdlProvince.Items[DdlProvince.SelectedIndex] + "'";
 
         if (!ms.GetAllColumnData(query, data))
         {
