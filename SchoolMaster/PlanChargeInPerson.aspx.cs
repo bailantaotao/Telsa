@@ -123,7 +123,7 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
                 dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
                 for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
                 {
-                    dt.Rows[i][1] = (i + 1).ToString();
+                    dt.Rows[i][0] = (i + 1).ToString();
                 }
                 ViewState["dt"] = dt;
                 GvDepartment.DataSource = dt;
