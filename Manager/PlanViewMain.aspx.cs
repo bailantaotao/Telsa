@@ -54,8 +54,33 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         getSchoolID(schoolID);
         if (!IsPostBack)
         {
-                           
+            LbStatus1.Text = (getUploadSuccess(1)) ? "Yes" : "No";
+            LbStatus2.Text = (getUploadSuccess(2)) ? "Yes" : "No";
+            LbStatus3.Text = (getUploadSuccess(3)) ? "Yes" : "No";
+            LbStatus4.Text = (getUploadSuccess(4)) ? "Yes" : "No";
+            LbStatus5.Text = (getUploadSuccess(5)) ? "Yes" : "No";
+            LbStatus6.Text = (getUploadSuccess(6)) ? "Yes" : "No";
+            LbStatus7.Text = (getUploadSuccess(7)) ? "Yes" : "No";
+            LbStatus8.Text = (getUploadSuccess(8)) ? "Yes" : "No";
         }
+    }
+
+    private bool getUploadSuccess(int targetIndex)
+    {
+        string saveDir = @"Upload\Stage3\";
+        string appPath = Request.PhysicalApplicationPath;
+        string fileName = schoolID.ToString() + DateTime.Now.ToString("yyyy") + getSemster() + targetIndex;
+        string pathToCheck = appPath + saveDir + fileName;
+
+        //===========================================(Start)
+        foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
+        {
+            if (file.Contains(fileName))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void SearchType()
@@ -390,5 +415,17 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
         Session["Semester"] = sb.ToString();
 
         Response.Redirect("PlanViewItem1.aspx");
+    }
+
+    protected void ButtonDownLoad_Click(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbOutFile = new StringBuilder();
+        if (getUploadDir(Convert.ToInt32(btn.CommandArgument), sb, sbOutFile))
+            xDownload(sb.ToString(), sbOutFile.ToString());
+        else
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
+
     }
 }

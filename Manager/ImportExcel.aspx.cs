@@ -44,6 +44,8 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         Session["UserID"] = "123";
         if (!IsPostBack)
         {
+            DdlProvince.Items.Add(new ListItem(Resources.Resource.TipPlzChoose, "0"));
+            initYear();
             initProvince();
         }
     }
@@ -55,11 +57,18 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
             Session.Remove("FileIsToLarge");
         }
     }
-
+    public void initYear()
+    {
+        string year = DateTime.Now.ToString("yyyy");
+        int minYear = Convert.ToInt32(year) - 1;
+        int maxYear = Convert.ToInt32(year) + 10;
+        for (int i = minYear; i < maxYear; i++)
+            DdlYear.Items.Add(i.ToString());
+    }
     public void initProvince()
     {
         ManageSQL ms = new ManageSQL();
-        string query = "select Zipcode, Name from ZIPCode ";
+        string query = "select ID, Name from Area where ID <= 31 order by id ";
         ArrayList data = new ArrayList();
 
         ms.GetAllColumnData(query, data);
@@ -102,7 +111,7 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         //如果事先宣告 using System.Text;
         StringBuilder sb = new StringBuilder();
 
-        string fileName = Session["UserID"].ToString() +"_"+ DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + (DdlProvince.SelectedIndex + 1).ToString() + (DdlYear.SelectedIndex + 1).ToString() + "." + FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length - 1)];
+        string fileName = Session["UserID"].ToString() +"_"+ DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + (DdlProvince.SelectedIndex).ToString("00") +"_" +DdlYear.SelectedValue + "." + FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length - 1)];
         string pathToCheck = appPath + saveDir + fileName;
         //===========================================(Start)
         //foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -191,6 +200,8 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < dt.Rows.Count; i++)
         {
+            if (dt.Rows[i]["Shl_No"].ToString().Equals(""))
+                continue;
             string query = "select count(UserID) from Account where UserID ='"+ dt.Rows[i]["User_ID"].ToString()+"'";
             ms.GetRowNumbers(query, sb);
             if (sb.ToString().Equals("0"))

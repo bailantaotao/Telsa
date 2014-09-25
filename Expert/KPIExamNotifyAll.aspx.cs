@@ -43,7 +43,7 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
     }
     private string SearchProvince()
     {
-        string query = "select zipcode.name from zipcode where zipcode.zipcode='" + Session["Province"].ToString() + "'";
+        string query = "select area.name from area where area.id='" + Session["Province"].ToString() + "'";
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
         ms.GetOneData(query, sb);
@@ -53,7 +53,7 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string Query = "select zipcode.name from zipcode";
+        string Query = "select area.name from area where ID <= 31 order by id asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -78,19 +78,19 @@ public partial class Manager_KPIExamNotifyAll : System.Web.UI.Page
         string query = string.Empty;
         if (IsMingDer)
         {
-            query = "select SchoolName, TotalScore, ScoreLevel, zipcode.name " +
+            query = "select SchoolName, TotalScore, ScoreLevel, area.name " +
                             "from KPIRecordMain " +
                             "left join Account on account.school = kpirecordmain.schoolname " +
-                            "left join zipcode on zipcode.zipcode = account.zipcode " +
-                            "where zipcode.name=N'" + DdlProvince.Items[DdlProvince.SelectedIndex] + "'";
+                            "left join area on area.id = account.zipcode " +
+                            "where area.name=N'" + DdlProvince.Items[DdlProvince.SelectedIndex] + "'";
         }
         else
         {
-            query = "select SchoolName, TotalScore, ScoreLevel, zipcode.name " +
+            query = "select SchoolName, TotalScore, ScoreLevel, area.name " +
                                        "from KPIRecordMain " +
                                        "left join Account on account.school = kpirecordmain.schoolname " +
-                                       "left join zipcode on zipcode.zipcode = account.zipcode " +
-                                       "where zipcode.name=N'" + LbProvince.Text + "'";
+                                       "left join area on area.id = account.zipcode " +
+                                       "where area.name=N'" + LbProvince.Text + "'";
         }
 
 

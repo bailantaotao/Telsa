@@ -87,7 +87,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select zipcode.name from zipcode";
+        Query = "select name from Area where ID <= 31 order by id asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -133,7 +133,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         ArrayList data = new ArrayList();
 
         Query = "select School from Account " +
-                            "left join Zipcode on Account.zipcode = ZIPCode.zipcode " +
+                            "left join Area on Account.zipcode = Area.ID " +
                             "where School not like N'%專家%' and School not like N'%管理%' " +
                             "group by School ";
         
@@ -168,11 +168,11 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 "from PlanList  " +
                 "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                 "left join Account on PlanListUser.PlanSchool = Account.School " +
-                "left join ZIPCode on ZIPCode.ZIPCode = Account.Zipcode ";
+                "left join Area on Area.ID = Account.Zipcode ";
 
         string tmp = string.Empty;
         string[] storeParam = new string[5];
-        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Zipcode.Name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
+        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Area.name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
         storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
@@ -194,7 +194,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
             }
         }
-        Query += (tmp.Length > 0) ? tmp + "PlanSchool <> '' " : "where PlanSchool <> '' ";
+        Query += (tmp.Length > 0) ? tmp + "and PlanSchool <> '' " : "where PlanSchool <> '' ";
         
 
 
@@ -223,25 +223,25 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         if (ms.GetAllColumnData(Query, data))
         {
             LbCompleted.Text = "<table style='width:750px;'>";
-            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSN + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanYear + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</td>";            
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</td>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#0008ff;'>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</font></td>";
             // +[20140906, HungTao] add function for plan complete numbers
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipFinishRate + "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipFinishRate + "</font></td>";
             // -[20140906, HungTao] add function for plan complete numbers
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipPlanStatus + "</td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.TipPlanStatus + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += "</font></td>";
             LbCompleted.Text += "</tr>";
 
             LbTotalCount.Text = Resources.Resource.TipTotal + " " + data.Count.ToString() + " " + Resources.Resource.TipNumbers;
@@ -462,7 +462,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                         //if (((string[])(userData[0]))[2].ToLower().Equals("true"))
                         //{
                         //要換到view的頁面
-                        LbCompleted.Text += "<a href='PlanMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
+                        LbCompleted.Text += "<a href='PlanViewMain.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
                         //}
                         //else
                         //{

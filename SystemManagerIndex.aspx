@@ -93,6 +93,9 @@
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnSendAnnocement" runat="server" Text="<%$ Resources:Resource, BtnSendAnnocement%>" OnClick="BtnSendAnnocement_Click" />
                 </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 260px">
+                    <asp:Button ID="BtnImportProvinceData" runat="server" Text="导入项目省校" OnClick="BtnImportProvinceData_Click"  />
+                </div>
             </div>
             <div id="BlockRightUp">
                 <div style="text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">

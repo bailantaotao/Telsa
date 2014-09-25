@@ -176,9 +176,11 @@
                             <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="90px">
                                 <ItemTemplate>
                                      <%--<asp:TextBox ID="column6" runat="server" Width="50px"></asp:TextBox>--%>
-                                    <asp:DropDownList ID="column6" runat="server" Width="90px">
+                                    <%--<asp:DropDownList ID="column6" runat="server" Width="90px">
                                         <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
+                                    <asp:LinkButton ID="LkbChoosePersonInCharge" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge" Text="请选择" Width="60px"></asp:LinkButton>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 

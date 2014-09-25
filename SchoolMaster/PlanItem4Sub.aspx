@@ -171,13 +171,15 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column5" runat="server" Width="80px"></asp:TextBox>
+                                    <%--<asp:TextBox ID="column5" runat="server" Width="80px"></asp:TextBox>
                                     <asp:DropDownList ID="column51" runat="server" Width="80px">
                                         <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
+                                    <asp:LinkButton ID="LkbChoosePersonInCharge" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge" Text="请选择" Width="60px"></asp:LinkButton>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
-
+                                <HeaderStyle Width="80px"/>
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="预算"  ItemStyle-Width="50">
@@ -235,11 +237,13 @@
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="70px">
+                            <asp:TemplateField HeaderText="负责人"  ItemStyle-Width="80px">
                                 <ItemTemplate>
-                                    <asp:DropDownList ID="column11" runat="server">
+                                    <asp:LinkButton ID="LkbChoosePersonInCharge2" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge2" Text="请选择" Width="60px"></asp:LinkButton>
+                                    <%--<asp:DropDownList ID="column11" runat="server">
                                         <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
                                      <%--<asp:TextBox ID="column11" runat="server" Width="50px"></asp:TextBox>--%>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />

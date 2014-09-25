@@ -171,7 +171,152 @@
                         </tr>
                     </table>
                     <table width="739px">
+                        <thead>
+                            <tr>
+                                <th width="350px">名稱</th>
+                                <th width="70px">範本</th>
+                                <th width="70px">已上傳</th>
+                                <%--<th width="50px">上傳</th>--%>
+                                <th width="50px">下載</th>
+                            </tr>
+                        </thead>
                         <tr>
+                            <td>
+                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem1 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach1.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
+                            </td>
+                            <%--<td>
+                                <asp:Button ID="Button2" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click" CommandArgument="1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem2 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach2.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
+                            </td>
+                           <%-- <td>
+                                <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button4" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="2" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label6" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem3 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach3.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
+                            </td>
+                           <%-- <td>
+                                <asp:Button ID="Button5" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button6" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="3" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label8" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem4 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach4.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
+                            </td>
+                           <%-- <td>
+                                <asp:Button ID="Button7" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button8" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click"  CommandArgument="4" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label10" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem5 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach5.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus5" runat="server" Text=""></asp:Label>
+                            </td>
+                           <%-- <td>
+                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button10" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="5" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label12" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem6 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach6.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus6" runat="server" Text=""></asp:Label>
+                            </td>
+                            <%--<td>
+                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button12" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click"  CommandArgument="6" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label14" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem7 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach7.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus7" runat="server" Text=""></asp:Label>
+                            </td>
+                            <%--<td>
+                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button14" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click" CommandArgument="7" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label16" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem8 %>"></asp:Label>
+                            </td>
+                            <td>
+                                <a href="../template/stage3/attach8.doc"><font color="red">參考範例</font></a>
+                            </td>
+                            <td>
+                                <asp:Label ID="LbStatus8" runat="server" Text=""></asp:Label>
+                            </td>
+                            <%--<td>
+                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                            </td>--%>
+                            <td>
+                                <asp:Button ID="Button16" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="8" />
+                            </td>
+                        </tr>
+                        <%--<tr>
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem1" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem1 %>" OnClick="LkbDownloadItem1_Click"></asp:LinkButton>
                             </td>
@@ -210,7 +355,7 @@
                             <td align="left">
                                 <asp:LinkButton ID="LkbDownloadItem8" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem8 %>" OnClick="LkbDownloadItem8_Click">></asp:LinkButton>
                             </td>
-                        </tr>
+                        </tr>--%>
                     </table>
                 </div>
             </div>

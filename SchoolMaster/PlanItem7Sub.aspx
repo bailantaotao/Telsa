@@ -131,7 +131,7 @@
                                 负责人
                             </td>
                             <td width="80px" class="table">
-                                <asp:DropDownList ID="DdlName" runat="server" Width="80px"></asp:DropDownList>
+                                <asp:TextBox ID="DdlName" runat="server" Width="80px"></asp:TextBox>
                             </td>
                             <td width="50px" class="table">
                                 职称
