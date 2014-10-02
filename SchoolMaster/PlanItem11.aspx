@@ -138,23 +138,25 @@
 <ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Column5" HeaderText="活动与措施" ItemStyle-Width="90px" >
+                            <HeaderStyle Width="120px" />
 <ItemStyle Width="90px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Column6" HeaderText="开始时间" ItemStyle-Width="80px" >
+                                <HeaderStyle Width="100px" />
 <ItemStyle Width="80px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="Column7" HeaderText="结束时间" ItemStyle-Width="80px" >
+                                <HeaderStyle Width="100px" />
 <ItemStyle Width="80px"></ItemStyle>
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Column8" HeaderText="负责人" ItemStyle-Width="70px" >
-<ItemStyle Width="70px"></ItemStyle>
                             </asp:BoundField>
                              <asp:TemplateField HeaderText="完成确认"  ItemStyle-Width="50">
                                 <ItemTemplate>
                                      <%--<asp:TextBox ID="column9" runat="server" Width="50px"></asp:TextBox>--%>
-                                    <asp:CheckBox ID="column9" runat="server" />                                    
+                                    <asp:CheckBox ID="column8" runat="server" />                                    
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
+
+                                 <HeaderStyle Width="100px" />
 
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
