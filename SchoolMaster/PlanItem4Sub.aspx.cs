@@ -498,7 +498,10 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                     //dtCurrentTable.Rows[i - 1]["column11"] = box11.SelectedValue;
 
                     rowIndex++;
+
+                    drCurrentRow[0] = box1.Text;
                 }
+                
                 List<PersonInCharge> personInCharge = (List<PersonInCharge>)Session["PersonInCharge"];
                 personInCharge.Add(new PersonInCharge());
                 Session["PersonInCharge"] = personInCharge;
