@@ -346,6 +346,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
 
 
                     rowIndex++;
+                    drCurrentRow[0] = box1.Text;
                 }
                 dtCurrentTable.Rows.Add(drCurrentRow);
                 ViewState["dt"] = dtCurrentTable;
