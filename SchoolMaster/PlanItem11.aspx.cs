@@ -165,7 +165,7 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     query = "update PlanTargetActivity set " +
-                            "PlanTargetActivity.Finish ='" + ((CheckBox)GvSchool.Rows[i].Cells[8].FindControl("Column9")).Checked + "' " +
+                            "PlanTargetActivity.Finish ='" + ((CheckBox)GvSchool.Rows[i].Cells[7].FindControl("Column8")).Checked + "' " +
                             "where SN = '" + Session["UserPlanListSN"].ToString() + "' and " +
                             "DimensionsID = '" + dt.Rows[i]["PlanTargetActivityDimensionsID"] + "' and " +
                             "PlanSummaryDimensionsNO = '" + dt.Rows[i]["PlanTargetActivityPlanSummaryDimensionsNO"] + "' and " +
