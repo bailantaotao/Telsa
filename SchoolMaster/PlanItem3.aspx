@@ -133,7 +133,7 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="优势（内部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px" TextMode="MultiLine"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -174,7 +174,7 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="劣势（內部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px" TextMode="MultiLine"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -215,7 +215,7 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="机遇（外部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px" TextMode="MultiLine"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -256,7 +256,7 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="挑战（外部因素）" ItemStyle-Width="620px">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="column1" runat="server" Width="620px"></asp:TextBox>
+                                    <asp:TextBox ID="column1" runat="server" Width="620px" TextMode="MultiLine"></asp:TextBox>
                                 </ItemTemplate>
 
 <ItemStyle Width="50px"></ItemStyle>
@@ -284,7 +284,7 @@
                 <table width="739px" style="margin-top:20px">
                     <tr>
                         <td colspan="2" align="left">
-                            学校发展方向: <asp:TextBox ID="TbSchoolDirection" runat="server" Width="580px"></asp:TextBox>
+                            学校发展方向: <asp:TextBox ID="TbSchoolDirection" runat="server" Width="580px" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>

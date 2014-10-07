@@ -162,7 +162,7 @@
                                 个人优势
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbAdvantage" runat="server" Width="530px"></asp:TextBox>
+                                <asp:TextBox ID="TbAdvantage" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -170,7 +170,7 @@
                                 存在的问题 
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbProblem" runat="server" Width="530px"></asp:TextBox>
+                                <asp:TextBox ID="TbProblem" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -178,7 +178,7 @@
                                 发展的机遇 
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbOpportunity" runat="server" Width="530px"></asp:TextBox>
+                                <asp:TextBox ID="TbOpportunity" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -186,7 +186,7 @@
                                 面临的挑战
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbChallenge" runat="server" Width="530px"></asp:TextBox>
+                                <asp:TextBox ID="TbChallenge" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                     </table>
