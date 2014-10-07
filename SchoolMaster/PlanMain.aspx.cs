@@ -153,6 +153,44 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
 
     protected void btnUpload_Click(object sender, EventArgs e)
     {
+        Button btn = (Button)sender;
+        if (btn.CommandArgument.Equals("1"))
+        {
+            Session["targetUploadIndex"] = 1;
+        }
+        else if (btn.CommandArgument.Equals("2"))
+        {
+            Session["targetUploadIndex"] = 2;
+        }
+        else if (btn.CommandArgument.Equals("3"))
+        {
+            Session["targetUploadIndex"] = 3;
+        }
+        else if (btn.CommandArgument.Equals("4"))
+        {
+            Session["targetUploadIndex"] = 4;
+        }
+        else if (btn.CommandArgument.Equals("5"))
+        {
+            Session["targetUploadIndex"] = 5;
+        }
+        else if (btn.CommandArgument.Equals("6"))
+        {
+            Session["targetUploadIndex"] = 6;
+        }
+        else if (btn.CommandArgument.Equals("7"))
+        {
+            Session["targetUploadIndex"] = 7;
+        }
+        else if (btn.CommandArgument.Equals("8"))
+        {
+            Session["targetUploadIndex"] = 8;
+        }
+        else if (btn.CommandArgument.Equals("9"))
+        {
+            Session["targetUploadIndex"] = 9;
+        }
+
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanItemUpload.aspx', '', config='height=500,width=550')", true);
     }
     protected void LkbPlanItem6_Click(object sender, EventArgs e)

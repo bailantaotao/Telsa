@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
     <div>
         <table width="550px">
-            <tr>
+            <%--<tr>
                 <td width="20%">
                     上传项目:
                 </td>                
@@ -32,7 +32,7 @@
                         <asp:ListItem Value="7">本学年制定和实施学校发展计画进程表</asp:ListItem>                        
                     </asp:DropDownList>
                 </td>
-            </tr>
+            </tr>--%>
             <tr>
                 <td>上传档案</td>
                 <td class="auto-style1">
