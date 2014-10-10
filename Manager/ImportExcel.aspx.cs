@@ -37,11 +37,11 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
     }
     protected void Page_Init(object sender, EventArgs e)
     {
-        //if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
-        //    Response.Redirect("../SessionOut.aspx");
-        //if (!Session["ClassCode"].ToString().Equals("0"))
-        //    Response.Redirect("../SessionOut.aspx");
-        Session["UserID"] = "123";
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("2"))
+            Response.Redirect("../SessionOut.aspx");
+        
         if (!IsPostBack)
         {
             DdlProvince.Items.Add(new ListItem(Resources.Resource.TipPlzChoose, "0"));
