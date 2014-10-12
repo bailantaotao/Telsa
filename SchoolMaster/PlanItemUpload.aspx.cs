@@ -117,6 +117,8 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         LbStatus.Text = "上传成功 " + sb.ToString();
         if (Session["targetUploadIndex"] != null)
             Session.Remove("targetUploadIndex");
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.opener.location.href='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString()+ "';window.close();", true);
     }
 
     private string getSemster()
