@@ -126,37 +126,37 @@
                         <tr>
                             <td width="25%" class="table">办学理念：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:TextBox ID="TbIdea" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TbIdea" runat="server" Width="540px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">校训：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:TextBox ID="TbMotto" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TbMotto" runat="server" Width="540px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">校风：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:TextBox ID="TbSpirit" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TbSpirit" runat="server" Width="540px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">学校概况：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:TextBox ID="TbOverview" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TbOverview" runat="server" Width="540px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">办学特色：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:TextBox ID="TbCharacteristic" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TbCharacteristic" runat="server" Width="540px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td width="25%" class="table">学校发生的变化：</td>
                             <td width="75%" align="left" class="table">
-                                <asp:TextBox ID="TbChange" runat="server" Width="540px"></asp:TextBox>
+                                <asp:TextBox ID="TbChange" runat="server" Width="540px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                     </table>

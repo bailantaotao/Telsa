@@ -47,6 +47,7 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
         if (!IsPostBack)
         {
             setInitial();
+            
         }
         //getSchoolName(schoolName);
         //LbSchoolName.Text = schoolName.ToString();

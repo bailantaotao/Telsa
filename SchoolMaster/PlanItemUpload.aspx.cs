@@ -34,7 +34,7 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
     }
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || Session["targetUploadIndex"] == null)
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
@@ -81,7 +81,7 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         //如果事先宣告 using System.Text;
         StringBuilder sb = new StringBuilder();
 
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + (DdlUploadFile.SelectedIndex + 1).ToString() +"."+ FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length-1)];
+        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + Session["targetUploadIndex"].ToString() +"."+ FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length-1)];
         string pathToCheck = appPath + saveDir + fileName;
         //===========================================(Start)
         foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -115,6 +115,10 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         
 
         LbStatus.Text = "上传成功 " + sb.ToString();
+        if (Session["targetUploadIndex"] != null)
+            Session.Remove("targetUploadIndex");
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.opener.location.href='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString()+ "';window.close();", true);
     }
 
     private string getSemster()

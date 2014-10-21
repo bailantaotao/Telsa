@@ -198,7 +198,7 @@
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button2" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button2" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="1"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click" CommandArgument="1" />
@@ -215,7 +215,7 @@
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="2" Height="21px"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button4" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="2" />
@@ -232,7 +232,7 @@
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button5" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button5" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="3"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button6" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="3" />
@@ -249,7 +249,7 @@
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button7" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button7" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="4"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button8" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click"  CommandArgument="4" />
@@ -266,7 +266,7 @@
                                 <asp:Label ID="LbStatus5" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button9" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="5"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button10" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="5" />
@@ -283,7 +283,7 @@
                                 <asp:Label ID="LbStatus6" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button11" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="6"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button12" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click"  CommandArgument="6" />
@@ -300,7 +300,7 @@
                                 <asp:Label ID="LbStatus7" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button13" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="7"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button14" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="ButtonDownLoad_Click" CommandArgument="7" />
@@ -317,7 +317,7 @@
                                 <asp:Label ID="LbStatus8" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click"/>
+                                <asp:Button ID="Button15" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="8"/>
                             </td>
                             <td>
                                 <asp:Button ID="Button16" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="8" />

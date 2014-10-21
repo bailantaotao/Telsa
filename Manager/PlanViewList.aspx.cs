@@ -334,7 +334,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[2] + "</td>";
+                LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
 
                 // +[20140906, HungTao] add function for plan complete numbers
                 string whetherDo = "select Count(PlanStatus) " +

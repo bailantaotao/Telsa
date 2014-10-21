@@ -268,7 +268,7 @@
                     
                 </div>
                 <div style="float:left; margin-top:20px">
-                    <asp:Button ID="BtnAdd" runat="server" Text="<%$ Resources:Resource, TipPlanAdd %>" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
+                    <asp:Button ID="BtnAdd" runat="server" Text="新增目标活动与措施" OnClick="BtnAdd_Click"  Font-Size="14pt"/>
                 </div>
                 <table width="739px">
                     <tr>

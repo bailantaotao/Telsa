@@ -135,58 +135,58 @@
                                 问题一
                             </td>
                             <td class="table">
-                                <asp:TextBox ID="TbQuestion1" runat="server" Width="450px"></asp:TextBox>
+                                <asp:TextBox ID="TbQuestion1" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td align="left" class="table">
                                 问题二
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion2" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion2" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td align="left" class="table">
                                 问题三
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion3" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion3" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td width="25%" rowspan="3" class="table">人格陶冶：</td">
                             <td align="left" class="table">
                                 问题一
                             </td>
-                            <td><asp:TextBox ID="TbQuestion4" runat="server" Width="450px"></asp:TextBox></td>
+                            <td><asp:TextBox ID="TbQuestion4" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td align="left" class="table">
                                 问题二
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion5" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion5" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td align="left" class="table">
                                 问题三
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion6" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion6" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td width="25%" rowspan="3" class="table">学校管理：</td>
                             <td align="left" class="table">
                                 问题一
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion7" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion7" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td align="left" class="table">
                                 问题二
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion8" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion8" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td align="left" class="table">
                                 问题三
                             </td>
-                            <td class="table"><asp:TextBox ID="TbQuestion9" runat="server" Width="450px"></asp:TextBox></td>
+                            <td class="table"><asp:TextBox ID="TbQuestion9" runat="server" Width="450px" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                     </table>
                     

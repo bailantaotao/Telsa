@@ -81,7 +81,9 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         string query = "select PlanSummaryDimensions.DimensionsID, PlanSummaryDimensions.NO, PlanSummaryDimensions.Description, PlanTargetActivity.Target from PlanSummaryDimensions " +
             "left join PlanTargetActivity on PlanTargetActivity.SN = PlanSummaryDimensions.SN and PlanTargetActivity.PlanSummaryDimensionsNO = PlanSummaryDimensions.NO " +
             "and PlanTargetActivity.DimensionsID = PlanSummaryDimensions.DimensionsID " +
-            " where PlanSummaryDimensions.SN ='" + Session["UserPlanListSN"].ToString() + "' order by DimensionsID asc, NO asc";
+            "where PlanSummaryDimensions.SN ='" + Session["UserPlanListSN"].ToString() + "' " +
+            "group by PlanTargetActivity.target,PlanSummaryDimensions.DimensionsID,PlanSummaryDimensions.NO,PlanSummaryDimensions.Description " +
+            "order by DimensionsID asc, NO asc";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)

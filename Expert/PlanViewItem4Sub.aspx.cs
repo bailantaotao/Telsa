@@ -145,15 +145,17 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
             dr = dt.NewRow();
             dr["column1"] = d[0].Equals("") ? Resources.Resource.TipNotWrite : d[0];
             dr["column2"] = d[1].Equals("") ? Resources.Resource.TipNotWrite : d[1];
-            dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[2];
-            dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[3];
+            dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[2].Split(' ')[0];
+            dr["column4"] = d[3].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[3].Split(' ')[0];
             //dr["column5"] = (d[4].Equals(Resources.Resource.TipPlzChoose) || d[4].Equals("")) ? Resources.Resource.TipNotWrite : d[4];
+            dr["column5"] = findPersonInCharge(i, "PlanTargetActivityPersonInCharge");
             dr["column6"] = d[5].Equals("0") ? Resources.Resource.TipNotWrite : d[5];
             dr["column7"] = d[6].Equals("") ? Resources.Resource.TipNotWrite : d[6];
             dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
             dr["column9"] = d[8].Equals("") ? Resources.Resource.TipNotWrite : d[8];
-            dr["column10"] = d[9].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[9];
+            dr["column10"] = d[9].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[9].Split(' ')[0];
             //dr["column11"] = (d[10].Equals(Resources.Resource.TipPlzChoose) || d[10].Equals("")) ? Resources.Resource.TipNotWrite : d[10];
+            dr["column11"] = findPersonInCharge(i, "PlanTargetActivityPersonInCharge2");
             dt.Rows.Add(dr);
             personInCharge.Add(new PersonInCharge());
             personInCharge2.Add(new PersonInCharge());
@@ -166,6 +168,30 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
 
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
+    }
+
+    private string findPersonInCharge(int index, string targetTable)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string personInCharge = string.Empty;
+        string query = "select PlanTargetActivityNO, NO, PersonInCharge " +
+                       "from " + targetTable + " " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                       "DimensionsID = '" + Request["DimensionsID"].ToString() + "' and " +
+                       "PlanSummaryDimensionsNO = '" + Request["NO"].ToString() + "' " +
+                       "order by PlanTargetActivityNO asc, No asc";
+
+        ms.GetAllColumnData(query, data);
+        for (int j = 0; j < data.Count; j++)
+        {
+            string[] DBData = (string[])data[j];
+            if (index.ToString().Equals(DBData[0]))
+            {
+                personInCharge += DBData[2] + "\n";
+            }
+        }
+        return personInCharge;
     }
 
     private void setPersonInChargeData()
