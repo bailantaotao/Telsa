@@ -127,12 +127,12 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
 
             /** 更新原來的資料表內容 */
             query = "update PlanMember set " +
-                    "PlanName =N'" + schoolUserData[0] + "'," +
-                    "PlanGender =N'" + (schoolUserData[1].Equals("0")?"男":"女") + "'," +
-                    "PlanEthnic =N'" + schoolUserData[2] + "'," +
-                    "PlanCulture =N'" + schoolUserData[3] + "'," +
-                    "PlanTel =N'" + schoolUserData[4] + "'," +
-                    "PlanAddress =N'" + schoolUserData[5] + "' " +
+                    "PlanName =N'" + schoolUserData[0] + "' " +
+                    //"PlanGender =N'" + (schoolUserData[1].Equals("0")?"男":"女") + "'," +
+                    //"PlanEthnic =N'" + schoolUserData[2] + "'," +
+                    //"PlanCulture =N'" + schoolUserData[3] + "'," +
+                    //"PlanTel =N'" + schoolUserData[4] + "'," +
+                    //"PlanAddress =N'" + schoolUserData[5] + "' " +
                     "where SN = '" + Session["UserPlanListSN"].ToString() + "' AND PlanNo='" + (Convert.ToInt32(Request["PTAN"].ToString())+1) + "'";
             //query = "insert into PlanMember (SN, PlanNo, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanTel, PlanAddress) VALUES ('" +
             //     Session["UserPlanListSN"].ToString() + "','" +
@@ -154,12 +154,12 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
                 {
                     DataTable oldData = personIncharge[i];
                     oldData.Rows[0]["PlanName"] = schoolUserData[0];
-                    oldData.Rows[0]["PlanGender"] = schoolUserData[1];
-                    oldData.Rows[0]["PlanEthnic"] = schoolUserData[2];
-                    oldData.Rows[0]["PlanCulture"] = schoolUserData[3];
+                    //oldData.Rows[0]["PlanGender"] = schoolUserData[1];
+                    //oldData.Rows[0]["PlanEthnic"] = schoolUserData[2];
+                    //oldData.Rows[0]["PlanCulture"] = schoolUserData[3];
                     
-                    oldData.Rows[0]["PlanTel"] = schoolUserData[4];
-                    oldData.Rows[0]["PlanAddress"] = schoolUserData[5];
+                    //oldData.Rows[0]["PlanTel"] = schoolUserData[4];
+                    //oldData.Rows[0]["PlanAddress"] = schoolUserData[5];
 
 
                     personIncharge[i] = oldData;
