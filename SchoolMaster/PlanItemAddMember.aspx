@@ -18,7 +18,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConStr %>" SelectCommand="SELECT [SU_NAME], [ID] FROM [SchoolUser] WHERE ([A_ID] = @A_ID) AND ([C_ID] = 459) ORDER BY [SU_NAME] asc">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConStr %>" SelectCommand="select Account.UserName, Account.ID from Account left join SchoolUser on Account.ID = SchoolUser.SHL_ID and Account.UserName = SchoolUser.SU_NAME where SchoolUser.A_ID = @A_ID">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="0" Name="A_ID" SessionField="Province" Type="Int32" />
             </SelectParameters>
