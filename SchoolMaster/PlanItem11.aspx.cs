@@ -86,7 +86,6 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("Column6", typeof(string)));
         dt.Columns.Add(new DataColumn("Column7", typeof(string)));
         dt.Columns.Add(new DataColumn("Column8", typeof(string)));
-        dt.Columns.Add(new DataColumn("Column9", typeof(string)));
         dt.Columns.Add(new DataColumn("PlanTargetActivityNO", typeof(string)));
         dt.Columns.Add(new DataColumn("PlanTargetActivityDimensionsID", typeof(string)));
         dt.Columns.Add(new DataColumn("PlanTargetActivityPlanSummaryDimensionsNO", typeof(string)));
@@ -94,7 +93,7 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         string query = "select KPIDimensionsNameMapping.DimensionsName, PlanSummaryDimensions.Description, PlanTargetActivity.Target, PlanTargetActivity.Activity, " +
-                        "PlanTargetActivity.StartTime, PlanTargetActivity.EndTime, PlanTargetActivity.PersonInCharge, PlanTargetActivity.Finish, PlanTargetActivity.NO, PlanTargetActivity.DimensionsID, PlanTargetActivity.PlanSummaryDimensionsNO " +
+                        "PlanTargetActivity.StartTime, PlanTargetActivity.EndTime, PlanTargetActivity.Finish, PlanTargetActivity.NO, PlanTargetActivity.DimensionsID, PlanTargetActivity.PlanSummaryDimensionsNO " +
                         "from PlanTargetActivity " +
                         "left join KPIDimensionsNameMapping on PlanTargetActivity.DimensionsID = KPIDimensionsNameMapping.DimensionsID " +
                         "left join PlanSummaryDimensions on PlanTargetActivity.SN = PlanSummaryDimensions.SN and PlanSummaryDimensions.DimensionsID = KPIDimensionsNameMapping.DimensionsID and PlanSummaryDimensions.No = PlanTargetActivity.PlanSummaryDimensionsNo " +
@@ -111,16 +110,15 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
             
             dr["Column1"] = (i+1).ToString();
             dr["Column2"] = d[0];
-            dr["Column3"] = d[1];
-            dr["Column4"] = d[2];
-            dr["Column5"] = d[3];
-            dr["Column6"] = d[4];
-            dr["Column7"] = d[5];
+            dr["Column3"] = d[1].Equals("") ? Resources.Resource.TipNotWrite : d[1];
+            dr["Column4"] = d[2].Equals("") ? Resources.Resource.TipNotWrite : d[2];
+            dr["Column5"] = d[3].Equals("") ? Resources.Resource.TipNotWrite : d[3];
+            dr["Column6"] = d[4].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[4].Split(' ')[0];
+            dr["Column7"] = d[5].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[5].Split(' ')[0];
             dr["Column8"] = d[6];
-            dr["Column9"] = d[7];
-            dr["PlanTargetActivityNO"] = d[8];
-            dr["PlanTargetActivityDimensionsID"] = d[9];
-            dr["PlanTargetActivityPlanSummaryDimensionsNO"] = d[10];
+            dr["PlanTargetActivityNO"] = d[7];
+            dr["PlanTargetActivityDimensionsID"] = d[8];
+            dr["PlanTargetActivityPlanSummaryDimensionsNO"] = d[9];
             dt.Rows.Add(dr);
         }
         ViewState["dt"] = dt;
@@ -132,8 +130,8 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
         {
             string[] d = (string[])data[i];
             bool result = false;
-            bool parseSuccess = bool.TryParse(d[7], out result);
-            ((CheckBox)GvSchool.Rows[i].Cells[8].FindControl("Column9")).Checked = result;
+            bool parseSuccess = bool.TryParse(d[6], out result);
+            ((CheckBox)GvSchool.Rows[i].Cells[7].FindControl("Column8")).Checked = result;
         }
 
     }
@@ -146,7 +144,7 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString());
+        Response.Redirect("PlanMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString());
     }
 
     protected void BtnStore_Click(object sender, EventArgs e)
@@ -167,7 +165,7 @@ public partial class SchoolMaster_PlanItem11 : System.Web.UI.Page
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     query = "update PlanTargetActivity set " +
-                            "PlanTargetActivity.Finish ='" + ((CheckBox)GvSchool.Rows[i].Cells[8].FindControl("Column9")).Checked + "' " +
+                            "PlanTargetActivity.Finish ='" + ((CheckBox)GvSchool.Rows[i].Cells[7].FindControl("Column8")).Checked + "' " +
                             "where SN = '" + Session["UserPlanListSN"].ToString() + "' and " +
                             "DimensionsID = '" + dt.Rows[i]["PlanTargetActivityDimensionsID"] + "' and " +
                             "PlanSummaryDimensionsNO = '" + dt.Rows[i]["PlanTargetActivityPlanSummaryDimensionsNO"] + "' and " +

@@ -138,11 +138,13 @@
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanName %>" ItemStyle-Width="50px">
                                 <ItemTemplate>
                                     <%--<asp:TextBox ID="TbName" runat="server" Width="50px"></asp:TextBox>--%>
-                                    <asp:DropDownList ID="TbName" runat="server">
+                                    <%--<asp:DropDownList ID="TbName" runat="server">
                                         <asp:ListItem Value="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
+                                    <asp:LinkButton ID="TbName" runat="server" CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"
+                                                        OnClick="btn_AddPersonInCharge" Text="请选择" Width="60px"></asp:LinkButton>
                                 </ItemTemplate>
-
+                                <HeaderStyle Width="80px"/>
 <ItemStyle Width="50px"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanGender %>"  ItemStyle-Width="50px">
