@@ -26,7 +26,7 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-        LbNO.Text = Session["Semester"].ToString();
+        //LbNO.Text = Session["Semester"].ToString();
         LbYear.Text = Session["PlanYear"].ToString();
     }
     protected void BtnBack_Click(object sender, EventArgs e)
