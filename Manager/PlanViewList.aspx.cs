@@ -44,6 +44,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             Session.Remove("PlanSN");
         if(Session["PlanYear"] != null)
             Session.Remove("PlanYear");
+
+        DdlSemester.Visible = false;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -228,8 +230,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
+            //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            //LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
@@ -329,8 +331,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[1] + "</td>";
-                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
+                //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                //LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -350,7 +352,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 }
                 else
                 {
-                    string tmpSemester = ((string[])(data[i]))[3];
+                    string tmpSemester = "1";
+                    //string tmpSemester = ((string[])(data[i]))[3];
                     int intSemester = -1;
                     bool isDigit = Int32.TryParse(tmpSemester, out intSemester);
                     if (isDigit)
