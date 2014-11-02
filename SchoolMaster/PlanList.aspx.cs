@@ -62,7 +62,7 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
     private void SearchType()
     {
 
-        Query = "select SN, PlanYear, PlanDeadline, PlanSemester " +
+        Query = "select SN, PlanYear, PlanDeadline " +
                 "from PlanList ";
                 
 
@@ -99,8 +99,6 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</font></td>";
             // +[20140906, HungTao] add function for plan complete numbers
@@ -198,8 +196,6 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[1] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
-                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
 
 
@@ -217,22 +213,18 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
                 }
                 else
                 {
-                    string tmpSemester = ((string[])(data[i]))[3];
-                    int intSemester = -1;
-                    bool isDigit =  Int32.TryParse(tmpSemester, out intSemester);
-                    if (isDigit)
-                    {
-                        string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[intSemester-1]))[1] + "' ";
-                        ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
-                        queryTargetNumbers += "and Finish='True'";
-                        StringBuilder FinishTargetNumbers = new StringBuilder();
-                        ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
+
+                    string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[0]))[1] + "' ";
+                    ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
+                    queryTargetNumbers += "and Finish='True'";
+                    StringBuilder FinishTargetNumbers = new StringBuilder();
+                    ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
 
 
 
-                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                        LbCompleted.Text += FinishTargetNumbers.ToString() + " / " + TotalTargetNumbers.ToString() + "</td>";
-                    }
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                    LbCompleted.Text += FinishTargetNumbers.ToString() + " / " + TotalTargetNumbers.ToString() + "</td>";
+                    
                 }
                 // -[20140906, HungTao] add function for plan complete numbers
 
