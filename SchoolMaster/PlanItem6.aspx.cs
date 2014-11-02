@@ -45,4 +45,8 @@ public partial class SchoolMaster_PlanItem6 : System.Web.UI.Page
     {
         Response.Redirect("PlanItem6Sub.aspx?Title="+RadioButtonList1.SelectedValue + "");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

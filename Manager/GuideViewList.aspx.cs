@@ -270,4 +270,8 @@ public partial class Manager_GuideViewList : System.Web.UI.Page
     {
         
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

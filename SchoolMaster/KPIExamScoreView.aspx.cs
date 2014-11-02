@@ -214,4 +214,8 @@ public partial class SchoolMaster_KPIExamScoreView : System.Web.UI.Page
         Query = Session["KPIExamScoreViewQuery"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

@@ -726,4 +726,8 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
     protected void DdlDomain_SelectedIndexChanged(object sender, EventArgs e)
     {
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

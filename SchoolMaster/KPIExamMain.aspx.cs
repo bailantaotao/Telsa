@@ -195,4 +195,8 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
         Session["DdlDomain_SelectValue"] = DdlDomain.SelectedValue;
         Session["DdlDomain_SelectIndex"] = DdlDomain.SelectedIndex;
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

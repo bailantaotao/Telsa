@@ -416,4 +416,8 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('KPIExamNotifyAll.aspx', '', config='height=500,width=739')", true);
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

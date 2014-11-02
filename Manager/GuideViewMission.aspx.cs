@@ -68,4 +68,8 @@ public partial class Manager_GuideViewMission : System.Web.UI.Page
     {
         Response.Redirect("GuideViewMissionList.aspx");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

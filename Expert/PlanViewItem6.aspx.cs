@@ -45,4 +45,15 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
     {
         Response.Redirect("PlanViewItem6Sub.aspx?Title="+RadioButtonList1.SelectedValue + "");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
 }

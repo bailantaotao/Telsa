@@ -73,4 +73,8 @@ public partial class Manager_GuideViewSummary : System.Web.UI.Page
             LbGuideViewSummaryCycle.Text += d[6];
         }
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

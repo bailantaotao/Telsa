@@ -253,4 +253,8 @@ public partial class Manager_GuideViewSDPEvaluateResult : System.Web.UI.Page
             GuideResultTargetSchoolComplete.Visible = false;
         }
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

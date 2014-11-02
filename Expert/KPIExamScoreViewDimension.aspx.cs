@@ -345,4 +345,15 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     {
         Response.Redirect("KPIExamMain.aspx");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
 }
