@@ -109,7 +109,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select KPIYear from KPIRecordMain group by KPIYear order by KPIYear asc";
+        Query = "select PlanYear from PlanList order by PlanYear desc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlYear.Items.Add("None");
@@ -164,7 +164,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanList.PlanSemester, PlanListUser.PlanSchool  " +
+        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanListUser.PlanSchool  " +
                 "from PlanList  " +
                 "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                 "left join Account on PlanListUser.PlanSchool = Account.School " +
@@ -172,12 +172,11 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
         string tmp = string.Empty;
         string[] storeParam = new string[5];
-        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Area.name", "PlanList.PlanSemester", "PlanListUser.PlanStatus"};
+        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Area.name", "PlanListUser.PlanStatus"};
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
         storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
-        storeParam[3] = DdlSemester.SelectedIndex == 0 ? null : DdlSemester.Items[DdlSemester.SelectedIndex].ToString();
-        storeParam[4] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
+        storeParam[3] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
         
         for (int i = 0; i <  storeParam.Length ; i++)
         {
@@ -198,7 +197,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         
 
 
-        Query += "order by PlanList.PlanYear desc, PlanList.PlanSemester asc ";
+        Query += "order by PlanList.PlanYear desc ";
         Session["PlanList"] = Query;
     }
         
@@ -228,8 +227,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
@@ -294,7 +291,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 string userQuery = "select planList.PlanYear, planlistuser.sn, planlistuser.planstatus from planlistuser " +
                                     "left join planlist on PlanListUser.PlanListSN = PlanList.SN " + 
                                     "where " +
-                                    "planlistuser.PlanSchool = N'" + ((string[])(data[i]))[4] + "' and " +
+                                    "planlistuser.PlanSchool = N'" + ((string[])(data[i]))[3] + "' and " +
                                     "PlanList.PlanYear = '" + ((string[])(data[i]))[1] + "'";
                 ms.GetAllColumnData(userQuery, userData);
 
@@ -302,7 +299,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
                 string EncryptSN = GetEncryptionString(SN, ((string[])(data[i]))[0]);
                 string EncryptYEAR = GetEncryptionString(YEAR, ((string[])(data[i]))[1]);
-                string EncryptSchoolName = GetEncryptionString(SCHOOLNAME, ((string[])(data[i]))[4]);
+                string EncryptSchoolName = GetEncryptionString(SCHOOLNAME, ((string[])(data[i]))[3]);
                 TimeSpan ts = TimeSpan.Zero;
                 try
                 {
@@ -332,15 +329,13 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
-                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
 
                 // +[20140906, HungTao] add function for plan complete numbers
                 string whetherDo = "select Count(PlanStatus) " +
                        "from PlanlistUser " +
                        "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +
-                       "where PlanListUser.PlanListSN ='" + ((string[])(data[i]))[0] + "' and PlanList.planyear = '" + ((string[])(data[i]))[1] + "' and PlanListUser.PlanSchool=N'" + ((string[])(data[i]))[4] + "'";
+                       "where PlanListUser.PlanListSN ='" + ((string[])(data[i]))[0] + "' and PlanList.planyear = '" + ((string[])(data[i]))[1] + "' and PlanListUser.PlanSchool=N'" + ((string[])(data[i]))[3] + "'";
                 StringBuilder TotalTargetNumbers = new StringBuilder();
                 ms.GetRowNumbers(whetherDo, TotalTargetNumbers);
                 if (TotalTargetNumbers.ToString().Equals("0"))
@@ -350,22 +345,17 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 }
                 else
                 {
-                    string tmpSemester = ((string[])(data[i]))[3];
-                    int intSemester = -1;
-                    bool isDigit = Int32.TryParse(tmpSemester, out intSemester);
-                    if (isDigit)
-                    {
-                        string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[intSemester - 1]))[1] + "' ";
-                        ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
-                        queryTargetNumbers += "and Finish='True'";
-                        StringBuilder FinishTargetNumbers = new StringBuilder();
-                        ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
+                    string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[0]))[1] + "' ";
+                    ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
+                    queryTargetNumbers += "and Finish='True'";
+                    StringBuilder FinishTargetNumbers = new StringBuilder();
+                    ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
 
 
 
-                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                        LbCompleted.Text += FinishTargetNumbers.ToString() + " / " + TotalTargetNumbers.ToString() + "</td>";
-                    }
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                    LbCompleted.Text += FinishTargetNumbers.ToString() + " / " + TotalTargetNumbers.ToString() + "</td>";
+                    
                 }
                 // -[20140906, HungTao] add function for plan complete numbers
 
@@ -489,7 +479,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         }
 
         NODATA:
-            LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;' colspan = '5'>";
+            LbCompleted.Text += "<tr align='center' style='background-color:#FFFFFF;' colspan = '6'>";
             LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
             LbCompleted.Text += "</tr>";

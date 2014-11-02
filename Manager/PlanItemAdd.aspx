@@ -120,15 +120,7 @@
                                         <td align="left">
                                             <asp:TextBox ID="TbYear" runat="server"></asp:TextBox>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left" width="120px" class="auto-style1">
-                                            学期
-                                        </td>
-                                        <td align="left" class="auto-style1">
-                                            <asp:TextBox ID="TbSemester" runat="server"></asp:TextBox>
-                                        </td>
-                                    </tr>
+                                    </tr>                                    
                                     <tr>
                                         <td align="left" width="120px">
                                             提交有效期限
@@ -161,7 +153,6 @@
                                     </EmptyDataTemplate>
                                     <Columns>
                                         <asp:BoundField DataField="Year" HeaderText="年度" ItemStyle-Width="70px" />
-                                        <asp:BoundField DataField="Semester" HeaderText="学期" ItemStyle-Width="70px" />
                                     </Columns>
                                 </asp:GridView>
                             </td>
