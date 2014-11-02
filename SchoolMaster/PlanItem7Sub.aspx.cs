@@ -44,7 +44,6 @@ public partial class SchoolMaster_PlanItem7Sub : System.Web.UI.Page
 
         getTitle();
         getSemster();
-        LbNO.Text = Session["Semester"].ToString();
         LbYear.Text = Session["PlanYear"].ToString();
 
         if (!IsPostBack)
