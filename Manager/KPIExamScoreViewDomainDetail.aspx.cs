@@ -187,5 +187,9 @@ public partial class SchoolMaster_KPIExamScoreViewDomainDetail : System.Web.UI.P
         return false;
 
     }
-    
+
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

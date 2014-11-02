@@ -529,4 +529,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         SearchType();
         LoadInternetStudy(1);
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

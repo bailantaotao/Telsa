@@ -135,5 +135,9 @@ public partial class SchoolMaster_GuideSDPEvaluateResult : System.Web.UI.Page
             LbScoreLevelExpert.Text = d[15];
         }
     }
-    
+
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

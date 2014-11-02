@@ -183,4 +183,8 @@ public partial class SchoolMaster_PlanViewItem9 : System.Web.UI.Page
         }
         return "";
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

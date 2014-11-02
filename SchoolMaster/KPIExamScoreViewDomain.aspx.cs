@@ -236,4 +236,8 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
     {
         Response.Redirect("KPIExamScoreViewDimension.aspx?" + QuestionYear + "=" + Year + "&" + QuestionCycle + "=" + Cycle);        
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

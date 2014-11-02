@@ -105,5 +105,9 @@ public partial class SchoolMaster_PlanViewItem8 : System.Web.UI.Page
     {
         Response.Redirect("PlanViewMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString() + "&SCHOOLNAME=" + Session["SCHOOLNAME"].ToString());
     }
-   
+
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

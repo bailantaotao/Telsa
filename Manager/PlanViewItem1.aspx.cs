@@ -128,4 +128,8 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
     {
         
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

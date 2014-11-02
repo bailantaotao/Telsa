@@ -197,4 +197,8 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
         //(我們會在上傳前,將IFrame隱藏,來避開顯示錯誤.)
         return base.DeterminePostBackMode();
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../../SystemManagerIndex.aspx");
+    }
 }

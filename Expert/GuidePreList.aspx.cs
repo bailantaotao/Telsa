@@ -256,4 +256,15 @@ public partial class Expert_GuidePreList : System.Web.UI.Page
         Query = Session["PlanList"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
 }

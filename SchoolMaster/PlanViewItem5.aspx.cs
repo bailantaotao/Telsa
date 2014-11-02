@@ -159,5 +159,9 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanViewChargeInPerson.aspx?param1=0&param2=0&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
         }
     }
-   
+
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

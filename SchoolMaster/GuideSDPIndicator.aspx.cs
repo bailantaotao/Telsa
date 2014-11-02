@@ -17,4 +17,8 @@ public partial class SchoolMaster_GuideSDPIndicator : System.Web.UI.Page
     {
         Response.Redirect("GuideSDPEvaluateResult.aspx");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

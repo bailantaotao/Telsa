@@ -478,4 +478,8 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
     {
         Response.Redirect("../Default.aspx");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
 }

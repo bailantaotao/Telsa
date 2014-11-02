@@ -338,4 +338,8 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     {
         Response.Redirect("KPIExamScoreView.aspx");
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

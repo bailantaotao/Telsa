@@ -389,4 +389,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         Response.Redirect("../Default.aspx");
     }
 
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

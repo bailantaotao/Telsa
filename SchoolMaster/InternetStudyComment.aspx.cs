@@ -198,4 +198,8 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
             Response.Redirect("InternetStudy.aspx");
         }
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

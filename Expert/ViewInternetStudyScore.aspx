@@ -50,6 +50,9 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlBackIndex %>" OnClick="ImgBtnIndex_Click"/>
+            </div>
+            <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Expert/ViewInternetStudyScore.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>
@@ -98,8 +101,10 @@
                          NavigateUrl="~/Expert/ViewInternetStudyQuestionnaire.aspx"></asp:HyperLink>
                 </div>
                 <div style="text-align:right">
-                    <asp:ImageButton ID="ImgBtnLogout" runat="server"  
-                        ImageUrl="<%$ Resources:Resource, ImgSubIndexUrlLogout %>" OnClick="ImgBtnLogout_Click"/>
+                    <%-- <asp:ImageButton ID="ImgBtnLogout" runat="server"  
+                        ImageUrl="<%$ Resources:Resource, ImgSubIndexUrlLogout %>" OnClick="ImgBtnLogout_Click"/>--%>
+                    <asp:ImageButton ID="ImgBtnIndex" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlBackIndex %>" OnClick="ImgBtnIndex_Click"/>
+                
                 </div>
             </div>
             <div id="BlockRightDown">
