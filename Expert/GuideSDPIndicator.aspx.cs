@@ -17,4 +17,18 @@ public partial class Expert_GuideSDPIndicator : System.Web.UI.Page
     {
         Response.Redirect("GuideSDPEvaluateResult.aspx");
     }
+<<<<<<< HEAD
+=======
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
+>>>>>>> develop
 }

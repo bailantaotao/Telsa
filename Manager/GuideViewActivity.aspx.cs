@@ -258,4 +258,11 @@ public partial class Manager_GuideViewActivity : System.Web.UI.Page
     {
         Response.Redirect("GuideViewActivityList.aspx");
     }
+<<<<<<< HEAD
+=======
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
+>>>>>>> develop
 }

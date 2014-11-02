@@ -179,4 +179,18 @@ public partial class Expert_GuideViewActivityList : System.Web.UI.Page
             Response.Redirect("GuideViewList.aspx?SN=" + Session["GuideSN"].ToString() + "&YEAR=" + Session["GuideYear"].ToString() + "&SCHOOLNAME=" + Session["SCHOOLNAME"].ToString());
         }
     }
+<<<<<<< HEAD
+=======
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
+>>>>>>> develop
 }

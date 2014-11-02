@@ -43,7 +43,11 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+<<<<<<< HEAD
        
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         setName();
         if (!IsPostBack)
@@ -607,5 +611,9 @@ public partial class SchoolMaster_PlanItem1 : System.Web.UI.Page
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanItemAddMember.aspx?PTAN=" + yourAssignedValue + "', '', config='height=500,width=550,scrollbars=yes');", true);
         }
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
     }
 }

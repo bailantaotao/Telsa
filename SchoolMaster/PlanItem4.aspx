@@ -53,6 +53,9 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true">
         </asp:ScriptManager>
         <div id="BlockLeft">
+            <div class ="Option" style="text-align:left">
+                <asp:ImageButton ID="ImgBtnIndex" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlBackIndex %>" OnClick="ImgBtnIndex_Click"/>
+            </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/InternetStudy.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
@@ -109,8 +112,14 @@
                             <td align="left" width="20%">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
+<<<<<<< HEAD
                             <td align="left" width="60%">
                             </td>
+=======
+                            <%-- <td align="left" width="60%">
+                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
+                            </td>--%>
+>>>>>>> develop
                         </tr>
                         <tr>
                             <td colspan="2" align="left">

@@ -169,4 +169,11 @@ public partial class SchoolMaster_GuideViewSDPEvaluateResult : System.Web.UI.Pag
     {
             setInitial();
     }
+<<<<<<< HEAD
+=======
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
+>>>>>>> develop
 }

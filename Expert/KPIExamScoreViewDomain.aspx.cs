@@ -258,4 +258,15 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
     {
         Response.Redirect("KPIExamScoreViewDimension.aspx?" + QuestionYear + "=" + Year + "&" + QuestionCycle + "=" + Cycle + "&" + QuestionSchoolname + "=" + SchoolName +  "&" + QuestionScoreLevel + "=" + ScoreLevel );    
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
 }

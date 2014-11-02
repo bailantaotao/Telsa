@@ -42,7 +42,11 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+<<<<<<< HEAD
         
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         if (!IsPostBack)
         {
@@ -127,5 +131,9 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
     protected void BtnStore_Click(object sender, EventArgs e)
     {
         
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
     }
 }

@@ -26,7 +26,11 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
+<<<<<<< HEAD
         
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
     }
     protected void BtnBack_Click(object sender, EventArgs e)
@@ -44,5 +48,9 @@ public partial class SchoolMaster_PlanViewItem6 : System.Web.UI.Page
     protected void BtnView_Click(object sender, EventArgs e)
     {
         Response.Redirect("PlanViewItem6Sub.aspx?Title="+RadioButtonList1.SelectedValue + "");
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
     }
 }

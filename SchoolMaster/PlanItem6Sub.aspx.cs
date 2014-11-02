@@ -33,6 +33,10 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
+<<<<<<< HEAD
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
     }
 
@@ -483,5 +487,9 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
             }
         }
 
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
     }
 }

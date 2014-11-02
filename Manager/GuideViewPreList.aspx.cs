@@ -470,4 +470,11 @@ public partial class Manager_GuideViewPreList : System.Web.UI.Page
         SearchType();
         LoadInternetStudy(1);
     }
+<<<<<<< HEAD
+=======
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
+    }
+>>>>>>> develop
 }

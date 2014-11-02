@@ -40,7 +40,11 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+<<<<<<< HEAD
         
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         setInitial();
         if (!IsPostBack)
@@ -161,5 +165,16 @@ public partial class SchoolMaster_PlanViewItem4 : System.Web.UI.Page
     {
 
         Response.Redirect("PlanViewItem4Sub.aspx?DimensionsID=3&NO=3");
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
     }
 }

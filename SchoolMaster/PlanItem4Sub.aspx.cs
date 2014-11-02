@@ -38,6 +38,10 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+<<<<<<< HEAD
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         if (Request["NO"] == null || Request["DimensionsID"] == null)
             return;
@@ -749,5 +753,9 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('PlanChargeInPerson2.aspx?param1=" + DID + "&param2=" + PSDN + "&param3=" + yourAssignedValue + "', '', config='height=500,width=300');", true);
         }
     }
-    
+
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

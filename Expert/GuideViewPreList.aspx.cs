@@ -490,4 +490,18 @@ public partial class Expert_GuideViewPreList : System.Web.UI.Page
         SearchType_MingDer();
         LoadInternetStudy_MingDer(1);
     }
+<<<<<<< HEAD
+=======
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
+    }
+>>>>>>> develop
 }

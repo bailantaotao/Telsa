@@ -40,6 +40,10 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+<<<<<<< HEAD
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         if (!IsPostBack)
         {
@@ -303,5 +307,9 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         ms.WriteData(query, sb);
         writeData(3, 3, TbQuestion9.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=3&NO=3");
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
     }
 }

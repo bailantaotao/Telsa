@@ -268,4 +268,8 @@ public partial class SchoolMaster_InternetStudyQuestionnaire : System.Web.UI.Pag
             Response.Redirect("InternetStudy.aspx");
         }
     }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../Index.aspx");
+    }
 }

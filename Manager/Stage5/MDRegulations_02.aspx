@@ -53,6 +53,14 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
+<<<<<<< HEAD
+=======
+                <asp:ImageButton ID="ImgBtnIndex" runat="server" 
+                    ImageUrl="../../Image/zh-CN/ButtonBackIndex.png" 
+                    OnClick="ImgBtnIndex_Click" Width="43px"/>
+            </div>
+            <div class ="Option">
+>>>>>>> develop
                 <img src="../../Image/zh-TW/TipWhite.png" />
                 <asp:HyperLink ID="HlInternetStudy" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="../../Manager/InternetStudyEdit.aspx" Text="<%$ Resources:Resource, HyInternetStudy %>"></asp:HyperLink>
             </div>

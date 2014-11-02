@@ -45,7 +45,11 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
             return;
 
         getTitle();
+<<<<<<< HEAD
         
+=======
+        //LbNO.Text = Session["Semester"].ToString();
+>>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         if (!IsPostBack)
         {
@@ -162,5 +166,9 @@ public partial class SchoolMaster_PlanViewItem6Sub : System.Web.UI.Page
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
         Response.Redirect("PlanViewMain.aspx?SN="+Session["PlanSN"].ToString()+"&YEAR="+Session["PlanYear"].ToString()+"&SCHOOLNAME="+Session["SCHOOLNAME"].ToString());
+    }
+    protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("../SystemManagerIndex.aspx");
     }
 }
