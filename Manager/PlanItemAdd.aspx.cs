@@ -134,12 +134,11 @@ public partial class Manager_PlanItemAdd : System.Web.UI.Page
         DataTable dt = new DataTable();
         DataRow dr = null;
         dt.Columns.Add(new DataColumn("Year", typeof(string)));
-        dt.Columns.Add(new DataColumn("Semester", typeof(string)));
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Planyear, plansemester " +
-                       "from planlist order by PlanYear desc, plansemester asc";
+        string query = "select Planyear " +
+                       "from planlist order by PlanYear desc";
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
         {
@@ -148,7 +147,6 @@ public partial class Manager_PlanItemAdd : System.Web.UI.Page
                 string[] d = (string[])data[i];
                 dr = dt.NewRow();
                 dr["Year"] = d[0];
-                dr["Semester"] = d[1];
                 dt.Rows.Add(dr);
             }
             ViewState["dt"] = dt;
@@ -237,8 +235,6 @@ public partial class Manager_PlanItemAdd : System.Web.UI.Page
     {
         if (TbYear.Text.Equals(""))
             return true;
-        else if (TbSemester.Text.Equals(""))
-            return true;
         else if (TbDeadline.Text.Equals(""))
             return true;
 
@@ -247,7 +243,7 @@ public partial class Manager_PlanItemAdd : System.Web.UI.Page
 
     private bool haveData()
     {
-        string query = "select count(*) from planList where PlanYear='" + TbYear.Text.Trim() + "' and PlanSemester='" + TbSemester.Text.Trim() + "'";
+        string query = "select count(*) from planList where PlanYear='" + TbYear.Text.Trim() + "'";
         StringBuilder sb = new StringBuilder();
         ManageSQL ms = new ManageSQL();
         if (ms.GetRowNumbers(query, sb))
@@ -272,23 +268,21 @@ public partial class Manager_PlanItemAdd : System.Web.UI.Page
         {
             StringBuilder sb = new StringBuilder();
             DataTable dt = (DataTable)ViewState["dt"];
-            if (dt.Rows.Count > 0)
-            {
-                ManageSQL ms = new ManageSQL();
-                string query = string.Empty;
+            
+            ManageSQL ms = new ManageSQL();
+            string query = string.Empty;
 
-                query = "insert into PlanList (PlanYear, PlanDeadline, PlanSemester) VALUES ('" +
-                                TbYear.Text.Trim() + "','" +
-                                TbDeadline.Text.Trim() + "','" +
-                                TbSemester.Text.Trim() + "')";
+            query = "insert into PlanList (PlanYear, PlanDeadline) VALUES ('" +
+                            TbYear.Text.Trim() + "','" +
+                            TbDeadline.Text.Trim() + "')";
 
-                ms.WriteData(query, sb);
+            ms.WriteData(query, sb);
 
-                setInitial();
+            setInitial();
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
                 
-            }
+            
         }
     }
 }

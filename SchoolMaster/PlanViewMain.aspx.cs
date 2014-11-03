@@ -46,7 +46,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
                 
         if (!verifyValid())
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanErrorData + "');window.location='PlanList.aspx';", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanErrorData + "');window.location='PlanViewList.aspx';", true);
             return;
         }
         if (!IsPostBack)
@@ -66,7 +66,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     {
         string saveDir = @"Upload\Stage3\";
         string appPath = Request.PhysicalApplicationPath;
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + targetIndex;
+        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + targetIndex;
         string pathToCheck = appPath + saveDir + fileName;
 
         //===========================================(Start)
@@ -141,12 +141,6 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
 
     protected void LkbPlanItem5_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem5.aspx");
     }
     protected void btnUpload_Click(object sender, EventArgs e)
@@ -158,7 +152,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     {
         string saveDir = @"Upload\Stage3\";
         string appPath = Request.PhysicalApplicationPath;
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + targetIndex;
+        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + targetIndex;
         string pathToCheck = appPath + saveDir + fileName;
         
         //===========================================(Start)
@@ -283,44 +277,16 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
     }
 
-    private string getSemster()
-    {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanList.PlanSemester from PlanList " +
-                       "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
-                       "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        return sb.ToString();
-    }
     protected void LkbPlanItem6_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem6.aspx");
     }
     protected void LkbPlanItem7_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem7.aspx");
     }
     protected void LkbPlanItem8_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem8.aspx");
     }
     protected void btnBack_Click(object sender, EventArgs e)
@@ -333,72 +299,30 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     }
     protected void LkbPlanItem1_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem1.aspx");
     }
     protected void LkbPlanItem2_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem2.aspx");
     }
     protected void LkbPlanItem3_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem3.aspx");
     }
     protected void LkbPlanItem4_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem4.aspx");
     }
     protected void LkbPlanItem4_2_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem4_2.aspx");
     }
     protected void LkbPlanItem9_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem9.aspx");
     }
     protected void LkbPlanItem11_Click(object sender, EventArgs e)
     {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanSemester from PlanList where SN = '" + Request["SN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        Session["Semester"] = sb.ToString();
-
         Response.Redirect("PlanViewItem11.aspx");
     }
 

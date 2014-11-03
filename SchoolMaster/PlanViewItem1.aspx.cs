@@ -42,7 +42,6 @@ public partial class SchoolMaster_PlanViewItem1 : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        //LbNO.Text = Session["Semester"].ToString();
         LbYear.Text = Session["PlanYear"].ToString();
         if (!IsPostBack)
         {

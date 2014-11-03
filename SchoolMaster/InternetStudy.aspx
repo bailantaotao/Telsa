@@ -50,7 +50,8 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option" style="text-align:left">
-                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlBackIndex %>" OnClick="ImgBtnIndex_Click"/>
+                <asp:ImageButton ID="ImageButton1" runat="server" 
+                    ImageUrl="~/Image/zh-CN/ButtonBackIndex.png" OnClick="ImgBtnIndex_Click"/>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
