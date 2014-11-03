@@ -70,11 +70,8 @@ public partial class Manager_GuideViewText : System.Web.UI.Page
             LbGuideViewTextSemester.Text += d[9];
         }
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../SystemManagerIndex.aspx");
     }
->>>>>>> develop
 }

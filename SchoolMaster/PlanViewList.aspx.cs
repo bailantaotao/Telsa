@@ -63,9 +63,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
         Query = "select SN, PlanYear, PlanDeadline " +
                 "from PlanList ";
-
-        /*Query = "select SN, PlanYear, PlanDeadline, PlanSemester " +
-               "from PlanList ";*/
+                
 
         //Query = "select planlistuser.sn, planList.PlanYear, planList.PlanDeadline, planlistuser.planstatus, planListUser.PlanSchool from planlistuser " +
         //        "left join planlist on PlanListUser.PlanListSN = PlanList.SN "+
@@ -99,11 +97,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
-<<<<<<< HEAD
-=======
-            //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            //LbCompleted.Text += Resources.Resource.TipPlanSemester + "</font></td>";
->>>>>>> develop
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanDeadline + "</font></td>";
             // +[20140906, HungTao] add function for plan complete numbers
@@ -200,11 +193,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[1] + "</td>";
-<<<<<<< HEAD
-=======
-                //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                //LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
->>>>>>> develop
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
 
@@ -222,26 +210,12 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 }
                 else
                 {
-<<<<<<< HEAD
                     
                     string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[0]))[1] + "' ";
                     ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
                     queryTargetNumbers += "and Finish='True'";
                     StringBuilder FinishTargetNumbers = new StringBuilder();
                     ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
-=======
-                    //string tmpSemester = ((string[])(data[i]))[3];
-                    string tmpSemester = "1";
-                    int intSemester = -1;
-                    bool isDigit = Int32.TryParse(tmpSemester, out intSemester);
-                    if (isDigit)
-                    {
-                        string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[intSemester - 1]))[1] + "' ";
-                        ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
-                        queryTargetNumbers += "and Finish='True'";
-                        StringBuilder FinishTargetNumbers = new StringBuilder();
-                        ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
->>>>>>> develop
 
 
 

@@ -40,11 +40,7 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
             return;
         if (!parseData("NO") || !parseData("DimensionsID"))
             return;
-<<<<<<< HEAD
         
-=======
-        //LbNO.Text = Session["Semester"].ToString();
->>>>>>> develop
         LbYear.Text = Session["PlanYear"].ToString();
         getTitle();
 

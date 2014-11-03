@@ -285,15 +285,6 @@ public partial class Expert_GuideMissionList : System.Web.UI.Page
             }
         }
     }
-<<<<<<< HEAD
-   
-    
-
-    
-
-
-    
-=======
 
 
 
@@ -312,5 +303,4 @@ public partial class Expert_GuideMissionList : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

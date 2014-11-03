@@ -256,8 +256,6 @@ public partial class Expert_GuidePreList : System.Web.UI.Page
         Query = Session["PlanList"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
@@ -269,5 +267,4 @@ public partial class Expert_GuidePreList : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

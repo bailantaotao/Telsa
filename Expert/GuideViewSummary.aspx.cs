@@ -123,9 +123,6 @@ public partial class Expert_GuideViewSummary : System.Web.UI.Page
             LbGuideViewSummaryCycle.Text += d[6];
         }
     }
-<<<<<<< HEAD
-    
-=======
 
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
@@ -138,5 +135,4 @@ public partial class Expert_GuideViewSummary : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

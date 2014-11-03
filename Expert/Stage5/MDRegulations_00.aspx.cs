@@ -34,8 +34,6 @@ public partial class Stage5_MDRegulations_00 : System.Web.UI.Page
         if (DlRegulationSelect.SelectedValue == "7")
             Response.Redirect("MDRegulations_07.aspx");
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
@@ -47,5 +45,4 @@ public partial class Stage5_MDRegulations_00 : System.Web.UI.Page
             Response.Redirect("../../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

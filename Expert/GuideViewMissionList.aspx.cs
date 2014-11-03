@@ -214,9 +214,6 @@ public partial class Expert_GuideViewMissionList : System.Web.UI.Page
         }
         
     }
-<<<<<<< HEAD
-    
-=======
 
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
@@ -229,5 +226,4 @@ public partial class Expert_GuideViewMissionList : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

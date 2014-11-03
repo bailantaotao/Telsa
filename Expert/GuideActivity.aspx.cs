@@ -495,8 +495,6 @@ public partial class Expert_GuideActivity : System.Web.UI.Page
         }
 
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
@@ -508,5 +506,4 @@ public partial class Expert_GuideActivity : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

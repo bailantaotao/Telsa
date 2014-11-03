@@ -127,8 +127,6 @@ public partial class GuideText : System.Web.UI.Page
         ms.WriteData(query, sb);
         Response.Redirect("GuideList.aspx?SN=" + Session["GuideSN"].ToString() + "&YEAR=" + Session["GuideYear"].ToString());
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
@@ -140,5 +138,4 @@ public partial class GuideText : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

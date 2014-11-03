@@ -117,14 +117,8 @@
                             <td align="left" width="20%" class="empty">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
-<<<<<<< HEAD
                             <td align="left" width="60%" class="empty"> 
                             </td>
-=======
-                            <%-- <td align="left" width="60%" class="empty">
-                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
-                            </td>--%>
->>>>>>> develop
                         </tr>
                         <tr>
                             <td colspan="2" align="left" class="empty">

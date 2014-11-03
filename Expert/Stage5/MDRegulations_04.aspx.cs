@@ -242,8 +242,6 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
         //(我們會在上傳前,將IFrame隱藏,來避開顯示錯誤.)
         return base.DeterminePostBackMode();
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
@@ -255,5 +253,4 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
             Response.Redirect("../../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

@@ -283,8 +283,6 @@ public partial class Expert_SDPEvaluateResult : System.Web.UI.Page
         LbTargetSchool.Visible = false;
         DlTargetSchool.Visible = true;
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
@@ -296,5 +294,4 @@ public partial class Expert_SDPEvaluateResult : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
->>>>>>> develop
 }

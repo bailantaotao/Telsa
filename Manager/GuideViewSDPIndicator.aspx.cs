@@ -17,11 +17,8 @@ public partial class Manager_GuideViewSDPIndicator : System.Web.UI.Page
     {
         Response.Redirect("GuideViewSDPEvaluateResult.aspx");
     }
-<<<<<<< HEAD
-=======
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../SystemManagerIndex.aspx");
     }
->>>>>>> develop
 }
