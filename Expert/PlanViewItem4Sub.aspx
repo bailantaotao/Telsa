@@ -50,9 +50,7 @@
         </asp:ScriptManager>
         <div id="BlockLeft">
             <div class ="Option">
-                <asp:ImageButton ID="ImgBtnIndex" runat="server" 
-                    ImageUrl="<%$ Resources:Resource, ImgUrlBackIndex %>" 
-                    OnClick="ImgBtnIndex_Click" style="height: 39px"/>
+                <asp:ImageButton ID="ImgBtnIndex" runat="server" ImageUrl="<%$ Resources:Resource, ImgUrlBackIndex %>" OnClick="ImgBtnIndex_Click"/>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -103,9 +101,9 @@
                             <td align="left" width="20%">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
-                            <%-- <td align="left" width="60%">
-                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
-                            </td>--%>
+                            <td align="left" width="60%">
+                                   
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="1" align="left">

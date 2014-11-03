@@ -107,9 +107,8 @@
                         <td align="left" width="20%">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
-                            <%-- <td align="left" width="60%">
-                                学期：<asp:Label ID="LbNO" runat="server" Text=""></asp:Label>   
-                            </td>--%>
+                            <td align="left" width="60%">
+                            </td>
                         <tr>
                             <td colspan="2" align="left">
                                 <asp:Label ID="Label2" runat="server" Text="学校发展计划执行评核输入（供校长于执行完成“确认”使用）"></asp:Label>                                

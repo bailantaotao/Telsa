@@ -81,7 +81,7 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         //如果事先宣告 using System.Text;
         StringBuilder sb = new StringBuilder();
 
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + getSemster() + Session["targetUploadIndex"].ToString() +"."+ FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length-1)];
+        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + Session["targetUploadIndex"].ToString() +"."+ FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length-1)];
         string pathToCheck = appPath + saveDir + fileName;
         //===========================================(Start)
         foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -121,14 +121,4 @@ public partial class SchoolMaster_PlanItemUpload : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.opener.location.href='PlanMain.aspx?SN=" + Session["PlanSN"].ToString() + "&YEAR=" + Session["PlanYear"].ToString()+ "';window.close();", true);
     }
 
-    private string getSemster()
-    {
-        StringBuilder sb = new StringBuilder();
-        ManageSQL ms = new ManageSQL();
-        string query = "select PlanList.PlanSemester from PlanList " +
-                       "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
-                       "where PlanListUser.SN='" + Session["UserPlanListSN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-        return sb.ToString();
-    }
 }

@@ -129,20 +129,6 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td align="left">
-                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                                    <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSemester" runat="server" Width="80px" Font-Size="14pt">
-                                            <asp:ListItem Value="0" Text="学期"></asp:ListItem>
-                                            <asp:ListItem Value="1" Text="1"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlStatus" runat="server" Width="80px" Font-Size="14pt">
