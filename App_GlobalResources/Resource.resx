@@ -840,4 +840,7 @@
   <data name="BtnClick" xml:space="preserve">
     <value>点击</value>
   </data>
+  <data name="DdlTypeMembername" xml:space="preserve">
+    <value>人员名称</value>
+  </data>
 </root>
