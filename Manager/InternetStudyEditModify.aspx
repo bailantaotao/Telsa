@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="InternetStudyEditModify.aspx.cs" Inherits="Manager_InternetStudyEditModify" %>
 <%@ Register Src="UserControlQuestion.ascx" TagName="UCQ" TagPrefix="CustomControl" %>
+<%@ Register Src="UserControlQuestionItem.ascx" TagName="UCQI" TagPrefix="CustomControlItem" %>
 
 <!DOCTYPE html>
 
