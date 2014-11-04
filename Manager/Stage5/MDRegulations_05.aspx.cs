@@ -16,11 +16,15 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
 
     private string Query = string.Empty;
     private string QueryID = string.Empty;
+    private string ProvinceQuery = string.Empty;
     private string TargetSchool = string.Empty;
+    private string Province = string.Empty;
+    private string ProvinceState = string.Empty;
 
     private enum DdlType
     {
         SchoolName,
+        Province,
     }
     private void setDefault(DdlType type)
     {
@@ -29,21 +33,20 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
             case DdlType.SchoolName:
                 setSchoolName();
                 break;
+            case DdlType.Province:
+                setProvince();
+                break;
         }
-    }
-    protected void Page_Init(object sender, EventArgs e)
-    {
-        setDefault(DdlType.SchoolName);
     }
     private void setSchoolName()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-
         Query = "select School from Account " +
-                            "left join Area on Account.zipcode = Area.ID " +
-                            "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理%' " +
-                            "group by School ";
+                    "left join Area on Account.zipcode = Area.ID " +
+                    "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理%' " +
+                    "and Area.ID =" + Province.ToString() +
+                    "group by School ";
 
         if (!ms.GetAllColumnData(Query, data))
         {
@@ -64,9 +67,62 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
         }
 
     }
+    private void setProvince()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
 
+        Query = "select name from Area where ID <= 31 order by id asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DlProvince.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DlProvince.Items.Add("None");
+            return;
+        }
+        DlProvince.Items.Add(Resources.Resource.DdlTypeProvince);
+        foreach (string[] province in data)
+        {
+            DlProvince.Items.Add(province[0]);
+        }
+    }
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        setDefault(DdlType.Province);
+        DlTargetSchool.Items.Add(Resources.Resource.DdlTypeSchoolname);
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        ArrayList dataProvince = new ArrayList();
+
+        if (DlProvince.SelectedValue.ToString() != Resources.Resource.DdlTypeProvince.ToString())
+        {
+            if (ProvinceState.ToString() != DlProvince.SelectedValue.ToString())
+            {
+                DlTargetSchool.Items.Clear();
+                ProvinceState = DlProvince.SelectedValue.ToString();
+
+                if (DlTargetSchool.Items.ToString() != Resources.Resource.DdlTypeSchoolname.ToString())
+                {
+                    ProvinceQuery = "select ID from Area where Name = N'" + DlProvince.SelectedValue.ToString() + "'";
+                    ms.GetAllColumnData(ProvinceQuery, dataProvince);
+
+                    for (int i = 0; i < dataProvince.Count; i++)
+                    {
+                        string[] p = (string[])dataProvince[i];
+                        Province = p[0];
+                    }
+                    setDefault(DdlType.SchoolName);
+                }
+            }
+        }
+
         if (Session["FileIsToLarge"] != null)
         {
             Session.Remove("FileIsToLarge");
@@ -78,8 +134,7 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
             LbStatus3.Text = (getUploadSuccess(3)) ? "Yes" : "No";
             LbStatus4.Text = (getUploadSuccess(4)) ? "Yes" : "No";*/
         }
-        ManageSQL ms = new ManageSQL();
-        ArrayList data = new ArrayList();
+
 
         QueryID = "select UserID from Account " +
                 "where Account.School= N'" + DlTargetSchool.SelectedValue.ToString() + "'";
@@ -125,7 +180,7 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
     {
         string saveDir = @"Upload\Stage5\";
         string appPath = Request.PhysicalApplicationPath;
-        string fileName = TargetSchool + DateTime.Now.ToString("yyyy") + "5" + targetIndex;   //目前刪除getSemester()函示不做學期的判斷
+        string fileName = TargetSchool + "5" + targetIndex;   //目前刪除getSemester()函示不做學期的判斷
         string pathToCheck = appPath + saveDir + fileName;
 
         //===========================================(Start)

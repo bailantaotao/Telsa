@@ -95,16 +95,23 @@
                 <div id="BlockRightDownDataDisplay">
                     <table align="center" >
                         <tr>
+                            <td style="width:150px">
+                                <asp:Label ID="Label23" runat="server" Text="省分:"></asp:Label>
+                                <asp:DropDownList ID="DlProvince" runat="server" AutoPostBack="True" 
+                                    style="margin-right: 0px">
+                                </asp:DropDownList>
+                            </td>
                             <td>
                             
                                 <asp:Label ID="Label22" runat="server" Text="欲观看学校:"></asp:Label>
-                                <asp:DropDownList ID="DlTargetSchool" runat="server" AutoPostBack="True">
+                                <asp:DropDownList ID="DlTargetSchool" runat="server" Width="300px">
                                 </asp:DropDownList>
                             
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td style="width:50px"> </td>
+                            <td align="center">
                             <asp:Label ID="Label1" runat="server" Text="规章制度选单:"></asp:Label>
                             <asp:DropDownList ID="DlRegulationSelect" runat="server" AutoPostBack="true"  Font-Size="14px" Width="177px" Height="30px"
                                 onselectedindexchanged="SelectedIndexChanged" >

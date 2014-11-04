@@ -51,13 +51,13 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
         //int targetIndex
         string saveDir = @"Upload\Stage5\";
         string appPath = Request.PhysicalApplicationPath;
-        string fileName1 = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") +  targetIndex;  //目前刪除getSemester()函示不做學期的判斷
+        string fileName1 = Session["UserID"].ToString() +  targetIndex;  //目前刪除getSemester()函示不做學期的判斷
         string pathToCheck1 = appPath + saveDir + fileName1;
-        string fileName2 = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + targetIndex;  //目前刪除getSemester()函示不做學期的判斷
+        string fileName2 = Session["UserID"].ToString() + targetIndex;  //目前刪除getSemester()函示不做學期的判斷
         string pathToCheck2 = appPath + saveDir + fileName2;
-        string fileName3 = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + targetIndex;  //目前刪除getSemester()函示不做學期的判斷
+        string fileName3 = Session["UserID"].ToString() + targetIndex;  //目前刪除getSemester()函示不做學期的判斷
         string pathToCheck3 = appPath + saveDir + fileName3;
-        string fileName4 = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + targetIndex;  //目前刪除getSemester()函示不做學期的判斷
+        string fileName4 = Session["UserID"].ToString() + targetIndex;  //目前刪除getSemester()函示不做學期的判斷
         string pathToCheck4 = appPath + saveDir + fileName4;
 
         //===========================================(Start)
@@ -135,7 +135,7 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
             string tempfileName = "";
             StringBuilder sb = new StringBuilder();
 
-            string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + "4" + "1" + "." + FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length - 1)];
+            string fileName = Session["UserID"].ToString() + "4" + "1" + "." + FileUpload1.FileName.Split('.')[(FileUpload1.FileName.Split('.').Length - 1)];
             string pathToCheck = appPath + saveDir + fileName;
             //===========================================(Start)
             foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -182,7 +182,7 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
             string tempfileName = "";
             StringBuilder sb = new StringBuilder();
 
-            string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + "4" + "2" + "." + FileUpload2.FileName.Split('.')[(FileUpload2.FileName.Split('.').Length - 1)];
+            string fileName = Session["UserID"].ToString() + "4" + "2" + "." + FileUpload2.FileName.Split('.')[(FileUpload2.FileName.Split('.').Length - 1)];
             string pathToCheck = appPath + saveDir + fileName;
             //===========================================(Start)
             foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -229,7 +229,7 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
             string tempfileName = "";
             StringBuilder sb = new StringBuilder();
 
-            string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + "4" + "3" + "." + FileUpload3.FileName.Split('.')[(FileUpload3.FileName.Split('.').Length - 1)];
+            string fileName = Session["UserID"].ToString() + "4" + "3" + "." + FileUpload3.FileName.Split('.')[(FileUpload3.FileName.Split('.').Length - 1)];
             string pathToCheck = appPath + saveDir + fileName;
             //===========================================(Start)
             foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -276,7 +276,7 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
             string tempfileName = "";
             StringBuilder sb = new StringBuilder();
 
-            string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + "4" + "4" + "." + FileUpload4.FileName.Split('.')[(FileUpload4.FileName.Split('.').Length - 1)];
+            string fileName = Session["UserID"].ToString() + "4" + "4" + "." + FileUpload4.FileName.Split('.')[(FileUpload4.FileName.Split('.').Length - 1)];
             string pathToCheck = appPath + saveDir + fileName;
             //===========================================(Start)
             foreach (string file in System.IO.Directory.GetFileSystemEntries(appPath + saveDir))
@@ -311,7 +311,7 @@ public partial class Stage5_MDRegulations_04 : System.Web.UI.Page
     {
         string saveDir = @"Upload\Stage5\";
         string appPath = Request.PhysicalApplicationPath;
-        string fileName = Session["UserID"].ToString() + DateTime.Now.ToString("yyyy") + "4" + targetIndex;   //目前刪除getSemester()函示不做學期的判斷
+        string fileName = Session["UserID"].ToString() + "4" + targetIndex;   //目前刪除getSemester()函示不做學期的判斷
         string pathToCheck = appPath + saveDir + fileName;
 
         //===========================================(Start)
