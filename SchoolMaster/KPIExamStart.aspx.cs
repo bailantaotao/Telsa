@@ -317,11 +317,12 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
         if (KPIID == -1)
         {
             // 新增一筆資料到KPIRecordMain
-            query = "insert into KPIRecordMain (KPIYear, SchoolName, Cycle, IsFinish) VALUES ('" +
+            query = "insert into KPIRecordMain (KPIYear, SchoolName, Semester, IsFinish, KPIDeadLineSN) VALUES ('" +
                     BaseClass.NowYear + "',N'" +
                     schoolName + "','" +
                     cycle + "','" +
-                    "False')";
+                    "False','" +
+                    Session["KPISN"].ToString() + "')";
             if (!ms.WriteData(query, sb))
                 return;
             status = getCycle(ref cycle, schoolName, ref KPIID);

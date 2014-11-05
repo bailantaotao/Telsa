@@ -147,7 +147,7 @@ public partial class SchoolMaster_KPIExamScoreViewDimension : System.Web.UI.Page
     private bool getKPIMainRecordID(StringBuilder sb)
     {
         ManageSQL ms = new ManageSQL();
-        string query = "select KPIRecordMain.ID from KPIRecordMain where KPIYear = '" + Year + "' and Cycle = '" + Cycle + "' and KPIRecordMain.SchoolName = N'" + Request["schoolName"].ToString() + "' ";
+        string query = "select KPIRecordMain.ID from KPIRecordMain where KPIYear = '" + Year + "' and Semester = '" + Cycle + "' and KPIRecordMain.SchoolName = N'" + Request["schoolName"].ToString() + "' ";
         if (!ms.GetOneData(query, sb))
             return false;
         return true;

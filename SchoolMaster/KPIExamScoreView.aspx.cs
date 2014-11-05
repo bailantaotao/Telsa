@@ -25,7 +25,8 @@ public partial class SchoolMaster_KPIExamScoreView : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
-
+        if (Session["KPISN"] != null)
+            Session.Remove("KPISN");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -55,9 +56,9 @@ public partial class SchoolMaster_KPIExamScoreView : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
         
-        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Cycle, KPIDeadline.Deadline, KPIRecordMain.ScoreLevel, KPIRecordMain.isfinish " +
+        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Semester, KPIDeadline.Deadline, KPIRecordMain.ScoreLevel, KPIRecordMain.isfinish " +
                 "from KPIRecordMain " +
-                "left join KPIDeadline on KPIRecordMain.KPIYear = KPIDeadline.KPIYear and KPIRecordMain.Cycle = KPIDeadline.Cycle " +
+                "left join KPIDeadline on KPIRecordMain.KPIYear = KPIDeadline.KPIYear and KPIRecordMain.Semester = KPIDeadline.Semester " +
                 "where KPIRecordMain.SchoolName = N'" + sb.ToString() + "'";
     }
 

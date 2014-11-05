@@ -843,4 +843,16 @@
   <data name="DdlTypeMembername" xml:space="preserve">
     <value>人员名称</value>
   </data>
+  <data name="QDeadline" xml:space="preserve">
+    <value>提交期限输入</value>
+  </data>
+  <data name="QStudentData" xml:space="preserve">
+    <value>学生基本讯息</value>
+  </data>
+  <data name="QStudentManageTip" xml:space="preserve">
+    <value>学生资料管理</value>
+  </data>
+  <data name="QStudentScore" xml:space="preserve">
+    <value>学生成绩观看</value>
+  </data>
 </root>

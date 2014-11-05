@@ -29,7 +29,19 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            setSubmitedCount();
+
+            if (getCurrentKPIQSN() == MANAGER_HAVE_YET_TO_QUESTIONNAIRE)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('新學年、學期尚未開放數據錄入');", true);
+                DdlDimension.Visible = false;
+                DdlDomain.Visible = false;
+                Label2.Visible = false;
+                LbSubmitCount.Visible = false;
+                BtnStartInput.Visible = false;
+            }
+            else {
+                setSubmitedCount();
+            }
         }
     }
 
@@ -52,6 +64,48 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
         }
     }
 
+    private const int SUCCESS = 0;
+    private const int MANAGER_HAVE_YET_TO_QUESTIONNAIRE = 1;
+
+    private int getCurrentKPIQSN()
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        ArrayList data = new ArrayList();
+        string today = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
+        // smaller than today SN will be showed
+        string query = "select SN, DeadLine, KPIYear, Semester from KPIDeadline where DeadLine > Convert(datetime, '" + today + "') order by SN asc";
+        ms.GetAllColumnData(query, data);
+
+        if (data.Count == 1)
+        {
+            Session["KPISN"] = ((string[])data[0])[0];
+            return SUCCESS;
+        }
+
+        if (data.Count > 1)
+        {
+            double target = 10000.0;
+            int tag = -99;
+            for(int i = 0 ; i < data.Count; i++)
+            {
+                string[] deadline = (string[])data[i];
+                DateTime historyDeadline = Convert.ToDateTime(deadline[1]);
+                TimeSpan diff = historyDeadline.Subtract(Convert.ToDateTime(today));
+                double diffday = diff.TotalDays;
+                if (diffday < target)
+                {
+                    target = diffday;
+                    tag = i;
+                }
+            }
+            Session["KPISN"] = ((string[])data[tag])[0];
+            return SUCCESS;
+        }
+
+        return MANAGER_HAVE_YET_TO_QUESTIONNAIRE;
+    }
+
     private void setSubmitedCount()
     {
         ManageSQL ms = new ManageSQL();
@@ -59,7 +113,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
         ArrayList data = new ArrayList();
         getSchoolName(sb);
         string schoolName = sb.ToString();
-        string query = "select count(schoolName) from KPIRecordMain where SchoolName=N'" + schoolName + "'";
+        string query = "select count(schoolName) from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
 
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals("0"))
@@ -68,7 +122,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
             return;
         }
 
-        query = "select IsFinish from KPIRecordMain where SchoolName=N'" + sb.ToString() + "'";
+        query = "select IsFinish from KPIRecordMain where SchoolName=N'" + sb.ToString() + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals("false"))
         {
@@ -76,7 +130,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
             return;
         }
 
-        query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "'";
+        query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
         ms.GetOneData(query, sb);
 
         string ID = sb.ToString();

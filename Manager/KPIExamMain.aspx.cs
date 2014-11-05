@@ -225,14 +225,14 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Cycle, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish " +
+        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Semester, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish " +
                 "from KPIRecordMain " +
                 "left join Account on Account.School = KPIRecordMain.SchoolName " +
                 "left join area on Account.ZipCode = area.id ";
 
         string tmp = string.Empty;
         string[] storeParam = new string[6];
-        string[] sqlParam = new string[] { "KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIRecordMain.Cycle", "KPIRecordMain.IsFinish", "area.name" };
+        string[] sqlParam = new string[] { "KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIRecordMain.Semester", "KPIRecordMain.IsFinish", "area.name" };
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlScoreLevel.SelectedIndex == 0 ? null : DdlScoreLevel.Items[DdlScoreLevel.SelectedIndex].ToString();
         storeParam[2] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
