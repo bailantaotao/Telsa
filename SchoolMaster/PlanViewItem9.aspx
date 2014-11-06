@@ -41,15 +41,17 @@
             margin-left:40px;
             text-align:left;
         }
-                table, td, tr{
+        table, td, tr{
             border: 1px solid black;
             border-collapse: collapse;
+            
             word-break:break-all;word-wrap:break-word;
         }
         .empty {
             border: 1px solid white;
             border-collapse: collapse;
         }
+        
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -122,7 +124,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1" align="left">
+                            <td colspan="1" align="left" class="empty">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle9 %>"></asp:Label> 
                                                                
                             </td>
@@ -372,7 +374,7 @@
                 </div>
                 <table width="739px" class="empty">
                     <tr>
-                        <td width="90%" align="right" style="margin-right=20px;">
+                        <td width="90%" align="right" class="empty" style="margin-right=20px;">
                             <asp:Button ID="BtnCancel" runat="server" Text="<%$ Resources:Resource, BtnBack %>" OnClick="BtnCancel_Click" Font-Size="14pt" />
                         </td>
                     </tr>
