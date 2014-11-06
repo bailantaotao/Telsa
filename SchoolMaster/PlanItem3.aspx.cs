@@ -343,7 +343,7 @@ public partial class SchoolMaster_PlanItem3 : System.Web.UI.Page
         
         sb.Clear();
         query = "insert into PlanSchoolDirection (SN, SchoolDirection) VALUES ('" +
-                        Session["UserPlanListSN"].ToString() + "','" +
+                        Session["UserPlanListSN"].ToString() + "', N'" +
                         TbSchoolDirection.Text + "')";
         ms.WriteData(query, sb);        
     }
