@@ -133,25 +133,25 @@
                                 负责人
                             </td>
                             <td width="80px" class="table">
-                                <asp:TextBox ID="DdlName" runat="server" Width="80px"></asp:TextBox>
+                                <asp:TextBox ID="DdlName" runat="server" Width="80px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td width="50px" class="table">
                                 职称
                             </td>
                             <td width="90px" class="table">
-                                <asp:TextBox ID="TbTitle" runat="server" Height="16px" Width="90px"></asp:TextBox>
+                                <asp:TextBox ID="TbTitle" runat="server" Height="16px" Width="90px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td width="50px" class="table">
                                 性别
                             </td>
                             <td width="50px" class="table">
-                                <asp:TextBox ID="TbGender" runat="server" Height="17px" Width="50px"></asp:TextBox>
+                                <asp:TextBox ID="TbGender" runat="server" Height="17px" Width="50px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td width="100px" class="table">
                                 部门人数
                             </td>
                             <td width="50px" class="table">
-                                <asp:TextBox ID="TbNumbersOfPeople" runat="server" Height="16px" Width="50px"></asp:TextBox>
+                                <asp:TextBox ID="TbNumbersOfPeople" runat="server" Height="16px" Width="50px" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -161,7 +161,7 @@
                         </tr>
                         <tr>
                             <td colspan="8" class="table">
-                                <asp:TextBox ID="TbAdvantage" runat="server" Width="700px" Height="100px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TbAdvantage" runat="server" Width="700px" Height="100px" TextMode="MultiLine" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                     </table>

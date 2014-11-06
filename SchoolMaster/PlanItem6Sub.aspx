@@ -133,25 +133,25 @@
                                 姓名
                             </td>
                             <td width="15%" class="table">
-                                <asp:TextBox ID="DdlName" runat="server" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="DdlName" runat="server" Width="100px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td width="10%" class="table">
                                 性别
                             </td>
                             <td width="15%" class="table">
-                                <asp:TextBox ID="TbGender" runat="server" Height="17px" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TbGender" runat="server" Height="17px" Width="100px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td width="10%" class="table">
                                  民族
                             </td>
                             <td width="15%" class="table">
-                                <asp:TextBox ID="TbNation" runat="server" Height="16px" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TbNation" runat="server" Height="16px" Width="100px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td width="10%" class="table">
                                 职称
                             </td>
                             <td width="15%" class="table">
-                                <asp:TextBox ID="TbProfession" runat="server" Height="16px" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TbProfession" runat="server" Height="16px" Width="100px" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -164,7 +164,7 @@
                                 个人优势
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbAdvantage" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TbAdvantage" runat="server" Width="530px" TextMode="MultiLine" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -172,7 +172,7 @@
                                 存在的问题 
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbProblem" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TbProblem" runat="server" Width="530px" TextMode="MultiLine" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -180,7 +180,7 @@
                                 发展的机遇 
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbOpportunity" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TbOpportunity" runat="server" Width="530px" TextMode="MultiLine" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -188,7 +188,7 @@
                                 面临的挑战
                             </td>
                             <td colspan="6" class="table">
-                                <asp:TextBox ID="TbChallenge" runat="server" Width="530px" TextMode="MultiLine"></asp:TextBox>
+                                <asp:TextBox ID="TbChallenge" runat="server" Width="530px" TextMode="MultiLine" Font-Size="14pt"></asp:TextBox>
                             </td>
                         </tr>
                     </table>

@@ -150,10 +150,10 @@
                             <td width="5%" rowspan="3">学科能力</td>
                             <td>1</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC00" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC00" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC01" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC01" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC02" runat="server" Width="70px"></asp:Label>
@@ -174,10 +174,10 @@
                         <tr>
                             <td>2</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC10" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC10" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC11" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC11" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC12" runat="server" Width="70px"></asp:Label>
@@ -198,10 +198,10 @@
                         <tr>
                             <td>3</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC20" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC20" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC21" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC21" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC22" runat="server" Width="70px"></asp:Label>
@@ -223,10 +223,10 @@
                             <td width="5%" rowspan="3">人格陶冶</td>
                             <td>1</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC30" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC30" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC31" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC31" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC32" runat="server" Width="70px"></asp:Label>
@@ -247,10 +247,10 @@
                         <tr>
                             <td>2</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC40" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC40" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC41" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC41" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC42" runat="server" Width="70px"></asp:Label>
@@ -271,10 +271,10 @@
                         <tr>
                             <td>3</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC50" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC50" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC51" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC51" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC52" runat="server" Width="70px"></asp:Label>
@@ -296,10 +296,10 @@
                             <td width="5%" rowspan="3">学科能力</td>
                             <td>1</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC60" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC60" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC61" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC61" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC62" runat="server" Width="70px"></asp:Label>
@@ -320,10 +320,10 @@
                         <tr>
                             <td>2</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC70" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC70" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC71" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC71" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC72" runat="server" Width="70px"></asp:Label>
@@ -344,10 +344,10 @@
                         <tr>
                             <td>3</td>
                             <td>                                
-                                <asp:TextBox ID="TbRC80" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC80" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="TbRC81" runat="server" Width="70px"></asp:TextBox>
+                                <asp:TextBox ID="TbRC81" runat="server" Width="70px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Label ID="TbRC82" runat="server" Width="70px"></asp:Label>
