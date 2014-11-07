@@ -422,13 +422,22 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        string querysubmit = string.Empty;
         ManageSQL ms=new ManageSQL();
         StringBuilder sb =new StringBuilder();
+        StringBuilder sb1 = new StringBuilder();
+
+        string querysubmit = string.Empty;
+        string querytime = string.Empty;
 
         querysubmit = "update PlanListUser set PlanStatus = '" + true + "'" +
-                      "where PlanListSN = " + Request["SN"].ToString();
+                      "where SN = " + Session["UserPlanListSN"].ToString();
 
         ms.WriteData(querysubmit, sb);
+
+        querytime = "update PlanListUser set PlanSubmitTime = '" + DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") +  "'" +
+                    "where SN =" + Session["UserPlanListSN"].ToString();
+        ms.WriteData(querytime, sb1);
+
+        //query = "insert into PlanListUser (PlanSubmitTime) VALUES ('" + DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "'" + ")";
     }
 }
