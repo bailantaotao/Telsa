@@ -108,6 +108,8 @@
                             
                             <td align="left">
                                 <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1" Font-Size="14pt"/>
+                                &nbsp&nbsp&nbsp<asp:Button ID="btnSubmit" runat="server" Height="29px" Text="提交学校发展计划" 
+                                    Width="171px" Font-Size="14pt" onclick="btnSubmit_Click" />
                             </td>
                         </tr>
                     </table>
