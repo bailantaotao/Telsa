@@ -42,6 +42,11 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        ArrayList data = new ArrayList();
+        ArrayList userData = new ArrayList();
+        ManageSQL ms = new ManageSQL();
+        StringBuilder TotalTargetNumbers = new StringBuilder();
+
         getSchoolName(schoolName);
                 
         if (!verifyValid())
@@ -58,7 +63,22 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
             LbStatus5.Text = (getUploadSuccess(5)) ? "Yes" : "No";
             LbStatus6.Text = (getUploadSuccess(6)) ? "Yes" : "No";
             LbStatus7.Text = (getUploadSuccess(7)) ? "Yes" : "No";
-            LbStatus8.Text = (getUploadSuccess(8)) ? "Yes" : "No";   
+            LbStatus8.Text = (getUploadSuccess(8)) ? "Yes" : "No";
+
+            string userQuery = "select planList.PlanYear, planlistuser.sn, planlistuser.planstatus from planlistuser " +
+                                    "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +
+                                    "where " +
+                                    "planlistuser.PlanSchool = N'" + schoolName.ToString() + "' and " +
+                                    "PlanList.PlanYear = '" + Request["Year"].ToString() + "'";
+            ms.GetAllColumnData(userQuery, userData);
+
+            string queryTargetNumbers = "select count(SN) from PlanTargetActivity where SN = '" + ((string[])(userData[0]))[1] + "' ";
+            ms.GetOneData(queryTargetNumbers, TotalTargetNumbers);
+            queryTargetNumbers += "and Finish='True'";
+            StringBuilder FinishTargetNumbers = new StringBuilder();
+            ms.GetOneData(queryTargetNumbers, FinishTargetNumbers);
+
+            LkbPlanItem11.Text += "(完成度: " + FinishTargetNumbers.ToString() + " / " + TotalTargetNumbers.ToString() + ")";
         }
     }
 
