@@ -93,7 +93,11 @@
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnSendAnnocement" runat="server" Text="<%$ Resources:Resource, BtnSendAnnocement%>" OnClick="BtnSendAnnocement_Click" />
                 </div>
-                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 260px">
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="BtnModifyPassword" runat="server" Text="修改密码" 
+                        onclick="BtnModifyPassword_Click" />
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 210px">
                     <asp:Button ID="BtnImportProvinceData" runat="server" Text="导入项目省校" OnClick="BtnImportProvinceData_Click"  />
                 </div>
             </div>

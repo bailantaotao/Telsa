@@ -90,6 +90,10 @@
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnSendMsg" runat="server" Text="<%$ Resources:Resource, TipSendMsg%>" OnClick="BtnSendMsg_Click" />
                 </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="BtnModifyPassword" runat="server" Text="修改密码" 
+                        onclick="BtnModifyPassword_Click" />
+                </div>
             </div>
             <div id="BlockRightUp">
                 <div style="text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">

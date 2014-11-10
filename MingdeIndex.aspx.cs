@@ -91,4 +91,8 @@ public partial class MingdeIndex : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgNotify.aspx', '', config='height=500,width=700')", true);
     }
+    protected void BtnModifyPassword_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ModifiedPassword.aspx");
+    }
 }

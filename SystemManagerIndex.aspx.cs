@@ -95,4 +95,8 @@ public partial class SystemManagerIndex : System.Web.UI.Page
     {
         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('Manager/ImportExcel.aspx', '', config='height=200,width=300')", true);
     }
+    protected void BtnModifyPassword_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ModifiedPassword.aspx");
+    }
 }
