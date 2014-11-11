@@ -72,7 +72,7 @@ public partial class Manager_GuideViewSDPEvaluateResult : System.Web.UI.Page
 
         Query = "select School from Account " +
                             "left join Area on Account.zipcode = Area.ID " +
-                            "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理%' " +
+                            "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%' " +
                             "group by School ";
         QueryComplete = "select School from GuideExpertScore " +
                             "left join GuideSchoolMasterScore on GuideExpertScore.School = GuideSchoolMasterScore.TargetSchool ";

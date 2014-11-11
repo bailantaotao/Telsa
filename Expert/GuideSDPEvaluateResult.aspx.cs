@@ -79,7 +79,7 @@ public partial class Expert_SDPEvaluateResult : System.Web.UI.Page
 
         Query = "select School from Account " +
                             "left join Area on Account.zipcode = Area.ID " +
-                            "where School not like N'%專家%' and School not like N'%管理%' and Area.ID =" + Session["Province"].ToString() +
+                            "where School not like N'%專家%' and School not like N'%管理者%' and Area.ID =" + Session["Province"].ToString() +
                             "group by School ";
 
 
