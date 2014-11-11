@@ -255,7 +255,7 @@ public partial class SchoolMaster_PlanItem4 : System.Web.UI.Page
         // 先刪除原本的
         string query = "delete from PlanSummaryDimensions where SN ='" + Session["UserPlanListSN"].ToString() + "' and DimensionsID='2' and NO='1'";
         ms.WriteData(query, sb);
-        writeData(1, 1, TbQuestion4.Text.Trim());
+        writeData(2, 1, TbQuestion4.Text.Trim());
         Response.Redirect("PlanItem4Sub.aspx?DimensionsID=2&NO=1");
     }
     protected void btnView5_Click(object sender, EventArgs e)
