@@ -98,7 +98,7 @@ public partial class SchoolMaster_PlanViewItem11 : System.Web.UI.Page
                         "left join KPIDimensionsNameMapping on PlanTargetActivity.DimensionsID = KPIDimensionsNameMapping.DimensionsID " +
                         "left join PlanSummaryDimensions on PlanTargetActivity.SN = PlanSummaryDimensions.SN and PlanSummaryDimensions.DimensionsID = KPIDimensionsNameMapping.DimensionsID and PlanSummaryDimensions.No = PlanTargetActivity.PlanSummaryDimensionsNo " +
                         "where " +
-                        "PlanTargetActivity.SN = '" + Session["UserPlanListSN"].ToString() + "' order by PlanTargetActivity.NO asc";
+                        "PlanTargetActivity.SN = '" + Session["UserPlanListSN"].ToString() + "' order by PlanTargetActivity.DimensionsID asc";
 
         //string query = "select PlanTitle, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanProfession, PlanTel, PlanAddress from PlanMember where SN ='" + Session["UserPlanListSN"].ToString() + "' order by PlanNo asc";
         ms.GetAllColumnData(query, data);
