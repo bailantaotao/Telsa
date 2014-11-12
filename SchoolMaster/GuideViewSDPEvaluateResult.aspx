@@ -655,12 +655,9 @@
                                 class="style23">
                                 <asp:Label ID="Label150" runat="server" Text="学校: " ></asp:Label>
                             </td>
-                            <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" class="style36" 
+                            <td align="center" colspan="2" rowspan="1" style="border: thin Ridge black" class="style36" 
                                 >
                                 <asp:Label ID="LbScoreLevelSchool" runat="server"></asp:Label>
-                            </td>
-                            <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
-                                class="style22" width="10px">
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style22">

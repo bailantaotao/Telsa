@@ -318,7 +318,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore1" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -350,7 +351,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore2" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -401,7 +403,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style29" >
                                 <asp:DropDownList ID="DlShlScore3" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -433,7 +436,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore4" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -478,7 +482,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                             class="style17" >
                                 <asp:DropDownList ID="DlShlScore5" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -518,7 +523,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                  class="style17" >
                                 <asp:DropDownList ID="DlShlScore6" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -552,7 +558,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore7" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -597,7 +604,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore8" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -634,7 +642,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                  class="style17" >
                                 <asp:DropDownList ID="DlShlScore9" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -671,7 +680,8 @@
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                  class="style17" >
                                 <asp:DropDownList ID="DlShlScore10" runat="server">
-                                    <asp:ListItem Selected="True">1</asp:ListItem>
+                                    <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>3</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -703,6 +713,15 @@
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore11" runat="server">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
+                                    <asp:ListItem>2</asp:ListItem>
+                                    <asp:ListItem>3</asp:ListItem>
+                                    <asp:ListItem>4</asp:ListItem>
+                                    <asp:ListItem>5</asp:ListItem>
+                                    <asp:ListItem>6</asp:ListItem>
+                                    <asp:ListItem>7</asp:ListItem>
+                                    <asp:ListItem>8</asp:ListItem>
+                                    <asp:ListItem>9</asp:ListItem>
                                     <asp:ListItem>10</asp:ListItem>
                                 </asp:DropDownList> 
                             </td>
@@ -723,6 +742,15 @@
                                 class="style17" >
                                 <asp:DropDownList ID="DlShlScore12" runat="server">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
+                                    <asp:ListItem>2</asp:ListItem>
+                                    <asp:ListItem>3</asp:ListItem>
+                                    <asp:ListItem>4</asp:ListItem>
+                                    <asp:ListItem>5</asp:ListItem>
+                                    <asp:ListItem>6</asp:ListItem>
+                                    <asp:ListItem>7</asp:ListItem>
+                                    <asp:ListItem>8</asp:ListItem>
+                                    <asp:ListItem>9</asp:ListItem>
                                     <asp:ListItem>10</asp:ListItem>
                                 </asp:DropDownList> 
                             </td>
@@ -762,12 +790,9 @@
                                 class="style23">
                                 <asp:Label ID="Label150" runat="server" Text="学校: " ></asp:Label>
                             </td>
-                            <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" class="style36" 
+                            <td align="center" colspan="2" rowspan="1" style="border: thin Ridge black" class="style36" 
                                 >
                                 <asp:Label ID="LbScoreLevelSchool" runat="server"></asp:Label>
-                            </td>
-                            <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
-                                class="style22" width="10px">
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style22">
