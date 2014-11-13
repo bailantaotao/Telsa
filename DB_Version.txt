@@ -1,1 +1,2 @@
 Telsa v6.0.0
+Telsa v6.0.1
