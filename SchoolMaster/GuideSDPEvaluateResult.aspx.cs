@@ -111,9 +111,9 @@ public partial class SchoolMaster_GuideSDPEvaluateResult : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
        
-        string query = "select SN, TargetSchool, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10, Score11, Score12, TotalScore, ScoreLevel " +
+        string query = "select SN, School, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10, Score11, Score12, TotalScore, ScoreLevel " +
                "from GuideExpertScore " +
-               "where TargetSchool in (N'" + schoolName.ToString() + "')";
+               "where School in (N'" + schoolName.ToString() + "')";
         ms.GetAllColumnData(query, data);
         
         if (data.Count > 0)

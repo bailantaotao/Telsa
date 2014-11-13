@@ -69,7 +69,7 @@ public partial class Expert_GuideViewSDPEvaluateResult : System.Web.UI.Page
            ManageSQL ms = new ManageSQL();
             ArrayList dataschoolname = new ArrayList();
 
-            string queryschoolname = "select TargetSchool from GuideExpertScore where SN ='" + Session["UserGuideListSN"].ToString() + "'" ;
+            string queryschoolname = "select School from GuideExpertScore where SN ='" + Session["UserGuideListSN"].ToString() + "'" ;
             ms.GetAllColumnData(queryschoolname, dataschoolname);
 
         }

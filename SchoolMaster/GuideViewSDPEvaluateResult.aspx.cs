@@ -77,9 +77,9 @@ public partial class SchoolMaster_GuideViewSDPEvaluateResult : System.Web.UI.Pag
         ArrayList data = new ArrayList();
         ArrayList data1 = new ArrayList();
 
-        string query = "select Year, Semester, TargetSchool, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10, Score11, Score12, TotalScore, ScoreLevel " +
+        string query = "select Year, Semester, School, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10, Score11, Score12, TotalScore, ScoreLevel " +
                "from GuideExpertScore " +
-               "where TargetSchool = N'" + Session["schoolName"].ToString() + "'" +
+               "where School = N'" + Session["schoolName"].ToString() + "'" +
                "and Year =" + DlGuideViewResultYear.SelectedValue.ToString() +
                "and Semester =" + DlGuideViewResultSemester.SelectedValue.ToString();
 

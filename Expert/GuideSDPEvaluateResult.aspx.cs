@@ -195,7 +195,7 @@ public partial class Expert_SDPEvaluateResult : System.Web.UI.Page
         int Score11 = Convert.ToInt32(DlProvinceScore11.SelectedValue);
         int Score12 = Convert.ToInt32(DlProvinceScore12.SelectedValue);
 
-        int ExpertTotalScore = Score1 + Score2 + Score3 + Score4 + Score5 + Score6 + Score7 + Score8 + Score9 + Score10 + Score11 + Score12;
+        /*int ExpertTotalScore = Score1 + Score2 + Score3 + Score4 + Score5 + Score6 + Score7 + Score8 + Score9 + Score10 + Score11 + Score12;
         string ExpertScoreLevel;
 
         if (ExpertTotalScore > 84)
@@ -203,33 +203,33 @@ public partial class Expert_SDPEvaluateResult : System.Web.UI.Page
         else if (ExpertTotalScore > 60 && ExpertTotalScore < 85)
             ExpertScoreLevel = "B";
         else
-            ExpertScoreLevel = "C";
+            ExpertScoreLevel = "C";*/
         
         StringBuilder sb = new StringBuilder();
         ManageSQL ms = new ManageSQL();
         // 先刪除原本的
-        string query = "delete from GuideExpertScore where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "delete from GuideExpertScore where SN ='" + Session["UserGuideListSN"].ToString() + "'" + "and Year= '" + LbGuideYear.Text + "'" + "and School= N'" + LbTargetSchool.Text + "'";
         ms.WriteData(query, sb);
         sb.Clear();
-        query = "insert into GuideExpertScore (SN, Year, Semester, TargetSchool, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10, Score11, Score12, TotalScore, ScoreLevel) VALUES ('" +
-                            Session["UserGuideListSN"].ToString() + "',N'" +
-                            LbGuideYear.Text.Trim() + "',N'" +
-                            LbGuideSemester.Text.Trim() + "',N'" +
-                            DlTargetSchool.SelectedValue + "',N'" +
-                            DlProvinceScore1.SelectedValue + "',N'" +
-                            DlProvinceScore2.SelectedValue + "',N'" +
-                            DlProvinceScore3.SelectedValue + "',N'" +
-                            DlProvinceScore4.SelectedValue + "',N'" +
-                            DlProvinceScore5.SelectedValue + "',N'" +
-                            DlProvinceScore6.SelectedValue + "',N'" +
-                            DlProvinceScore7.SelectedValue + "',N'" +
-                            DlProvinceScore8.SelectedValue + "',N'" +
-                            DlProvinceScore9.SelectedValue + "',N'" +
-                            DlProvinceScore10.SelectedValue + "',N'" +
-                            DlProvinceScore11.SelectedValue + "',N'" +
-                            DlProvinceScore12.SelectedValue + "',N'" +
-                            ExpertTotalScore + "',N'" +
-                            ExpertScoreLevel + "')";
+        query = "insert into GuideExpertScore (SN, Year, Semester, School, Score1, Score2, Score3, Score4, Score5, Score6, Score7, Score8, Score9, Score10, Score11, Score12, TotalScore, ScoreLevel) VALUES ('" +
+                            Session["UserGuideListSN"].ToString() + "','" +
+                            LbGuideYear.Text + "','" +
+                            LbGuideSemester.Text + "',N'" +
+                            DlTargetSchool.SelectedValue.ToString() + "','" +
+                            LbExpScore1.Text + "','" +
+                            LbExpScore2.Text + "','" +
+                            LbExpScore3.Text + "','" +
+                            LbExpScore4.Text + "','" +
+                            LbExpScore5.Text + "','" +
+                            LbExpScore6.Text + "','" +
+                            LbExpScore7.Text + "','" +
+                            LbExpScore8.Text + "','" +
+                            LbExpScore9.Text + "','" +
+                            LbExpScore10.Text + "','" +
+                            LbExpScore11.Text + "','" +
+                            LbExpScore12.Text + "','" +
+                            LbProvinceScoreLevel.Text + "','" +
+                            LbScoreLevelExpert.Text + "')";
         ms.WriteData(query, sb);
 
         Response.Redirect("GuideList.aspx?SN=" + Session["GuideSN"].ToString() + "&YEAR=" + Session["GuideYear"].ToString());
