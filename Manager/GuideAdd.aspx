@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GuideViewTemplates.aspx.cs" Inherits="Manager_GuideViewTemplates" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GuideAdd.aspx.cs" Inherits="Manager_GuideAdd" %>
 
 <!DOCTYPE html>
 
@@ -18,7 +18,7 @@
             width: 739px;
         }
         #BlockRightUp {
-            height: 21px;
+            height: 65px;
             padding-left:25px;
         }
         #BlockRightDown {
@@ -83,46 +83,89 @@
         </div>
         <div id="BlockRight">
             <div id="BlockRightUp">
-                <div style="background: url(../Image/zh-TW/TipGary_TipUserLocation.png) no-repeat; text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
+                                <div style="background: url(../Image/zh-TW/TipGary_TipUserLocation.png) no-repeat; text-align:center; width: 175px; height:39px; float: left;  line-height:39px;">
                     <asp:Label ID="LbLocation" runat="server" Text="后期跟踪指导" Font-Bold="true" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
-                </div>
-                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <img src="../Image/zh-TW/TipRed.png" />
-                </div>
-                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Red" Text="执行/监测报告观看" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="GuideViewPreList.aspx"></asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
-                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Black" Text="学年新增" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Black" Text="执行/监测报告观看" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                         NavigateUrl="GuideViewPreList.aspx"></asp:HyperLink>
+                </div>
+                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <img src="../Image/zh-TW/TipRed.png" />
+                </div>
+                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Red" Text="学年新增" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
                          NavigateUrl="GuideAdd.aspx"></asp:HyperLink>
                 </div>
             </div>
             <div id="BlockRightDown">
-                <div id="BlockRightDownController">
-                    <table width="739px">
-                        <tr>
-                            <td align="left" width="60%">
-                                &nbsp&nbsp&nbsp<asp:Label ID="LbTipTemplates" runat="server" Text="‧执行/监测报告模板(说明)" ></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="left">
-                               <asp:Label ID="LbTemplatesContent" runat="server" ></asp:Label>
-                            </td>
-                        </tr>
+                <div id="BlockRightDownDataDisplay">
+                    <table style="width: 735px">
                         <tr>
                             <td>
+                                <table width="300px">
+                                    <tr>
+                                        <td align="left" width="120px">
+                                            年度
+                                        </td>
+                                        <td align="left">
+                                            <asp:TextBox ID="TbYear" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" width="120px">
+                                            学期
+                                        </td>
+                                        <td align="left">
+                                            <asp:TextBox ID="TbSemester" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>   
+                                    <tr>
+                                        <td align="left" width="120px">
+                                            
+                                        <td align="left">
+                                            <asp:Button ID="BtnStore" runat="server" Text="<%$ Resources:Resource, TipAdd %>" OnClick="BtnStore_Click" />
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
-                            <td align="right" style="">
-                                <asp:Button ID="BtnTemplateReturn" runat="server" Text="返回上一页" 
-                                    onclick="BtnTemplateReturn_Click"></asp:Button>
+                            <td>
+                                <asp:GridView ID="GvDepartment" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
+                        BorderWidth="1px" CellPadding="5" CellSpacing="1">
+                                    <RowStyle BackColor="#ffffff" ForeColor="Black" />
+                                    <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                    <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
+                                    <HeaderStyle BackColor="#efefef" Font-Bold="True" />
+                                    <AlternatingRowStyle BackColor="#f7fafe" />
+                                    <EmptyDataTemplate>
+                                        Sorry, No any data.
+                                    </EmptyDataTemplate>
+                                    <Columns>
+                                        <asp:BoundField DataField="SN" HeaderText="编号" ItemStyle-Width="70px" />
+                                    </Columns>
+                                    <Columns>
+                                        <asp:BoundField DataField="Year" HeaderText="年度" ItemStyle-Width="70px" />
+                                    </Columns>
+                                    <Columns>
+                                        <asp:BoundField DataField="Semester" HeaderText="学期" ItemStyle-Width="70px" />
+                                    </Columns>
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="" ItemStyle-Width="50">
+                                <ItemTemplate>
+                                    <asp:Button ID="lbnView" runat="server" Text="删除" OnClick="btn_Delete" 
+                                        CommandArgument="<%# ((GridViewRow)Container).RowIndex %>"  Width="50px"></asp:Button>
+                                </ItemTemplate>
+
+<ItemStyle Width="50px"></ItemStyle>
+                            </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
                             </td>
                         </tr>
-                        </table>
+                    </table>
                 </div>
             </div>
         </div>

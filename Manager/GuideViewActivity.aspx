@@ -111,6 +111,13 @@
                     <asp:HyperLink ID="HyperLink2" runat="server" Font-Bold="true" ForeColor="Red" Text="执行/监测报告观看" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
                          NavigateUrl="GuideViewPreList.aspx"></asp:HyperLink>
                 </div>
+                <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <img src="../Image/zh-TW/TipBlack.png" />
+                </div>
+                <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
+                    <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Black" Text="学年新增" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
+                         NavigateUrl="GuideAdd.aspx"></asp:HyperLink>
+                </div>
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
