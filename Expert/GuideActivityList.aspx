@@ -124,10 +124,10 @@
                         <tr>
                             <td>
                                 <asp:Label ID="LbAddListName" runat="server" Text="目标学校:" ForeColor="Blue"></asp:Label>
-                                <asp:DropDownList ID="DlGuideTargetSchool" runat="server">
+                                <asp:DropDownList ID="DlGuideTargetSchool" runat="server" Font-Size="14pt">
                                 </asp:DropDownList>
                                 <asp:Label ID="LbAddListYear" runat="server" Text="学年:" ForeColor="Blue"></asp:Label>
-                                <asp:DropDownList ID="DlListYear" runat="server">
+                                <asp:DropDownList ID="DlListYear" runat="server" Font-Size="14pt">
                                     <asp:ListItem>2013</asp:ListItem>
                                     <asp:ListItem>2014</asp:ListItem>
                                     <asp:ListItem>2015</asp:ListItem>
@@ -141,7 +141,7 @@
                                     <asp:ListItem>2023</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:Label ID="LbAddListSemester" runat="server" Text="学期:" ForeColor="Blue"></asp:Label>
-                                <asp:DropDownList ID="DlAddListSemester" runat="server">
+                                <asp:DropDownList ID="DlAddListSemester" runat="server" Font-Size="14pt">
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                 </asp:DropDownList>
