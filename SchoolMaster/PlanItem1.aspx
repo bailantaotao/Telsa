@@ -78,7 +78,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/SurveyPreList.aspx" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
             </div>
         </div>
         <div id="BlockRight">
@@ -184,7 +184,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanProfessional %>"  ItemStyle-Width="50">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="TbProfessional" runat="server" Width="50px"></asp:TextBox>
+                                     <asp:TextBox ID="TbProfessional" runat="server" Width="50px" ></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
@@ -192,7 +192,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanTel %>"  ItemStyle-Width="90">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="TbTel" runat="server" Width="90px"></asp:TextBox>
+                                     <asp:TextBox ID="TbTel" runat="server" Width="90px" ></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
@@ -200,7 +200,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="<%$ Resources:Resource, TipPlanAddress %>"  ItemStyle-Width="150">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="TbAddress" runat="server" Width="150px"></asp:TextBox>
+                                     <asp:TextBox ID="TbAddress" runat="server" Width="150px" ></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 

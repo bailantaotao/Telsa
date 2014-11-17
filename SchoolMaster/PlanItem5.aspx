@@ -84,7 +84,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/SurveyPreList.aspx" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
             </div>
         </div>
         <div id="BlockRight">
@@ -158,7 +158,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="工作内容"  ItemStyle-Width="100px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column4" runat="server" Width="100px"></asp:TextBox>
+                                     <asp:TextBox ID="column4" runat="server" Width="100px" ></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
@@ -211,7 +211,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="完成情况及效果评估"  ItemStyle-Width="110px">
                                 <ItemTemplate>
-                                     <asp:TextBox ID="column8" runat="server" Width="110px"></asp:TextBox>
+                                     <asp:TextBox ID="column8" runat="server" Width="110px" ></asp:TextBox>
                                 </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
 
