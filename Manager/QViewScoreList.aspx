@@ -118,7 +118,7 @@
                             <td align="left" colspan="5">
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="true">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt">
+                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt" AutoPostBack="true" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>

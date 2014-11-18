@@ -40,6 +40,12 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
 
+        removeSession("QViewScoreList");
+        removeSession("QVSL_PageSelect_SelectedIndexChanged");
+        removeSession("QViewScore");
+        removeSession("QVS_PageSelect_SelectedIndexChanged");
+        removeSession("QVS_DdlGradeLevel_SelectedIndexChanged");
+        removeSession("QVS_DdlClass_SelectedIndexChanged");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -52,7 +58,8 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         if (!IsPostBack)
         {
             setDefault(DdlType.Province);
-            setDefault(DdlType.SchoolName);
+            //setDefault(DdlType.SchoolName);
+            DdlSchoolName.Items.Add(new ListItem(Resources.Resource.DdlTypeSchoolname, "0"));
             setDefault(DdlType.Year);
             if (Session["ViewStudentList"] != null)
                 Query = Session["ViewStudentList"].ToString();
@@ -63,6 +70,12 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
 
         }
 
+    }
+
+    private void removeSession(string key)
+    {
+        if (Session[key] != null)
+            Session.Remove(key);
     }
 
     private void setDefault(DdlType type)
@@ -76,7 +89,7 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
                 setYear();
                 break;
             case DdlType.SchoolName:
-                setSchoolName();
+                //setSchoolName();
                 break;
         }
     }
@@ -126,34 +139,34 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
             DdlYear.Items.Add(province[0]);
         }
     }
-    private void setSchoolName()
-    {
-        ManageSQL ms = new ManageSQL();
-        ArrayList data = new ArrayList();
+    //private void setSchoolName()
+    //{
+    //    ManageSQL ms = new ManageSQL();
+    //    ArrayList data = new ArrayList();
 
-        Query = "select School from Account " +
-                            "left join Area on Account.zipcode = Area.ID " +
-                            "where School not like N'%專家%' and School not like N'%管理%' " +
-                            "group by School ";
+    //    Query = "select School from Account " +
+    //                        "left join Area on Account.zipcode = Area.ID " +
+    //                        "where School not like N'%專家%' and School not like N'%管理%' " +
+    //                        "group by School ";
 
 
-        if (!ms.GetAllColumnData(Query, data))
-        {
-            DdlSchoolName.Items.Add("None");
-            return;
-        }
+    //    if (!ms.GetAllColumnData(Query, data))
+    //    {
+    //        DdlSchoolName.Items.Add("None");
+    //        return;
+    //    }
 
-        if (data.Count == 0)
-        {
-            DdlSchoolName.Items.Add("None");
-            return;
-        }
-        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
-        foreach (string[] province in data)
-        {
-            DdlSchoolName.Items.Add(province[0]);
-        }
-    }
+    //    if (data.Count == 0)
+    //    {
+    //        DdlSchoolName.Items.Add("None");
+    //        return;
+    //    }
+    //    DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+    //    foreach (string[] province in data)
+    //    {
+    //        DdlSchoolName.Items.Add(province[0]);
+    //    }
+    //}
 
 
 
@@ -164,7 +177,7 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         Session["SchoolName"] = sb.ToString();
 
         Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
-                "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue ;
+                "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " ";
 
         string tmp = string.Empty;
         string[] storeParam = new string[2];
@@ -391,4 +404,42 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         Response.Redirect("../SystemManagerIndex.aspx");
     }
 
+    protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+
+    private void setSchoolName(string schoolName)
+    {
+        DdlSchoolName.Items.Clear();
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+
+
+        Query = "select School from Account " +
+                        "left join Area on Account.zipcode = Area.ID " +
+                        "where area.name =N'" + schoolName + "'" + " and School not like N'%專家%' and School not like N'%管理%' " +
+                        "group by School ";
+        
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
 }
