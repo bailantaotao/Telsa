@@ -18,9 +18,8 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
     private string year = string.Empty;
     private string modified = string.Empty;
 
-    private const string SN = "SN";
     private const string YEAR = "YEAR";
-    private const string MODIFIED = "MODIFIED";
+    private const string SEMESTER = "SEMESTER";
     private const string SCHOOLNAME = "SCHOOLNAME";
 
     private StringBuilder schoolName = new StringBuilder();
@@ -51,10 +50,10 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
         //Session["Year"] = "2014";
         //Session["Semester"] = "1";
 
-        LbSchool.Text = Session["SchoolID"].ToString();
-        LbSchoolNo.Text = "NM14001";
-        LbSemester.Text = Session["Semester"].ToString();
-        LbYear.Text = Session["Year"].ToString();        
+        LbYear.Text = Request[YEAR].ToString();
+        LbSchoolNo.Text = getSchoolNo(Request[SCHOOLNAME].ToString());
+        LbSemester.Text = Request[SEMESTER].ToString();
+        LbSchool.Text = Request[SCHOOLNAME].ToString();   
 
         //getSchoolName(schoolName);
         //LbSchoolName.Text = schoolName.ToString();
@@ -72,6 +71,18 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
             
         }
 
+    }
+
+    private string getSchoolNo(string schoolName)
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select UserID from Account where school = N'" + schoolName + "'";
+        ms.GetOneData(query, sb);
+
+        if (sb.ToString().Equals(""))
+            return "Unknown type";
+        return sb.ToString();
     }
 
     private void setGradeLevel()
@@ -238,7 +249,7 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
         NODATA:
             LbCompleted.Text += "<tr align='center' style='background-color:#FFFFFF;' colspan = '6'>";
             LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
+            LbCompleted.Text += "该班级找不到任何学生的资料</td>";
             LbCompleted.Text += "</tr>";
 
             LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
@@ -279,11 +290,13 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
     }
     protected void BtnStudentSearch_Click(object sender, EventArgs e)
     {
-        if ((!TbIdentifyId.Text.Trim().Equals("") && TbStudentName.Text.Trim().Equals("")) || (TbIdentifyId.Text.Trim().Equals("") && !TbStudentName.Text.Trim().Equals("")))
+        if ((!TbIdentifyId.Text.Trim().Equals("") && TbStudentName.Text.Trim().Equals("")) || (TbIdentifyId.Text.Trim().Equals("") && !TbStudentName.Text.Trim().Equals("")) || (!TbIdentifyId.Text.Trim().Equals("") && !TbStudentName.Text.Trim().Equals("")))
         {
             string yearSemester = LbYear.Text.Trim() + LbSemester.Text.Trim();
             ManageSQL ms = new ManageSQL();
             ArrayList data = new ArrayList();
+
+            /** 這邊的查詢學生是用or，不是and */
             string query = "select Name, IdentifyID from QStudent" + yearSemester + " where " +
                 (TbStudentName.Text.Trim().Equals("") ? ("") : ("Name = '" + TbStudentName.Text.Trim() + "' ")) +
                 (TbStudentName.Text.Trim().Equals("") ? ("IdentifyID = '" + TbIdentifyId.Text.Trim() + "'") : ("or IdentifyID = '" + TbIdentifyId.Text.Trim() + "'"));
@@ -332,18 +345,45 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
     }
     protected void DdlGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["DdlGradeLevel_SelectedIndexChanged"] = DdlGradeLevel.SelectedValue;
+        Session["QVST_DdlGradeLevel_SelectedIndexChanged"] = DdlGradeLevel.SelectedValue;
         if (DdlGradeLevel.SelectedIndex == 0)
             return;
-        setClass();
+
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+
+        string query = "select SN from QList where Year = '" + LbYear.Text + "' and Semester = '" + LbSemester.Text + "'";
+        ms.GetOneData(query, sb);
+
+        string listSN = sb.ToString();
+
+        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
+        ms.GetOneData(query, sb);
+
+        if (sb.ToString().Equals("0"))
+        {
+            DdlGradeLevel.SelectedIndex = 0;
+
+            DdlClass.Items.Clear();
+            DdlClass.Items.Add(new ListItem("班级", "0"));
+
+            DdlStudentID.Items.Clear();
+            DdlStudentID.Items.Add(new ListItem("班内学号", "0"));
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('目前该年级尚未键入任何学生之资料');", true);
+            return;
+        }
+
+        setClass(listSN);
     }
 
-    private void setClass()
+    private void setClass(string listSN)
     {
         DdlClass.Items.Clear();
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select class from QGradeClassHistory where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + Session["ListSN"].ToString() + "' and GradeLevel = '" + Session["DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
+        Query = "select class from QGradeClassHistory " +
+                "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVST_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlClass.Items.Add("None");
@@ -363,7 +403,7 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
     }
     protected void DdlClass_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
+        Session["QVST_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
         setStudentID();
     }
 

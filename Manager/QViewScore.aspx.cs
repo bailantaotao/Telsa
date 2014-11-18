@@ -18,9 +18,8 @@ public partial class Manager_QViewScore : System.Web.UI.Page
     private string year = string.Empty;
     private string modified = string.Empty;
 
-    private const string SN = "SN";
     private const string YEAR = "YEAR";
-    private const string MODIFIED = "MODIFIED";
+    private const string SEMESTER = "SEMESTER";
     private const string SCHOOLNAME = "SCHOOLNAME";
 
     private StringBuilder schoolName = new StringBuilder();
@@ -50,11 +49,11 @@ public partial class Manager_QViewScore : System.Web.UI.Page
         //Session["SchoolID"] = "巴彦淖尔市磴口县渡口镇明德小学";
         //Session["Year"] = "2014";
         //Session["Semester"] = "1";
-        
-        LbSchool.Text = Session["SchoolID"].ToString();
-        LbSchoolNo.Text = "NM14001";
-        LbSemester.Text = Session["Semester"].ToString();
-        LbYear.Text = Session["Year"].ToString();        
+
+        LbYear.Text = Request[YEAR].ToString();
+        LbSchoolNo.Text = getSchoolNo(Request[SCHOOLNAME].ToString());
+        LbSemester.Text = Request[SEMESTER].ToString();
+        LbSchool.Text = Request[SCHOOLNAME].ToString();        
 
         //LbSchoolName.Text = schoolName.ToString();
         //LbSchoolSN.Text = Session["UserID"].ToString();
@@ -71,6 +70,18 @@ public partial class Manager_QViewScore : System.Web.UI.Page
             
         }
 
+    }
+
+    private string getSchoolNo(string schoolName)
+    {
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select UserID from Account where school = N'" + schoolName + "'";
+        ms.GetOneData(query, sb);
+
+        if (sb.ToString().Equals(""))
+            return "Unknown type";
+        return sb.ToString();
     }
 
     private void setGradeLevel()
@@ -108,11 +119,12 @@ public partial class Manager_QViewScore : System.Web.UI.Page
                 "left join QScore" + yearSemester + " on QScore" + yearSemester + ".StudentID = QStudent" + yearSemester + ".StudentID ";
 
         string tmp = string.Empty;
-        string[] storeParam = new string[3];
-        string[] sqlParam = new string[] { "QStudent" + yearSemester + ".GradeLevel", "QStudent" + yearSemester + ".Class", "QStudent" + yearSemester + ".Name" };
+        string[] storeParam = new string[4];
+        string[] sqlParam = new string[] { "QStudent" + yearSemester + ".GradeLevel", "QStudent" + yearSemester + ".Class", "QStudent" + yearSemester + ".Name", "QStudent" + yearSemester + ".School" };
         storeParam[0] = DdlGradeLevel.SelectedIndex == 0 ? null : DdlGradeLevel.SelectedValue;
         storeParam[1] = DdlClass.SelectedIndex == 0 ? null : DdlClass.SelectedValue;
         storeParam[2] = DdlStudentName.SelectedIndex == 0 ? null : DdlStudentName.SelectedValue;
+        storeParam[3] = LbSchool.Text.Trim();
 
 
         for (int i = 0; i < storeParam.Length; i++)
@@ -174,44 +186,45 @@ public partial class Manager_QViewScore : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         BaseClass bc = new BaseClass();
-    
+
+        LbCompleted.Text = "<table style='width:750px;'>";
+        LbCompleted.Text += "<tr align='center' style='background-color:#0008ff;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "年级" + "</font></td>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "班级" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "班内学号" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "语文" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "数学" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "英语" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "品德与社会" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "科学" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "音乐" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "体育" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "美术" + "</font></td>";
+
+        LbCompleted.Text += "</tr>";
+
         if (ms.GetAllColumnData(Query, data))
         {
-            LbCompleted.Text = "<table style='width:750px;'>";
-            LbCompleted.Text += "<tr align='center' style='background-color:#0008ff;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "年级" + "</font></td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "班级" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "班内学号" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "语文" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "数学" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "英语" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "品德与社会" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "科学" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "音乐" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "体育" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "美术" + "</font></td>";
-
-            LbCompleted.Text += "</tr>";
 
             LbTotalCount.Text = Resources.Resource.TipTotal + " " + data.Count.ToString() + " " + Resources.Resource.TipNumbers;
 
@@ -315,11 +328,12 @@ public partial class Manager_QViewScore : System.Web.UI.Page
         NODATA:
             LbCompleted.Text += "<tr align='center' style='background-color:#FFFFFF;' colspan = '5'>";
             LbCompleted.Text += "<td colspan = '11' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
+            LbCompleted.Text += "该班级找不到任何学生的成绩</td>";
             LbCompleted.Text += "</tr>";
 
             LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
             PageOrder.Text = "0 / 0";
+
         FINALLY:
             LbCompleted.Text += "</table>";
 
@@ -336,7 +350,7 @@ public partial class Manager_QViewScore : System.Web.UI.Page
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
-        Query = Session["PageSelect_SelectedIndexChanged"].ToString();
+        Query = Session["QVS_PageSelect_SelectedIndexChanged"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
 
@@ -357,18 +371,45 @@ public partial class Manager_QViewScore : System.Web.UI.Page
 
     protected void DdlGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["DdlGradeLevel_SelectedIndexChanged"] = DdlGradeLevel.SelectedValue;
+        Session["QVS_DdlGradeLevel_SelectedIndexChanged"] = DdlGradeLevel.SelectedValue;
         if (DdlGradeLevel.SelectedIndex == 0)
             return;
-        setClass();
+
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+
+        string query = "select SN from QList where Year = '" + LbYear.Text + "' and Semester = '" + LbSemester.Text + "'";
+        ms.GetOneData(query, sb);
+
+        string listSN = sb.ToString();
+
+        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
+        ms.GetOneData(query, sb);
+
+        if (sb.ToString().Equals("0"))
+        {
+            DdlGradeLevel.SelectedIndex = 0;
+
+            DdlClass.Items.Clear();
+            DdlClass.Items.Add(new ListItem("班级", "0"));
+            
+            DdlStudentName.Items.Clear();
+            DdlStudentName.Items.Add(new ListItem("学生姓名", "0"));
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('目前该年级尚未键入任何学生之资料');", true);
+            return;
+        }
+
+        setClass(listSN);
     }
 
-    private void setClass()
+    private void setClass(string listSN)
     {
         DdlClass.Items.Clear();
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select class from QGradeClassHistory where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + Session["ListSN"].ToString() + "' and GradeLevel = '" + Session["DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
+        Query = "select class from QGradeClassHistory "+
+            "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVS_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlClass.Items.Add("None");
@@ -422,7 +463,7 @@ public partial class Manager_QViewScore : System.Web.UI.Page
     }
     protected void DdlClass_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
+        Session["QVS_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
         setStudentName();
     }
 }

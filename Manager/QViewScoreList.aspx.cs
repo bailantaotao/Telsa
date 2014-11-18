@@ -18,9 +18,9 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
     private string year = string.Empty;
     private string modified = string.Empty;
 
-    private const string SN = "SN";
+    
     private const string YEAR = "YEAR";
-    private const string MODIFIED = "MODIFIED";
+    private const string SEMESTER = "SEMESTER";
     private const string SCHOOLNAME = "SCHOOLNAME";
 
     private StringBuilder schoolName = new StringBuilder();
@@ -165,7 +165,31 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         Session["SchoolName"] = sb.ToString();
 
         Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
-                "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue;
+                "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " ";
+
+        string tmp = string.Empty;
+        string[] storeParam = new string[2];
+        string[] sqlParam = new string[] { "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School", "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode" };
+        storeParam[0] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.SelectedValue;
+        storeParam[1] = DdlProvince.SelectedIndex == 0 ? null : DdlProvince.SelectedValue;
+        
+        for (int i = 0; i < storeParam.Length; i++)
+        {
+            if (!string.IsNullOrEmpty(storeParam[i]))
+            {
+                if (string.IsNullOrEmpty(tmp))
+                {
+                    tmp += "where " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                }
+                else
+                {
+                    tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                }
+
+            }
+        }
+        Query += tmp;
+
         Session["QViewScoreList"] = Query;
         //StringBuilder sb = new StringBuilder();
         //getSchoolName(sb);
@@ -227,22 +251,22 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
 
         ArrayList userData = new ArrayList();
 
+        LbCompleted.Text = "<table style='width:750px;'>";
+        LbCompleted.Text += "<tr align='center' style='background-color:#0008ff;'>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "学校" + "</font></td>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "学年" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "学期" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "</font></td>";
+        LbCompleted.Text += "</tr>";
+
         if (ms.GetAllColumnData(Query, data))
         {
-            LbCompleted.Text = "<table style='width:750px;'>";
-            LbCompleted.Text += "<tr align='center' style='background-color:#0008ff;'>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "学校" + "</font></td>";
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "学年" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "学期" + "</font></td>";
-
-            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "</font></td>";
-            LbCompleted.Text += "</tr>";
-
             LbTotalCount.Text = Resources.Resource.TipTotal + " " + data.Count.ToString() + " " + Resources.Resource.TipNumbers;
 
             if (data.Count == 0)
@@ -290,8 +314,8 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
                 else
                     LbCompleted.Text += "<tr align='center'>";
 
-                string EncryptSN = GetEncryptionString(SN, (DdlYear.SelectedValue));
-                string EncryptYEAR = GetEncryptionString(YEAR, (DdlSemester.SelectedValue));
+                string EncryptSEMESTER = GetEncryptionString(SEMESTER, (DdlSemester.SelectedValue));
+                string EncryptYEAR = GetEncryptionString(YEAR, (DdlYear.SelectedValue));
                 string EncryptSchoolName = GetEncryptionString(SCHOOLNAME, ((string[])(data[i]))[0]);
 
 
@@ -311,7 +335,7 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
 
 
                 // goto view personal page
-                LbCompleted.Text += "<a href='QViewScore.aspx?" + EncryptSN + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
+                LbCompleted.Text += "<a href='QViewScore.aspx?" + EncryptSEMESTER + "&" + EncryptYEAR + "&" + EncryptSchoolName + "'>" + Resources.Resource.TipPlanView + "</a>";
 
 
 
@@ -324,8 +348,8 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         }
 
     NODATA:
-        LbCompleted.Text += "<tr align='center' style='background-color:#FFFFFF;' colspan = '5'>";
-        LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+        LbCompleted.Text += "<tr align='center' style='background-color:#FFFFFF;'>";
+        LbCompleted.Text += "<td colspan = '3' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -347,7 +371,7 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
-        Query = Session["PageSelect_SelectedIndexChanged"].ToString();
+        Query = Session["QVSL_PageSelect_SelectedIndexChanged"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
 

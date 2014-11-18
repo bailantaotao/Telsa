@@ -40,6 +40,18 @@ public partial class Manager_QManage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        removeSession("QViewScoreList");
+        removeSession("QVSL_PageSelect_SelectedIndexChanged");
+        removeSession("QViewScore");
+        removeSession("QVS_PageSelect_SelectedIndexChanged");
+        removeSession("QVS_DdlGradeLevel_SelectedIndexChanged");
+        removeSession("QVS_DdlClass_SelectedIndexChanged");
+
+        removeSession("ViewStudentList");
+        removeSession("QVSL_PageSelect_SelectedIndexChanged");
+        removeSession("QVST_DdlGradeLevel_SelectedIndexChanged");
+        removeSession("QVST_DdlClass_SelectedIndexChanged");
+
         if (!IsPostBack)
         {
             setInitial();
@@ -47,6 +59,13 @@ public partial class Manager_QManage : System.Web.UI.Page
         TbDeadline.Attributes.Add("readonly", "true");
 
     }
+
+    private void removeSession(string key)
+    {
+        if (Session[key] != null)
+            Session.Remove(key);
+    }
+
     protected void btn_View(object sender, EventArgs e)
     {
         //get your command argument from the button here
@@ -269,7 +288,8 @@ public partial class Manager_QManage : System.Web.UI.Page
                     "[Name] [nvarchar](50) NULL," +
                     "[GradeLevel] [int] NULL," +
                     "[Class] [int] NULL," +
-                    "[School] [nvarchar](50) NULL" +
+                    "[School] [nvarchar](50) NULL," +
+                    "[ZipCode] [int] NULL" +
                     ") ON [PRIMARY]";
             ms.WriteData(query,sb);
 
