@@ -79,14 +79,11 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
-        StringBuilder sb3 = new StringBuilder();
 
         ArrayList userData = new ArrayList();
 
         string query = string.Empty;
         string query1 = string.Empty;
-        string query2 = string.Empty;
-        string query3 = string.Empty;
         string status = string.Empty;
 
         if (ms.GetAllColumnData(Query, data))
@@ -99,8 +96,8 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
             LbCompleted.Text += "学年" + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "提交有效期限" + "</font></td>";
-            /*LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "完成状态" + "</font></td>";*/
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += "完成状态" + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "</font></td>";
             LbCompleted.Text += "</tr>";
@@ -188,49 +185,27 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
                 LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
 
 
-                /*LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+
+                query1 = "select SurveyStatus from SurveyListUser where SurveyYear=" + ((string[])(data[i]))[1] + " and SurveySchool= N'" + schoolName.ToString() + "'";
+                ms.GetOneData(query1, sb2);
+
+                if (sb2.ToString() == "True")
+                {
+                    LbCompleted.Text += "已完成" + "</td>";
+                }
+                if (sb2.ToString() == "False")
+                {
+                    LbCompleted.Text += "未完成" + "</td>";
+                }
 
                 if (ts.Days <= 0)
                 {
                     // 代表還沒到deadline 可填寫問卷
 
-                    query = "select Complete from SurveyQuestionnaire where SN='" + EncryptSN + "'" + "and Year= '" + EncryptYEAR + "'" + "and School= N'" + schoolName.ToString() + "'";
-                    ms.GetOneData(query, sb);
-                    query1 = "select Complete from SurveyListLanguage where SN='" + EncryptSN + "'" + "and Year= '" + EncryptYEAR + "'" + "and School= N'" + schoolName.ToString() + "'";
-                    ms.GetOneData(query1, sb1);
-                    query2 = "select Complete from SurveyListMath where SN='" + EncryptSN + "'" + "and Year= '" + EncryptYEAR + "'" + "and School= N'" + schoolName.ToString() + "'";
-                    ms.GetOneData(query2, sb2);
-                    query3 = "select Complete from SurveyListEnglish where SN='" + EncryptSN + "'" + "and Year= '" + EncryptYEAR + "'" + "and School= N'" + schoolName.ToString() + "'";
-                    ms.GetOneData(query3, sb3);
+                    
 
-                    if (sb.ToString() == "1")
-                    {
-                        if (sb1.ToString() == "1")
-                        {
-                            if (sb2.ToString() == "1")
-                            {
-                                if (sb3.ToString() == "1")
-                                {
-                                    status = "已完成";
-                                }
-                            }
-                        }
-                    }
-                    if (sb.ToString() != "1")
-                    {
-                        if (sb1.ToString() != "1")
-                        {
-                            if (sb2.ToString() != "1")
-                            {
-                                if (sb3.ToString() != "1")
-                                {
-                                    status = "未完成";
-                                }
-                            }
-                        }
-                    }
-
-                    LbCompleted.Text += status + "</td>";
+                    
                 }
                 else
                 {
@@ -245,7 +220,7 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
                         // 有資料，但已經超過deadline, 故還是顯示已提交
                         LbCompleted.Text += Resources.Resource.TipPlanSubmited + "</td>";
                     }
-                }*/
+                }
 
 
                 if (ts.Days <= 0)

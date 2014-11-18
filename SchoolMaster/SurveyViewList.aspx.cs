@@ -60,45 +60,6 @@ public partial class SchoolMaster_SurveyViewList : System.Web.UI.Page
         if (Session["SurveyYear"] != null)
             Session.Remove("SurveyYear");
 
-        /*query = "select Complete from SurveyQuestionnaire where SN=" + Request["SN"].ToString() +"and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query, sb);
-        query1 = "select Complete from SurveyListLanguage where SN=" + Request["SN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query1, sb1);
-        query2 = "select Complete from SurveyListMath where SN=" + Request["SN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query2, sb2);
-        query3 = "select Complete from SurveyListEnglish where SN=" + Request["SN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query3, sb3);
-
-        if (sb.ToString() == "1")
-        {
-            if (sb1.ToString() == "1")
-            {
-                if (sb2.ToString() == "1")
-                {
-                    if (sb3.ToString() == "1")
-                    {
-                        LbSurveyStatus.Text = "已完成";
-                    }
-                }
-            }
-        }
-        /*if (sb.ToString() != "1")
-        {
-            if (sb1.ToString() != "1")
-            {
-                if (sb2.ToString() != "1")
-                {
-                    if (sb3.ToString() != "1")
-                    {
-                        LbSurveyStatus.Text = "未完成";
-                    }
-                }
-            }
-        }*/
-        /*else
-        {
-            LbSurveyStatus.Text = "未完成";
-        }*/
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -118,15 +79,8 @@ public partial class SchoolMaster_SurveyViewList : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         StringBuilder sb1 = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
-        StringBuilder sb3 = new StringBuilder();
-        StringBuilder sb4 = new StringBuilder();
-        StringBuilder sb5 = new StringBuilder();
 
         string query1 = string.Empty;
-        string query2 = string.Empty;
-        string query3 = string.Empty;
-        string query4 = string.Empty;
-        //StringBuilder sb2 = new StringBuilder();
         string query = string.Empty;
 
 
@@ -137,33 +91,18 @@ public partial class SchoolMaster_SurveyViewList : System.Web.UI.Page
         LbSurveySchool.Text = schoolName.ToString();
         LbSurveySchoolID.Text = Session["UserID"].ToString();
         LbDeadline.Text = sb1.ToString().Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : sb1.ToString().Split(' ')[0];
-
-        query1 = "select Complete from SurveyQuestionnaire where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
+        query1 = "select SurveyStatus from SurveyListUser where SN=" + Session["UserSurveyListSN"].ToString() + " and SurveyYear=" + Request["YEAR"].ToString() + " and SurveySchool= N'" + schoolName.ToString() + "'";
         ms.GetOneData(query1, sb2);
-        query2 = "select Complete from SurveyListLanguage where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query2, sb3);
-        query3 = "select Complete from SurveyListMath where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query3, sb4);
-        query4 = "select Complete from SurveyListEnglish where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Request["YEAR"].ToString() + "and School= N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query4, sb5);
 
-        if (sb2.ToString() == "1")
+        if (sb2.ToString() == "True")
         {
-            if (sb3.ToString() == "1")
-            {
-                if (sb4.ToString() == "1")
-                {
-                    if (sb5.ToString() == "1")
-                    {
-                        LbSurveyStatus.Text = "已完成";
-                    }
-                }
-            }
+            LbSurveyStatus.Text = "已完成";
         }
-        else
+        if (sb2.ToString() == "False")
         {
-            LbSurveyStatus.Text = "未完成";
+            LbSurveyStatus.Text += "未完成";
         }
+        
     }
     private bool getSchoolName(StringBuilder sb)
     {

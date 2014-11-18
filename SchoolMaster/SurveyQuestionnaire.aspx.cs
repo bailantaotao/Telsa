@@ -338,13 +338,22 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
     {
         getSchoolName(schoolName);
         StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+        StringBuilder sb3 = new StringBuilder();
+        StringBuilder sb4 = new StringBuilder();
+        StringBuilder sb5 = new StringBuilder();
+
+        string query1 = string.Empty;
+        string query2 = string.Empty;
+        string query3 = string.Empty;
+        string query4 = string.Empty;
         ManageSQL ms = new ManageSQL();
         //先刪除原本的
         string query = "delete from SurveyQuestionnaire where SN ='" + Session["UserSurveyListSN"].ToString() + "'" + "and Year ='" + Session["SurveyYear"].ToString() + "'" + "and School= N'" + schoolName.ToString() +"'";
         ms.WriteData(query, sb);
         sb.Clear();
         AnswerStatus();
-        query = "insert into SurveyQuestionnaire (SN, Year, School, Q1A1, Q1A2, Q1A3, Q1A4, Q1A5, Q1A6, Q1A7, Q1A8, Q1A9, Q1A10, Q2A1, Q2A2, Q2A3, Q2A4, Q2A5, Q2A6, Q2A7, Q2A8, Q2A9, Q2A10, Request, Comment1, Comment2, Proposal) VALUES ('" +
+        query = "insert into SurveyQuestionnaire (SN, Year, School, Q1A1, Q1A2, Q1A3, Q1A4, Q1A5, Q1A6, Q1A7, Q1A8, Q1A9, Q1A10, Q2A1, Q2A2, Q2A3, Q2A4, Q2A5, Q2A6, Q2A7, Q2A8, Q2A9, Q2A10, Request, Comment1, Comment2, Proposal, Complete) VALUES ('" +
                         Session["UserSurveyListSN"].ToString() + "','" +
                         Session["SurveyYear"].ToString() + "', N'" +
                         schoolName.ToString() + "','" +
@@ -371,7 +380,7 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
                         TbRequest.Text.Trim() + "', N'" +
                         TbComment1.Text.Trim() + "', N'" +
                         TbComment2.Text.Trim() + "', N'" +
-                        TbProposal.Text.Trim() + "')";
+                        TbProposal.Text.Trim() + "','1')";
         ms.WriteData(query, sb);
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='SurveyList.aspx?SN=" + Session["SurveySN"].ToString() + "&YEAR=" + Session["SurveyYear"].ToString() + "';", true);
     }
@@ -381,12 +390,46 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
         string query = string.Empty;
 
         StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+        StringBuilder sb3 = new StringBuilder();
+        StringBuilder sb4 = new StringBuilder();
+        StringBuilder sb5 = new StringBuilder();
+        StringBuilder sb6 = new StringBuilder();
+
+        string query1 = string.Empty;
+        string query2 = string.Empty;
+        string query3 = string.Empty;
+        string query4 = string.Empty;
+        string query5 = string.Empty;
         ManageSQL ms = new ManageSQL();
 
-        storeData();
 
-        query = "update SurveyQuestionnaire set Complete='1'";
-        ms.WriteData(query, sb);
+        query1 = "select Complete from SurveyQuestionnaire where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Session["SurveyYear"].ToString() + "and School= N'" + schoolName.ToString() + "'";
+        ms.GetOneData(query1, sb2);
+        query2 = "select Complete from SurveyListLanguage where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Session["SurveyYear"].ToString() + "and School= N'" + schoolName.ToString() + "'";
+        ms.GetOneData(query2, sb3);
+        query3 = "select Complete from SurveyListMath where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Session["SurveyYear"].ToString() + "and School= N'" + schoolName.ToString() + "'";
+        ms.GetOneData(query3, sb4);
+        query4 = "select Complete from SurveyListEnglish where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Session["SurveyYear"].ToString() + "and School= N'" + schoolName.ToString() + "'";
+        ms.GetOneData(query4, sb5);
+        query5 = "update SurveyListUser set SurveyStatus='True' where SN=" + Session["UserSurveyListSN"].ToString() + "and Year= " + Session["SurveyYear"].ToString() + "and School= N'" + schoolName.ToString() + "'";
+        
+
+        if (sb2.ToString() == "1")
+        {
+            if (sb3.ToString() == "1")
+            {
+                if (sb4.ToString() == "1")
+                {
+                    if (sb5.ToString() == "1")
+                    {
+                        ms.WriteData(query, sb6);
+                    }
+                }
+            }
+        }
+
+        storeData();
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
