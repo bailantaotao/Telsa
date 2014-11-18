@@ -194,7 +194,7 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
                 {
                     LbCompleted.Text += "已完成" + "</td>";
                 }
-                if (sb2.ToString() == "False")
+                else
                 {
                     LbCompleted.Text += "未完成" + "</td>";
                 }
