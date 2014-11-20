@@ -158,7 +158,7 @@
                             </td>    
                         </tr>
                         <tr>
-                            <td>
+                            <td align="center">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSubject" runat="server" Text="1.学科能力："></asp:Label>
                             </td>
                         </tr>
@@ -171,7 +171,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="center">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextPersonality" runat="server" Text="2.人格陶冶："></asp:Label>
                             </td>
                         </tr>
@@ -184,7 +184,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="center">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSchoolManagement" runat="server" Text="3.学校管理："></asp:Label>
                             </td>
                         </tr>
@@ -201,7 +201,7 @@
                             </td>    
                         </tr>
                         <tr>
-                            <td align="left" >
+                            <td align="center">
                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSDPFormulate" runat="server" Text="（一）学校发展计划的制定"></asp:Label> 
                             </td>    
                         </tr>
@@ -213,7 +213,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="center">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSDPImplement" runat="server" Text="（二）学校发展计划的实施"></asp:Label>
                             </td>
                         </tr>
@@ -224,7 +224,8 @@
                                     BorderWidth="3px" Width="643px" Font-Size="16px" Height="38px" ReadOnly="True" TextMode="MultiLine"></asp:TextBox>
                             </td>
                         </tr>
-                        <tr><td>
+                        <tr>
+                            <td align="center">
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSDPeffect" runat="server" Text="（三）学校发展计划取得的成效"></asp:Label>
                             </td>
                         </tr>
