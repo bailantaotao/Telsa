@@ -126,6 +126,10 @@
                                 <asp:Label ID="LbAddListName" runat="server" Text="目标学校:" ForeColor="Blue"></asp:Label>
                                 <asp:DropDownList ID="DlGuideTargetSchool" runat="server" Font-Size="14pt">
                                 </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <asp:Label ID="LbAddListYear" runat="server" Text="学年:" ForeColor="Blue"></asp:Label>
                                 <asp:DropDownList ID="DlListYear" runat="server" Font-Size="14pt">
                                     <asp:ListItem>2013</asp:ListItem>

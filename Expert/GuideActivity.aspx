@@ -168,7 +168,7 @@
                                 &nbsp&nbsp&nbsp<asp:Label ID="LbGuideActivityStartTime" runat="server" Text="开始时间:" ForeColor="Blue"></asp:Label>
                                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                                 <cc1:CalendarExtender ID="TbGuideActivityStartTime" runat="server" 
-                                    Enabled="True" TargetControlID="TextBox1" >
+                                    Enabled="True" TargetControlID="TextBox1" Format="yyyy/MM/dd">
                                 </cc1:CalendarExtender>
                                 
                             </td>
