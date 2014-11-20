@@ -184,11 +184,11 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Expert/QViewStudentList.aspx" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlQuestinnaire" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/Expert/SurveyViewPreList.aspx" Text="<%$ Resources:Resource, HyQuestionnaire %>"></asp:HyperLink>
             </div>
         </div>
         <div id="BlockRight">
@@ -327,7 +327,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >    
-                                <asp:DropDownList ID="DlProvinceScore1" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore1" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -361,7 +362,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >                               
-                                <asp:DropDownList ID="DlProvinceScore2" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore2" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -414,7 +416,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style30" >                               
-                                <asp:DropDownList ID="DlProvinceScore3" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore3" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -448,7 +451,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >                                
-                                <asp:DropDownList ID="DlProvinceScore4" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore4" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -494,7 +498,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                             class="style18" >                                
-                                <asp:DropDownList ID="DlProvinceScore5" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore5" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -536,7 +541,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                  class="style18" >                               
-                                <asp:DropDownList ID="DlProvinceScore6" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore6" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -572,7 +578,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >                               
-                                <asp:DropDownList ID="DlProvinceScore7" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore7" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -619,7 +626,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >                               
-                                <asp:DropDownList ID="DlProvinceScore8" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore8" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -658,7 +666,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                  class="style18" >                               
-                                <asp:DropDownList ID="DlProvinceScore9" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore9" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -697,7 +706,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                  class="style18" >                                
-                                <asp:DropDownList ID="DlProvinceScore10" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore10" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -730,7 +740,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >                                
-                                <asp:DropDownList ID="DlProvinceScore11" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore11" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
@@ -760,7 +771,8 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style18" >                                
-                                <asp:DropDownList ID="DlProvinceScore12" runat="server">
+                                <asp:DropDownList ID="DlProvinceScore12" runat="server" Height="33px" Width="57px" 
+                                    Font-Size="14pt">
                                     <asp:ListItem Selected="True">0</asp:ListItem>
                                     <asp:ListItem>1</asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
