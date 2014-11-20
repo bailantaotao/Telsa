@@ -167,10 +167,6 @@ public partial class Manager_KPIAdd : System.Web.UI.Page
  
     }
 
-    protected void BtnCancel_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("PlanViewList.aspx");
-    }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
         int status = haveEmptyData();
