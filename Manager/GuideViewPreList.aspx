@@ -152,13 +152,6 @@
                             </td>
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                    <ContentTemplate>
-                                        <asp:DropDownList ID="DdlStatus" runat="server" Font-Size="14pt" Width="80px">
-                                            <asp:ListItem Text="状态" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="已提交" Value="True"></asp:ListItem>
-                                            <asp:ListItem Text="未提交" Value="False"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
                                     </Triggers>
