@@ -855,4 +855,7 @@
   <data name="QStudentScore" xml:space="preserve">
     <value>学生成绩观看</value>
   </data>
+  <data name="QStudentScoreInput" xml:space="preserve">
+    <value>学生成绩输入</value>
+  </data>
 </root>
