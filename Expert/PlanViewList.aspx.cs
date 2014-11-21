@@ -217,7 +217,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             storeParam[2] = DdlProvince.SelectedIndex == -1 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
         storeParam[3] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
 
-        for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length - 1); i++)
+        for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length ); i++)
         {
             if (!string.IsNullOrEmpty(storeParam[i]))
             {
