@@ -35,7 +35,7 @@
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-left:20px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;

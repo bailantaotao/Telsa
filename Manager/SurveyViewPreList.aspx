@@ -22,13 +22,13 @@
             padding-left:25px;
         }
         #BlockRightDown {
-            padding-top: 10px;
+            padding-left:25px;
         }
         #BlockRightDownController {
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            
         }
         #BlockRightDownDataPageSelect{
             width:50%;

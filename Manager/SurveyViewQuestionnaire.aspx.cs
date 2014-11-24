@@ -23,7 +23,6 @@ public partial class Manager_SurveyViewQuestionnaire : System.Web.UI.Page
     private string StatusQ1A7 = string.Empty;
     private string StatusQ1A8 = string.Empty;
     private string StatusQ1A9 = string.Empty;
-    private string StatusQ1A10 = string.Empty;
     private string StatusQ2A1 = string.Empty;
     private string StatusQ2A2 = string.Empty;
     private string StatusQ2A3 = string.Empty;
@@ -33,7 +32,6 @@ public partial class Manager_SurveyViewQuestionnaire : System.Web.UI.Page
     private string StatusQ2A7 = string.Empty;
     private string StatusQ2A8 = string.Empty;
     private string StatusQ2A9 = string.Empty;
-    private string StatusQ2A10 = string.Empty;
 
     private const string SN = "SN";
     private const string YEAR = "YEAR";
@@ -76,7 +74,7 @@ public partial class Manager_SurveyViewQuestionnaire : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Q1A1, Q1A2, Q1A3, Q1A4, Q1A5, Q1A6, Q1A7, Q1A8, Q1A9, Q1A10, Q2A1, Q2A2, Q2A3, Q2A4, Q2A5, Q2A6, Q2A7, Q2A8, Q2A9, Q2A10, Request, Comment1, Comment2, Proposal from SurveyQuestionnaire " +
+        string query = "select Q1A1, Q1A2, Q1A3, Q1A4, Q1A5, Q1A6, Q1A7, Q1A8, Q1A9, Q2A1, Q2A2, Q2A3, Q2A4, Q2A5, Q2A6, Q2A7, Q2A8, Q2A9, Request, Comment1, Comment2, Proposal from SurveyQuestionnaire " +
                        "where Year='" + Session["SurveyYear"].ToString() + "'" +
                        "and School= N'" + Session["schoolName"].ToString() + "'";
         ms.GetAllColumnData(query, data);
@@ -122,52 +120,44 @@ public partial class Manager_SurveyViewQuestionnaire : System.Web.UI.Page
             }
             if (d[9].ToString() == "True")
             {
-                CbQ1A10.Checked = true;
+                CbQ2A1.Checked = true;
             }
             if (d[10].ToString() == "True")
             {
-                CbQ2A1.Checked = true;
+                CbQ2A2.Checked = true;
             }
             if (d[11].ToString() == "True")
             {
-                CbQ2A2.Checked = true;
+                CbQ2A3.Checked = true;
             }
             if (d[12].ToString() == "True")
             {
-                CbQ2A3.Checked = true;
+                CbQ2A4.Checked = true;
             }
             if (d[13].ToString() == "True")
             {
-                CbQ2A4.Checked = true;
+                CbQ2A5.Checked = true;
             }
             if (d[14].ToString() == "True")
             {
-                CbQ2A5.Checked = true;
+                CbQ2A6.Checked = true;
             }
             if (d[15].ToString() == "True")
             {
-                CbQ2A6.Checked = true;
+                CbQ2A7.Checked = true;
             }
             if (d[16].ToString() == "True")
             {
-                CbQ2A7.Checked = true;
+                CbQ2A8.Checked = true;
             }
             if (d[17].ToString() == "True")
             {
-                CbQ2A8.Checked = true;
-            }
-            if (d[18].ToString() == "True")
-            {
                 CbQ2A9.Checked = true;
             }
-            if (d[19].ToString() == "True")
-            {
-                CbQ2A10.Checked = true;
-            }
-            TbRequest.Text = d[20];
-            TbComment1.Text = d[21];
-            TbComment2.Text = d[22];
-            TbProposal.Text = d[23];
+            TbRequest.Text = d[18];
+            TbComment1.Text = d[19];
+            TbComment2.Text = d[20];
+            TbProposal.Text = d[21];
         }
     }
 

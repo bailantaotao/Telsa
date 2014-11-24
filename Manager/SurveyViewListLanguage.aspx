@@ -22,13 +22,13 @@
             padding-left:25px;
         }
         #BlockRightDown {
-            padding-top: 10px;
+            padding-left:25px;
         }
         #BlockRightDownController {
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:20px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -108,54 +108,57 @@
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">
                         <tr>
-                            <td >
+                            <td align="left">
                                 <asp:Label ID="Label7" runat="server" Text="明德小学教学精进项目(语文教材)使用意见调查表" Font-Size="Large" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
-                        <tr><td></td></tr>
                         <tr>
-                            <td>
-                                <asp:Label ID="Label1" runat="server" Text="学校名称：" ForeColor="Green"></asp:Label>
-                                <asp:Label ID="LbSurveySchool" runat="server" Text="" ForeColor="Green"></asp:Label>
+                            <td align="left">
+                                <asp:Label ID="Label1" runat="server" Text="学校名称：" ForeColor="#8C4510"></asp:Label>
+                                <asp:Label ID="LbSurveySchool" runat="server" Text="" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:Label ID="Label2" runat="server" Text="填表人：" ForeColor="Green"></asp:Label>
-                                <asp:Label ID="LbSurveyUser" runat="server" Text="" ForeColor="Green"></asp:Label>
+                            <td align="left">
+                                <asp:Label ID="Label2" runat="server" Text="填表人：" ForeColor="#8C4510"></asp:Label>
+                                <asp:Label ID="LbSurveyUser" runat="server" Text="" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:Label ID="Label4" runat="server" Text="填表日期：" ForeColor="Green"></asp:Label>
+                            <td align="left">
+                                <asp:Label ID="Label4" runat="server" Text="填表日期：" ForeColor="#8C4510"></asp:Label>
                                 <asp:TextBox ID="TbSurveyYear" runat="server" Width="50px" Font-Size="14pt" 
                                     Enabled="False"></asp:TextBox>
-                                <asp:Label ID="Label3" runat="server" Text="年" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text="年" ForeColor="#8C4510"></asp:Label>
                                 <asp:TextBox ID="TbSurveyMonth" runat="server" Width="25px" Font-Size="14pt" 
                                     Enabled="False"></asp:TextBox>
-                                <asp:Label ID="Label5" runat="server" Text="月" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label5" runat="server" Text="月" ForeColor="#8C4510"></asp:Label>
                                 <asp:TextBox ID="TbSurveyDay" runat="server" Width="25px" Font-Size="14pt" 
                                     Enabled="False"></asp:TextBox>
-                                <asp:Label ID="Label6" runat="server" Text="日" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label6" runat="server" Text="日" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr><td></td></tr>
                     </table>
-                    <table width="720px">
-                        <tr align="center" align="center">
-　                           <td width="720" height="25" bgcolor="#80ff00" align="left">
+                    <table width="720px" bgcolor="#F7DFB5">
+                        <tr align="center">
+　                           <td width="720" height="25" align="left">
                                 <asp:Label ID="Label8" runat="server" Text="电子平台(PPT教材)" Font-Bold="true"></asp:Label>
-                                <asp:Label ID="Label85" runat="server" Text="满意度:" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="LbScore1" runat="server" Text="" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="Label87" runat="server" Text="分" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="Label84" runat="server" Text="(很满意:100分  满意:80分  基本满意:60分  不满意:40分  很不满意:20分)" Font-Size="12pt"></asp:Label>
                              </td>
-　                       </tr>
-                    </table>
-                    <table width="720px">
+　                      </tr>
                         <tr>
-                            <td>
-                                <asp:Label ID="Label9" runat="server" Text="1.课堂教学的引入" ForeColor="Green"></asp:Label>
+                            <td width="720" height="25" align="left">
+                                <asp:Label ID="Label85" runat="server" Text="满意度:" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="LbScore1" runat="server" Text="" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="Label87" runat="server" Text="分" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="Label84" runat="server" Text="(很满意:100分  满意:80分  基本满意:60分  不满意:40分  很不满意:20分)" Font-Size="12pt"></asp:Label>
+                            </td>
+                        </tr>   
+                    </table>
+                    <table width="720px" cellspacing="10">
+                        <tr>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label9" runat="server" Text="1.课堂教学的引入" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -167,7 +170,7 @@
                                 <asp:RadioButton ID="RbQ1O2" runat="server" GroupName="RbQ1" Enabled="False"/>
                                 <asp:Label ID="Label11" runat="server" Text="满意"></asp:Label>
                             </td>
-                            <td width="100">
+                            <td width="100" >
                                 <asp:RadioButton ID="RbQ1O3" runat="server" GroupName="RbQ1" Enabled="False"/>
                                 <asp:Label ID="Label12" runat="server" Text="基本满意"></asp:Label>
                             </td>
@@ -181,10 +184,10 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="2">
-                                <asp:Label ID="Label15" runat="server" Text="2.新课程内容的教授" ForeColor="Green"></asp:Label>
+                            <td colspan="5" class="style2" align="left">
+                                <asp:Label ID="Label15" runat="server" Text="2.新课程内容的教授" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -205,15 +208,15 @@
                                 <asp:Label ID="Label19" runat="server" Text="不满意"></asp:Label>
                             </td>
                             <td width="100">
-                                <asp:RadioButton ID="RbQ2O5" runat="server" GroupName="RbQ2"/>
+                                <asp:RadioButton ID="RbQ2O5" runat="server" GroupName="RbQ2" Enabled="False"/>
                                 <asp:Label ID="Label20" runat="server" Text="很不满意"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="3">
-                                <asp:Label ID="Label21" runat="server" Text="3.基础知识的掌握和基本技能的练习" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label21" runat="server" Text="3.基础知识的掌握和基本技能的练习" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -239,10 +242,10 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="3">
-                                <asp:Label ID="Label27" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label27" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -259,19 +262,19 @@
                                 <asp:Label ID="Label30" runat="server" Text="基本满意"></asp:Label>
                             </td>
                             <td width="100">
-                                <asp:RadioButton ID="RbQ4O4" runat="server" GroupName="RbQ4"/>
+                                <asp:RadioButton ID="RbQ4O4" runat="server" GroupName="RbQ4" Enabled="False"/>
                                 <asp:Label ID="Label31" runat="server" Text="不满意"></asp:Label>
                             </td>
                             <td width="100">
-                                <asp:RadioButton ID="RbQ4O5" runat="server" GroupName="RbQ4"/>
+                                <asp:RadioButton ID="RbQ4O5" runat="server" GroupName="RbQ4" Enabled="False"/>
                                 <asp:Label ID="Label32" runat="server" Text="很不满意"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td>
-                                <asp:Label ID="Label33" runat="server" Text="5.作业的规定" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label33" runat="server" Text="5.作业的规定" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -292,26 +295,29 @@
                                 <asp:Label ID="Label37" runat="server" Text="不满意"></asp:Label>
                             </td>
                             <td width="100">
-                                <asp:RadioButton ID="RbQ5O5" runat="server" GroupName="RbQ5"/>
+                                <asp:RadioButton ID="RbQ5O5" runat="server" GroupName="RbQ5" Enabled="False"/>
                                 <asp:Label ID="Label38" runat="server" Text="很不满意"></asp:Label>
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
-                        <tr align="center" align="center">
-　                           <td width="720" height="25" bgcolor="#80ff00" align="left">
+                    <table width="720px" bgcolor="#F7DFB5">
+                        <tr align="center">
+　                          <td width="720" height="25" bgcolor="#F7DFB5" align="left">
                                 <asp:Label ID="Label39" runat="server" Text="教案(WORD教材)" Font-Bold="true"></asp:Label>
-                                <asp:Label ID="Label86" runat="server" Text="满意度:" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="LbScore2" runat="server" Text="" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="Label89" runat="server" Text="分" Font-Size="12pt"></asp:Label>
+                            </td>
+                        <tr align="center">
+                            <td width="720" height="25" bgcolor="#F7DFB5" align="left">
+                                <asp:Label ID="Label86" runat="server" Text="满意度:" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="LbScore2" runat="server" Text="" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="Label89" runat="server" Text="分" Font-Size="14pt"></asp:Label>
                                 <asp:Label ID="Label82" runat="server" Text="(很满意:100分  满意:80分  基本满意:60分  不满意:40分  很不满意:20分)" Font-Size="12pt"></asp:Label>
-                             </td>
+                            </td>
 　                       </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td>
-                                <asp:Label ID="Label40" runat="server" Text="1.课堂教学的引入" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label40" runat="server" Text="1.课堂教学的引入" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -337,10 +343,10 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="2">
-                                <asp:Label ID="Label46" runat="server" Text="2.新课程内容的教授" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label46" runat="server" Text="2.新课程内容的教授" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -366,10 +372,10 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="3">
-                                <asp:Label ID="Label52" runat="server" Text="3.基础知识的掌握和基本技能的练习" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label52" runat="server" Text="3.基础知识的掌握和基本技能的练习" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -395,10 +401,10 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="3">
-                                <asp:Label ID="Label58" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label58" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -424,10 +430,10 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" cellspacing="10">
                         <tr>
-                            <td>
-                                <asp:Label ID="Label64" runat="server" Text="5.作业的规定" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label64" runat="server" Text="5.作业的规定" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -453,21 +459,25 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="720px">
+                    <table width="720px" bgcolor="#F7DFB5">
                         <tr align="center" align="center">
-　                           <td width="720" height="25" bgcolor="#80ff00" align="left">
+　                          <td width="720" height="25" bgcolor="#F7DFB5" align="left">
                                 <asp:Label ID="Label70" runat="server" Text="契合" Font-Bold="true"></asp:Label>
-                                <asp:Label ID="Label88" runat="server" Text="满意度:" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="LbScore3" runat="server" Text="" Font-Size="12pt"></asp:Label>
-                                <asp:Label ID="Label91" runat="server" Text="分" Font-Size="12pt"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Label ID="Label88" runat="server" Text="满意度:" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="LbScore3" runat="server" Text="" Font-Size="14pt"></asp:Label>
+                                <asp:Label ID="Label91" runat="server" Text="分" Font-Size="14pt"></asp:Label>
                                 <asp:Label ID="Label83" runat="server" Text="(很满意:100分   满意:80分   基本满意:60分   不满意:40分   很不满意:20分)" Font-Size="12pt"></asp:Label>
-                             </td>
-　                       </tr>
+                            </td>
+　                      </tr>
                     </table>
                     <table width="720px">
                         <tr>
-                            <td colspan="3">
-                                <asp:Label ID="Label71" runat="server" Text="1.PPT教材与WORD教材的匹配" ForeColor="Green"></asp:Label>
+                            <td colspan="5" align="left">
+                                <asp:Label ID="Label71" runat="server" Text="1.PPT教材与WORD教材的匹配" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -494,27 +504,27 @@
                         </tr>
                     </table>
                     <table width="720px">
-                        <tr align="center" align="center">
-　                           <td width="720" height="25" bgcolor="#80ff00" align="left">
+                        <tr>
+　                           <td width="720" height="25" bgcolor="#F7DFB5" align="left">
                                 <asp:Label ID="Label77" runat="server" Text="建议事项" Font-Bold="true"></asp:Label>
                                 </td>
 　                       </tr>
                     </table>
                     <table width="720px">
                         <tr>
-                            <td>
-                                <asp:Label ID="Label78" runat="server" Text="1.PPT教材操作或技术" ForeColor="Green"></asp:Label>
+                            <td align="left">
+                                <asp:Label ID="Label78" runat="server" Text="1.PPT教材操作或技术" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style1">
                                 <asp:TextBox ID="TbPPT" runat="server" Width="720px" Height="100px" 
                                     TextMode="MultiLine" Font-Size="14pt" Enabled="False"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <asp:Label ID="Label79" runat="server" Text="2.WORD教材内容及安排" ForeColor="Green"></asp:Label>
+                            <td align="left">
+                                <asp:Label ID="Label79" runat="server" Text="2.WORD教材内容及安排" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -524,17 +534,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="left">
                                 <asp:Label ID="Label80" runat="server" Text="说明：" ForeColor="Red"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="left">
                                 &nbsp&nbsp&nbsp<asp:Label ID="Lbdescription1" runat="server" Text="" ForeColor="Red"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td align="left">
                                 &nbsp&nbsp&nbsp<asp:Label ID="Label81" runat="server" Text="2.敬请省教育厅协助汇总学校使用意见调查表，并请以电子邮件寄至(Email:koutamaishi@fpg.com.tw)明德小学工作小组收。" ForeColor="Red"></asp:Label>
                             </td>
                         </tr>

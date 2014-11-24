@@ -22,13 +22,13 @@
             padding-left:25px;
         }
         #BlockRightDown {
-            padding-top: 10px;
+            padding-left:25px;
         }
         #BlockRightDownController {
             height:55px;
         }
         #BlockRightDownDataDisplay {
-            padding-top:50px;
+            padding-top:20px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -133,137 +133,134 @@
                         <tr><td></td></tr>
                         <tr>
                             <td>
-                                <asp:Label ID="Label1" runat="server" Text="请问本次研修班您最感兴趣的课程是那些?" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label15" runat="server" Text="尊敬的学员：您好！为了更准确地了解大家在本次学习中的收获和感受，以便我们在今后的培训过程中更进一步改进内容设置、提高培训实效，我们组织了这次问卷调查，您的意见与建议对于改进我们的培训工作至关重要，感谢您的支持与配合！"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A1" runat="server" Enabled="False" />
+                                <asp:Label ID="Label1" runat="server" Text="请问本次研修班您最感兴趣的课程是那些?" ForeColor="#8C4510"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A1" 
+                                    runat="server" Enabled="False" />
                                 <asp:Label ID="Label8" runat="server" Text="明德教育公益项目办学理念及推动状况"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A2" runat="server" Enabled="False" />
-                                <asp:Label ID="Label2" runat="server" Text="学科能力提升(明德小学语文、数学、英语教学精进项目)"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A2" runat="server" Enabled="False" />
+                                <asp:Label ID="Label2" runat="server" Text="学校管理"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A3" runat="server" Enabled="False" />
-                                <asp:Label ID="Label3" runat="server" Text="全人教育"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A3" runat="server" Enabled="False" />
+                                <asp:Label ID="Label3" runat="server" Text="管理平台"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A4" runat="server" Enabled="False" />
-                                <asp:Label ID="Label9" runat="server" Text="教育教学改革--校长的责任"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A4" runat="server" Enabled="False" />
+                                <asp:Label ID="Label9" runat="server" Text="学科能力(明德小学语文、数学、英语教学精进项目)"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A5" runat="server" Enabled="False" />
-                                <asp:Label ID="Label10" runat="server" Text="明德小学管理经验"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A5" runat="server" Enabled="False" />
+                                <asp:Label ID="Label10" runat="server" Text="人格陶冶"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A6" runat="server" Enabled="False" />
-                                <asp:Label ID="Label11" runat="server" Text="明德特色辦學典型案例觀摩-洛陽明德小學"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A6" runat="server" Enabled="False" />
+                                <asp:Label ID="Label11" runat="server" Text="学校发展计划"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A7" runat="server" Enabled="False" />
-                                <asp:Label ID="Label12" runat="server" Text="SDP部分"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A7" runat="server" Enabled="False" />
+                                <asp:Label ID="Label12" runat="server" Text="校长联谊会事"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A8" runat="server" Enabled="False" />
-                                <asp:Label ID="Label13" runat="server" Text="河南省明德小学校长联谊会事宜"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A8" runat="server" Enabled="False" />
+                                <asp:Label ID="Label13" runat="server" Text="榜样学习"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A9" runat="server" Enabled="False" />
-                                <asp:Label ID="Label14" runat="server" Text="校外教育资源的开发与利用--小学生科技意识的培养"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A9" runat="server" Enabled="False" />
+                                <asp:Label ID="Label14" runat="server" Text="建立跟踪指导系统"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp</td></tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label16" runat="server" Text="请问本次研修班对您帮助最大的课程是那些?" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ1A10" runat="server" Enabled="False" />
-                                <asp:Label ID="Label15" runat="server" Text="明德小学规范管理模式--制度建设与责任落实"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="Label16" runat="server" Text="请问本次研修班对您帮助最大的课程是那些?" ForeColor="Green"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:CheckBox ID="CbQ2A1" runat="server" Enabled="False" />
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A1" 
+                                    runat="server" Enabled="False" />
                                 <asp:Label ID="Label17" runat="server" Text="明德教育公益项目办学理念及推动状况"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A2" runat="server" Enabled="False" />
-                                <asp:Label ID="Label18" runat="server" Text="学科能力提升(明德小学语文、数学、英语教学精进项目)"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A2" runat="server" Enabled="False" />
+                                <asp:Label ID="Label18" runat="server" Text="学校管理"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A3" runat="server" Enabled="False" />
-                                <asp:Label ID="Label19" runat="server" Text="全人教育"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A3" runat="server" Enabled="False" />
+                                <asp:Label ID="Label19" runat="server" Text="管理平台"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A4" runat="server" Enabled="False" />
-                                <asp:Label ID="Label20" runat="server" Text="教育教学改革--校长的责任"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A4" runat="server" Enabled="False" />
+                                <asp:Label ID="Label20" runat="server" Text="学科能力(明德小学语文、数学、英语教学精进项目)"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A5" runat="server" Enabled="False" />
-                                <asp:Label ID="Label21" runat="server" Text="明德小学管理经验"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A5" runat="server" Enabled="False" />
+                                <asp:Label ID="Label21" runat="server" Text="人格陶冶"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A6" runat="server" Enabled="False" />
-                                <asp:Label ID="Label22" runat="server" Text="明德特色辦學典型案例觀摩-洛陽明德小學"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A6" runat="server" Enabled="False" />
+                                <asp:Label ID="Label22" runat="server" Text="学校发展计划"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A7" runat="server" Enabled="False" />
-                                <asp:Label ID="Label23" runat="server" Text="SDP部分"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A7" runat="server" Enabled="False" />
+                                <asp:Label ID="Label23" runat="server" Text="校长联谊会事"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A8" runat="server" Enabled="False" />
-                                <asp:Label ID="Label24" runat="server" Text="河南省明德小学校长联谊会事宜"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A8" runat="server" Enabled="False" />
+                                <asp:Label ID="Label24" runat="server" Text="榜样学习"></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A9" runat="server" Enabled="False" />
-                                <asp:Label ID="Label25" runat="server" Text="校外教育资源的开发与利用--小学生科技意识的培养"></asp:Label>
+                                &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A9" runat="server" Enabled="False" />
+                                <asp:Label ID="Label25" runat="server" Text="建立跟踪指导系统"></asp:Label>
                             </td>
                         </tr>
+                        <tr><td>&nbsp</td></tr>
                         <tr>
                             <td>
-                                <asp:CheckBox ID="CbQ2A10" runat="server" Enabled="False" />
-                                <asp:Label ID="Label26" runat="server" Text="明德小学规范管理模式--制度建设与责任落实"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="Label27" runat="server" Text="请您说出您最需要得到的内容，我们会在以后的培训中加入这些。" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label27" runat="server" Text="请您说出您最需要得到的内容，我们会在以后的培训中加入这些。" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -274,7 +271,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="Label28" runat="server" Text="我对师院有话说：" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label28" runat="server" Text="我对培训单位有话说：" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -285,7 +282,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="Label29" runat="server" Text="我对明德项目小组有话说：" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label29" runat="server" Text="我对明德项目小组有话说：" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -296,7 +293,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Label ID="Label30" runat="server" Text="我对此次培训的建议：" ForeColor="Green"></asp:Label>
+                                <asp:Label ID="Label30" runat="server" Text="我对此次培训的建议：" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -306,7 +303,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="right" class="style2">
+                            <td align="center" class="style2">
                                 <asp:Button ID="Button1" runat="server" Text="返回" onclick="Button1_Click" />
                             </td>
                         </tr>
