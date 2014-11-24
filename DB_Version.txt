@@ -4,3 +4,4 @@ Telsa v6.0.2
 Telsa v6.0.3
 Telsa v6.0.4
 Telsa v6.0.5
+Telsa v6.0.6
