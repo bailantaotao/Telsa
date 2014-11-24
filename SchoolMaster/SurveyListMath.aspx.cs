@@ -89,7 +89,9 @@ public partial class SchoolMaster_SurveyListMath : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Proposal1, Proposal2 from SurveyListMath " +
+        ArrayList data1 = new ArrayList();
+
+        string query = "select ListYear, ListMonth, ListDay, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q11, SatisfyScore1, SatisfyScore2, SatisfyScore3, Proposal1, Proposal2 from SurveyListMath " +
                        "where SN ='" + Session["UserSurveyListSN"].ToString() + "'" +
                        "and Year='" + Session["SurveyYear"].ToString() + "'" +
                        "and School = N'" + schoolName.ToString() + "'";
@@ -98,8 +100,242 @@ public partial class SchoolMaster_SurveyListMath : System.Web.UI.Page
         for (int i = 0; i < data.Count; i++)
         {
             string[] d = (string[])data[i];
-            TbPPT.Text = d[0];
-            TbWord.Text = d[1];
+            TbSurveyYear.Text = d[0];
+            TbSurveyMonth.Text = d[1];
+            TbSurveyDay.Text = d[2];
+            if (d[3].ToString() == "1")
+            {
+                RbQ1O1.Checked = true;
+            }
+            if (d[3].ToString() == "2")
+            {
+                RbQ1O2.Checked = true;
+            }
+            if (d[3].ToString() == "3")
+            {
+                RbQ1O3.Checked = true;
+            }
+            if (d[3].ToString() == "4")
+            {
+                RbQ1O4.Checked = true;
+            }
+            if (d[3].ToString() == "5")
+            {
+                RbQ1O5.Checked = true;
+            }
+            if (d[4].ToString() == "1")
+            {
+                RbQ2O1.Checked = true;
+            }
+            if (d[4].ToString() == "2")
+            {
+                RbQ2O2.Checked = true;
+            }
+            if (d[4].ToString() == "3")
+            {
+                RbQ2O3.Checked = true;
+            }
+            if (d[4].ToString() == "4")
+            {
+                RbQ2O4.Checked = true;
+            }
+            if (d[4].ToString() == "5")
+            {
+                RbQ2O5.Checked = true;
+            }
+            if (d[5].ToString() == "1")
+            {
+                RbQ3O1.Checked = true;
+            }
+            if (d[5].ToString() == "2")
+            {
+                RbQ3O2.Checked = true;
+            }
+            if (d[5].ToString() == "3")
+            {
+                RbQ3O3.Checked = true;
+            }
+            if (d[5].ToString() == "4")
+            {
+                RbQ3O4.Checked = true;
+            }
+            if (d[5].ToString() == "5")
+            {
+                RbQ3O5.Checked = true;
+            }
+            if (d[6].ToString() == "1")
+            {
+                RbQ4O1.Checked = true;
+            }
+            if (d[6].ToString() == "2")
+            {
+                RbQ4O2.Checked = true;
+            }
+            if (d[6].ToString() == "3")
+            {
+                RbQ4O3.Checked = true;
+            }
+            if (d[6].ToString() == "4")
+            {
+                RbQ4O4.Checked = true;
+            }
+            if (d[6].ToString() == "5")
+            {
+                RbQ4O5.Checked = true;
+            }
+            if (d[7].ToString() == "1")
+            {
+                RbQ5O1.Checked = true;
+            }
+            if (d[7].ToString() == "2")
+            {
+                RbQ5O2.Checked = true;
+            }
+            if (d[7].ToString() == "3")
+            {
+                RbQ5O3.Checked = true;
+            }
+            if (d[7].ToString() == "4")
+            {
+                RbQ5O4.Checked = true;
+            }
+            if (d[7].ToString() == "5")
+            {
+                RbQ5O5.Checked = true;
+            }
+            if (d[8].ToString() == "1")
+            {
+                RbQ6O1.Checked = true;
+            }
+            if (d[8].ToString() == "2")
+            {
+                RbQ6O2.Checked = true;
+            }
+            if (d[8].ToString() == "3")
+            {
+                RbQ6O3.Checked = true;
+            }
+            if (d[8].ToString() == "4")
+            {
+                RbQ6O4.Checked = true;
+            }
+            if (d[8].ToString() == "5")
+            {
+                RbQ6O5.Checked = true;
+            }
+            if (d[9].ToString() == "1")
+            {
+                RbQ7O1.Checked = true;
+            }
+            if (d[9].ToString() == "2")
+            {
+                RbQ7O2.Checked = true;
+            }
+            if (d[9].ToString() == "3")
+            {
+                RbQ7O3.Checked = true;
+            }
+            if (d[9].ToString() == "4")
+            {
+                RbQ7O4.Checked = true;
+            }
+            if (d[9].ToString() == "5")
+            {
+                RbQ7O5.Checked = true;
+            }
+            if (d[10].ToString() == "1")
+            {
+                RbQ8O1.Checked = true;
+            }
+            if (d[10].ToString() == "2")
+            {
+                RbQ8O2.Checked = true;
+            }
+            if (d[10].ToString() == "3")
+            {
+                RbQ8O3.Checked = true;
+            }
+            if (d[10].ToString() == "4")
+            {
+                RbQ8O4.Checked = true;
+            }
+            if (d[10].ToString() == "5")
+            {
+                RbQ8O5.Checked = true;
+            }
+            if (d[11].ToString() == "1")
+            {
+                RbQ9O1.Checked = true;
+            }
+            if (d[11].ToString() == "2")
+            {
+                RbQ9O2.Checked = true;
+            }
+            if (d[11].ToString() == "3")
+            {
+                RbQ9O3.Checked = true;
+            }
+            if (d[11].ToString() == "4")
+            {
+                RbQ9O4.Checked = true;
+            }
+            if (d[11].ToString() == "5")
+            {
+                RbQ9O5.Checked = true;
+            }
+            if (d[12].ToString() == "1")
+            {
+                RbQ10O1.Checked = true;
+            }
+            if (d[12].ToString() == "2")
+            {
+                RbQ10O2.Checked = true;
+            }
+            if (d[12].ToString() == "3")
+            {
+                RbQ10O3.Checked = true;
+            }
+            if (d[12].ToString() == "4")
+            {
+                RbQ10O4.Checked = true;
+            }
+            if (d[12].ToString() == "5")
+            {
+                RbQ10O5.Checked = true;
+            }
+            if (d[13].ToString() == "1")
+            {
+                RbQ11O1.Checked = true;
+            }
+            if (d[13].ToString() == "2")
+            {
+                RbQ11O2.Checked = true;
+            }
+            if (d[13].ToString() == "3")
+            {
+                RbQ11O3.Checked = true;
+            }
+            if (d[13].ToString() == "4")
+            {
+                RbQ11O4.Checked = true;
+            }
+            if (d[13].ToString() == "5")
+            {
+                RbQ11O5.Checked = true;
+            }
+        }
+
+        string query1 = "select Proposal1, Proposal2 from SurveyListMath " +
+                       "where SN ='" + Session["UserSurveyListSN"].ToString() + "'" +
+                       "and Year='" + Session["SurveyYear"].ToString() + "'" +
+                       "and School = N'" + schoolName.ToString() + "'";
+        ms.GetAllColumnData(query1, data1);
+
+        for (int j = 0; j < data1.Count; j++)
+        {
+            string[] d1 = (string[])data1[j];
+            TbPPT.Text = d1[0];
+            TbWord.Text = d1[1];
         }
     }
     private void AnswerStatus()

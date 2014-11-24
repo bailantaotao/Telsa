@@ -239,7 +239,7 @@ public partial class SchoolMaster_SurveyPreList : System.Web.UI.Page
                         if (((string[])(userData[0]))[2].ToLower().Equals("true"))
                         {
                             //要換到view的頁面
-                            LbCompleted.Text += Resources.Resource.TipPlanView;
+                            LbCompleted.Text += "填写";
                         }
                         else
                         {
