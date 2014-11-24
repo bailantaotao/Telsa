@@ -217,7 +217,7 @@ public partial class Expert_SurveyViewPreList : System.Web.UI.Page
             storeParam[2] = DdlProvince.SelectedIndex == -1 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
         storeParam[3] = DdlStatus.SelectedIndex == 0 ? null : ((DdlStatus.SelectedValue.ToString() == "True") ? "True" : "False");
 
-        for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length - 1); i++)
+        for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length ); i++)
         {
             if (!string.IsNullOrEmpty(storeParam[i]))
             {
