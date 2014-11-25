@@ -120,6 +120,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     #region get year, semester
     private string currentYear = string.Empty;
     private string currentSemester = string.Empty;
+    private string currentSN = string.Empty;
     private void getCurrentListID()
     {
         string time = DateTime.Now.ToString("yyyy-MM-dd");
@@ -133,6 +134,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         {
             currentYear = ((string[])data[0])[1];
             currentSemester = ((string[])data[0])[2];
+            currentSN = ((string[])data[0])[0];
         }
     }
     #endregion get year, semester
@@ -146,14 +148,25 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             return;
         }
 
+        if (currentYear.Equals("") || currentSemester.Equals(""))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipQuestionnaireNotCompelet + "');", true);
+            return;
+        }
+
+
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
-        string query = "insert into QStudent" + currentYear + currentSemester + " (IdentifyID, Name) VALUES (" +
+        string query = "insert into QStudent" + currentYear + currentSemester + " (IdentifyID, School, Zipcode, Name) VALUES (" +
             "'" + tbStage1ID.Text.Trim() + "', " +
+            "N'" + schoolName.ToString() + "', " +
+            "'" + Session["Province"].ToString() + "', " +
             "'" + tbStage1Name.Text.Trim() + "')";
         ms.WriteData(query, sb);
         tbStage1ID.Text = "";
         tbStage1Name.Text = "";
+
+
     }
     #endregion input data
 
@@ -165,6 +178,13 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名或身分证件号不得为空');", true);
             return;
         }
+
+        if (currentYear.Equals("") || currentSemester.Equals(""))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipQuestionnaireNotCompelet + "');", true);
+            return;
+        }
+
         removeSession("QStage2EditStudent");
         BindEditGridView();
     }
@@ -234,7 +254,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         {
             // Make sure the current GridViewRow is either  
             // in the normal state or an alternate row. 
-            if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
+            if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate || e.Row.RowState == DataControlRowState.Edit)
             {
                 // Add client-side confirmation when deleting. 
                 e.Row.Cells[0].Text= currentYear;
@@ -368,7 +388,48 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         BindEditGridView();
 
 
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select count(listSN) from QGradeClassHistory left join QList on QGradeClassHistory.listSN = QList.SN where class = '" + Class + "' and GradeLevel = '" + GradeLevel + "' and QGradeClassHistory.listSN='" + currentSN + "'";
+        ms.GetOneData(query, sb);
+        if (sb.ToString().Equals("0"))
+        {
+            query = "select SN from QLIST where Year = '" + currentYear + "' and Semester = '" + currentSemester + "'";
+            ms.GetOneData(query, sb);
+            string ListSN = sb.ToString();
+
+            query = "insert into QGradeClassHistory (GradeLevel, Class, ListSN) VALUES ('" + GradeLevel + "', '" + Class + "', '" + ListSN + "')";
+            ms.WriteData(query, sb);
+        }
+
+        query = "select count(StudentID) from QScore" + currentYear + currentSemester + " where StudentID = '" + StudentID + "'";
+        ms.GetOneData(query, sb);
+        if (sb.ToString().Equals("0"))
+        {
+            query = "insert into QScore" + currentYear + currentSemester + " (StudentID) VALUES (" +
+                           "'" + StudentID + "')";
+            ms.WriteData(query, sb);
+        }
+
+        
+
+        if (Session["QVSE_DdlGradeLevel_SelectedIndexChanged"] != null)
+        {
+            DdlGradeLevel.SelectedValue = Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString();
+            if (DdlGradeLevel.SelectedIndex == 0)
+                return;
+            string listSN = string.Empty;
+            if (!preCheckClassSuccess(ref listSN))
+                return;
+
+            setClass(listSN);
+
+            Session["QVSE_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
+            setStudentID();
+        }
+
     }
+
 
 
     // GridView.RowDeleting Event 
@@ -801,12 +862,14 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         Query = "select Year from QList group by Year order by Year desc ";
         if (!ms.GetAllColumnData(Query, data))
         {
+            DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
             DdlYear.Items.Add("None");
             return;
         }
 
         if (data.Count == 0)
         {
+            DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
             DdlYear.Items.Add("None");
             return;
         }
@@ -883,12 +946,14 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
+            DdlClass.Items.Add("班級");
             DdlClass.Items.Add("None");
             return;
         }
 
         if (data.Count == 0)
         {
+            DdlClass.Items.Add("班級");
             DdlClass.Items.Add("None");
             return;
         }
@@ -917,12 +982,14 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
         if (!ms.GetAllColumnData(Query, data))
         {
+            DdlStudentID.Items.Add("学籍辅号");
             DdlStudentID.Items.Add("None");
             return;
         }
 
         if (data.Count == 0)
         {
+            DdlStudentID.Items.Add("学籍辅号");
             DdlStudentID.Items.Add("None");
             return;
         }

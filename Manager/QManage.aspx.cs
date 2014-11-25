@@ -113,8 +113,23 @@ public partial class Manager_QManage : System.Web.UI.Page
                             "DROP TABLE [dbo].[QScore" + dt.Rows[Convert.ToInt32(yourAssignedValue)][1] + dt.Rows[Convert.ToInt32(yourAssignedValue)][2] + "]";
                     ms.WriteData(query, sb);
 
+                    query = "select SN from Qlist where Year = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][1] + "' and Semester = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][2] + "'";
+                    ms.GetOneData(query, sb);
+
+                    string sn = sb.ToString();
+
+                    query = "delete from QGradeClassHistory where ListSN='" + sn + "'";
+                    ms.WriteData(query, sb);
+
+
+                    
                     query = "delete from QList where Year = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][1] + "' and Semester = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][2] + "'";
                     ms.WriteData(query, sb);
+
+                    
+
+                    
+
                     dt.Rows.RemoveAt(Convert.ToInt32(yourAssignedValue));
 
                     for (int i = Convert.ToInt32(yourAssignedValue); i < dt.Rows.Count; i++)
