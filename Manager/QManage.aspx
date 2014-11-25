@@ -138,7 +138,17 @@
                                         <td align="left">
                                             <asp:TextBox ID="TbSemester" runat="server"></asp:TextBox>
                                         </td>
-                                    </tr>                                  
+                                    </tr>      
+                                    <tr>
+                                        <td align="left" width="120px">
+                                           学期开始时间
+                                        </td>
+                                        <td align="left">
+                                            <asp:TextBox ID="TbStartLine" runat="server"></asp:TextBox>
+                                            <asp:CalendarExtender ID="CalendarExtender2" runat="server" PopupButtonID="TbStartLine"
+                                    Enabled="True" TargetControlID="TbStartLine" Format="yyyy/MM/dd" OnClientDateSelectionChanged="Conversion2"></asp:CalendarExtender>
+                                        </td>
+                                    </tr>                            
                                     <tr>
                                         <td align="left" width="120px">
                                             提交有效期限
@@ -161,7 +171,7 @@
                             </td>
                             <td>
                                 <asp:GridView ID="GvDepartment" runat="server" AutoGenerateColumns="False" BackColor="#DDDDDD" BorderStyle="None"
-                        BorderWidth="1px" CellPadding="5" CellSpacing="1">
+                        BorderWidth="1px" CellPadding="5" CellSpacing="1" Width="500px">
                                     <RowStyle BackColor="#ffffff" ForeColor="Black" />
                                     <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                                     <PagerStyle BackColor="#ffffff" HorizontalAlign="left" />
@@ -178,6 +188,9 @@
                                     </Columns>
                                     <Columns>
                                         <asp:BoundField DataField="Semester" HeaderText="学期" ItemStyle-Width="70px" />
+                                    </Columns>
+                                    <Columns>
+                                        <asp:BoundField DataField="StartLine" HeaderText="开始日期" ItemStyle-Width="120px" />
                                     </Columns>
                                     <Columns>
                                         <asp:BoundField DataField="Deadline" HeaderText="已输入之提交日期" ItemStyle-Width="120px" />

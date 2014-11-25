@@ -56,6 +56,7 @@ public partial class Manager_QManage : System.Web.UI.Page
         {
             setInitial();
         }
+        TbStartLine.Attributes.Add("readonly", "true");
         TbDeadline.Attributes.Add("readonly", "true");
 
     }
@@ -158,11 +159,13 @@ public partial class Manager_QManage : System.Web.UI.Page
         dt.Columns.Add(new DataColumn("SN", typeof(string)));
         dt.Columns.Add(new DataColumn("Year", typeof(string)));
         dt.Columns.Add(new DataColumn("Semester", typeof(string)));
+        dt.Columns.Add(new DataColumn("StartLine", typeof(string)));
         dt.Columns.Add(new DataColumn("Deadline", typeof(string)));
+        
 
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select Year,Semester, Deadline " +
+        string query = "select Year,Semester, StartLine, Deadline " +
                        "from QList order by Year desc, Semester asc";
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
@@ -174,7 +177,8 @@ public partial class Manager_QManage : System.Web.UI.Page
                 dr["SN"] = (i + 1).ToString();
                 dr["Year"] = d[0];
                 dr["Semester"] = d[1];
-                dr["Deadline"] = d[2].Split(' ')[0];
+                dr["StartLine"] = d[2].Split(' ')[0];
+                dr["Deadline"] = d[3].Split(' ')[0];
                 dt.Rows.Add(dr);
             }
             ViewState["dt"] = dt;
@@ -212,13 +216,18 @@ public partial class Manager_QManage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('不正确的学期号码');", true);
             return;
         }
+        else if (timeOverlay() == OVERLAY_DATA)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('你所输入的学期开始与结束时间与既有的冲突');", true);
+            return;
+        }
 
         if (haveData())
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('已有资料存在');", true);
             return;
         }
-
+        
 
         storeData();
 
@@ -226,6 +235,7 @@ public partial class Manager_QManage : System.Web.UI.Page
     private const int SUCCESS = 0;
     private const int EMPTY_DATA = 1;
     private const int INCORRECT_DATA = 2;
+    private const int OVERLAY_DATA = 3;
 
     private int haveEmptyData()
     {
@@ -233,11 +243,13 @@ public partial class Manager_QManage : System.Web.UI.Page
             return EMPTY_DATA;
         else if (TbDeadline.Text.Equals(""))
             return EMPTY_DATA;
+        else if (TbStartLine.Text.Equals(""))
+            return EMPTY_DATA;
         else if (TbSemester.Text.Equals(""))
             return EMPTY_DATA;
         else if (!TbSemester.Text.Equals("1") && !TbSemester.Text.Equals("2"))
             return INCORRECT_DATA;
-
+        
         return SUCCESS;
     }
 
@@ -262,6 +274,32 @@ public partial class Manager_QManage : System.Web.UI.Page
         return false;
     }
 
+    private int timeOverlay()
+    {
+        string time = DateTime.Now.ToString("yyyy-MM-dd");
+        string query = "select SN, year, semester from Qlist " +
+                    "where deadline >= Convert(datetime, '" + TbDeadline.Text + "' ) and startline <= Convert(datetime, '" + TbDeadline.Text + "' )";
+        ArrayList data = new ArrayList();
+        ManageSQL ms = new ManageSQL();
+        ms.GetAllColumnData(query, data);
+
+        if (data.Count > 0)
+        {
+            return OVERLAY_DATA;
+        }
+
+        query = "select SN, year, semester from Qlist " +
+                    "where deadline >= Convert(datetime, '" + TbStartLine.Text + "' ) and startline <= Convert(datetime, '" + TbStartLine.Text + "' )";
+        data = new ArrayList();
+        ms.GetAllColumnData(query, data);
+
+        if (data.Count > 0)
+        {
+            return OVERLAY_DATA;
+        }
+        return SUCCESS;
+    }
+
     private void storeData()
     {
         if (ViewState["dt"] != null)
@@ -272,8 +310,9 @@ public partial class Manager_QManage : System.Web.UI.Page
             ManageSQL ms = new ManageSQL();
             string query = string.Empty;
 
-            query = "insert into QList (Year, Deadline, Semester) VALUES ('" +
+            query = "insert into QList (Year, StartLine, Deadline, Semester) VALUES ('" +
                             TbYear.Text.Trim() + "','" +
+                            TbStartLine.Text.Trim() + "','" +
                             TbDeadline.Text.Trim() + "','" +
                             TbSemester.Text.Trim() + "')";
 
