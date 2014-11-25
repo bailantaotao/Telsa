@@ -46,6 +46,10 @@ public partial class SchoolMaster_QViewScoreList : System.Web.UI.Page
         removeSession("QVS_PageSelect_SelectedIndexChanged");
         removeSession("QVS_DdlGradeLevel_SelectedIndexChanged");
         removeSession("QVS_DdlClass_SelectedIndexChanged");
+
+        removeSession("QEditStudent");
+        removeSession("QStage2EditStudent");
+
     }
 
     protected void Page_Load(object sender, EventArgs e)

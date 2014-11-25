@@ -42,7 +42,9 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
-
+        getSchoolName(schoolName);
+        getCurrentListID();
+        setYear();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -76,9 +78,11 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
             // Initialize the sorting expression. 
             ViewState["SortExpression"] = "StudentID ASC";
+            ViewState["Stage2SortExpression"] = "StudentID ASC";
 
             // Populate the GridView. 
-            BindGridView();
+            if (DdlYear.SelectedIndex != 0 && DdlSemester.SelectedIndex != 0)
+                BindGridView();
 
             
         }
@@ -104,32 +108,65 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             Session.Remove(key);
     }
 
+    private bool getSchoolName(StringBuilder sb)
+    {
+        ManageSQL ms = new ManageSQL();
+        string query = "select school from Account where UserID = '" + Session["UserID"].ToString() + "'";
+        if (!ms.GetOneData(query, sb))
+            return false;
+        return true;
+    }
+
+    #region get year, semester
+    private string currentYear = string.Empty;
+    private string currentSemester = string.Empty;
     private void getCurrentListID()
     {
         string time = DateTime.Now.ToString("yyyy-MM-dd");
         string query = "select SN, year, semester from Qlist " +
-                    "where Convert(datetime, '" + time + "' ) <= deadline and startline >= Convert(datetime, '" + time + "' )";
+                    "where deadline >= Convert(datetime, '" + time + "' ) and startline <= Convert(datetime, '" + time + "' )";
         ArrayList data = new ArrayList();
         ManageSQL ms = new ManageSQL();
         ms.GetAllColumnData(query, data);
-        
 
+        if (data.Count > 0)
+        {
+            currentYear = ((string[])data[0])[1];
+            currentSemester = ((string[])data[0])[2];
+        }
     }
+    #endregion get year, semester
 
+    #region input data
     protected void btnStage1Input_Click(object sender, EventArgs e)
     {
+        if (tbStage1Name.Text.Trim().Equals("") || tbStage1ID.Text.Trim().Equals(""))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名和身分证件号不得为空');", true);
+            return;
+        }
 
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "insert into QStudent" + currentYear + currentSemester + " (IdentifyID, Name) VALUES (" +
+            "'" + tbStage1ID.Text.Trim() + "', " +
+            "'" + tbStage1Name.Text.Trim() + "')";
+        ms.WriteData(query, sb);
+        tbStage1ID.Text = "";
+        tbStage1Name.Text = "";
     }
+    #endregion input data
 
     #region student edit
     protected void BtnStage2Edit_Click(object sender, EventArgs e)
     {
-        if (((tbStage2Name.Text.Trim().Equals("") && !tbStage2ID.Text.Trim().Equals("")) || (!tbStage2Name.Text.Trim().Equals("") && tbStage2ID.Text.Trim().Equals(""))) || (tbStage2Name.Text.Trim().Equals("") && tbStage2ID.Text.Trim().Equals("")))
+        if (tbStage2Name.Text.Trim().Equals("") && tbStage2ID.Text.Trim().Equals(""))
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名或身分证件号不得为空');", true);
+            return;
         }
-
-        
+        removeSession("QStage2EditStudent");
+        BindEditGridView();
     }
 
     private void BindEditGridView()
@@ -140,10 +177,14 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         // the using statement takes care of it. 
         using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConStr"].ToString()))
         {
-            if (Session["QEditStudent"] != null)
-                Query = Session["QEditStudent"].ToString();
+            if (Session["QStage2EditStudent"] != null)
+                Query = Session["QStage2EditStudent"].ToString();
             else
-                SearchType();
+            {
+                Query = "select Name, IdentifyID, GradeLevel, Class, StudentID from QStudent" + currentYear + currentSemester + " " +
+                        "where IdentifyID = '" + tbStage2ID.Text.Trim() + "' or Name = '" + tbStage2Name.Text.Trim() + "'";
+                Session["QStage2EditStudent"] = Query;
+            }
 
             // Create a DataSet object. 
             DataSet dsPerson = new DataSet();
@@ -176,12 +217,12 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
             // Set the sort column and sort order. 
-            dvPerson.Sort = ViewState["SortEditExpression"].ToString();
+            dvPerson.Sort = ViewState["Stage2SortExpression"].ToString();
 
 
             // Bind the GridView control. 
-            gvPerson.DataSource = dvPerson;
-            gvPerson.DataBind();
+            gvEditStudent.DataSource = dvPerson;
+            gvEditStudent.DataBind();
         }
     }
 
@@ -196,7 +237,8 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
             {
                 // Add client-side confirmation when deleting. 
-                //((LinkButton)e.Row.Cells[1].Controls[0]).Attributes["onclick"] = "if(!confirm('Are you certain you want to delete this person ?')) return false;";
+                e.Row.Cells[0].Text= currentYear;
+                e.Row.Cells[1].Text = currentSemester;
             }
         }
     }
@@ -211,7 +253,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
         // Rebind the GridView control to  
         // show data in the new page. 
-        BindGridView();
+        BindEditGridView();
     }
 
 
@@ -224,7 +266,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
         // Rebind the GridView control to show data in edit mode. 
-        BindGridView();
+        BindEditGridView();
 
 
     }
@@ -238,7 +280,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
         // Rebind the GridView control to show data in view mode. 
-        BindGridView();
+        BindEditGridView();
 
 
     }
@@ -247,55 +289,27 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     protected void gvEdit_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         // Get the PersonID of the selected row. 
-        string strPersonID = gvEditStudent.Rows[e.RowIndex].Cells[2].Text;
-        string tbChin = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbChin")).Text;
-        string tbMath = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbMath")).Text;
-        string tbEng = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbEng")).Text;
-        string tbSoc = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbSoc")).Text;
-        string tbSci = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbSci")).Text;
-        string tbMus = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbMus")).Text;
-        string tbPhy = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbPhy")).Text;
-        string tbArt = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbArt")).Text;
-        if (digitCheck(tbChin) != 0)
+        string studentName = gvEditStudent.Rows[e.RowIndex].Cells[2].Text;
+        string identifyID = gvEditStudent.Rows[e.RowIndex].Cells[3].Text;
+        string GradeLevel = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbGradeLevel")).Text;
+        string Class = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbClass")).Text;
+        string StudentID = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbStudentID")).Text;
+        if (GradeLevel.Equals("") || digitCheck(GradeLevel) != 0)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入的年级格式有誤');", true);
             return;
         }
-        if (digitCheck(tbMath) != 0)
+        if (Class.Equals("") || digitCheck(Class) != 0)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入的班级格式有誤');", true);
             return;
         }
-        if (digitCheck(tbEng) != 0)
+        if (StudentID.Equals(""))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入的学号格式有誤');", true);
             return;
         }
-        if (digitCheck(tbSoc) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbSci) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbMus) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbPhy) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbArt) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
+        
 
 
         using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConStr"].ToString()))
@@ -311,16 +325,11 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             // Set the command text 
             // SQL statement or the name of the stored procedure  
             //cmd.CommandText = "UPDATE Person SET LastName = @LastName, FirstName = @FirstName WHERE PersonID = @PersonID";
-            cmd.CommandText = "UPDATE " + "QScore" + LbYear.Text + LbSemester.Text + " SET " +
-                                "Chinese = @Chinese, " +
-                                "Math = @Math, " +
-                                "English = @English, " +
-                                "Society = @Society, " +
-                                "Science = @Science, " +
-                                "Music = @Music, " +
-                                "Physical = @Physical, " +
-                                "Art = @Art " +
-                                "WHERE StudentID = @StudentID";
+            cmd.CommandText = "UPDATE " + "QStudent" + currentYear + currentSemester + " SET " +
+                                "GradeLevel = @GradeLevel, " +
+                                "Class = @Class, " +
+                                "StudentID = @StudentID " +
+                                "WHERE IdentifyID = @IdentifyID and Name = @Name";
 
 
 
@@ -334,15 +343,12 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
             // Append the parameters. 
-            cmd.Parameters.Add("@StudentID", SqlDbType.NVarChar, 50).Value = strPersonID;
-            cmd.Parameters.Add("@Chinese", SqlDbType.Int).Value = Convert.ToInt32(tbChin);
-            cmd.Parameters.Add("@Math", SqlDbType.Int).Value = Convert.ToInt32(tbMath);
-            cmd.Parameters.Add("@English", SqlDbType.Int).Value = Convert.ToInt32(tbEng);
-            cmd.Parameters.Add("@Society", SqlDbType.Int).Value = Convert.ToInt32(tbSoc);
-            cmd.Parameters.Add("@Science", SqlDbType.Int).Value = Convert.ToInt32(tbSci);
-            cmd.Parameters.Add("@Music", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
-            cmd.Parameters.Add("@Physical", SqlDbType.Int).Value = Convert.ToInt32(tbPhy);
-            cmd.Parameters.Add("@Art", SqlDbType.Int).Value = Convert.ToInt32(tbArt);
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = studentName;
+            cmd.Parameters.Add("@IdentifyID", SqlDbType.NVarChar, 50).Value = identifyID;
+
+            cmd.Parameters.Add("@GradeLevel", SqlDbType.Int).Value = Convert.ToInt32(GradeLevel);
+            cmd.Parameters.Add("@Class", SqlDbType.Int).Value = Convert.ToInt32(Class);
+            cmd.Parameters.Add("@StudentID", SqlDbType.NVarChar, 50).Value = Convert.ToInt32(StudentID);
 
 
             // Open the connection. 
@@ -359,7 +365,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
         // Rebind the GridView control to show data after updating. 
-        BindGridView();
+        BindEditGridView();
 
 
     }
@@ -407,7 +413,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
         // Rebind the GridView control to show data after deleting. 
-        BindGridView();
+        BindEditGridView();
     }
 
 
@@ -423,23 +429,23 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         {
             if (strSortExpression[1] == "ASC")
             {
-                ViewState["SortEditExpression"] = e.SortExpression + " " + "DESC";
+                ViewState["Stage2SortExpression"] = e.SortExpression + " " + "DESC";
             }
             else
             {
-                ViewState["SortEditExpression"] = e.SortExpression + " " + "ASC";
+                ViewState["Stage2SortExpression"] = e.SortExpression + " " + "ASC";
             }
         }
         // If sorting column is another column,   
         // then specify the sort order to "Ascending". 
         else
         {
-            ViewState["SortEditExpression"] = e.SortExpression + " " + "ASC";
+            ViewState["Stage2SortExpression"] = e.SortExpression + " " + "ASC";
         }
 
 
         // Rebind the GridView control to show sorted data. 
-        BindGridView();
+        BindEditGridView();
     } 
 #endregion 
 
@@ -479,11 +485,11 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
             // Fill the DataTable named "Person" in DataSet with the rows 
             // returned by the query.new n 
-            da.Fill(dsPerson, "QScore" + LbYear.Text + LbSemester.Text);
+            da.Fill(dsPerson, "QStudent" + currentYear + currentSemester);
 
 
             // Get the DataView from Person DataTable. 
-            DataView dvPerson = dsPerson.Tables["QScore" + LbYear.Text + LbSemester.Text].DefaultView;
+            DataView dvPerson = dsPerson.Tables["QStudent" + currentYear + currentSemester].DefaultView;
 
 
             // Set the sort column and sort order. 
@@ -508,7 +514,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
             {
                 // Add client-side confirmation when deleting. 
-                //((LinkButton)e.Row.Cells[1].Controls[0]).Attributes["onclick"] = "if(!confirm('Are you certain you want to delete this person ?')) return false;";
+                ((LinkButton)e.Row.Cells[5].Controls[0]).Attributes["onclick"] = "if(!confirm('你确定真的要删除这笔资料吗??')) return false;";
             }
         }
     }
@@ -575,121 +581,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     protected void gvPerson_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         // Get the PersonID of the selected row. 
-        string strPersonID = gvPerson.Rows[e.RowIndex].Cells[2].Text;
-        string tbChin = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbChin")).Text;
-        string tbMath = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbMath")).Text;
-        string tbEng = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbEng")).Text;
-        string tbSoc = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbSoc")).Text;
-        string tbSci = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbSci")).Text;
-        string tbMus = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbMus")).Text;
-        string tbPhy = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbPhy")).Text;
-        string tbArt = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbArt")).Text;
-        if (digitCheck(tbChin) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbMath) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbEng) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbSoc) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbSci) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbMus) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbPhy) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-        if (digitCheck(tbArt) != 0)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
-            return;
-        }
-
-
-        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConStr"].ToString()))
-        {
-            // Create a command object. 
-            SqlCommand cmd = new SqlCommand();
-
-
-            // Assign the connection to the command. 
-            cmd.Connection = conn;
-
-
-            // Set the command text 
-            // SQL statement or the name of the stored procedure  
-            //cmd.CommandText = "UPDATE Person SET LastName = @LastName, FirstName = @FirstName WHERE PersonID = @PersonID";
-            cmd.CommandText = "UPDATE " + "QScore" + LbYear.Text + LbSemester.Text + " SET " +
-                                "Chinese = @Chinese, " +
-                                "Math = @Math, " +
-                                "English = @English, "+
-                                "Society = @Society, " +
-                                "Science = @Science, " +
-                                "Music = @Music, " +
-                                "Physical = @Physical, " +
-                                "Art = @Art " +
-                                "WHERE StudentID = @StudentID";
-
-
-
-            // Set the command type 
-            // CommandType.Text for ordinary SQL statements;  
-            // CommandType.StoredProcedure for stored procedures. 
-            cmd.CommandType = CommandType.Text;
-
-
-            
-
-
-            // Append the parameters. 
-            cmd.Parameters.Add("@StudentID", SqlDbType.NVarChar, 50).Value = strPersonID;
-            cmd.Parameters.Add("@Chinese", SqlDbType.Int).Value = Convert.ToInt32(tbChin);
-            cmd.Parameters.Add("@Math", SqlDbType.Int).Value = Convert.ToInt32(tbMath);
-            cmd.Parameters.Add("@English", SqlDbType.Int).Value = Convert.ToInt32(tbEng);
-            cmd.Parameters.Add("@Society", SqlDbType.Int).Value = Convert.ToInt32(tbSoc);
-            cmd.Parameters.Add("@Science", SqlDbType.Int).Value = Convert.ToInt32(tbSci);
-            cmd.Parameters.Add("@Music", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
-            cmd.Parameters.Add("@Physical", SqlDbType.Int).Value = Convert.ToInt32(tbPhy);
-            cmd.Parameters.Add("@Art", SqlDbType.Int).Value = Convert.ToInt32(tbArt);
-
-
-            // Open the connection. 
-            conn.Open();
-
-
-            // Execute the command. 
-            cmd.ExecuteNonQuery();
-        }
-
-
-        // Exit edit mode. 
-        gvPerson.EditIndex = -1;
-
-
-        // Rebind the GridView control to show data after updating. 
-        BindGridView();
-
-
+       
     }
 
 
@@ -708,7 +600,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
             // Set the command text 
             // SQL statement or the name of the stored procedure  
-            cmd.CommandText = "DELETE FROM Person WHERE PersonID = @PersonID";
+            cmd.CommandText = "DELETE FROM QStudent" + currentYear + currentSemester + " WHERE identifyID = @identifyID and Name = @Name";
 
 
             // Set the command type 
@@ -718,11 +610,13 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
             // Get the PersonID of the selected row. 
-            string strPersonID = gvPerson.Rows[e.RowIndex].Cells[1].Text;
+            string Name = gvPerson.Rows[e.RowIndex].Cells[0].Text;
+            string identifyID = gvPerson.Rows[e.RowIndex].Cells[1].Text;
 
 
             // Append the parameter. 
-            cmd.Parameters.Add("@PersonID", SqlDbType.Int).Value = strPersonID;
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = Name;
+            cmd.Parameters.Add("@identifyID", SqlDbType.NVarChar, 50).Value = identifyID;
 
 
             // Open the connection. 
@@ -736,6 +630,21 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
         // Rebind the GridView control to show data after deleting. 
         BindGridView();
+
+        if (Session["QVSE_DdlGradeLevel_SelectedIndexChanged"] != null)
+        {
+            DdlGradeLevel.SelectedValue = Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString();
+            if (DdlGradeLevel.SelectedIndex == 0)
+                return;
+            string listSN = string.Empty;
+            if (!preCheckClassSuccess(ref listSN))
+                return;
+
+            setClass(listSN);
+
+            Session["QVSE_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
+            setStudentID();
+        }
     }
 
 
@@ -810,19 +719,17 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
     private void SearchType()
     {
-        string yearSemester = LbYear.Text.Trim()+LbSemester.Text.Trim();
+        string yearSemester = DdlYear.SelectedValue + DdlSemester.SelectedValue;
 
-        Query = "select QStudent" + yearSemester + ".GradeLevel, QStudent" + yearSemester + ".Class, QStudent" + yearSemester + ".StudentID, QStudent" + yearSemester + ".Name, QScore" + yearSemester + ".Chinese, QScore" + yearSemester + ".English, QScore" + yearSemester + ".Math, QScore" + yearSemester + ".Society, QScore" + yearSemester + ".Science, QScore" + yearSemester + ".Music, QScore" + yearSemester + ".Physical, QScore" + yearSemester + ".Art " +
-                "from QStudent" + yearSemester + " " +
-                "left join QScore" + yearSemester + " on QScore" + yearSemester + ".StudentID = QStudent" + yearSemester + ".StudentID ";
+        Query = "select QStudent" + yearSemester + ".Name, QStudent" + yearSemester + ".IdentifyID, QStudent" + yearSemester + ".GradeLevel, QStudent" + yearSemester + ".Class, QStudent" + yearSemester + ".StudentID " +
+                "from QStudent" + yearSemester + " ";                
 
         string tmp = string.Empty;
-        string[] storeParam = new string[4];
-        string[] sqlParam = new string[] { "QStudent" + yearSemester + ".GradeLevel", "QStudent" + yearSemester + ".Class", "QStudent" + yearSemester + ".Name", "QStudent" + yearSemester + ".School" };
+        string[] storeParam = new string[3];
+        string[] sqlParam = new string[] { "QStudent" + yearSemester + ".GradeLevel", "QStudent" + yearSemester + ".Class", "QStudent" + yearSemester + ".StudentID"};
         storeParam[0] = DdlGradeLevel.SelectedIndex == 0 ? null : DdlGradeLevel.SelectedValue;
         storeParam[1] = DdlClass.SelectedIndex == 0 ? null : DdlClass.SelectedValue;
-        storeParam[2] = DdlStudentName.SelectedIndex == 0 ? null : DdlStudentName.SelectedValue;
-        storeParam[3] = LbSchool.Text.Trim();
+        storeParam[2] = DdlStudentID.SelectedIndex == 0 ? null : DdlStudentID.SelectedValue;
 
 
         for (int i = 0; i < storeParam.Length; i++)
@@ -887,6 +794,28 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         return (Tag + "=" + Data);
     }
 
+    private void setYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select Year from QList group by Year order by Year desc ";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlYear.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlYear.Items.Add("None");
+            return;
+        }
+        DdlYear.Items.Add(Resources.Resource.DdlTypeYear);
+        foreach (string[] province in data)
+        {
+            DdlYear.Items.Add(province[0]);
+        }
+    }
    
 
     protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
@@ -906,17 +835,25 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
     protected void DdlGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["QVS_DdlGradeLevel_SelectedIndexChanged"] = DdlGradeLevel.SelectedValue;
+        Session["QVSE_DdlGradeLevel_SelectedIndexChanged"] = DdlGradeLevel.SelectedValue;
         if (DdlGradeLevel.SelectedIndex == 0)
             return;
+        string listSN = string.Empty;
+        if (!preCheckClassSuccess(ref listSN))
+            return;
+        
+        setClass(listSN);
+    }
 
+    private bool preCheckClassSuccess(ref string listSN)
+    {
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
 
-        string query = "select SN from QList where Year = '" + LbYear.Text + "' and Semester = '" + LbSemester.Text + "'";
+        string query = "select SN from QList where Year = '" + currentYear + "' and Semester = '" + currentSemester + "'";
         ms.GetOneData(query, sb);
 
-        string listSN = sb.ToString();
+        listSN = sb.ToString();
 
         query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
         ms.GetOneData(query, sb);
@@ -927,15 +864,14 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
             DdlClass.Items.Clear();
             DdlClass.Items.Add(new ListItem("班级", "0"));
-            
-            DdlStudentName.Items.Clear();
-            DdlStudentName.Items.Add(new ListItem("学生姓名", "0"));
+
+            DdlStudentID.Items.Clear();
+            DdlStudentID.Items.Add(new ListItem("学生姓名", "0"));
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('目前该年级尚未键入任何学生之资料');", true);
-            return;
+            return false;
         }
-
-        setClass(listSN);
+        return true;
     }
 
     private void setClass(string listSN)
@@ -944,7 +880,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         Query = "select class from QGradeClassHistory "+
-            "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVS_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
+            "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlClass.Items.Add("None");
@@ -970,46 +906,66 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
 
 
-    private void setStudentName()
+    private void setStudentID()
     {
-        DdlStudentName.Items.Clear();
+        DdlStudentID.Items.Clear();
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
 
-        Query = "select Name from QStudent"+LbYear.Text.Trim()+LbSemester.Text.Trim()+" where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and Class = '" + DdlClass.SelectedValue + "'";
+        Query = "select StudentID from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and Class = '" + DdlClass.SelectedValue + "'";
 
 
         if (!ms.GetAllColumnData(Query, data))
         {
-            DdlStudentName.Items.Add("None");
+            DdlStudentID.Items.Add("None");
             return;
         }
 
         if (data.Count == 0)
         {
-            DdlStudentName.Items.Add("None");
+            DdlStudentID.Items.Add("None");
             return;
         }
-        DdlStudentName.Items.Add("学生姓名");
+        DdlStudentID.Items.Add("学籍辅号");
         foreach (string[] studetnName in data)
         {
-            DdlStudentName.Items.Add(studetnName[0]);
+            DdlStudentID.Items.Add(studetnName[0]);
         }
     }
     protected void DdlClass_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["QVS_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
-        setStudentName();
+        Session["QVSE_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
+        setStudentID();
     }
     protected void BtnStore_Click(object sender, EventArgs e)
     {
+        if (DdlYear.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('必须选择学年');", true);
+            return;
+        }
+        if (DdlSemester.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('必须选择学期');", true);
+            return;
+        }
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        string query = "select count(SN) from QList where Year ='" + DdlYear.SelectedValue + "' and Semester = '" + DdlSemester.SelectedValue + "'";
+        ms.GetOneData(query, sb);
+        if (sb.ToString().Equals("0"))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('该学期尚未有任何资料');", true);
+            return;
+        }
+        
         SearchType();
         BindGridView();
     }
 
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("QInputScoreList.aspx");
+        Response.Redirect("QViewStudentList.aspx");
     }
 
 

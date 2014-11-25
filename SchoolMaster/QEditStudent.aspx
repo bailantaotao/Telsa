@@ -130,22 +130,6 @@
                 <table width="739px">
                     <tr>
                         <td align="left">
-                            学校: <asp:Label ID="LbSchool" runat="server" Text="石家庄市井陉县南障城镇明德小学"></asp:Label>
-                        </td>
-                        <td align="left">
-                            学年: <asp:Label ID="LbYear" runat="server" Text="2014"></asp:Label>
-                        </td>
-                        <td align="left">
-                            学期: <asp:Label ID="LbSemester" runat="server" Text="1"></asp:Label>
-                        </td>
-                        <td align="left">
-                            学校代号: <asp:Label ID="LbSchoolNo" runat="server" Text="NM14001"></asp:Label>
-                        </td>
-                    </tr>
-                </table>
-                <table width="739px">
-                    <tr>
-                        <td align="left">
                             <h3>步骤一、学生基本资料输入</h3>
                         </td>
                     </tr>
@@ -154,7 +138,7 @@
                             <div style="float:left;margin-left:30px">学生姓名</div>
                             <div style="float:left"><asp:TextBox ID="tbStage1Name" runat="server"></asp:TextBox></div>
                             <div style="float:left;margin-left:30px">学籍辅号</div>
-                            <div style="float:left"><asp:TextBox ID="tbStage1Id" runat="server"></asp:TextBox></div>
+                            <div style="float:left"><asp:TextBox ID="tbStage1ID" runat="server"></asp:TextBox></div>
                             <div style="float:left;margin-left:30px">
                                 <asp:Button ID="btnStage1Input" runat="server" Text="输入" OnClick="btnStage1Input_Click" />
                             </div>
@@ -189,54 +173,39 @@
                                     onsorting="gvEdit_Sorting" AllowPaging="True" PageSize="10"> 
                                 <RowStyle BackColor="White" ForeColor="#003399" /> 
                                 <Columns> 
-                                    <asp:TemplateField HeaderText="学年" SortExpression="Chinese" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbChin" runat="server" Text='<%# Bind("Chinese") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbChin" runat="server" Text='<%# Bind("Chinese") %>'></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="学期" SortExpression="Chinese" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbChin" runat="server" Text='<%# Bind("Chinese") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbChin" runat="server" Text='<%# Bind("Chinese") %>'></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:BoundField DataField="Class" HeaderText="学生姓名" ReadOnly="True" ItemStyle-Width="80px" 
-                                        SortExpression="Class" /> 
-                                    <asp:BoundField DataField="StudentID" HeaderText="学籍辅号" ReadOnly="True"  ItemStyle-Width="80px" 
-                                        SortExpression="StudentID">
-                                        <ItemStyle Width="80px"></ItemStyle>
+
+                                    <asp:BoundField HeaderText="学年" ReadOnly="True" ItemStyle-Width="80px" /> 
+                                    <asp:BoundField HeaderText="學期" ReadOnly="True" ItemStyle-Width="80px" /> 
+                                    <asp:BoundField DataField="Name" HeaderText="学生姓名" ReadOnly="True" ItemStyle-Width="80px" 
+                                        SortExpression="Name" /> 
+                                    <asp:BoundField DataField="IdentifyID" HeaderText="身分证件号" ReadOnly="True"  ItemStyle-Width="80px" 
+                                        SortExpression="IdentifyID">
+                                        <ItemStyle Width="100px"></ItemStyle>
                                     </asp:BoundField> 
-                                    <asp:TemplateField HeaderText="年级" SortExpression="Chinese" ItemStyle-Width="50px"> 
+                                    <asp:TemplateField HeaderText="年级" SortExpression="GradeLevel" ItemStyle-Width="50px"> 
                                         <EditItemTemplate> 
-                                            <asp:TextBox ID="tbChin" runat="server" Text='<%# Bind("Chinese") %>' MaxLength="3" Width="50px"></asp:TextBox> 
+                                            <asp:TextBox ID="tbGradeLevel" runat="server" Text='<%# Bind("GradeLevel") %>' MaxLength="3" Width="50px"></asp:TextBox> 
                                         </EditItemTemplate> 
                                         <ItemTemplate> 
-                                            <asp:Label ID="lbChin" runat="server" Text='<%# Bind("Chinese") %>'></asp:Label> 
+                                            <asp:Label ID="lbGradeLevel" runat="server" Text='<%# Bind("GradeLevel") %>'></asp:Label> 
                                         </ItemTemplate> 
                                         <ItemStyle Width="50px"></ItemStyle>
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="班级" SortExpression="Math" ItemStyle-Width="50px"> 
+                                    <asp:TemplateField HeaderText="班级" SortExpression="Class" ItemStyle-Width="50px"> 
                                         <EditItemTemplate> 
-                                            <asp:TextBox ID="tbMath" runat="server" Text='<%# Bind("Math") %>' MaxLength="3" Width="50px"></asp:TextBox> 
+                                            <asp:TextBox ID="tbClass" runat="server" Text='<%# Bind("Class") %>' MaxLength="3" Width="50px"></asp:TextBox> 
                                         </EditItemTemplate> 
                                         <ItemTemplate> 
-                                            <asp:Label ID="lbMath" runat="server" Text='<%# Bind("Math") %>' Width="50px"></asp:Label> 
+                                            <asp:Label ID="lbClass" runat="server" Text='<%# Bind("Class") %>' Width="50px"></asp:Label> 
                                         </ItemTemplate> 
                                         <ItemStyle Width="50px"></ItemStyle>
                                     </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="班内学号" SortExpression="English" ItemStyle-Width="100px"> 
+                                    <asp:TemplateField HeaderText="班内学号" SortExpression="StudentID" ItemStyle-Width="100px"> 
                                         <EditItemTemplate> 
-                                            <asp:TextBox ID="tbEng" runat="server" Text='<%# Bind("English") %>' MaxLength="3" Width="50px"></asp:TextBox> 
+                                            <asp:TextBox ID="tbStudentID" runat="server" Text='<%# Bind("StudentID") %>' MaxLength="3" Width="50px"></asp:TextBox> 
                                         </EditItemTemplate> 
                                         <ItemTemplate> 
-                                            <asp:Label ID="lbEng" runat="server" Text='<%# Bind("English") %>' Width="50px"></asp:Label> 
+                                            <asp:Label ID="lbStudentID" runat="server" Text='<%# Bind("StudentID") %>' Width="50px"></asp:Label> 
                                         </ItemTemplate> 
                                         <ItemStyle Width="100px"></ItemStyle>
                                     </asp:TemplateField> 
@@ -256,6 +225,33 @@
                         <td colspan="4" align="left">
                             <h3>步骤三、班级人员管理</h3>
                         </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlYear" runat="server" Width="80px" Font-Size="14pt">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                   <%-- <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>--%>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlSemester" runat="server" Width="80px" Font-Size="14pt">
+                                            <asp:ListItem Value="0" Text="学期"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text="1"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <%--<Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>--%>
+                                </asp:UpdatePanel>
+                            </td>
                     </tr>
                     <tr>
                         <td align="left">
@@ -283,7 +279,7 @@
                         <td align="left">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                                    <asp:DropDownList ID="DdlStudentName" runat="server" Width="80px" Font-Size="14pt" AutoPostBack="true">
+                                    <asp:DropDownList ID="DdlStudentID" runat="server" Width="80px" Font-Size="14pt" AutoPostBack="true">
                                     </asp:DropDownList>
                                 </ContentTemplate>
                                 <%--<Triggers>
@@ -292,26 +288,13 @@
                             </asp:UpdatePanel>
                         </td>
                         <td>
-                            <asp:Button ID="BtnStore" runat="server" Text="查询" OnClick="BtnStore_Click" Font-Size="14pt"/>
+                            <asp:Button ID="BtnStage3" runat="server" Text="查询" OnClick="BtnStore_Click" Font-Size="14pt"/>
                         </td>
                     </tr>
                 </table>
-                    <%--<table width="739px">
-                        <tr>
-                            <td colspan="1" align="left" width="60%">                                
-                                <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolName %>"></asp:Label>
-                                <asp:Label ID="LbSchoolName" runat="server" Text=""></asp:Label>
-                            </td>
-                            <td colspan="1" align="right" width="20%">
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolMaster %>"></asp:Label>
-                                <asp:Label ID="LbSchoolMaster" runat="server" Text=""></asp:Label>
-                            </td>
-                            <td colspan="1" align="right" width="20%">
-                                <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipPlanSchoolSN %>"></asp:Label>
-                                <asp:Label ID="LbSchoolSN" runat="server" Text=""></asp:Label>
-                            </td>
-                        </tr>
-                    </table>--%>
+                <%-- <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>--%>
                 <table style="width: 735px">
                     <tr>
                         <td align="left" style="">
@@ -321,90 +304,30 @@
                                     onrowcancelingedit="gvPerson_RowCancelingEdit"  
                                     onrowdatabound="gvPerson_RowDataBound" onrowdeleting="gvPerson_RowDeleting"  
                                     onrowediting="gvPerson_RowEditing" onrowupdating="gvPerson_RowUpdating"  
-                                    onsorting="gvPerson_Sorting" AllowPaging="True" PageSize="10"> 
+                                    onsorting="gvPerson_Sorting" AllowPaging="True"> 
                                 <RowStyle BackColor="White" ForeColor="#003399" /> 
                                 <Columns> 
-                                    <asp:BoundField DataField="GradeLevel" HeaderText="年级" ReadOnly="True"  ItemStyle-Width="50px" 
-                                        SortExpression="GradeLevel" /> 
-                                    <asp:BoundField DataField="Class" HeaderText="班级" ReadOnly="True" ItemStyle-Width="50px" 
-                                        SortExpression="Class" /> 
+                                    <asp:BoundField DataField="Name" HeaderText="學生姓名" ReadOnly="True"  ItemStyle-Width="50px" 
+                                        SortExpression="GradeLevel"> 
+                                        <ItemStyle Width="100px"></ItemStyle>
+                                    </asp:BoundField> 
+                                    <asp:BoundField DataField="IdentifyID" HeaderText="身分证件号" ReadOnly="True" ItemStyle-Width="50px" 
+                                        SortExpression="Class"> 
+                                        <ItemStyle Width="100px"></ItemStyle>
+                                    </asp:BoundField> 
+                                    <asp:BoundField DataField="GradeLevel" HeaderText="年级" ReadOnly="True"  ItemStyle-Width="100px" 
+                                        SortExpression="StudentID">
+                                        <ItemStyle Width="100px"></ItemStyle>
+                                    </asp:BoundField> 
+                                    <asp:BoundField DataField="Class" HeaderText="班级" ReadOnly="True"  ItemStyle-Width="100px" 
+                                        SortExpression="StudentID">
+                                        <ItemStyle Width="100px"></ItemStyle>
+                                    </asp:BoundField> 
                                     <asp:BoundField DataField="StudentID" HeaderText="班内学号" ReadOnly="True"  ItemStyle-Width="100px" 
                                         SortExpression="StudentID">
                                         <ItemStyle Width="100px"></ItemStyle>
                                     </asp:BoundField> 
-                                    <asp:TemplateField HeaderText="语文" SortExpression="Chinese" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbChin" runat="server" Text='<%# Bind("Chinese") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbChin" runat="server" Text='<%# Bind("Chinese") %>'></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="数学" SortExpression="Math" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbMath" runat="server" Text='<%# Bind("Math") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbMath" runat="server" Text='<%# Bind("Math") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="英语" SortExpression="English" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbEng" runat="server" Text='<%# Bind("English") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbEng" runat="server" Text='<%# Bind("English") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="品德与社会" SortExpression="Society" ItemStyle-Width="130px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbSoc" runat="server" Text='<%# Bind("Society") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbSoc" runat="server" Text='<%# Bind("Society") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="130px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="科学" SortExpression="Math" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbSci" runat="server" Text='<%# Bind("Science") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbSci" runat="server" Text='<%# Bind("Science") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="音乐" SortExpression="Music" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbMus" runat="server" Text='<%# Bind("Music") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbMus" runat="server" Text='<%# Bind("Music") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="体育" SortExpression="Physical" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbPhy" runat="server" Text='<%# Bind("Physical") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbPhy" runat="server" Text='<%# Bind("Physical") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:TemplateField HeaderText="美术" SortExpression="Art" ItemStyle-Width="50px"> 
-                                        <EditItemTemplate> 
-                                            <asp:TextBox ID="tbArt" runat="server" Text='<%# Bind("Art") %>' MaxLength="3" Width="50px"></asp:TextBox> 
-                                        </EditItemTemplate> 
-                                        <ItemTemplate> 
-                                            <asp:Label ID="lbArt" runat="server" Text='<%# Bind("Art") %>' Width="50px"></asp:Label> 
-                                        </ItemTemplate> 
-                                        <ItemStyle Width="50px"></ItemStyle>
-                                    </asp:TemplateField> 
-                                    <asp:CommandField ShowEditButton="True" ItemStyle-Width="120px"/> 
+                                    <asp:CommandField ItemStyle-Width="80px" ShowDeleteButton="True"/> 
                                 </Columns> 
                                 <FooterStyle BackColor="#99CCCC" ForeColor="#003399" /> 
                                 <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" /> 
