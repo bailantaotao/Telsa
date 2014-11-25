@@ -174,7 +174,7 @@
                         <tr>
                             <td>
                                 &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A7" runat="server" Enabled="False" />
-                                <asp:Label ID="Label12" runat="server" Text="校长联谊会事"></asp:Label>
+                                <asp:Label ID="Label12" runat="server" Text="校长联谊会"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -235,7 +235,7 @@
                         <tr>
                             <td>
                                 &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ2A7" runat="server" Enabled="False" />
-                                <asp:Label ID="Label23" runat="server" Text="校长联谊会事"></asp:Label>
+                                <asp:Label ID="Label23" runat="server" Text="校长联谊会"></asp:Label>
                             </td>
                         </tr>
                         <tr>

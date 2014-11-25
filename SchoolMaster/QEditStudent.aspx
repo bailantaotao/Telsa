@@ -153,7 +153,7 @@
                         <td align="left">
                             <div style="float:left;margin-left:30px">学生姓名</div>
                             <div style="float:left"><asp:TextBox ID="tbStage1Name" runat="server"></asp:TextBox></div>
-                            <div style="float:left;margin-left:30px">身分证件号</div>
+                            <div style="float:left;margin-left:30px">学籍辅号</div>
                             <div style="float:left"><asp:TextBox ID="tbStage1Id" runat="server"></asp:TextBox></div>
                             <div style="float:left;margin-left:30px">
                                 <asp:Button ID="btnStage1Input" runat="server" Text="输入" OnClick="btnStage1Input_Click" />
@@ -171,7 +171,7 @@
                          <td align="left">
                             <div style="float:left;margin-left:30px">学生姓名</div>
                             <div style="float:left"><asp:TextBox ID="tbStage2Name" runat="server"></asp:TextBox></div>
-                            <div style="float:left;margin-left:30px">身分证件号</div>
+                            <div style="float:left;margin-left:30px">学籍辅号</div>
                             <div style="float:left"><asp:TextBox ID="tbStage2ID" runat="server"></asp:TextBox></div>
                             <div style="float:left;margin-left:30px">
                                 <asp:Button ID="BtnStage2Edit" runat="server" Text="查询学生" OnClick="BtnStage2Edit_Click" />
@@ -209,7 +209,7 @@
                                     </asp:TemplateField> 
                                     <asp:BoundField DataField="Class" HeaderText="学生姓名" ReadOnly="True" ItemStyle-Width="80px" 
                                         SortExpression="Class" /> 
-                                    <asp:BoundField DataField="StudentID" HeaderText="身分证件号" ReadOnly="True"  ItemStyle-Width="80px" 
+                                    <asp:BoundField DataField="StudentID" HeaderText="学籍辅号" ReadOnly="True"  ItemStyle-Width="80px" 
                                         SortExpression="StudentID">
                                         <ItemStyle Width="80px"></ItemStyle>
                                     </asp:BoundField> 

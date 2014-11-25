@@ -132,7 +132,7 @@
                             <td align="left" width="140px">
                                 <asp:TextBox ID="TbStudentName" runat="server" Width="100px"></asp:TextBox>
                             </td>
-                            <td width="120px" align="left">身分证件号</td>
+                            <td width="120px" align="left">学籍辅号</td>
                             <td width="150px" align="left">
                                 <asp:TextBox ID="TbIdentifyId" runat="server" Width="100px"></asp:TextBox>
                             </td>
