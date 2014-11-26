@@ -292,7 +292,7 @@ public partial class SchoolMaster_QViewStudent : System.Web.UI.Page
     }
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("../SystemManagerIndex.aspx");
+        Response.Redirect("../Index.aspx");
     }
     protected void BtnStudentSearch_Click(object sender, EventArgs e)
     {

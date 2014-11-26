@@ -372,7 +372,7 @@ public partial class SchoolMaster_QViewScore : System.Web.UI.Page
     }
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("../SystemManagerIndex.aspx");
+        Response.Redirect("../Index.aspx");
     }
 
     protected void DdlGradeLevel_SelectedIndexChanged(object sender, EventArgs e)

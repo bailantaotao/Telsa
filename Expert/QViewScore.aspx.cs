@@ -372,7 +372,14 @@ public partial class Expert_QViewScore : System.Web.UI.Page
     }
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("../SystemManagerIndex.aspx");
+        if (Session["IsMingDer"].ToString().Equals("False"))
+        {
+            Response.Redirect("../ProvinceIndex.aspx");
+        }
+        else if (Session["IsMingDer"].ToString().Equals("True"))
+        {
+            Response.Redirect("../MingdeIndex.aspx");
+        }
     }
 
     protected void DdlGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
