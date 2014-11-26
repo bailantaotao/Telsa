@@ -39,7 +39,7 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-
+        removeSession("ViewStudentList");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -71,6 +71,12 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
             
         }
 
+    }
+
+    private void removeSession(string key)
+    {
+        if (Session[key] != null)
+            Session.Remove(key);
     }
 
     private string getSchoolNo(string schoolName)
