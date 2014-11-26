@@ -45,6 +45,14 @@
         {
             height: 78px;
         }
+        .style2
+        {
+            color:Aqua;
+        }
+        .style3
+        {
+            height: 26px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -78,7 +86,7 @@
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
-                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="#" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
+                <asp:HyperLink ID="HlStudentManage" runat="server" ForeColor="White" Font-Size="<%$ Resources:Resource, TextSizeHyLink %>" NavigateUrl="~/SchoolMaster/QViewStudentList.aspx" Text="<%$ Resources:Resource, HyStudentManage %>"></asp:HyperLink>
             </div>
             <div class ="Option">
                 <img src="../Image/zh-TW/TipWhite.png" />
@@ -144,12 +152,12 @@
                         <tr>
                             <td>
                                 &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A1" 
-                                    runat="server" Enabled="False" />
+                                    runat="server" Enabled="False"/>
                                 <asp:Label ID="Label8" runat="server" Text="明德教育公益项目办学理念及推动状况"></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style3">
                                 &nbsp&nbsp&nbsp<asp:CheckBox ID="CbQ1A2" runat="server" Enabled="False" />
                                 <asp:Label ID="Label2" runat="server" Text="学校管理"></asp:Label>
                             </td>

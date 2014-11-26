@@ -171,7 +171,7 @@ public partial class SchoolMaster_QViewStudent : System.Web.UI.Page
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "学生姓名" + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbCompleted.Text += "身分证件号</font></td>";
+            LbCompleted.Text += "学籍辅号</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "年级</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
@@ -310,7 +310,7 @@ public partial class SchoolMaster_QViewStudent : System.Web.UI.Page
             LbStudentContent.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbStudentContent.Text += "学生姓名</font></td>";
             LbStudentContent.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
-            LbStudentContent.Text += "身分证件号</font></td>";
+            LbStudentContent.Text += "学籍辅号</font></td>";
             LbStudentContent.Text += "</tr>";
 
             if (data.Count == 0)
@@ -340,7 +340,7 @@ public partial class SchoolMaster_QViewStudent : System.Web.UI.Page
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('请至少在学生姓名或身分证件号输入资料');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('请至少在学生姓名或学籍辅号输入资料');", true);
         }
     }
     protected void DdlGradeLevel_SelectedIndexChanged(object sender, EventArgs e)

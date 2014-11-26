@@ -160,6 +160,7 @@ public partial class SchoolMaster_SurveyViewQuestionnaire : System.Web.UI.Page
             TbComment2.Text = d[20];
             TbProposal.Text = d[21];
         }
+        
     }
 
     protected void Button1_Click(object sender, EventArgs e)

@@ -144,7 +144,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     {
         if (tbStage1Name.Text.Trim().Equals("") || tbStage1ID.Text.Trim().Equals(""))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名和身分证件号不得为空');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名和学籍辅号不得为空');", true);
             return;
         }
 
@@ -175,7 +175,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     {
         if (tbStage2Name.Text.Trim().Equals("") && tbStage2ID.Text.Trim().Equals(""))
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名或身分证件号不得为空');", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('学生姓名或学籍辅号不得为空');", true);
             return;
         }
 
