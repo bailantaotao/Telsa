@@ -209,6 +209,9 @@ public partial class SchoolMaster_QInputScore2 : System.Web.UI.Page
 
     private int digitCheck(string data)
     {
+        if (data.Equals(""))
+            return SUCCESS;
+
         int result = 0;
         bool convertSuccess = Int32.TryParse(data, out result);
         if(!convertSuccess)
@@ -233,42 +236,42 @@ public partial class SchoolMaster_QInputScore2 : System.Web.UI.Page
         string tbMus = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbMus")).Text;
         string tbPhy = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbPhy")).Text;
         string tbArt = ((TextBox)gvPerson.Rows[e.RowIndex].FindControl("tbArt")).Text;
-        if (digitCheck(tbChin) != 0)
+        if (digitCheck(tbChin) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbMath) != 0)
+        if (digitCheck(tbMath) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbEng) != 0)
+        if (digitCheck(tbEng) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbSoc) != 0)
+        if (digitCheck(tbSoc) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbSci) != 0)
+        if (digitCheck(tbSci) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbMus) != 0)
+        if (digitCheck(tbMus) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbPhy) != 0)
+        if (digitCheck(tbPhy) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
         }
-        if (digitCheck(tbArt) != 0)
+        if (digitCheck(tbArt) != SUCCESS)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入成績的格式有誤，必须為數字，且大于0和小于等于100');", true);
             return;
@@ -312,14 +315,45 @@ public partial class SchoolMaster_QInputScore2 : System.Web.UI.Page
 
             // Append the parameters. 
             cmd.Parameters.Add("@StudentID", SqlDbType.NVarChar, 50).Value = strPersonID;
-            cmd.Parameters.Add("@Chinese", SqlDbType.Int).Value = Convert.ToInt32(tbChin);
-            cmd.Parameters.Add("@Math", SqlDbType.Int).Value = Convert.ToInt32(tbMath);
-            cmd.Parameters.Add("@English", SqlDbType.Int).Value = Convert.ToInt32(tbEng);
-            cmd.Parameters.Add("@Society", SqlDbType.Int).Value = Convert.ToInt32(tbSoc);
-            cmd.Parameters.Add("@Science", SqlDbType.Int).Value = Convert.ToInt32(tbSci);
-            cmd.Parameters.Add("@Music", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
-            cmd.Parameters.Add("@Physical", SqlDbType.Int).Value = Convert.ToInt32(tbPhy);
-            cmd.Parameters.Add("@Art", SqlDbType.Int).Value = Convert.ToInt32(tbArt);
+            if (tbChin.Equals(""))
+                cmd.Parameters.Add("@Chinese", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Chinese", SqlDbType.Int).Value = Convert.ToInt32(tbChin);
+
+            if (tbMath.Equals(""))
+                cmd.Parameters.Add("@Math", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Math", SqlDbType.Int).Value = Convert.ToInt32(tbMath);
+
+            if (tbEng.Equals(""))
+                cmd.Parameters.Add("@English", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@English", SqlDbType.Int).Value = Convert.ToInt32(tbEng);
+
+            if (tbSoc.Equals(""))
+                cmd.Parameters.Add("@Society", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Society", SqlDbType.Int).Value = Convert.ToInt32(tbSoc);
+
+            if (tbSci.Equals(""))
+                cmd.Parameters.Add("@Science", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Science", SqlDbType.Int).Value = Convert.ToInt32(tbSci);
+
+            if (tbMus.Equals(""))
+                cmd.Parameters.Add("@Music", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Music", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
+
+            if (tbPhy.Equals(""))
+                cmd.Parameters.Add("@Physical", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Music", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
+
+            if (tbArt.Equals(""))
+                cmd.Parameters.Add("@Art", SqlDbType.Int).Value = 0;
+            else
+                cmd.Parameters.Add("@Art", SqlDbType.Int).Value = Convert.ToInt32(tbArt);
 
 
             // Open the connection. 
