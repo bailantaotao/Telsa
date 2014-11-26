@@ -348,7 +348,7 @@ public partial class SchoolMaster_QInputScore2 : System.Web.UI.Page
             if (tbPhy.Equals(""))
                 cmd.Parameters.Add("@Physical", SqlDbType.Int).Value = 0;
             else
-                cmd.Parameters.Add("@Music", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
+                cmd.Parameters.Add("@Physical", SqlDbType.Int).Value = Convert.ToInt32(tbMus);
 
             if (tbArt.Equals(""))
                 cmd.Parameters.Add("@Art", SqlDbType.Int).Value = 0;
