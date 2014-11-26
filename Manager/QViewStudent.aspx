@@ -94,7 +94,7 @@
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, QStudentData %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="#"></asp:HyperLink>
+                         NavigateUrl="QViewStudentList.aspx"></asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
@@ -115,16 +115,16 @@
                     <table width="739px">
                         <tr>
                             <td align="left">
-                                学校: <asp:Label ID="LbSchool" runat="server" Text="石家庄市井陉县南障城镇明德小学"></asp:Label>
+                                学校: <asp:Label ID="LbSchool" runat="server" Text=""></asp:Label>
                             </td>
                             <td align="left">
-                                学年: <asp:Label ID="LbYear" runat="server" Text="2014"></asp:Label>
+                                学年: <asp:Label ID="LbYear" runat="server" Text=""></asp:Label>
                             </td>
                             <td align="left">
-                                学期: <asp:Label ID="LbSemester" runat="server" Text="1"></asp:Label>
+                                学期: <asp:Label ID="LbSemester" runat="server" Text=""></asp:Label>
                             </td>
                             <td align="left">
-                                学校代号: <asp:Label ID="LbSchoolNo" runat="server" Text="NM14001"></asp:Label>
+                                学校代号: <asp:Label ID="LbSchoolNo" runat="server" Text=""></asp:Label>
                             </td>
                         </tr>
                     </table>
