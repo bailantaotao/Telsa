@@ -135,10 +135,10 @@
                     </tr>
                     <tr>
                         <td align="left">
-                            <div style="float:left;margin-left:30px">学生姓名</div>
-                            <div style="float:left"><asp:TextBox ID="tbStage1Name" runat="server"></asp:TextBox></div>
-                            <div style="float:left;margin-left:30px">学籍辅号</div>
-                            <div style="float:left"><asp:TextBox ID="tbStage1ID" runat="server"></asp:TextBox></div>
+                            <div style="float:left;margin-left:30px">学生姓名:</div>
+                            <div style="float:left"><asp:TextBox ID="tbStage1Name" runat="server" Font-Size="14pt"></asp:TextBox></div>
+                            <div style="float:left;margin-left:30px">学籍辅号:</div>
+                            <div style="float:left"><asp:TextBox ID="tbStage1ID" runat="server" Font-Size="14pt"></asp:TextBox></div>
                             <div style="float:left;margin-left:30px">
                                 <asp:Button ID="btnStage1Input" runat="server" Text="输入" OnClick="btnStage1Input_Click" />
                             </div>
@@ -153,10 +153,10 @@
                     </tr>
                     <tr>
                          <td align="left">
-                            <div style="float:left;margin-left:30px">学生姓名</div>
-                            <div style="float:left"><asp:TextBox ID="tbStage2Name" runat="server"></asp:TextBox></div>
-                            <div style="float:left;margin-left:30px">学籍辅号</div>
-                            <div style="float:left"><asp:TextBox ID="tbStage2ID" runat="server"></asp:TextBox></div>
+                            <div style="float:left;margin-left:30px">学生姓名:</div>
+                            <div style="float:left"><asp:TextBox ID="tbStage2Name" runat="server" Font-Size="14pt"></asp:TextBox></div>
+                            <div style="float:left;margin-left:30px">学籍辅号:</div>
+                            <div style="float:left"><asp:TextBox ID="tbStage2ID" runat="server" Font-Size="14pt"></asp:TextBox></div>
                             <div style="float:left;margin-left:30px">
                                 <asp:Button ID="BtnStage2Edit" runat="server" Text="查询学生" OnClick="BtnStage2Edit_Click" />
                             </div>
