@@ -202,7 +202,9 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             else
             {
                 Query = "select Name, IdentifyID, GradeLevel, Class, StudentID from QStudent" + currentYear + currentSemester + " " +
-                        "where IdentifyID = '" + tbStage2ID.Text.Trim() + "' or Name = '" + tbStage2Name.Text.Trim() + "'";
+                        "where (IdentifyID = '" + tbStage2ID.Text.Trim() + "' or Name = '" + tbStage2Name.Text.Trim() + "') and school = N'" + schoolName.ToString() + "'";
+
+
                 Session["QStage2EditStudent"] = Query;
             }
 
@@ -239,10 +241,15 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             // Set the sort column and sort order. 
             dvPerson.Sort = ViewState["Stage2SortExpression"].ToString();
 
+            
 
             // Bind the GridView control. 
             gvEditStudent.DataSource = dvPerson;
             gvEditStudent.DataBind();
+            if (gvEditStudent.Rows.Count == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('查无任何学生之资料');", true);
+            }
         }
     }
 
