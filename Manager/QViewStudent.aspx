@@ -135,13 +135,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td width="100px" style="padding-left:30px;">学生姓名</td>
+                            <td width="100px" style="padding-left:30px;">学生姓名:</td>
                             <td align="left" width="140px">
-                                <asp:TextBox ID="TbStudentName" runat="server" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TbStudentName" runat="server" Width="100px" Font-Size="14pt"></asp:TextBox>
                             </td>
-                            <td width="120px" align="left">学籍辅号</td>
+                            <td width="120px" align="left">学籍辅号:</td>
                             <td width="150px" align="left">
-                                <asp:TextBox ID="TbIdentifyId" runat="server" Width="100px"></asp:TextBox>
+                                <asp:TextBox ID="TbIdentifyId" runat="server" Width="100px" Font-Size="14pt"></asp:TextBox>
                             </td>
                             <td>
                                 <asp:Button ID="BtnStudentSearch" runat="server" Text="查询" OnClick="BtnStudentSearch_Click"  Font-Size="14pt"/>

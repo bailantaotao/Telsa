@@ -175,7 +175,7 @@
                                 <Columns> 
 
                                     <asp:BoundField HeaderText="学年" ReadOnly="True" ItemStyle-Width="80px" /> 
-                                    <asp:BoundField HeaderText="學期" ReadOnly="True" ItemStyle-Width="80px" /> 
+                                    <asp:BoundField HeaderText="学期" ReadOnly="True" ItemStyle-Width="80px" /> 
                                     <asp:BoundField DataField="Name" HeaderText="学生姓名" ReadOnly="True" ItemStyle-Width="80px" 
                                         SortExpression="Name" /> 
                                     <asp:BoundField DataField="IdentifyID" HeaderText="学籍辅号" ReadOnly="True"  ItemStyle-Width="80px" 
