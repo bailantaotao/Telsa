@@ -346,7 +346,7 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
                         TbComment2.Text.Trim() + "', N'" +
                         TbProposal.Text.Trim() + "','1')";
         ms.WriteData(query, sb);
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='SurveyList.aspx?SN=" + Session["SurveySN"].ToString() + "&YEAR=" + Session["SurveyYear"].ToString() + "';", true);
+        
     }
 
     protected void BtnSubmit_Click(object sender, EventArgs e)
@@ -367,14 +367,15 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
         string query5 = string.Empty;
         ManageSQL ms = new ManageSQL();
 
+        storeData();
 
-        query1 = "select Complete from SurveyQuestionnaire Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
+        query1 = "select Complete from SurveyQuestionnaire where Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
         ms.GetOneData(query1, sb2);
-        query2 = "select Complete from SurveyListLanguage where SN=" + Session["UserSurveyListSN"].ToString() + " and Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
+        query2 = "select Complete from SurveyListLanguage where Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
         ms.GetOneData(query2, sb3);
-        query3 = "select Complete from SurveyListMath where SN=" + Session["UserSurveyListSN"].ToString() + " and Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
+        query3 = "select Complete from SurveyListMath where Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
         ms.GetOneData(query3, sb4);
-        query4 = "select Complete from SurveyListEnglish where SN=" + Session["UserSurveyListSN"].ToString() + " and Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
+        query4 = "select Complete from SurveyListEnglish where Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
         ms.GetOneData(query4, sb5);
         query5 = "update SurveyListUser set SurveyStatus='True' where SN=" + Session["UserSurveyListSN"].ToString() + " and Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
         
@@ -393,7 +394,7 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
             }
         }
 
-        storeData();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", " window.location='SurveyList.aspx?SN=" + Session["SurveySN"].ToString() + "&YEAR=" + Session["SurveyYear"].ToString() + "';", true);
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
