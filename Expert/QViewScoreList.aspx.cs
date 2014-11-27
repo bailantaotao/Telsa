@@ -234,7 +234,8 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
 
             }
         }
-        Query += tmp;
+        Query += tmp + "group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School"; ;
+        
 
         Session["QViewScoreList"] = Query;
         //StringBuilder sb = new StringBuilder();

@@ -200,7 +200,7 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
 
             }
         }
-        Query += tmp;
+        Query += tmp + "group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School";
 
         Session["ViewStudentList"] = Query;
 
