@@ -62,6 +62,8 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         removeSession("QVSL_PageSelect_SelectedIndexChanged");
         removeSession("QVST_DdlGradeLevel_SelectedIndexChanged");
         removeSession("QVST_DdlClass_SelectedIndexChanged");
+
+        removeSession("QViewScore");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -75,7 +77,7 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         if (!IsPostBack)
         {
             setDefault(DdlType.Province);
-            setDefault(DdlType.SchoolName);
+            //setDefault(DdlType.SchoolName);
             setDefault(DdlType.Year);
             if (Session["QViewScoreList"] != null)
                 Query = Session["QViewScoreList"].ToString();
@@ -112,9 +114,6 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
                 break;
             case DdlType.Year:
                 setYear();
-                break;
-            case DdlType.SchoolName:
-                setSchoolName();
                 break;
         }
     }
@@ -164,43 +163,7 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             DdlYear.Items.Add(province[0]);
         }
     }
-    private void setSchoolName()
-    {
-        ManageSQL ms = new ManageSQL();
-        ArrayList data = new ArrayList();
-
-        if (IsMingDer)
-        {
-            Query = "select School from Account " +
-                            "left join Area on Account.zipcode = Area.ID " +
-                            "where School not like N'%專家%' and School not like N'%管理者%' " +
-                            "group by School ";
-        }
-        else
-        {
-            Query = "select School from Account " +
-                            "left join Area on Account.zipcode = Area.ID " +
-                            "where area.name =N'" + LbProvince.Text + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
-                            "group by School ";
-        }
-
-        if (!ms.GetAllColumnData(Query, data))
-        {
-            DdlSchoolName.Items.Add("None");
-            return;
-        }
-
-        if (data.Count == 0)
-        {
-            DdlSchoolName.Items.Add("None");
-            return;
-        }
-        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
-        foreach (string[] province in data)
-        {
-            DdlSchoolName.Items.Add(province[0]);
-        }
-    }
+    
 
 
 
@@ -460,6 +423,28 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
 
     protected void BtnSearch_Click(object sender, EventArgs e)
     {
+        if (DdlProvince.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择省分');", true);
+            return;
+        }
+        if (DdlSchoolName.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择学校');", true);
+            return;
+        }
+        if (DdlYear.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择学年');", true);
+            return;
+        }
+        if (DdlSemester.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择学期');", true);
+            return;
+        }
+
+
         SearchType();
         LoadInternetStudy(1);
     }
@@ -475,4 +460,48 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         }
     }
 
+    protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        setSchoolName(DdlProvince.SelectedValue);
+    }
+
+    private void setSchoolName(string provinceData)
+    {
+        DdlSchoolName.Items.Clear();
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+
+        if (IsMingDer)
+        {
+            Query = "select School from Account " +
+                            "left join Area on Account.zipcode = Area.ID " +
+                            "where School not like N'%專家%' and School not like N'%管理者%' and " +
+                            "zipcode = '" + provinceData + "' " +
+                            "group by School ";
+        }
+        else
+        {
+            Query = "select School from Account " +
+                            "left join Area on Account.zipcode = Area.ID " +
+                            "where area.name =N'" + LbProvince.Text + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
+                            "group by School ";
+        }
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
 }

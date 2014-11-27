@@ -121,12 +121,12 @@ public partial class SchoolMaster_QViewStudent : System.Web.UI.Page
                 "from QStudent" + yearSemester + " ";
 
         string tmp = string.Empty;
-        string[] storeParam = new string[3];
-        string[] sqlParam = new string[] { "QStudent" + yearSemester + ".GradeLevel", "QStudent" + yearSemester + ".Class", "QStudent" + yearSemester + ".Name" };
+        string[] storeParam = new string[4];
+        string[] sqlParam = new string[] { "QStudent" + yearSemester + ".GradeLevel", "QStudent" + yearSemester + ".Class", "QStudent" + yearSemester + ".Name", "QStudent" + yearSemester + ".School" };
         storeParam[0] = DdlGradeLevel.SelectedIndex == 0 ? null : DdlGradeLevel.SelectedValue;
         storeParam[1] = DdlClass.SelectedIndex == 0 ? null : DdlClass.SelectedValue;
         storeParam[2] = DdlStudentID.SelectedIndex == 0 ? null : DdlStudentID.SelectedValue;
-        
+        storeParam[3] = LbSchool.Text.Trim();
 
         for (int i = 0; i < storeParam.Length; i++)
         {
@@ -363,7 +363,7 @@ public partial class SchoolMaster_QViewStudent : System.Web.UI.Page
 
         string listSN = sb.ToString();
 
-        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
+        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and school =N'" + LbSchool.Text + "'";
         ms.GetOneData(query, sb);
 
         if (sb.ToString().Equals("0"))

@@ -115,10 +115,21 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left" colspan="5">
+                            <td align="left">
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="true">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt" AutoPostBack="true" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </td>
+                            <td align="left">
+                                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                    <ContentTemplate>
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -140,25 +151,12 @@
                                 </asp:UpdatePanel>
                             </td>
                             <td align="left">
-                            </td>
-                            <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlSemester" runat="server" Width="80px" Font-Size="14pt">
                                             <asp:ListItem Value="0" Text="学期"></asp:ListItem>
                                             <asp:ListItem Value="1" Text="1"></asp:ListItem>
                                             <asp:ListItem Value="2" Text="2"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
-                            </td>
-                            <td align="left">
-                                <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                    <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>

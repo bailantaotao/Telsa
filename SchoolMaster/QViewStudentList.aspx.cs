@@ -49,7 +49,7 @@ public partial class SchoolMaster_QViewScoreList : System.Web.UI.Page
 
         removeSession("QEditStudent");
         removeSession("QStage2EditStudent");
-
+        removeSession("QViewStudent");
     }
 
     protected void Page_Load(object sender, EventArgs e)

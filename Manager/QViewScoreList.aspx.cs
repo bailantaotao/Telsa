@@ -45,6 +45,8 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
         removeSession("QVSL_PageSelect_SelectedIndexChanged");
         removeSession("QVST_DdlGradeLevel_SelectedIndexChanged");
         removeSession("QVST_DdlClass_SelectedIndexChanged");
+
+        removeSession("QViewScore");
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -393,6 +395,26 @@ public partial class Manager_QViewScoreList : System.Web.UI.Page
 
     protected void BtnSearch_Click(object sender, EventArgs e)
     {
+        if (DdlProvince.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择省分');", true);
+            return;
+        }
+        if (DdlSchoolName.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择学校');", true);
+            return;
+        }
+        if (DdlYear.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择学年');", true);
+            return;
+        }
+        if (DdlSemester.SelectedIndex == 0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择学期');", true);
+            return;
+        }
         SearchType();
         LoadInternetStudy(1);
     }

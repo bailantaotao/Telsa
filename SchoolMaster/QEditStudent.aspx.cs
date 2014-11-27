@@ -918,7 +918,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
         listSN = sb.ToString();
 
-        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
+        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and school =N'" +schoolName.ToString() + "'";
         ms.GetOneData(query, sb);
 
         if (sb.ToString().Equals("0"))

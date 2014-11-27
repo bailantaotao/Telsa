@@ -396,7 +396,7 @@ public partial class Expert_QViewScore : System.Web.UI.Page
 
         string listSN = sb.ToString();
 
-        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
+        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and school =N'"+LbSchool.Text+"'";
         ms.GetOneData(query, sb);
 
         if (sb.ToString().Equals("0"))

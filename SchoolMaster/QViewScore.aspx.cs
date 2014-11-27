@@ -389,7 +389,7 @@ public partial class SchoolMaster_QViewScore : System.Web.UI.Page
 
         string listSN = sb.ToString();
 
-        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "'";
+        query = "select count(GradeLevel) from QGradeClassHistory where ListSN = '" + listSN + "' and GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and school =N'" + LbSchool.Text + "'";
         ms.GetOneData(query, sb);
 
         if (sb.ToString().Equals("0"))
@@ -414,7 +414,7 @@ public partial class SchoolMaster_QViewScore : System.Web.UI.Page
         DdlClass.Items.Clear();
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select class from QGradeClassHistory "+
+        Query = "select class from QGradeClassHistory " +
             "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVS_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
