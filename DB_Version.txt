@@ -6,3 +6,10 @@ Telsa v6.0.4
 Telsa v6.0.5
 Telsa v6.0.6
 Telsa v6.0.7
+Telsa v6.0.8
+
+
+##########     v6.0.8     ##########
+Changed:
+	Table: QGradeClassHistory
+	Column: [Added] Zipcode, School
