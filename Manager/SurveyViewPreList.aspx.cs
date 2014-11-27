@@ -125,13 +125,16 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
 
-        
+        string query = string.Empty;
+        string Selectprovince = string.Empty;
+
         Query = "select School from Account " +
-                "left join Area on Account.zipcode = Area.id " +
-                "where School not like N'%專家%' and School not like N'%管理者%' " +
-                "group by School ";
-       
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "group by School ";
+        
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlSchoolName.Items.Add("None");
@@ -490,5 +493,50 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../SystemManagerIndex.aspx");
+    }
+    protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
+
+        string query = string.Empty;
+        string queryID = string.Empty;
+        string Selectprovince = string.Empty;
+
+        DdlSchoolName.Items.Clear();
+        if (DdlProvince.SelectedValue.Equals(Resources.Resource.DdlTypeProvince))
+        {
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "group by School ";
+        }
+        else
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() +
+                    "group by School ";
+        }
+        if (!ms.GetAllColumnData(query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
     }
 }

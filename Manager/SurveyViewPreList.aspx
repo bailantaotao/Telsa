@@ -111,8 +111,9 @@
                         <table width="739px">
                         <tr>
                             <td align="left" colspan="4" width="600px">
-                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" 
-                                    Font-Size="14pt">
+                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="120px" 
+                                    Font-Size="14pt" Height="28px" AutoPostBack="True" 
+                                            onselectedindexchanged="DdlProvince_SelectedIndexChanged">
                                         </asp:DropDownList>
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="false">
                                     <Triggers>
@@ -151,7 +152,7 @@
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px" Font-Size="14pt">
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="150px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
