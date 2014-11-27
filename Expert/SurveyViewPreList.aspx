@@ -104,7 +104,8 @@
                                 <asp:Label ID="LbProvince" runat="server" Text=""></asp:Label>
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="false">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt">
+                                        <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt" 
+                                            AutoPostBack="True" onselectedindexchanged="DdlProvince_SelectedIndexChanged">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
