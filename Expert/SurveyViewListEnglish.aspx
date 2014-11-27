@@ -238,7 +238,7 @@
                     <table width="720px" cellspacing="10">
                         <tr>
                             <td colspan="5" align="left">
-                                <asp:Label ID="Label27" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
+                                <asp:Label ID="Label27" runat="server" Text="4.英语思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -397,7 +397,7 @@
                     <table width="720px" cellspacing="10">
                         <tr>
                             <td colspan="5" align="left">
-                                <asp:Label ID="Label58" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
+                                <asp:Label ID="Label58" runat="server" Text="4.英语思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>

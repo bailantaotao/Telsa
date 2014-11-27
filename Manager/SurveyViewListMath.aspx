@@ -41,6 +41,10 @@
             margin-left:40px;
             text-align:left;
         }
+        .style1
+        {
+            height: 30px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -244,8 +248,8 @@
                     </table>
                     <table width="720px" cellspacing="10">
                         <tr>
-                            <td colspan="5" align="left">
-                                <asp:Label ID="Label27" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
+                            <td colspan="5" align="left" class="style1">
+                                <asp:Label ID="Label27" runat="server" Text="4.数学思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -404,7 +408,7 @@
                     <table width="720px" cellspacing="10">
                         <tr>
                             <td colspan="5" align="left">
-                                <asp:Label ID="Label58" runat="server" Text="4.语文思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
+                                <asp:Label ID="Label58" runat="server" Text="4.数学思想方法的指导及小结" ForeColor="#8C4510"></asp:Label>
                             </td>
                         </tr>
                         <tr>
