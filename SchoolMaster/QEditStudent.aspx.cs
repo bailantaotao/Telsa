@@ -397,7 +397,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
-        string query = "select count(listSN) from QGradeClassHistory left join QList on QGradeClassHistory.listSN = QList.SN where class = '" + Class + "' and GradeLevel = '" + GradeLevel + "' and QGradeClassHistory.listSN='" + currentSN + "'";
+        string query = "select count(listSN) from QGradeClassHistory left join QList on QGradeClassHistory.listSN = QList.SN where class = '" + Class + "' and GradeLevel = '" + GradeLevel + "' and QGradeClassHistory.listSN='" + currentSN + "' and school =N'" + schoolName.ToString() + "'";
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals("0"))
         {
@@ -405,7 +405,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             ms.GetOneData(query, sb);
             string ListSN = sb.ToString();
 
-            query = "insert into QGradeClassHistory (GradeLevel, Class, ListSN) VALUES ('" + GradeLevel + "', '" + Class + "', '" + ListSN + "')";
+            query = "insert into QGradeClassHistory (GradeLevel, Class, ListSN, zipcode, school) VALUES ('" + GradeLevel + "', '" + Class + "', '" + ListSN + "', '" + Session["Province"].ToString() + "', N'"+schoolName.ToString()+"')";
             ms.WriteData(query, sb);
         }
 
@@ -950,7 +950,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         Query = "select class from QGradeClassHistory "+
-            "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
+            "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString() + "' and school =N'" + schoolName.ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlClass.Items.Add("班級");

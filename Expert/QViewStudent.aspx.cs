@@ -398,7 +398,7 @@ public partial class Expert_QViewStudent : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         Query = "select class from QGradeClassHistory " +
-                "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVST_DdlGradeLevel_SelectedIndexChanged"].ToString() + "'";
+                "where GradeLevel = '" + DdlGradeLevel.SelectedValue + "' and ListSN = '" + listSN + "' and GradeLevel = '" + Session["QVST_DdlGradeLevel_SelectedIndexChanged"].ToString() + "' and school =N'" + LbSchool.Text + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlClass.Items.Add("None");
