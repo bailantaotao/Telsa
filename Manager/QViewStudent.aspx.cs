@@ -304,8 +304,8 @@ public partial class Manager_QViewStudent : System.Web.UI.Page
 
             /** 這邊的查詢學生是用or，不是and */
             string query = "select Name, IdentifyID from QStudent" + yearSemester + " where (" +
-                (TbStudentName.Text.Trim().Equals("") ? ("") : ("Name = '" + TbStudentName.Text.Trim() + "' ")) +
-                (TbStudentName.Text.Trim().Equals("") ? ("IdentifyID = '" + TbIdentifyId.Text.Trim() + "'") : ("or IdentifyID = '" + TbIdentifyId.Text.Trim() + "'")) + ") " +
+                (TbStudentName.Text.Trim().Equals("") ? ("") : ("Name = N'" + TbStudentName.Text.Trim() + "' ")) +
+                (TbStudentName.Text.Trim().Equals("") ? ("IdentifyID = N'" + TbIdentifyId.Text.Trim() + "'") : ("or IdentifyID = N'" + TbIdentifyId.Text.Trim() + "'")) + ") " +
                 "and school = N'" + LbSchool.Text + "'";
 
             ms.GetAllColumnData(query, data);

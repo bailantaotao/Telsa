@@ -158,10 +158,10 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
         string query = "insert into QStudent" + currentYear + currentSemester + " (IdentifyID, School, Zipcode, Name) VALUES (" +
-            "'" + tbStage1ID.Text.Trim() + "', " +
+            "N'" + tbStage1ID.Text.Trim() + "', " +
             "N'" + schoolName.ToString() + "', " +
-            "'" + Session["Province"].ToString() + "', " +
-            "'" + tbStage1Name.Text.Trim() + "')";
+            "N'" + Session["Province"].ToString() + "', " +
+            "N'" + tbStage1Name.Text.Trim() + "')";
         ms.WriteData(query, sb);
         tbStage1ID.Text = "";
         tbStage1Name.Text = "";
@@ -202,7 +202,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             else
             {
                 Query = "select Name, IdentifyID, GradeLevel, Class, StudentID from QStudent" + currentYear + currentSemester + " " +
-                        "where (IdentifyID = '" + tbStage2ID.Text.Trim() + "' or Name = '" + tbStage2Name.Text.Trim() + "') and school = N'" + schoolName.ToString() + "'";
+                        "where (IdentifyID = N'" + tbStage2ID.Text.Trim() + "' or Name = N'" + tbStage2Name.Text.Trim() + "') and school = N'" + schoolName.ToString() + "'";
 
 
                 Session["QStage2EditStudent"] = Query;
@@ -414,7 +414,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         if (sb.ToString().Equals("0"))
         {
             query = "insert into QScore" + currentYear + currentSemester + " (StudentID) VALUES (" +
-                           "'" + StudentID + "')";
+                           "N'" + StudentID + "')";
             ms.WriteData(query, sb);
         }
 
