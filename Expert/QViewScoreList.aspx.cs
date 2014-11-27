@@ -210,31 +210,62 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
-                "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " ";
-
-        string tmp = string.Empty;
-        string[] storeParam = new string[2];
-        string[] sqlParam = new string[] { "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School", "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode" };
-        storeParam[0] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.SelectedValue;
-        storeParam[1] = DdlProvince.SelectedIndex == 0 ? null : DdlProvince.SelectedValue;
-        
-        for (int i = 0; i < storeParam.Length; i++)
+        if (IsMingDer)
         {
-            if (!string.IsNullOrEmpty(storeParam[i]))
-            {
-                if (string.IsNullOrEmpty(tmp))
-                {
-                    tmp += "where " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
-                }
-                else
-                {
-                    tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
-                }
+            Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
+                    "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " ";
 
+            string tmp = string.Empty;
+            string[] storeParam = new string[2];
+            string[] sqlParam = new string[] { "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School", "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode" };
+            storeParam[0] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.SelectedValue;
+            storeParam[1] = DdlProvince.SelectedIndex == 0 ? null : DdlProvince.SelectedValue;
+
+            for (int i = 0; i < storeParam.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(storeParam[i]))
+                {
+                    if (string.IsNullOrEmpty(tmp))
+                    {
+                        tmp += "where " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                    }
+                    else
+                    {
+                        tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                    }
+
+                }
             }
+            Query += tmp + "group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School"; ;
         }
-        Query += tmp + "group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School"; ;
+        else
+        {
+            Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
+                               "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " ";
+
+            string tmp = string.Empty;
+            string[] storeParam = new string[1];
+            string[] sqlParam = new string[] { "QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School"};
+            storeParam[0] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.SelectedValue;
+
+            for (int i = 0; i < storeParam.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(storeParam[i]))
+                {
+                    if (string.IsNullOrEmpty(tmp))
+                    {
+                        tmp += "where " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                    }
+                    else
+                    {
+                        tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
+                    }
+
+                }
+            }
+            tmp += (tmp.Length == 0) ? "where QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode = '" + Session["Province"].ToString() + "' " : "and QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode = '" + Session["Province"].ToString() + "' ";
+            Query += tmp + "group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School"; ;
+        }
         
 
         Session["QViewScoreList"] = Query;
