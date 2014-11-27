@@ -27,6 +27,8 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
 
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
+    private const string NOTHING_TO_BE_DOWN = "";
+
     private enum DdlType
     {
         Province,
@@ -56,6 +58,7 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             LbProvince.Visible = true;
             LbProvince.Text = SearchProvince();
             IsMingDer = false;
+            setSchoolName(NOTHING_TO_BE_DOWN);
         }
 
         removeSession("ViewStudentList");
@@ -423,10 +426,13 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
 
     protected void BtnSearch_Click(object sender, EventArgs e)
     {
-        if (DdlProvince.SelectedIndex == 0)
+        if (IsMingDer)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择省分');", true);
-            return;
+            if (DdlProvince.SelectedIndex == 0)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您必须选择省分');", true);
+                return;
+            }
         }
         if (DdlSchoolName.SelectedIndex == 0)
         {
