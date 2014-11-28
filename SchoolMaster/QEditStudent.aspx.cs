@@ -790,7 +790,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         string yearSemester = DdlYear.SelectedValue + DdlSemester.SelectedValue;
 
         Query = "select QStudent" + yearSemester + ".Name, QStudent" + yearSemester + ".IdentifyID, QStudent" + yearSemester + ".GradeLevel, QStudent" + yearSemester + ".Class, QStudent" + yearSemester + ".StudentID " +
-                "from QStudent" + yearSemester + " ";                
+                "from QStudent" + yearSemester + " where QStudent" + yearSemester + ".School=N'" + schoolName.ToString() + "'";                
 
         string tmp = string.Empty;
         string[] storeParam = new string[3];
