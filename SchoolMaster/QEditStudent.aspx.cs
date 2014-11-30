@@ -246,9 +246,28 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             // Bind the GridView control. 
             gvEditStudent.DataSource = dvPerson;
             gvEditStudent.DataBind();
+
             if (gvEditStudent.Rows.Count == 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('查无任何学生之资料');", true);
+                if (ViewState["deleteUser"] == null)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('查无任何学生之资料');", true);
+                }
+                else
+                {
+                    ViewState.Remove("deleteUser");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('修改成功');", true);
+                }
+
+            }
+            else
+            {
+                if (((Label)gvEditStudent.Rows[0].FindControl("lbYear")) != null)
+                    ((Label)gvEditStudent.Rows[0].FindControl("lbYear")).Text = currentYear.ToString();
+                if (((Label)gvEditStudent.Rows[0].FindControl("lbSemester")) != null)
+                    ((Label)gvEditStudent.Rows[0].FindControl("lbSemester")).Text = currentSemester.ToString();
+                if (((Label)gvEditStudent.Rows[0].FindControl("lbYear")) != null)
+                    ViewState["studentID"] = ((Label)gvEditStudent.Rows[0].FindControl("lbStudentID")).Text;
             }
         }
     }
@@ -264,10 +283,9 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate || e.Row.RowState == DataControlRowState.Edit)
             {
                 // Add client-side confirmation when deleting. 
-                e.Row.Cells[0].Text= currentYear;
-                e.Row.Cells[1].Text = currentSemester;
             }
         }
+
     }
 
 
@@ -291,11 +309,18 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         // for the selected row.  
         gvEditStudent.EditIndex = e.NewEditIndex;
 
+        ((Label)gvEditStudent.Rows[gvEditStudent.EditIndex].FindControl("lbYear")).Text = currentYear.ToString();
+
+
+        ViewState["Year"] = ((Label)gvEditStudent.Rows[gvEditStudent.EditIndex].FindControl("lbYear")).Text;
+        ViewState["Semester"] = ((Label)gvEditStudent.Rows[gvEditStudent.EditIndex].FindControl("lbSemester")).Text;
+
 
         // Rebind the GridView control to show data in edit mode. 
         BindEditGridView();
-
-
+        
+        ((TextBox)gvEditStudent.Rows[gvEditStudent.EditIndex].FindControl("tbYear")).Text = currentYear.ToString();
+        ((TextBox)gvEditStudent.Rows[gvEditStudent.EditIndex].FindControl("tbSemester")).Text = currentSemester.ToString();
     }
 
 
@@ -304,11 +329,12 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     {
         // Exit edit mode. 
         gvEditStudent.EditIndex = -1;
-
+        
 
         // Rebind the GridView control to show data in view mode. 
         BindEditGridView();
-
+        ((Label)gvEditStudent.Rows[e.RowIndex].FindControl("lbYear")).Text = currentYear.ToString();
+        ((Label)gvEditStudent.Rows[e.RowIndex].FindControl("lbSemester")).Text = currentSemester.ToString();
 
     }
 
@@ -316,6 +342,8 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
     protected void gvEdit_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         // Get the PersonID of the selected row. 
+        string Year = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbYear")).Text;
+        string Semester = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbSemester")).Text;
         string studentName = gvEditStudent.Rows[e.RowIndex].Cells[2].Text;
         string identifyID = gvEditStudent.Rows[e.RowIndex].Cells[3].Text;
         string GradeLevel = ((TextBox)gvEditStudent.Rows[e.RowIndex].FindControl("tbGradeLevel")).Text;
@@ -336,9 +364,45 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您輸入的学号格式有誤');", true);
             return;
         }
+        // 判斷該學號目前是否已存在，如果存在，則reject
+        bool isChangeStudentID = false;
+        if(!ViewState["studentID"].Equals(StudentID))
+        {
+            ManageSQL ms = new ManageSQL();
+            StringBuilder sb = new StringBuilder();
+            string query = "select count(*) from QStudent" + currentYear + currentSemester + " where StudentID ='" + StudentID + "'";
+            ms.GetRowNumbers(query, sb);
+            if (!sb.ToString().Equals("0"))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('该学号已存在');", true);
+                return;
+            }
+            // 如果viewState 為""，代表學號尚未輸入，則不列入change的policy裡
+            if (ViewState["studentID"].Equals(""))
+                isChangeStudentID = false;
+            else
+                isChangeStudentID = true;
+        }
+
+
+        bool isChangeYearSemester = false;
         
+        // 判斷是否使用者更改了學年或學期，先判斷該學年或學期管理者是否建立，如果未建立，則直接reject
+        if (!currentYear.ToString().Equals(Year) || !currentSemester.ToString().Equals(Semester))
+        {
+            ManageSQL ms = new ManageSQL();
+            StringBuilder sb = new StringBuilder();
+            string query = "select count(*) from QList where Year='" + Year + "' and Semester = '" + Semester + "'";
+            ms.GetRowNumbers(query, sb);
+            if (sb.ToString().Equals("0"))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('查无该学年或学期');", true);
+                return;
+            }
+            isChangeYearSemester = true;
+        }
 
-
+        // 代表該學年或學期已建立        
         using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConStr"].ToString()))
         {
             // Create a command object. 
@@ -348,16 +412,29 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
             // Assign the connection to the command. 
             cmd.Connection = conn;
 
-
-            // Set the command text 
-            // SQL statement or the name of the stored procedure  
-            //cmd.CommandText = "UPDATE Person SET LastName = @LastName, FirstName = @FirstName WHERE PersonID = @PersonID";
-            cmd.CommandText = "UPDATE " + "QStudent" + currentYear + currentSemester + " SET " +
-                                "GradeLevel = @GradeLevel, " +
-                                "Class = @Class, " +
-                                "StudentID = @StudentID " +
-                                "WHERE IdentifyID = @IdentifyID and Name = @Name";
-
+            // 如果是改變了學年或學期，則優先將資料塞進資料表裡
+            if (isChangeYearSemester)
+            {
+                cmd.CommandText = "insert into QStudent" + Year + Semester + " (StudentID, IdentifyID, Name, GradeLevel, Class, School, Zipcode) VALUES (" +
+                    "N'" + StudentID + "', " +
+                    "N'" + identifyID + "', " +
+                    "N'" + studentName + "', " +
+                    "N'" + GradeLevel + "', " +
+                    "N'" + Class + "', " +
+                    "N'" + schoolName.ToString() + "', " +
+                    "N'" + Session["Province"].ToString() + "')";
+            }
+            else
+            {
+                // Set the command text 
+                // SQL statement or the name of the stored procedure  
+                //cmd.CommandText = "UPDATE Person SET LastName = @LastName, FirstName = @FirstName WHERE PersonID = @PersonID";
+                cmd.CommandText = "UPDATE " + "QStudent" + currentYear + currentSemester + " SET " +
+                                    "GradeLevel = @GradeLevel, " +
+                                    "Class = @Class, " +
+                                    "StudentID = @StudentID " +
+                                    "WHERE IdentifyID = @IdentifyID and Name = @Name";
+            }
 
 
             // Set the command type 
@@ -384,6 +461,48 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
             // Execute the command. 
             cmd.ExecuteNonQuery();
+
+            // 如果是改變了學號，則要連Score一起改變
+            if (isChangeStudentID)
+            {
+                cmd.CommandText = "update QScore" + currentYear + currentSemester + " set " + " StudentID ='" + StudentID + "' where StudentID='" + ViewState["studentID"].ToString() + "'";
+                cmd.ExecuteNonQuery();
+            }
+
+            // 如果是改變了學年或學期，則要將原本年份學期的資料刪除
+            // 如果是改變了學年或學期，要把舊有的Score資料複製到新的學年和學期，之後再把舊的刪除
+            if (isChangeYearSemester)
+            {
+                cmd.CommandText = "delete from QStudent" + currentYear + currentSemester + " where identifyID ='" + identifyID + "' and name=N'" + studentName + "'";
+                cmd.ExecuteNonQuery();
+
+                string query = "select Chinese, English, Math, Society, Science, Music, Physical, Art from QScore" + currentYear + currentSemester + " where StudentID='" + StudentID + "'";
+                ArrayList data = new ArrayList();
+                ManageSQL ms = new ManageSQL();
+                StringBuilder sb = new StringBuilder();
+                ms.GetAllColumnData(query, data);
+                if (data.Count > 0)
+                {
+                    query = "insert into QScore" + Year + Semester + "(StudentID, Chinese, English, Math, Society, Science, Music, Physical, Art) VALUES (" +
+                            "'" + StudentID + "', " +
+                            "'" + ((string[])data[0])[0] + "', " +
+                            "'" + ((string[])data[0])[1] + "', " +
+                            "'" + ((string[])data[0])[2] + "', " +
+                            "'" + ((string[])data[0])[3] + "', " +
+                            "'" + ((string[])data[0])[4] + "', " +
+                            "'" + ((string[])data[0])[5] + "', " +
+                            "'" + ((string[])data[0])[6] + "', " +
+                            "'" + ((string[])data[0])[7] + "')";
+                    ms.WriteData(query, sb);
+
+                    query = "delete from QScore" + currentYear+currentSemester +" where StudentID ='"+StudentID+"'";
+                    ms.WriteData(query, sb);
+                }
+                
+
+                ViewState["deleteUser"] = true;
+            }
+            conn.Close();
         }
 
 
@@ -394,47 +513,51 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         // Rebind the GridView control to show data after updating. 
         BindEditGridView();
 
-
-        ManageSQL ms = new ManageSQL();
-        StringBuilder sb = new StringBuilder();
-        string query = "select count(listSN) from QGradeClassHistory left join QList on QGradeClassHistory.listSN = QList.SN where class = '" + Class + "' and GradeLevel = '" + GradeLevel + "' and QGradeClassHistory.listSN='" + currentSN + "' and school =N'" + schoolName.ToString() + "'";
-        ms.GetOneData(query, sb);
-        if (sb.ToString().Equals("0"))
         {
-            query = "select SN from QLIST where Year = '" + currentYear + "' and Semester = '" + currentSemester + "'";
-            ms.GetOneData(query, sb);
-            string ListSN = sb.ToString();
+            // 如果不是改變學年和學期，以及不是改變(不包含新增學號)學號，才可以新增一筆學號到score裡面
+            if (!isChangeYearSemester && !isChangeStudentID)
+            {
+                ManageSQL ms = new ManageSQL();
+                StringBuilder sb = new StringBuilder();
+                string query = "select count(listSN) from QGradeClassHistory left join QList on QGradeClassHistory.listSN = QList.SN where class = '" + Class + "' and GradeLevel = '" + GradeLevel + "' and QGradeClassHistory.listSN='" + currentSN + "' and school =N'" + schoolName.ToString() + "'";
+                ms.GetOneData(query, sb);
+                if (sb.ToString().Equals("0"))
+                {
+                    query = "select SN from QLIST where Year = '" + currentYear + "' and Semester = '" + currentSemester + "'";
+                    ms.GetOneData(query, sb);
+                    string ListSN = sb.ToString();
 
-            query = "insert into QGradeClassHistory (GradeLevel, Class, ListSN, zipcode, school) VALUES ('" + GradeLevel + "', '" + Class + "', '" + ListSN + "', '" + Session["Province"].ToString() + "', N'"+schoolName.ToString()+"')";
-            ms.WriteData(query, sb);
+                    query = "insert into QGradeClassHistory (GradeLevel, Class, ListSN, zipcode, school) VALUES ('" + GradeLevel + "', '" + Class + "', '" + ListSN + "', '" + Session["Province"].ToString() + "', N'" + schoolName.ToString() + "')";
+                    ms.WriteData(query, sb);
+                }
+
+                query = "select count(StudentID) from QScore" + currentYear + currentSemester + " where StudentID = '" + StudentID + "'";
+                ms.GetOneData(query, sb);
+                if (sb.ToString().Equals("0"))
+                {
+                    query = "insert into QScore" + currentYear + currentSemester + " (StudentID) VALUES (" +
+                                   "N'" + StudentID + "')";
+                    ms.WriteData(query, sb);
+                }
+            }
+
+
+
+            if (Session["QVSE_DdlGradeLevel_SelectedIndexChanged"] != null)
+            {
+                DdlGradeLevel.SelectedValue = Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString();
+                if (DdlGradeLevel.SelectedIndex == 0)
+                    return;
+                string listSN = string.Empty;
+                if (!preCheckClassSuccess(ref listSN))
+                    return;
+
+                setClass(listSN);
+
+                Session["QVSE_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
+                setStudentID();
+            }
         }
-
-        query = "select count(StudentID) from QScore" + currentYear + currentSemester + " where StudentID = '" + StudentID + "'";
-        ms.GetOneData(query, sb);
-        if (sb.ToString().Equals("0"))
-        {
-            query = "insert into QScore" + currentYear + currentSemester + " (StudentID) VALUES (" +
-                           "N'" + StudentID + "')";
-            ms.WriteData(query, sb);
-        }
-
-        
-
-        if (Session["QVSE_DdlGradeLevel_SelectedIndexChanged"] != null)
-        {
-            DdlGradeLevel.SelectedValue = Session["QVSE_DdlGradeLevel_SelectedIndexChanged"].ToString();
-            if (DdlGradeLevel.SelectedIndex == 0)
-                return;
-            string listSN = string.Empty;
-            if (!preCheckClassSuccess(ref listSN))
-                return;
-
-            setClass(listSN);
-
-            Session["QVSE_DdlClass_SelectedIndexChanged"] = DdlClass.SelectedValue;
-            setStudentID();
-        }
-
     }
 
 

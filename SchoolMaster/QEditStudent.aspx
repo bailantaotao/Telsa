@@ -173,9 +173,24 @@
                                     onsorting="gvEdit_Sorting" AllowPaging="True" PageSize="10"> 
                                 <RowStyle BackColor="White" ForeColor="#003399" /> 
                                 <Columns> 
-
-                                    <asp:BoundField HeaderText="学年" ReadOnly="True" ItemStyle-Width="80px" /> 
-                                    <asp:BoundField HeaderText="学期" ReadOnly="True" ItemStyle-Width="80px" /> 
+                                    <asp:TemplateField HeaderText="学年" ItemStyle-Width="50px"> 
+                                        <EditItemTemplate> 
+                                            <asp:TextBox ID="tbYear" runat="server" Text='' MaxLength="4" Width="80px"></asp:TextBox> 
+                                        </EditItemTemplate> 
+                                        <ItemTemplate> 
+                                            <asp:Label ID="lbYear" runat="server" Text=''></asp:Label> 
+                                        </ItemTemplate> 
+                                        <ItemStyle Width="80px"></ItemStyle>
+                                    </asp:TemplateField> 
+                                    <asp:TemplateField HeaderText="学期" ItemStyle-Width="50px"> 
+                                        <EditItemTemplate> 
+                                            <asp:TextBox ID="tbSemester" runat="server" Text='' MaxLength="1" Width="80px"></asp:TextBox> 
+                                        </EditItemTemplate> 
+                                        <ItemTemplate> 
+                                            <asp:Label ID="lbSemester" runat="server" Text=''></asp:Label> 
+                                        </ItemTemplate> 
+                                        <ItemStyle Width="80px"></ItemStyle>
+                                    </asp:TemplateField> 
                                     <asp:BoundField DataField="Name" HeaderText="学生姓名" ReadOnly="True" ItemStyle-Width="80px" 
                                         SortExpression="Name" /> 
                                     <asp:BoundField DataField="IdentifyID" HeaderText="学籍辅号" ReadOnly="True"  ItemStyle-Width="80px" 
