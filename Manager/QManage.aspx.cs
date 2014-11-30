@@ -35,7 +35,7 @@ public partial class Manager_QManage : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-
+        getNewestData();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -336,6 +336,8 @@ public partial class Manager_QManage : System.Web.UI.Page
             query = "select * from QList order by SN desc";
             ms.GetOneData(query, sb);
 
+
+
             query = "CREATE TABLE [dbo].[QStudent" + TbYear.Text.Trim() + TbSemester.Text.Trim() + "](" +
                     "[StudentID] [nvarchar](50) NULL," +
                     "[IdentifyID] [nvarchar](50) NULL," +
@@ -366,6 +368,58 @@ public partial class Manager_QManage : System.Web.UI.Page
                 ") ON [PRIMARY]";
             ms.WriteData(query, sb);
 
+            // 取得最高年級
+            int max_gradelevel = 0;
+            query = "select GradeLevel from QGrade order by GradeLevel desc";
+            ms.GetOneData(query, sb);
+            max_gradelevel = Convert.ToInt32(sb.ToString());
+
+
+            // 複製學生資料
+            ArrayList data = new ArrayList();
+            query = "select StudentID, IdentifyID, Name, GradeLevel, Class, School, Zipcode from QStudent" + candicateYear + candicateSemester;
+            ms.GetAllColumnData(query, data);
+            if (data.Count > 0)
+            {
+                foreach (string[] col in data)
+                {
+                    // 先判斷col[3]是否為空，空代表尚未填入年級，那麼就填空白進去
+                    // 否則，判斷原始的年級，是否為6，如果不為6，則加一，並且輸入到資料庫，相反地，如果是6，則甚麼都不做
+                    string gradelevel = string.Empty;
+                    if (string.IsNullOrEmpty(col[3]))
+                        gradelevel = "";
+                    else
+                    {
+                        int gl = Convert.ToInt32(col[3]);
+                        if (gl == 6)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            gradelevel = (gl + 1).ToString();
+                        }
+                    }
+
+
+                    query = "insert into QStudent" + TbYear.Text.Trim() + TbSemester.Text.Trim() + " (StudentID, IdentifyID, Name, GradeLevel, Class, School, Zipcode) VALUES (" +
+                            "N'" + col[0] + "', " +
+                            "N'" + col[1] + "', " +
+                            "N'" + col[2] + "', " +
+                            "N'" + gradelevel + "', " +
+                            "N'" + col[4] + "', " +
+                            "N'" + col[5] + "', " +
+                            "N'" + col[6] + "')";
+                    ms.WriteData(query, sb);
+
+                    query = "insert into QScore" + TbYear.Text.Trim() + TbSemester.Text.Trim() + " (StudentID) VALUES ('" + col[0] + "')";
+                    ms.WriteData(query, sb);
+                }
+            }
+
+            
+
+
             setInitial();
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
@@ -373,6 +427,36 @@ public partial class Manager_QManage : System.Web.UI.Page
 
         }
     }
+
+    #region get year, semester
+    private string candicateYear = string.Empty;
+    private string candicateSemester = string.Empty;
+    private void getNewestData()
+    {
+        
+        string query = "select SN, year, semester, DeadLine from Qlist ";
+        ArrayList data = new ArrayList();
+        ManageSQL ms = new ManageSQL();
+        ms.GetAllColumnData(query, data);
+
+        if (data.Count > 1)
+        {
+            DateTime candicate = Convert.ToDateTime(((string[])data[0])[3]);
+            candicateYear = ((string[])data[0])[1];
+            candicateSemester = ((string[])data[0])[2];
+            for (int i = 1; i < data.Count; i++)
+            {
+                if (DateTime.Compare(candicate, Convert.ToDateTime(((string[])data[i])[3])) < 0)
+                {
+                    candicate = Convert.ToDateTime(((string[])data[i])[3]);
+                    candicateYear = ((string[])data[i])[1];
+                    candicateSemester = ((string[])data[i])[2];
+                }
+            }
+        }
+
+    }
+    #endregion get year, semester
 
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
