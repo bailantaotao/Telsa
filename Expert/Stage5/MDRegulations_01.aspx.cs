@@ -221,10 +221,17 @@ public partial class Stage5_MDRegulations_01 : System.Web.UI.Page
         Button btn = (Button)sender;
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
-        if (getUploadDir(Convert.ToInt32(btn.CommandArgument), sb, sbOutFile))
-            xDownload(sb.ToString(), sbOutFile.ToString());
-        else
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
+        if (TargetSchool != "")
+        {
+            if (getUploadDir(Convert.ToInt32(btn.CommandArgument), sb, sbOutFile))
+                xDownload(sb.ToString(), sbOutFile.ToString());
+            else
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
+        }
+        else 
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + "请选择欲观看学校" + "');", true);
+        }
         if (Session["IsMingDer"].ToString().Equals("False"))
         {
             setDefault(DdlType.SchoolName);
