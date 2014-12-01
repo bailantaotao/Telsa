@@ -168,10 +168,17 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
         Button btn = (Button)sender;
         StringBuilder sb = new StringBuilder();
         StringBuilder sbOutFile = new StringBuilder();
-        if (getUploadDir(Convert.ToInt32(btn.CommandArgument), sb, sbOutFile))
-            xDownload(sb.ToString(), sbOutFile.ToString());
+        if (TargetSchool != "")
+        {
+            if (getUploadDir(Convert.ToInt32(btn.CommandArgument), sb, sbOutFile))
+                xDownload(sb.ToString(), sbOutFile.ToString());
+            else
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
+        }
         else
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + "请选择欲观看学校" + "');", true);
+        }
         setDefault(DdlType.SchoolName);
     }
     private bool getUploadDir(int targetIndex, StringBuilder sb, StringBuilder outFile)
