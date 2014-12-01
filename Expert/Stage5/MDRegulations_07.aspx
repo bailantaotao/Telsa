@@ -149,7 +149,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="三好生等评选制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/三好生等评选制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -169,7 +169,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="卫生工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/卫生工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/02.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -189,7 +189,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="卫生公约"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/卫生公约.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -209,7 +209,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="小学生日常行为规范"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/小学生日常行为规范.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -229,7 +229,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="中小学生守则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/中小学生守则.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/05.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -249,7 +249,7 @@
                                 <asp:Label ID="Label5" runat="server" Text="办学章程"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/办学章程.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/06.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -269,7 +269,7 @@
                                 <asp:Label ID="Label7" runat="server" Text="文体器材管理使用制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/文体器材管理使用制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/07.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -289,7 +289,7 @@
                                 <asp:Label ID="Label9" runat="server" Text="文明礼貌公约"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/文明礼貌公约.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/08.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -309,7 +309,7 @@
                                 <asp:Label ID="Label10" runat="server" Text="电教设施管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/电教设施管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/09.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -329,7 +329,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="任课教师常规考核"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/任课教师常规考核.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/10.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -349,7 +349,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="任课教师常规考核表"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/任课教师常规考核表.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/11.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -369,7 +369,7 @@
                                 <asp:Label ID="Label13" runat="server" Text="体育工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/体育工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/12.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -389,7 +389,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="财务管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/财务管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/13.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -409,7 +409,7 @@
                                 <asp:Label ID="Label15" runat="server" Text="学生一日常规"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/学生一日常规.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/14.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -429,7 +429,7 @@
                                 <asp:Label ID="Label16" runat="server" Text="学生学籍管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/学生学籍管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/15.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -449,7 +449,7 @@
                                 <asp:Label ID="Label17" runat="server" Text="学生常规管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/学生常规管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/16.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -469,7 +469,7 @@
                                 <asp:Label ID="Label18" runat="server" Text="实验室管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/实验室管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/17.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -489,7 +489,7 @@
                                 <asp:Label ID="Label19" runat="server" Text="总则00"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/总则00.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/18.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -509,7 +509,7 @@
                                 <asp:Label ID="Label20" runat="server" Text="家长参与管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/家长参与管理制度.docx"><font color="red">參考範例</font></a>
+                                <a href="./07/19.docx"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -529,7 +529,7 @@
                                 <asp:Label ID="Label21" runat="server" Text="家校联系制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/家校联系制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/20.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -549,7 +549,7 @@
                                 <asp:Label ID="Label22" runat="server" Text="教师办公室制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教师办公室制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/21.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -569,7 +569,7 @@
                                 <asp:Label ID="Label23" runat="server" Text="教师成长记录袋的实施办法"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教师成长记录袋的实施办法.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/22.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -589,7 +589,7 @@
                                 <asp:Label ID="Label24" runat="server" Text="教师职业道德建设基本要求"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教师职业道德建设基本要求.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/23.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -609,7 +609,7 @@
                                 <asp:Label ID="Label25" runat="server" Text="教学工作管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教学工作管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/24.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -629,7 +629,7 @@
                                 <asp:Label ID="Label26" runat="server" Text="教学常规管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教学常规管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/25.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -649,7 +649,7 @@
                                 <asp:Label ID="Label27" runat="server" Text="教学楼楼内规则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教学楼楼内规则.bak"><font color="red">參考範例</font></a>
+                                <a href="./07/26.bak"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -669,7 +669,7 @@
                                 <asp:Label ID="Label28" runat="server" Text="教职工代表大会制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教职工代表大会制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/27.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -689,7 +689,7 @@
                                 <asp:Label ID="Label29" runat="server" Text="教职工行政管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/教职工行政管理制度.bak"><font color="red">參考範例</font></a>
+                                <a href="./07/28.bak"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -709,7 +709,7 @@
                                 <asp:Label ID="Label30" runat="server" Text="德育工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/德育工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/29.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -729,7 +729,7 @@
                                 <asp:Label ID="Label31" runat="server" Text="德育工作规程"></asp:Label>
                             </td>
                             <td>
-                                <a href="./其它管理制度（30）/德育工作规程.doc"><font color="red">參考範例</font></a>
+                                <a href="./07/30.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>

@@ -148,7 +148,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="“不作为党员”告诫制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/“不作为党员”告诫制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -168,7 +168,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="公章（介绍信）使用管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/公章（介绍信）使用管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/02.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -188,7 +188,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="计划和总结工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/计划和总结工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -208,7 +208,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="民主评议党员制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/民主评议党员制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -228,7 +228,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="保密工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/保密工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/05.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -248,7 +248,7 @@
                                 <asp:Label ID="Label5" runat="server" Text="思想政治工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/思想政治工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/06.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -268,7 +268,7 @@
                                 <asp:Label ID="Label7" runat="server" Text="政治学习制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/政治学习制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/07.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -288,7 +288,7 @@
                                 <asp:Label ID="Label9" runat="server" Text="党内监督制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党内监督制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/08.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -308,7 +308,7 @@
                                 <asp:Label ID="Label10" runat="server" Text="党员大会制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员大会制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/09.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -328,7 +328,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="党员民主生活会制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员民主生活会制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/10.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -348,7 +348,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="党员汇报制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员汇报制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/11.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -368,7 +368,7 @@
                                 <asp:Label ID="Label13" runat="server" Text="党员组织关系接转制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员组织关系接转制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/12.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -388,7 +388,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="党员活动制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员活动制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/13.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -408,7 +408,7 @@
                                 <asp:Label ID="Label15" runat="server" Text="党员联系制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员联系制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/14.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -428,7 +428,7 @@
                                 <asp:Label ID="Label16" runat="server" Text="党员群众评议支部制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党员群众评议支部制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/15.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -448,7 +448,7 @@
                                 <asp:Label ID="Label17" runat="server" Text="党费缴纳管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党费缴纳管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/16.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -468,7 +468,7 @@
                                 <asp:Label ID="Label18" runat="server" Text="党积极分子培养教育管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党积极分子培养教育管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/17.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -488,7 +488,7 @@
                                 <asp:Label ID="Label19" runat="server" Text="党课制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/党课制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/18.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -508,7 +508,7 @@
                                 <asp:Label ID="Label20" runat="server" Text="班子民主生活会制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/班子民主生活会制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/19.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -528,7 +528,7 @@
                                 <asp:Label ID="Label21" runat="server" Text="请示报告制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./党支部制度（20）/请示报告制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./01/20.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>

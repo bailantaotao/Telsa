@@ -132,7 +132,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="图书室规则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./图书室管理制度及细则（4）/图书室规则.doc"><font color="red">參考範例</font></a>
+                                <a href="./04/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -152,7 +152,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="图书损坏丢失赔偿制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./图书室管理制度及细则（4）/图书损坏丢失赔偿制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./04/02.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -172,7 +172,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="图书资料借阅规则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./图书室管理制度及细则（4）/图书资料借阅规则.doc"><font color="red">參考範例</font></a>
+                                <a href="./04/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -192,7 +192,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="阅览室管理制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./图书室管理制度及细则（4）/阅览室管理制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./04/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>

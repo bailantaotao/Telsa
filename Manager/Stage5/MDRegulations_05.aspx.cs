@@ -44,7 +44,7 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
         ArrayList data = new ArrayList();
         Query = "select School from Account " +
                     "left join Area on Account.zipcode = Area.ID " +
-                    "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理%' " +
+                    "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%' " +
                     "and Area.ID =" + Province.ToString() +
                     "group by School ";
 
@@ -100,6 +100,15 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         ArrayList dataProvince = new ArrayList();
+        QueryID = "select UserID from Account " +
+                "where Account.School= N'" + DlTargetSchool.SelectedValue.ToString() + "'";
+
+        ms.GetAllColumnData(QueryID, data);
+        for (int i = 0; i < data.Count; i++)
+        {
+            string[] d = (string[])data[i];
+            TargetSchool = d[0];
+        }
 
         if (DlProvince.SelectedValue.ToString() != Resources.Resource.DdlTypeProvince.ToString())
         {
@@ -134,17 +143,6 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
             LbStatus3.Text = (getUploadSuccess(3)) ? "Yes" : "No";
             LbStatus4.Text = (getUploadSuccess(4)) ? "Yes" : "No";*/
         }
-
-
-        QueryID = "select UserID from Account " +
-                "where Account.School= N'" + DlTargetSchool.SelectedValue.ToString() + "'";
-
-        ms.GetAllColumnData(QueryID, data);
-        for (int i = 0; i < data.Count; i++)
-        {
-            string[] d = (string[])data[i];
-            TargetSchool = d[0];
-        }
     }
     protected void SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -174,7 +172,7 @@ public partial class Stage5_MDRegulations_05 : System.Web.UI.Page
             xDownload(sb.ToString(), sbOutFile.ToString());
         else
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.PlanTipUploadError + "');", true);
-
+        setDefault(DdlType.SchoolName);
     }
     private bool getUploadDir(int targetIndex, StringBuilder sb, StringBuilder outFile)
     {

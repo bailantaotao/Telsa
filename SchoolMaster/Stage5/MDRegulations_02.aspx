@@ -133,7 +133,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="大队委职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/大队委职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -153,7 +153,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="中队委职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/中队委职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/02.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -173,7 +173,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="升降国旗制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/升降国旗制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -193,7 +193,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="少先队工作制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/少先队工作制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -213,7 +213,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="少先队干部的培训"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/少先队干部的培训.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/05.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -233,7 +233,7 @@
                                 <asp:Label ID="Label5" runat="server" Text="少先队队前教育"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/少先队队前教育.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/06.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -253,7 +253,7 @@
                                 <asp:Label ID="Label7" runat="server" Text="总则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/总则.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/07.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -273,7 +273,7 @@
                                 <asp:Label ID="Label9" runat="server" Text="细则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/08.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -293,7 +293,7 @@
                                 <asp:Label ID="Label10" runat="server" Text="规范的礼仪"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/规范的礼仪.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/09.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -313,7 +313,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="值日生制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/值日生制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/10.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -333,7 +333,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="路队纪律制度"></asp:Label>
                             </td>
                             <td>
-                                <a href="./少先队工作制度（11）/路队纪律制度.doc"><font color="red">參考範例</font></a>
+                                <a href="./02/11.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>

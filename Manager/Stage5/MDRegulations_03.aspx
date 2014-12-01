@@ -148,7 +148,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="工会主席职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/工会主席职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -168,7 +168,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="中队委员会的分工职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/中队委员会的分工职责.doc""><font color="red">參考範例</font></a>
+                                <a href="./03/02.doc""><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -188,7 +188,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="中队辅导员职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/中队辅导员职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -208,7 +208,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="少先队大队辅导员职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/少先队大队辅导员职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -228,7 +228,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="任课教师职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/任课教师职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/05.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -248,7 +248,7 @@
                                 <asp:Label ID="Label5" runat="server" Text="图书管理人员职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/图书管理人员职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/06.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -268,7 +268,7 @@
                                 <asp:Label ID="Label7" runat="server" Text="总务主任职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/总务主任职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/07.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -288,7 +288,7 @@
                                 <asp:Label ID="Label9" runat="server" Text="校长的职责和权限"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/校长的职责和权限.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/08.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -308,7 +308,7 @@
                                 <asp:Label ID="Label10" runat="server" Text="班主任工作职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/班主任工作职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/09.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -328,7 +328,7 @@
                                 <asp:Label ID="Label11" runat="server" Text="班主任职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/班主任职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/10.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -348,7 +348,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="副校长职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/副校长职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/11.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -368,7 +368,7 @@
                                 <asp:Label ID="Label13" runat="server" Text="教导主任职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/教导主任职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/12.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -388,7 +388,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="教导员职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/教导员职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/13.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -408,7 +408,7 @@
                                 <asp:Label ID="Label15" runat="server" Text="教研室主任职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/教研室主任职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/14.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -428,7 +428,7 @@
                                 <asp:Label ID="Label16" runat="server" Text="教研室副主任、学科组长职责"></asp:Label>
                             </td>
                             <td>
-                                <a href="./教师及领导岗位职责（15）/教研室副主任、学科组长职责.doc"><font color="red">參考範例</font></a>
+                                <a href="./03/15.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>

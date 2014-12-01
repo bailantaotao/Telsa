@@ -147,7 +147,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="先进班集体评选细则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./管理细则（6）/先进班集体评选细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./05/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -167,7 +167,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="创建文明班级实施细则"></asp:Label>
                             </td>
                             <td class="style3">
-                                <a href="./管理细则（6）/创建文明班级实施细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./05/02.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -187,7 +187,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="班主任工作细则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./管理细则（6）/班主任工作细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./05/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -207,7 +207,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="班主任与副班主任分工细则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./管理细则（6）/班主任与副班主任分工细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./05/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -227,7 +227,7 @@
                                 <asp:Label ID="Label3" runat="server" Text="班主任考核细则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./管理细则（6）/班主任考核细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./05/05.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -247,7 +247,7 @@
                                 <asp:Label ID="Label5" runat="server" Text="教学常规管理考评细则"></asp:Label>
                             </td>
                             <td>
-                                <a href="./管理细则（6）/教学常规管理考评细则.doc"><font color="red">參考範例</font></a>
+                                <a href="./05/06.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
