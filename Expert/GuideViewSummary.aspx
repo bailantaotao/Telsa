@@ -115,7 +115,7 @@
                        </tr>
                        <tr>
                            <td class="style4" >
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideSummaryUserName" runat="server"></asp:Label>
+                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                            </td>
                            <td>
                                <asp:Label ID="LbGuideSummaryUserID" runat="server"></asp:Label>
@@ -128,7 +128,7 @@
                        <tr>
                            <td class="style5" >
                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="Label1" runat="server" Text="用户名称：" ForeColor="Blue"></asp:Label>
-                               &nbsp&nbsp&nbsp&nbsp<asp:Label ID="Label11" runat="server" ></asp:Label>
+                               <asp:Label ID="LbGuideSummaryUserName" runat="server"></asp:Label>
                            </td>
                        </tr>
                        <tr>

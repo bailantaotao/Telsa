@@ -78,15 +78,14 @@ public partial class Expert_GuideViewSummary : System.Web.UI.Page
             LbGuideSummaryUserName.Text += "用户名称：" + Session["UserName"].ToString();
             LbGuideSummaryUserID.Text += "&nbsp&nbsp&nbsp代号：" + Session["UserID"].ToString();
             Label1.Visible = false;
-            Label11.Visible = false;
         }
         else if (Session["IsMingDer"].ToString().Equals("True"))
         {
-            LbGuideSummaryUserName.Text += Session["SCHOOLNAME"].ToString();
+            LbGuideSummaryUserName.Text = Session["SCHOOLNAME"].ToString();
             LbGuideSummaryUserID.Visible = false;
-            LbGuideSummaryUserName.Visible = false;
+            LbGuideSummaryUserName.Visible = true;
             HyperLink1.Visible = false;
-            Label1.Visible = false;
+            
             img.Visible = false;
         }
         setDefault(DdlType.No);
