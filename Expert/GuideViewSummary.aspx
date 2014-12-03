@@ -143,6 +143,13 @@
                                 <asp:Label ID="LbGuideSummaryCycle" runat="server" Text="学期：" ForeColor="Blue"></asp:Label>
                                 <asp:Label ID="LbGuideViewSummaryCycle" runat="server" Text=""></asp:Label>
                             </td>
+                            <td align="left" width="30%">
+                                <asp:Label ID="LbGuideSummaryNo" runat="server" Text="项次：" ForeColor="Blue"></asp:Label>
+                                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True">
+                                    <asp:ListItem>请选择</asp:ListItem>
+                                </asp:DropDownList>
+                               
+                            </td>
                         </tr>
                 </div>
                 <div id="BlockRightDownDataDisplay">

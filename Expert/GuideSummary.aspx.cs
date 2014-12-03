@@ -39,17 +39,18 @@ public partial class Expert_GuideSummary : System.Web.UI.Page
         DropDownList2.Visible = false;
         LbGuideYear.Text = Session["GuideYear"].ToString();
         LbGuideSemester.Text = Session["GuideSemester"].ToString();
+        LbGuideSummaryUserName.Text += "用户名称：" + Session["UserName"].ToString();
+        LbGuideSummaryUserID.Text += "&nbsp&nbsp&nbsp代号：" + Session["UserID"].ToString();
     }
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        LbGuideSummaryUserName.Text += "用户名称：" + Session["UserName"].ToString();
-        LbGuideSummaryUserID.Text += "&nbsp&nbsp&nbsp代号：" + Session["UserID"].ToString();
+        
         if (!IsPostBack)
         {
-            setInitial();
+            
         }
-        
+        setInitial();
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
@@ -61,6 +62,10 @@ public partial class Expert_GuideSummary : System.Web.UI.Page
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanEmptyData + "');", true);
         }
+        else if (DropDownList3.SelectedValue.ToString() == "请选择")
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + "请选择项次" + "');", true);
+        }
         else
         {
             storeData();
@@ -70,7 +75,8 @@ public partial class Expert_GuideSummary : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and No='" + DropDownList3.SelectedValue.ToString() + "'"; 
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
@@ -103,13 +109,14 @@ public partial class Expert_GuideSummary : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         ManageSQL ms = new ManageSQL();
         // 先刪除原本的
-        string query = "delete from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "delete from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" + "and Year=" + LbGuideYear + "and Cycle=" + LbGuideSemester + "and No=" + DropDownList3.SelectedValue;
         ms.WriteData(query, sb);
         sb.Clear();
-        query = "insert into GuideSummary (SN, Year, Cycle, MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result) VALUES ('" +
+        query = "insert into GuideSummary (SN, Year, Cycle, No, MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result) VALUES ('" +
                         Session["UserGuideListSN"].ToString() + "',N'" +
                         LbGuideYear.Text.Trim() + "',N'" +
                         LbGuideSemester.Text.Trim() + "',N'" +
+                        DropDownList3.SelectedValue.ToString() + "',N'" +
                         TBGuideSummaryContent.Text.Trim() + "',N'" +
                         TBGuideSummaryExperience.Text.Trim() + "',N'" +
                         TBGuideSummaryExistingProblem.Text.Trim() + "',N'" +

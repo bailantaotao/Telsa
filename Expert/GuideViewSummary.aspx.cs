@@ -28,7 +28,44 @@ public partial class Expert_GuideViewSummary : System.Web.UI.Page
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
 
+    private enum DdlType
+    {
+        No,
+    }
+    private void setDefault(DdlType type)
+    {
+        switch (type)
+        {
+            case DdlType.No:
+                setNo();
+                break;
+        }
+    }
+    private void setNo()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
 
+        Query = "select No from GuideSummary " +
+                "where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DropDownList3.Items.Add("请选择");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DropDownList3.Items.Add("请选择");
+            return;
+        }
+        foreach (string[] province in data)
+        {
+            DropDownList3.Items.Add(province[0]);
+        }
+    }
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
@@ -38,36 +75,42 @@ public partial class Expert_GuideViewSummary : System.Web.UI.Page
 
         if (Session["IsMingDer"].ToString().Equals("False"))
         {
+            LbGuideSummaryUserName.Text += "用户名称：" + Session["UserName"].ToString();
+            LbGuideSummaryUserID.Text += "&nbsp&nbsp&nbsp代号：" + Session["UserID"].ToString();
             Label1.Visible = false;
             Label11.Visible = false;
         }
         else if (Session["IsMingDer"].ToString().Equals("True"))
         {
+            LbGuideSummaryUserName.Text += Session["SCHOOLNAME"].ToString();
             LbGuideSummaryUserID.Visible = false;
             LbGuideSummaryUserName.Visible = false;
             HyperLink1.Visible = false;
+            Label1.Visible = false;
             img.Visible = false;
         }
+        setDefault(DdlType.No);
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["IsMingDer"].ToString().Equals("False"))
         {
-            LbGuideSummaryUserName.Text += "用户名称：" + Session["UserName"].ToString();
-            LbGuideSummaryUserID.Text += "&nbsp&nbsp&nbsp代号：" + Session["UserID"].ToString();
+            
             if (!IsPostBack)
             {
-                setInitial();
+                
             }
+            setInitial();
         }
         else if (Session["IsMingDer"].ToString().Equals("True"))
         {
-            LbGuideSummaryUserName.Text += Session["SCHOOLNAME"].ToString();
+            
             if (!IsPostBack)
             {
-                setInitial_MingDer();
+                
             }
+            setInitial_MingDer();
         }
         
 
@@ -89,38 +132,40 @@ public partial class Expert_GuideViewSummary : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
         {
             string[] d = (string[])data[i];
-            LbGuideViewSummaryContent.Text += d[0];
-            LbGuideViewSummaryExperience.Text += d[1];
-            LbGuideViewSummaryExistingProblem.Text += d[2];
-            LbGuideViewSummarySuggest.Text += d[3];
-            LbGuideViewSummaryResult.Text += d[4];
-            LbGuideViewSummaryYear.Text += d[5];
-            LbGuideViewSummaryCycle.Text += d[6];
+            LbGuideViewSummaryContent.Text = d[0];
+            LbGuideViewSummaryExperience.Text = d[1];
+            LbGuideViewSummaryExistingProblem.Text = d[2];
+            LbGuideViewSummarySuggest.Text = d[3];
+            LbGuideViewSummaryResult.Text = d[4];
+            LbGuideViewSummaryYear.Text = d[5];
+            LbGuideViewSummaryCycle.Text = d[6];
         }
     }
     private void setInitial_MingDer()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
         {
             string[] d = (string[])data[i];
-            LbGuideViewSummaryContent.Text += d[0];
-            LbGuideViewSummaryExperience.Text += d[1];
-            LbGuideViewSummaryExistingProblem.Text += d[2];
-            LbGuideViewSummarySuggest.Text += d[3];
-            LbGuideViewSummaryResult.Text += d[4];
-            LbGuideViewSummaryYear.Text += d[5];
-            LbGuideViewSummaryCycle.Text += d[6];
+            LbGuideViewSummaryContent.Text = d[0];
+            LbGuideViewSummaryExperience.Text = d[1];
+            LbGuideViewSummaryExistingProblem.Text = d[2];
+            LbGuideViewSummarySuggest.Text = d[3];
+            LbGuideViewSummaryResult.Text = d[4];
+            LbGuideViewSummaryYear.Text = d[5];
+            LbGuideViewSummaryCycle.Text = d[6];
         }
     }
 

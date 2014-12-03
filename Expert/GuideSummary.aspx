@@ -157,6 +157,24 @@
                                 <asp:Label ID="LbGuideSemester" runat="server" Text=""></asp:Label>
                                 
                             </td>
+
+                            <td align="left" width="30%">
+                                <asp:Label ID="LbGuideSummaryNo" runat="server" Text="项次：" ForeColor="Blue"></asp:Label>
+                                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True">
+                                    <asp:ListItem>请选择</asp:ListItem>
+                                    <asp:ListItem>1</asp:ListItem>
+                                    <asp:ListItem>2</asp:ListItem>
+                                    <asp:ListItem>3</asp:ListItem>
+                                    <asp:ListItem>4</asp:ListItem>
+                                    <asp:ListItem>5</asp:ListItem>
+                                    <asp:ListItem>6</asp:ListItem>
+                                    <asp:ListItem>7</asp:ListItem>
+                                    <asp:ListItem>8</asp:ListItem>
+                                    <asp:ListItem>9</asp:ListItem>
+                                    <asp:ListItem>10</asp:ListItem>
+                                </asp:DropDownList>
+                               
+                            </td>
                         </tr>
                 </div>
                 <div id="BlockRightDownDataDisplay">

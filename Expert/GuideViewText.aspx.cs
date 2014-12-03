@@ -27,6 +27,44 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
 
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
+    private enum DdlType
+    {
+        No,
+    }
+    private void setDefault(DdlType type)
+    {
+        switch (type)
+        {
+            case DdlType.No:
+                setNo();
+                break;
+        }
+    }
+    private void setNo()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+
+        Query = "select No from GuideText " +
+                "where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DropDownList3.Items.Add("请选择");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DropDownList3.Items.Add("请选择");
+            return;
+        }
+        foreach (string[] province in data)
+        {
+            DropDownList3.Items.Add(province[0]);
+        }
+    }
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
@@ -40,6 +78,7 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
             img.Visible = false;
             LbGuideTextUserID.Visible = false;
         }
+        setDefault(DdlType.No);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -48,15 +87,17 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
         {
             if (!IsPostBack)
             {
-                setInitial();
+                
             }
+            setInitial();
         }
         else if (Session["IsMingDer"].ToString().Equals("True"))
         {
             if (!IsPostBack)
             {
-                setInitial_MingDer();
+                
             }
+            setInitial_MingDer();
         }
         
     }
@@ -76,44 +117,46 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest, Year, Semester from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest, Year, Semester from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
-        {
-            string[] d = (string[])data[i];
-            LbGuideViewTextContent.Text += d[0];
-            LbGuideViewTextSubject.Text += d[1];
-            LbGuideViewTextPersonality.Text += d[2];
-            LbGuideViewTextSchoolManagement.Text += d[3];
-            LbGuideViewTextSDPFormulate.Text += d[4];
-            LbGuideViewTextSDPImplement.Text += d[5];
-            LbGuideViewTextSDPeffect.Text += d[6];
-            LbGuideViewTextNextStepSuggest.Text += d[7];
-            LbGuideViewTextYear.Text += d[8];
-            LbGuideViewTextSemester.Text += d[9];
-        }
+            {
+                string[] d = (string[])data[i];
+                LbGuideViewTextContent.Text = d[0];
+                LbGuideViewTextSubject.Text = d[1];
+                LbGuideViewTextPersonality.Text = d[2];
+                LbGuideViewTextSchoolManagement.Text = d[3];
+                LbGuideViewTextSDPFormulate.Text = d[4];
+                LbGuideViewTextSDPImplement.Text = d[5];
+                LbGuideViewTextSDPeffect.Text = d[6];
+                LbGuideViewTextNextStepSuggest.Text = d[7];
+                LbGuideViewTextYear.Text = d[8];
+                LbGuideViewTextSemester.Text = d[9];
+            }
     }
     private void setInitial_MingDer()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest, Year, Semester from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest, Year, Semester from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
         {
             string[] d = (string[])data[i];
-            LbGuideViewTextContent.Text += d[0];
-            LbGuideViewTextSubject.Text += d[1];
-            LbGuideViewTextPersonality.Text += d[2];
-            LbGuideViewTextSchoolManagement.Text += d[3];
-            LbGuideViewTextSDPFormulate.Text += d[4];
-            LbGuideViewTextSDPImplement.Text += d[5];
-            LbGuideViewTextSDPeffect.Text += d[6];
-            LbGuideViewTextNextStepSuggest.Text += d[7];
-            LbGuideViewTextYear.Text += d[8];
-            LbGuideViewTextSemester.Text += d[9];
+            LbGuideViewTextContent.Text = d[0];
+            LbGuideViewTextSubject.Text = d[1];
+            LbGuideViewTextPersonality.Text = d[2];
+            LbGuideViewTextSchoolManagement.Text = d[3];
+            LbGuideViewTextSDPFormulate.Text = d[4];
+            LbGuideViewTextSDPImplement.Text = d[5];
+            LbGuideViewTextSDPeffect.Text = d[6];
+            LbGuideViewTextNextStepSuggest.Text = d[7];
+            LbGuideViewTextYear.Text = d[8];
+            LbGuideViewTextSemester.Text = d[9];
         }
     }
 
