@@ -106,7 +106,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
         return MANAGER_HAVE_YET_TO_QUESTIONNAIRE;
     }
 
-    /*private void setSubmitedCount()
+    private void setSubmitedCount()
     {
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
@@ -131,79 +131,6 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
         }
 
         query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
-        ms.GetOneData(query, sb);
-
-        string ID = sb.ToString();
-
-        query = "select FilledCount from KPIRecordDomainScore where ID='" + ID + "'";
-        ms.GetAllColumnData(query, data);
-
-        if (data.Count == 0)
-        {
-            LbSubmitCount.Text = "0";
-            return;
-        }
-
-        query = "select count(DomainID) from KPIDomainNameMapping";
-        ms.GetRowNumbers(query, sb);
-
-        int FilledCount = 1;
-        int MAX_COUNT = Convert.ToInt32(sb.ToString());
-        int count = 0;
-
-        query = "select MAX(FilledCount) from KPIRecordDomainScore where ID='" + ID + "'";
-        ms.GetOneData(query, sb);
-
-        int MAX_FILLED_COUNT = Convert.ToInt32(sb.ToString());
-        for (int i = 1; i <= MAX_FILLED_COUNT; i++)
-        {
-            foreach (string[] d in data)
-            {
-                if (Convert.ToInt32(d[0]) >= FilledCount)
-                {
-                    count++;
-                    if (count == MAX_COUNT)
-                    {
-                        FilledCount++;
-                        break;
-                    }
-                }
-            }
-            if (count == MAX_COUNT)
-                count = 0;
-            else
-            {
-                FilledCount--;
-                break;
-            }
-        }
-        LbSubmitCount.Text = (FilledCount > MAX_FILLED_COUNT) ? MAX_FILLED_COUNT.ToString() : FilledCount.ToString();
-    }*/
-    private void setSubmitedCount()
-    {
-        ManageSQL ms = new ManageSQL();
-        StringBuilder sb = new StringBuilder();
-        ArrayList data = new ArrayList();
-        getSchoolName(sb);
-        string schoolName = sb.ToString();
-        string query = "select count(schoolName) from KPIRecordMain where SchoolName=N'" + schoolName + "'";
-
-        ms.GetOneData(query, sb);
-        if (sb.ToString().Equals("0"))
-        {
-            LbSubmitCount.Text = "0";
-            return;
-        }
-
-        query = "select IsFinish from KPIRecordMain where SchoolName=N'" + schoolName + "'";
-        ms.GetOneData(query, sb);
-        if (sb.ToString().Equals("false"))
-        {
-            LbSubmitCount.Text = "0";
-            return;
-        }
-
-        query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "'";
         ms.GetOneData(query, sb);
 
         string ID = sb.ToString();
