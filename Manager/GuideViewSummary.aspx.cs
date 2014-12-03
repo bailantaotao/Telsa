@@ -29,25 +29,62 @@ public partial class Manager_GuideViewSummary : System.Web.UI.Page
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
 
+    private enum DdlType
+    {
+        No,
+    }
+    private void setDefault(DdlType type)
+    {
+        switch (type)
+        {
+            case DdlType.No:
+                setNo();
+                break;
+        }
+    }
+    private void setNo()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
 
+        Query = "select No from GuideSummary " +
+                "where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DropDownList3.Items.Add("请选择");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DropDownList3.Items.Add("请选择");
+            return;
+        }
+        foreach (string[] province in data)
+        {
+            DropDownList3.Items.Add(province[0]);
+        }
+    }
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-
+        LbGuideSummaryUserName.Text = Session["SCHOOLNAME"].ToString();
+        setDefault(DdlType.No);
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        LbGuideSummaryUserName.Text +=Session["SCHOOLNAME"].ToString();
         //LbGuideSummaryUserID.Text += "&nbsp&nbsp&nbsp代号：" + Session["UserID"].ToString();
         if (!IsPostBack)
         {
-            setInitial();
+            
         }
-
+        setInitial();
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
@@ -58,19 +95,20 @@ public partial class Manager_GuideViewSummary : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
         for (int i = 0; i < data.Count; i++)
         {
             string[] d = (string[])data[i];
-            LbGuideViewSummaryContent.Text += d[0];
-            LbGuideViewSummaryExperience.Text += d[1];
-            LbGuideViewSummaryExistingProblem.Text += d[2];
-            LbGuideViewSummarySuggest.Text += d[3];
-            LbGuideViewSummaryResult.Text += d[4];
-            LbGuideViewSummaryYear.Text += d[5];
-            LbGuideViewSummaryCycle.Text += d[6];
+            LbGuideViewSummaryContent.Text = d[0];
+            LbGuideViewSummaryExperience.Text = d[1];
+            LbGuideViewSummaryExistingProblem.Text = d[2];
+            LbGuideViewSummarySuggest.Text = d[3];
+            LbGuideViewSummaryResult.Text = d[4];
+            LbGuideViewSummaryYear.Text = d[5];
+            LbGuideViewSummaryCycle.Text = d[6];
         }
     }
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)

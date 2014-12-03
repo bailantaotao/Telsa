@@ -116,7 +116,7 @@
                        <tr>
                            <td class="style5" >
                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="Label1" runat="server" Text="用户名称：" ForeColor="Blue"></asp:Label>
-                               &nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideSummaryUserName" runat="server" ></asp:Label>
+                               <asp:Label ID="LbGuideSummaryUserName" runat="server" ></asp:Label>
                            </td>
                        </tr>
                        <tr>
@@ -131,7 +131,16 @@
                                 <asp:Label ID="LbGuideSummaryCycle" runat="server" Text="学期：" ForeColor="Blue"></asp:Label>
                                 <asp:Label ID="LbGuideViewSummaryCycle" runat="server" Text=""></asp:Label>
                             </td>
-                            <td align="right">
+                            <td align="left" width="30%">
+                                <asp:Label ID="LbGuideSummaryNo" runat="server" Text="项次：" ForeColor="Blue"></asp:Label>
+                                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True">
+                                    <asp:ListItem>请选择</asp:ListItem>
+                                </asp:DropDownList>
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="right">
                                 <asp:Button ID="BtnCancel" runat="server" Text="返回" Height="22px" Width="58px" onclick="BtnCancel_Click" />
                             </td>
                         </tr>

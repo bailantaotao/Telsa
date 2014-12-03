@@ -129,7 +129,16 @@
                                 <asp:Label ID="LbGuideViewTextSemester" runat="server" Text=""></asp:Label>
                                 
                             </td>
-                            <td>                                <asp:Button ID="BtnCancel" runat="server" Text="返回" Height="22px" 
+                            <td align="left" width="30%">
+                                <asp:Label ID="LbGuideTextNo" runat="server" Text="项次：" ForeColor="Blue"></asp:Label>
+                                <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True">
+                                    <asp:ListItem>请选择</asp:ListItem>
+                                </asp:DropDownList>
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" colspan="3"><asp:Button ID="BtnCancel" runat="server" Text="返回" Height="22px" 
                                     Width="58px" onclick="BtnCancel_Click" />
                             </td>
                         </tr>
