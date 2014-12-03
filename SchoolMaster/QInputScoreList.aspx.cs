@@ -152,7 +152,8 @@ public partial class SchoolMaster_QViewScoreList : System.Web.UI.Page
 
         Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
                 "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " " +
-                "where QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode = '" + Session["Province"] .ToString()+ "'";
+                "where QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode = '" + Session["Province"] .ToString()+ "'" +
+                "group by School";
 
         Session["QInputScoreList"] = Query;
         //StringBuilder sb = new StringBuilder();
