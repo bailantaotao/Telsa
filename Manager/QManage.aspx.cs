@@ -181,7 +181,7 @@ public partial class Manager_QManage : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         string query = "select Year,Semester, StartLine, Deadline " +
-                       "from QList order by Year desc, Semester asc";
+                       "from QList order by Year desc";
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
         {
@@ -236,6 +236,11 @@ public partial class Manager_QManage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('你所输入的学期开始与结束时间与既有的冲突');", true);
             return;
         }
+        else if (dateFormatCheck() == START_DATE_ERROR)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('开始日期不得大于等于结束日期');", true);
+            return;
+        }
 
         if (haveData())
         {
@@ -251,6 +256,7 @@ public partial class Manager_QManage : System.Web.UI.Page
     private const int EMPTY_DATA = 1;
     private const int INCORRECT_DATA = 2;
     private const int OVERLAY_DATA = 3;
+    private const int START_DATE_ERROR = 4;
 
     private int haveEmptyData()
     {
@@ -312,6 +318,16 @@ public partial class Manager_QManage : System.Web.UI.Page
         {
             return OVERLAY_DATA;
         }
+        return SUCCESS;
+    }
+
+    private int dateFormatCheck()
+    {
+        DateTime t1 = Convert.ToDateTime(TbStartLine.Text);
+        DateTime t2 = Convert.ToDateTime(TbDeadline.Text);
+
+        if (DateTime.Compare(t1, t2) >= 0)
+            return START_DATE_ERROR;
         return SUCCESS;
     }
 
@@ -397,7 +413,10 @@ public partial class Manager_QManage : System.Web.UI.Page
                         }
                         else
                         {
-                            gradelevel = (gl + 1).ToString();
+                            if (TbSemester.Text.Trim().Equals("1"))
+                                gradelevel = (gl + 1).ToString();
+                            else
+                                gradelevel = gl.ToString();
                         }
                     }
 
