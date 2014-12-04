@@ -138,7 +138,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                             TextBox box6 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[5].FindControl("column6");
                             TextBox box7 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[6].FindControl("column7");
                             TextBox box8 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[7].FindControl("column8");
-                            DropDownList box9 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[8].FindControl("column9");
+                            //DropDownList box9 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[8].FindControl("column9");
                             TextBox box10 = (TextBox)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[9].FindControl("column10");
                             //DropDownList box11 = (DropDownList)GvSchool.Rows[Convert.ToInt32(yourAssignedValue)].Cells[10].FindControl("column11");
 
@@ -154,7 +154,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                             box6.Text = "";
                             box7.Text = "";
                             box8.Text = "";
-                            box9.SelectedIndex = 0;
+                            //box9.SelectedIndex = 0;
                             box10.Text = "";
                             //box11.SelectedIndex = 0;
 
@@ -166,7 +166,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][5] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][6] = "";
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][7] = "";
-                            dt.Rows[Convert.ToInt32(yourAssignedValue)][8] = 0;
+                            //dt.Rows[Convert.ToInt32(yourAssignedValue)][8] = 0;
                             dt.Rows[Convert.ToInt32(yourAssignedValue)][9] = "";
                             //dt.Rows[Convert.ToInt32(yourAssignedValue)][10] = 0;
 
@@ -436,7 +436,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 for (int j = 0; j < data.Count; j++)
                 {
                     string[] DBData = (string[])data[j];
-                    if (i.ToString().Equals(DBData[0]))
+                    if ((i + 1).ToString().Equals(DBData[0]))
                     {
                         pic.data.Add(new string[] { DBData[1], DBData[2] });
                     }

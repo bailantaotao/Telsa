@@ -92,8 +92,8 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
             dr["column2"] = d[1].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[1].Split(' ')[0];
             dr["column3"] = d[2].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[2].Split(' ')[0];
             dr["column4"] = d[3];
-            dr["column5"] = (d[4].Equals(Resources.Resource.TipPlzChoose) || d[4].Equals("")) ? Resources.Resource.TipNotWrite : d[4];
-            dr["column6"] = (d[5].Equals(Resources.Resource.TipPlzChoose) || d[5].Equals("")) ? Resources.Resource.TipNotWrite : d[5];
+            dr["column5"] = findPersonInCharge(i, "PlanCalendarLeader");
+            dr["column6"] = findPersonInCharge(i, "PlanCalendarPersonInCharge");
             dr["column7"] = d[6];
             dr["column8"] = d[7].Equals("") ? Resources.Resource.TipNotWrite : d[7];
             dt.Rows.Add(dr);
@@ -106,6 +106,28 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
         GvSchool.DataSource = dt;
         GvSchool.DataBind();
     }
+
+    private string findPersonInCharge(int index, string targetTable)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        string personInCharge = string.Empty;
+        string query = "select WeekNo, No, PlanCalendarPersonInCharge " +
+                       "from " + targetTable + " " +
+                       "where SN ='" + Session["UserPlanListSN"].ToString() + "' order by WeekNo asc ";
+
+        ms.GetAllColumnData(query, data);
+        for (int j = 0; j < data.Count; j++)
+        {
+            string[] DBData = (string[])data[j];
+            if ((index + 1).ToString().Equals(DBData[0]))
+            {
+                personInCharge += DBData[2] + "\n";
+            }
+        }
+        return personInCharge;
+    }
+
     private void setPersonInChargeData()
     {
         ManageSQL ms = new ManageSQL();

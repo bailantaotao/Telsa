@@ -8,6 +8,10 @@ Telsa v6.0.6
 Telsa v6.0.7
 Telsa v6.0.8
 
+##########     v6.0.8     ##########
+Changed:
+	Table: PlanCalendarLeader
+	Column: [Added][nvarchar(10)] PlanCalendarPersonInCharge 
 
 ##########     v6.0.8     ##########
 Changed:

@@ -89,6 +89,10 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
             btn.ID = "1";
             btn.Text = "more...";
             btn.Click += btn_Click;
+            if (dt.Rows.Count <= endIndex)
+            {                
+                btn.Visible = false;
+            }
             this.UpdatePanel1.ContentTemplateContainer.Controls.Add(new LiteralControl("<tr><td colspan='5'>"));
             this.UpdatePanel1.ContentTemplateContainer.Controls.Add(btn);
             this.UpdatePanel1.ContentTemplateContainer.Controls.Add(new LiteralControl("</tr></td>"));
@@ -115,19 +119,19 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
         LinkButton lkb = (LinkButton)sender;
         string id = lkb.CommandArgument;
 
-        ArrayList d = new ArrayList();
-        string query = "select SU_NAME, SU_SEX, SU_folk, SU_GdShl, SU_Tel, SU_Address from SchoolUser where ID ='" + id + "'";
+        //ArrayList d = new ArrayList();
+        //string query = "select SU_NAME, SU_SEX, SU_folk, SU_GdShl, SU_Tel, SU_Address from SchoolUser where ID ='" + id + "'";
         ManageSQL ms = new ManageSQL();
-        ms.GetAllColumnData(query, d);
+        //ms.GetAllColumnData(query, d);
         StringBuilder sb = new StringBuilder();
 
-        if (d.Count > 0)
-        {
-            string[] schoolUserData = (string[])d[0];
+        //if (d.Count > 0)
+        //{
+            //string[] schoolUserData = (string[])d[0];
 
             /** 更新原來的資料表內容 */
-            query = "update PlanMember set " +
-                    "PlanName =N'" + schoolUserData[0] + "' " +
+            string query = "update PlanMember set " +
+                    "PlanName =N'" + lkb.Text + "' " +
                     //"PlanGender =N'" + (schoolUserData[1].Equals("0")?"男":"女") + "'," +
                     //"PlanEthnic =N'" + schoolUserData[2] + "'," +
                     //"PlanCulture =N'" + schoolUserData[3] + "'," +
@@ -153,7 +157,7 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
                 if (i.ToString().Equals(Request["PTAN"].ToString()))
                 {
                     DataTable oldData = personIncharge[i];
-                    oldData.Rows[0]["PlanName"] = schoolUserData[0];
+                    oldData.Rows[0]["PlanName"] = lkb.Text;
                     //oldData.Rows[0]["PlanGender"] = schoolUserData[1];
                     //oldData.Rows[0]["PlanEthnic"] = schoolUserData[2];
                     //oldData.Rows[0]["PlanCulture"] = schoolUserData[3];
@@ -166,7 +170,7 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
                     Session["Member"] = personIncharge;
                 }
             }
-        }
+        //}
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.opener.location.href='PlanItem1.aspx';window.close();", true);
     }
 
