@@ -147,17 +147,13 @@
             width: 61px;
             height: 72px;
         }
-        .style40
-        {
-            width: 55px;
-        }
         .style41
         {
-            width: 112px;
+            width: 129px;
         }
         .style42
         {
-            width: 115px;
+            width: 131px;
         }
     </style>
 </head>
@@ -260,21 +256,22 @@
                                 </asp:DropDownList>
                                 <%--<asp:Label ID="LbGuideViewResultSemester" runat="server" Text=""></asp:Label>--%>
                             </td> 
-                            <td class="style40">
-                                <asp:Button ID="Button1" runat="server" Text="查询" onclick="Button1_Click" 
-                                    style="margin-left: 0px" />
-                            </td>
+                            
                             <td align="left">
                                 <asp:Label ID="GuideResultTargetSchoolComplete" runat="server" Text="已评分学校:" ForeColor="Blue"></asp:Label>
                                 <asp:DropDownList ID="DlGuideViewResultTargetSchoolComplete" runat="server" 
-                                    Width="100px" AutoPostBack="True" 
+                                    Width="80px" AutoPostBack="True" 
                                     onselectedindexchanged="DlGuideViewResultTargetSchoolComplete_SelectedIndexChanged">
                                 </asp:DropDownList>
                                 <asp:Label ID="GuideResultTargetSchool" runat="server" Text="未评分学校:" ForeColor="Blue"></asp:Label>
                                 <asp:DropDownList ID="DlGuideViewResultTargetSchool" runat="server" 
-                                    Width="100px" AutoPostBack="True" 
+                                    Width="80px" AutoPostBack="True" 
                                     onselectedindexchanged="DlGuideViewResultTargetSchool_SelectedIndexChanged">
                                 </asp:DropDownList>
+                            </td>
+                            <td>
+                                <asp:Button ID="Button1" runat="server" Text="查询" onclick="Button1_Click" 
+                                    style="margin-left: 0px" />
                             </td>
                         </tr>
                     </table>
