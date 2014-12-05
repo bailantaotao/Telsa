@@ -118,7 +118,12 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
     {
         LinkButton lkb = (LinkButton)sender;
         string id = lkb.CommandArgument;
+        changePersonInCharge(lkb.Text);
+        
+    }
 
+    private void changePersonInCharge(string name)
+    {
         //ArrayList d = new ArrayList();
         //string query = "select SU_NAME, SU_SEX, SU_folk, SU_GdShl, SU_Tel, SU_Address from SchoolUser where ID ='" + id + "'";
         ManageSQL ms = new ManageSQL();
@@ -127,51 +132,61 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
 
         //if (d.Count > 0)
         //{
-            //string[] schoolUserData = (string[])d[0];
+        //string[] schoolUserData = (string[])d[0];
 
-            /** 更新原來的資料表內容 */
-            string query = "update PlanMember set " +
-                    "PlanName =N'" + lkb.Text + "' " +
-                    //"PlanGender =N'" + (schoolUserData[1].Equals("0")?"男":"女") + "'," +
-                    //"PlanEthnic =N'" + schoolUserData[2] + "'," +
-                    //"PlanCulture =N'" + schoolUserData[3] + "'," +
-                    //"PlanTel =N'" + schoolUserData[4] + "'," +
-                    //"PlanAddress =N'" + schoolUserData[5] + "' " +
-                    "where SN = '" + Session["UserPlanListSN"].ToString() + "' AND PlanNo='" + (Convert.ToInt32(Request["PTAN"].ToString())+1) + "'";
-            //query = "insert into PlanMember (SN, PlanNo, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanTel, PlanAddress) VALUES ('" +
-            //     Session["UserPlanListSN"].ToString() + "','" +
-            //     Request["PTAN"].ToString() + "','" +
-            //     schoolUserData[0] + "','" +
-            //     schoolUserData[1] + "','" +
-            //     schoolUserData[2] + "','" +
-            //     schoolUserData[3] + "','" +
-            //     schoolUserData[4] + "','" +
-            //     schoolUserData[5] + "','" +
-            ms.WriteData(query, sb);
+        /** 更新原來的資料表內容 */
+        string query = "update PlanMember set " +
+                "PlanName =N'" + name + "' " +
+            //"PlanGender =N'" + (schoolUserData[1].Equals("0")?"男":"女") + "'," +
+            //"PlanEthnic =N'" + schoolUserData[2] + "'," +
+            //"PlanCulture =N'" + schoolUserData[3] + "'," +
+            //"PlanTel =N'" + schoolUserData[4] + "'," +
+            //"PlanAddress =N'" + schoolUserData[5] + "' " +
+                "where SN = '" + Session["UserPlanListSN"].ToString() + "' AND PlanNo='" + (Convert.ToInt32(Request["PTAN"].ToString()) + 1) + "'";
+        //query = "insert into PlanMember (SN, PlanNo, PlanName, PlanGender, PlanEthnic, PlanCulture, PlanTel, PlanAddress) VALUES ('" +
+        //     Session["UserPlanListSN"].ToString() + "','" +
+        //     Request["PTAN"].ToString() + "','" +
+        //     schoolUserData[0] + "','" +
+        //     schoolUserData[1] + "','" +
+        //     schoolUserData[2] + "','" +
+        //     schoolUserData[3] + "','" +
+        //     schoolUserData[4] + "','" +
+        //     schoolUserData[5] + "','" +
+        ms.WriteData(query, sb);
 
 
-            List<DataTable> personIncharge = (List<DataTable>)Session["Member"];
+        List<DataTable> personIncharge = (List<DataTable>)Session["Member"];
 
-            for (int i = 0; i < personIncharge.Count; i++)
+        for (int i = 0; i < personIncharge.Count; i++)
+        {
+            if (i.ToString().Equals(Request["PTAN"].ToString()))
             {
-                if (i.ToString().Equals(Request["PTAN"].ToString()))
-                {
-                    DataTable oldData = personIncharge[i];
-                    oldData.Rows[0]["PlanName"] = lkb.Text;
-                    //oldData.Rows[0]["PlanGender"] = schoolUserData[1];
-                    //oldData.Rows[0]["PlanEthnic"] = schoolUserData[2];
-                    //oldData.Rows[0]["PlanCulture"] = schoolUserData[3];
-                    
-                    //oldData.Rows[0]["PlanTel"] = schoolUserData[4];
-                    //oldData.Rows[0]["PlanAddress"] = schoolUserData[5];
+                DataTable oldData = personIncharge[i];
+                oldData.Rows[0]["PlanName"] = name;
+                //oldData.Rows[0]["PlanGender"] = schoolUserData[1];
+                //oldData.Rows[0]["PlanEthnic"] = schoolUserData[2];
+                //oldData.Rows[0]["PlanCulture"] = schoolUserData[3];
+
+                //oldData.Rows[0]["PlanTel"] = schoolUserData[4];
+                //oldData.Rows[0]["PlanAddress"] = schoolUserData[5];
 
 
-                    personIncharge[i] = oldData;
-                    Session["Member"] = personIncharge;
-                }
+                personIncharge[i] = oldData;
+                Session["Member"] = personIncharge;
             }
+        }
         //}
         ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "window.opener.location.href='PlanItem1.aspx';window.close();", true);
     }
 
+    protected void BtnSubmit_Click(object sender, EventArgs e)
+    {
+        if (tbUserName.Text.Trim().Equals(""))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('请填入负责人名称')", true);
+            return;
+        }
+
+        changePersonInCharge(tbUserName.Text.Trim());
+    }
 }
