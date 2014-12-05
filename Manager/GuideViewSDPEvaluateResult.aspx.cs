@@ -44,7 +44,7 @@ public partial class Manager_GuideViewSDPEvaluateResult : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-
+        
         setDefault(DdlType.SchoolName);
         /*ManageSQL ms = new ManageSQL();
         ArrayList dataschoolname = new ArrayList();
@@ -69,16 +69,18 @@ public partial class Manager_GuideViewSDPEvaluateResult : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList datacomplete = new ArrayList();
         ArrayList data = new ArrayList();
+        string query = string.Empty;
 
-        Query = "select School from Account " +
-                            "left join Area on Account.zipcode = Area.ID " +
-                            "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%' " +
-                            "group by School ";
+        query = "select School from Account " +
+                "left join Area on Account.zipcode = Area.ID " +
+                "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%' " +
+                "group by School ";
         QueryComplete = "select School from GuideExpertScore " +
-                            "left join GuideSchoolMasterScore on GuideExpertScore.School = GuideSchoolMasterScore.TargetSchool ";
+                        "left join GuideSchoolMasterScore on GuideExpertScore.School = GuideSchoolMasterScore.TargetSchool " +
+                        "where GuideExpertScore.SN = '" + Session["UserGuideListSN"].ToString() + "'";
 
 
-        if (!ms.GetAllColumnData(Query, data))
+        if (!ms.GetAllColumnData(query, data))
         {
             DlGuideViewResultTargetSchool.Items.Add("None");
             return;
@@ -99,11 +101,13 @@ public partial class Manager_GuideViewSDPEvaluateResult : System.Web.UI.Page
             DlGuideViewResultTargetSchoolComplete.Items.Add("None");
             return;
         }
+
         DlGuideViewResultTargetSchool.Items.Add(Resources.Resource.DdlTypeSchoolname);
         foreach (string[] province in data)
         {
             DlGuideViewResultTargetSchool.Items.Add(province[0]);
         }
+
         DlGuideViewResultTargetSchoolComplete.Items.Add(Resources.Resource.DdlTypeSchoolname);
         foreach (string[] provincecomplete in datacomplete)
         {

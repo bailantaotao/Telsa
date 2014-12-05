@@ -80,15 +80,29 @@ public partial class Expert_GuideViewSDPEvaluateResult : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList datacomplete = new ArrayList();
         ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder zipcodesb = new StringBuilder();
+
+        string namequery = string.Empty;
+        string zipcodequery = string.Empty;
+        string zipcodequerycomplete = string.Empty;
+
 
         if (Session["IsMingDer"].ToString().Equals("True"))
         {
+            namequery = "select GuideSchool from GuideListUser where SN='" + Session["UserGuideListSN"].ToString() + "'";
+            ms.GetOneData(namequery, sb);
+
+            zipcodequery = "select zipcode from Account where UserName=N'" + sb.ToString() + "'";
+            ms.GetOneData(zipcodequery, zipcodesb);
+
             Query = "select School from Account " +
                                 "left join Area on Account.zipcode = Area.ID " +
-                                "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%'" +
+                                "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%'" +  
                                 "group by School ";
             QueryComplete = "select School from GuideExpertScore " +
-                            "left join GuideSchoolMasterScore on GuideExpertScore.School = GuideSchoolMasterScore.TargetSchool " ;
+                            "left join GuideSchoolMasterScore on GuideExpertScore.School = GuideSchoolMasterScore.TargetSchool "+
+                            "where GuideExpertScore.SN = '" + Session["UserGuideListSN"].ToString() + "'";
 
         }
         if (Session["IsMingDer"].ToString().Equals("False"))
