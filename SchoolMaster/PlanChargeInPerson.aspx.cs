@@ -56,7 +56,13 @@ public partial class SchoolMaster_PlanChargeInPerson : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select UserName from account where zipcode = '" + Session["Province"].ToString() + "' and UserName  not like N'%专家%' order by id asc";
+        StringBuilder sb = new StringBuilder();
+
+        string query=string.Empty;
+
+        query="select ID from Account where UserID='" + Session["UserID"].ToString() + "'";
+        ms.GetOneData(query,sb);
+        Query = "select SU_NAME from SchoolUser where SHL_ID = '" + sb.ToString() + "'";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlPersonInCharge.Items.Add("None");
