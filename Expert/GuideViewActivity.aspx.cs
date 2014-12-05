@@ -35,7 +35,7 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
         {
             HyperLink1.Visible = false;
             img.Visible = false;
-            LbGuideActivity.Visible = false;
+            //LbGuideActivity.Visible = false;
         }
     }
     protected void Page_Load(object sender, EventArgs e)
@@ -45,10 +45,11 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
         if (!parseData("ActivityNO"))
             return;
 
-        getTitle();
+        
 
         if (Session["IsMingDer"].ToString().Equals("False"))
         {
+            getTitle();
             if (!IsPostBack)
             {
                 setPersonal();
@@ -57,6 +58,7 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
         }
         else if (Session["IsMingDer"].ToString().Equals("True"))
         {
+            getTitle_MingDe();
             if (!IsPostBack)
             {
                 setPersonal_MingDer();
@@ -86,7 +88,19 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
             return;
         LbGuideActivity.Text = sb.ToString() + "省跟踪指导专家活动纪录表";
         GuideActivityNO.Append(Request["ActivityNO"].ToString());
+    }
+    private void getTitle_MingDe()
+    {
+        GuideActivityNO.Clear();
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
 
+        string query = "select GuideSchool from GuideListUser where SN='" + Session["UserGuideListSN"].ToString() + "'";
+        ms.GetOneData(query, sb);
+        if (sb.ToString().Equals(""))
+            return;
+        LbGuideActivity.Text = sb.ToString() + "跟踪指导专家活动纪录表";
+        GuideActivityNO.Append(Request["ActivityNO"].ToString());
     }
     protected void btn_Clicked(object sender, EventArgs e)
     {
@@ -188,7 +202,7 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
         string query = "select Year, Semester, TargetSchool, StartTime, EndTime, ActionProcess, DiscussionPoint, Description " +
                "from GuideActivity " +
                "where SN ='" + Session["UserGuideListSN"].ToString() + "' and " +
-               "ActivityNO = '" + GuideActivityNO.ToString() + "'";
+               "ActivityNO=" + Request["ActivityNO"].ToString();
 
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
@@ -211,7 +225,7 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
         string query = "select Year, Semester, TargetSchool, StartTime, EndTime, ActionProcess, DiscussionPoint, Description " +
                "from GuideActivity " +
                "where SN ='" + Session["UserGuideListSN"].ToString() + "' and " +
-               "ActivityNO = '" + GuideActivityNO.ToString() + "'";
+               "ActivityNO =" + Request["ActivityNO"].ToString();
 
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
@@ -311,7 +325,7 @@ public partial class Expert_GuideViewActivity : System.Web.UI.Page
         string query = "select MemberName, Gender, Job, Unit, Phone " +
                         "from GuideActivityMember " +
                         "where SN ='" + Session["UserGuideListSN"].ToString() + "' and " +
-                        "ActivityNO = '" + GuideActivityNO.ToString() + "'";
+                        "ActivityNO=" + Request["ActivityNO"].ToString();
 
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)

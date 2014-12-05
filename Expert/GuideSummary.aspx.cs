@@ -37,6 +37,7 @@ public partial class Expert_GuideSummary : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         DropDownList1.Visible = false;
         DropDownList2.Visible = false;
+
         LbGuideYear.Text = Session["GuideYear"].ToString();
         LbGuideSemester.Text = Session["GuideSemester"].ToString();
         LbGuideSummaryUserName.Text += "用户名称：" + Session["UserName"].ToString();

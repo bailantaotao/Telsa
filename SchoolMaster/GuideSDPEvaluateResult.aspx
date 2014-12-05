@@ -230,7 +230,7 @@
                                     DataValueField="GuideSummaryYear">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:TelsaConnectionString2 %>" 
+                                    ConnectionString="<%$ ConnectionStrings:SQLConStr %>" 
                                     SelectCommand="SELECT [GuideSummaryYear] FROM [GuideSummaryYearNameMapping]">
                                 </asp:SqlDataSource>
                             </td>
