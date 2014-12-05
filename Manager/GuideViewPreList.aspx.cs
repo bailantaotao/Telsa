@@ -44,6 +44,10 @@ public partial class Manager_GuideViewPreList : System.Web.UI.Page
             Session.Remove("GuideSN");
         if(Session["GuideYear"] != null)
             Session.Remove("GuideYear");
+
+        setDefault(DdlType.Province);
+        setDefault(DdlType.SchoolName);
+        setDefault(DdlType.Year);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -54,9 +58,6 @@ public partial class Manager_GuideViewPreList : System.Web.UI.Page
         //LbSchoolMaster.Text = Session["UserName"].ToString();
         //if (!IsPostBack)
         {
-            setDefault(DdlType.Province);
-            setDefault(DdlType.SchoolName);
-            setDefault(DdlType.Year);
             if (Session["GuideList"] != null)
                 Query = Session["GuideList"].ToString();
             else
@@ -109,7 +110,7 @@ public partial class Manager_GuideViewPreList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select KPIYear from KPIRecordMain group by KPIYear order by KPIYear asc";
+        Query = "select GuideYear from GuideList group by GuideYear order by GuideYear asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlYear.Items.Add("None");
@@ -316,6 +317,9 @@ public partial class Manager_GuideViewPreList : System.Web.UI.Page
                 LbCompleted.Text += "</tr>";
 
                 Flag++;
+
+                Session["GuideYear"] = ((string[])(data[i]))[1];
+                Session["GuideSemester"] = ((string[])(data[i]))[2];
             }
             goto FINALLY;
         }
