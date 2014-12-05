@@ -35,7 +35,7 @@ public partial class Manager_QManage : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
-        getNewestData();
+        //getNewestData();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -58,7 +58,7 @@ public partial class Manager_QManage : System.Web.UI.Page
         }
         TbStartLine.Attributes.Add("readonly", "true");
         TbDeadline.Attributes.Add("readonly", "true");
-
+        getNewestData();
     }
 
     private void removeSession(string key)
@@ -181,7 +181,7 @@ public partial class Manager_QManage : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         string query = "select Year,Semester, StartLine, Deadline " +
-                       "from QList order by Year desc";
+                       "from QList order by Year desc,semester desc";
         ms.GetAllColumnData(query, data);
         if (data.Count > 0)
         {
@@ -421,7 +421,7 @@ public partial class Manager_QManage : System.Web.UI.Page
                     }
 
 
-                    query = "insert into QStudent" + TbYear.Text.Trim() + TbSemester.Text.Trim() + " (StudentID, IdentifyID, Name, GradeLevel, Class, School, Zipcode) VALUES (" +
+                    query = "insert into QStudent" + TbYear.Text.Trim() + TbSemester.Text.Trim() + "(StudentID, IdentifyID, Name, GradeLevel, Class, School, Zipcode) VALUES (" +
                             "N'" + col[0] + "', " +
                             "N'" + col[1] + "', " +
                             "N'" + col[2] + "', " +
@@ -431,14 +431,13 @@ public partial class Manager_QManage : System.Web.UI.Page
                             "N'" + col[6] + "')";
                     ms.WriteData(query, sb);
 
-                    query = "insert into QScore" + TbYear.Text.Trim() + TbSemester.Text.Trim() + " (StudentID) VALUES ('" + col[0] + "')";
+                    query = "insert into QScore" + TbYear.Text.Trim() + TbSemester.Text.Trim() + "(StudentID) VALUES ('" + col[0] + "')";
                     ms.WriteData(query, sb);
                 }
             }
 
+
             
-
-
             setInitial();
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('" + Resources.Resource.TipPlanOperationSuccess + "');", true);
@@ -450,7 +449,7 @@ public partial class Manager_QManage : System.Web.UI.Page
     #region get year, semester
     private string candicateYear = string.Empty;
     private string candicateSemester = string.Empty;
-    private void getNewestData()
+    /*private void getNewestData()
     {
         
         string query = "select SN, year, semester, DeadLine from Qlist ";
@@ -472,6 +471,21 @@ public partial class Manager_QManage : System.Web.UI.Page
                     candicateSemester = ((string[])data[i])[2];
                 }
             }
+        }
+
+    }*/
+    private void getNewestData()
+    {
+        string query = "select SN, year, semester, DeadLine from Qlist order by year desc, semester desc";
+        ArrayList data = new ArrayList();
+        ManageSQL ms = new ManageSQL();
+        ms.GetAllColumnData(query, data);
+
+        if (data.Count >= 1)
+        {
+            DateTime candicate = Convert.ToDateTime(((string[])data[0])[3]);
+            candicateYear = ((string[])data[0])[1];
+            candicateSemester = ((string[])data[0])[2];
         }
 
     }
