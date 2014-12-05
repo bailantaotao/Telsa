@@ -68,7 +68,8 @@ public partial class Expert_GuideViewMission : System.Web.UI.Page
         ArrayList data = new ArrayList();
         string query = "select MissionTime, MissionMember, MissionStartTime, MissionEndTime, MissionTargetSchool, MissionSchoolNum " +
                "from GuideMission " +
-               "where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+               "where SN ='" + Session["UserGuideListSN"].ToString() + "'" + 
+               "and MissionNo=" + Request["MissionNo"].ToString();
                //"where SN ='" + Session["UserGuideListSN"].ToString() + "' and " +
                //"ActivityNO = '" + GuideActivityNO.ToString() + "'";
 
@@ -90,7 +91,8 @@ public partial class Expert_GuideViewMission : System.Web.UI.Page
         ArrayList data = new ArrayList();
         string query = "select MissionTime, MissionMember, MissionStartTime, MissionEndTime, MissionTargetSchool, MissionSchoolNum " +
                "from GuideMission " +
-               "where SN ='" + Session["UserGuideListSN"].ToString() + "'";
+               "where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+               "and MissionNo=" + Request["MissionNo"].ToString();
         //"where SN ='" + Session["UserGuideListSN"].ToString() + "' and " +
         //"ActivityNO = '" + GuideActivityNO.ToString() + "'";
 
