@@ -139,7 +139,7 @@ public partial class Expert_GuideViewPreList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select KPIYear from KPIRecordMain group by KPIYear order by KPIYear asc";
+        Query = "select GuideYear from GuideList group by GuideYear order by GuideYear asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlYear.Items.Add("None");
