@@ -167,7 +167,7 @@
                                     <SortedDescendingHeaderStyle BackColor="#93451F" />
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:TelsaConnectionString %>" 
+                                    ConnectionString="<%$ ConnectionStrings:SQLConStr %>" 
                                     
                                     
                                     SelectCommand="SELECT [GuideAttachmentID], [GuideAttachmentName], [GuideAttachmentURL] FROM [GuideAttachmentViewNameMapping]">
@@ -208,7 +208,7 @@
                                     <SortedDescendingHeaderStyle BackColor="#93451F" />
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:TelsaConnectionString %>" 
+                                    ConnectionString="<%$ ConnectionStrings:SQLConStr %>" 
                                     
                                     
                                     SelectCommand="SELECT [ItemNo], [GuideItemName], [GuideItemUrl], [SN] FROM [GuideItem] WHERE ([SN] = @SN) ORDER BY [ItemNo]">

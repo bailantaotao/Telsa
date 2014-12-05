@@ -79,6 +79,9 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
             LbGuideTextUserID.Visible = false;
         }
         setDefault(DdlType.No);
+
+        LbGuideYear.Text = Session["GuideYear"].ToString();
+        LbGuideSemester.Text = Session["GuideSemester"].ToString();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -117,7 +120,7 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest, Year, Semester from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
                        "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
@@ -132,15 +135,13 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
                 LbGuideViewTextSDPImplement.Text = d[5];
                 LbGuideViewTextSDPeffect.Text = d[6];
                 LbGuideViewTextNextStepSuggest.Text = d[7];
-                LbGuideViewTextYear.Text = d[8];
-                LbGuideViewTextSemester.Text = d[9];
             }
     }
     private void setInitial_MingDer()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest, Year, Semester from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+        string query = "select MainContent, SubjectAbility, PersonalityMold, SchoolManagement, SDPFormulate, SDPImplement, SDPEffect, NextStepSuggest from GuideText where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
                        "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
@@ -155,8 +156,6 @@ public partial class Expert_GuideViewText : System.Web.UI.Page
             LbGuideViewTextSDPImplement.Text = d[5];
             LbGuideViewTextSDPeffect.Text = d[6];
             LbGuideViewTextNextStepSuggest.Text = d[7];
-            LbGuideViewTextYear.Text = d[8];
-            LbGuideViewTextSemester.Text = d[9];
         }
     }
 

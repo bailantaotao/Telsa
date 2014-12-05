@@ -119,14 +119,14 @@
                        <tr>
                             <td align="left"  >
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextYear" runat="server" Text="学年：" ForeColor="Blue"></asp:Label>
-                                <asp:Label ID="LbGuideViewTextYear" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="LbGuideYear" runat="server" Text=""></asp:Label>
                                 
                             &nbsp;
 
                             </td>
                             <td align="left" width="30%">
                                 <asp:Label ID="LbGuideTextSemester" runat="server" Text="学期：" ForeColor="Blue"></asp:Label>
-                                <asp:Label ID="LbGuideViewTextSemester" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="LbGuideSemester" runat="server" Text=""></asp:Label>
                                 
                             </td>
                             <td align="left" width="30%">

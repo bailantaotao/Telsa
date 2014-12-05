@@ -75,6 +75,8 @@ public partial class Manager_GuideViewSummary : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         LbGuideSummaryUserName.Text = Session["SCHOOLNAME"].ToString();
         setDefault(DdlType.No);
+        LbGuideYear.Text = Session["GuideYear"].ToString();
+        LbGuideSemester.Text = Session["GuideSemester"].ToString();
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -95,7 +97,7 @@ public partial class Manager_GuideViewSummary : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result, Year, Cycle from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
+        string query = "select MainContent, MainExperience, ExistingProblem, ImprovementSuggest, Result from GuideSummary where SN ='" + Session["UserGuideListSN"].ToString() + "'" +
                        "and No='" + DropDownList3.SelectedValue.ToString() + "'";
         ms.GetAllColumnData(query, data);
 
@@ -107,8 +109,6 @@ public partial class Manager_GuideViewSummary : System.Web.UI.Page
             LbGuideViewSummaryExistingProblem.Text = d[2];
             LbGuideViewSummarySuggest.Text = d[3];
             LbGuideViewSummaryResult.Text = d[4];
-            LbGuideViewSummaryYear.Text = d[5];
-            LbGuideViewSummaryCycle.Text = d[6];
         }
     }
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)

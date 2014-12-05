@@ -134,14 +134,14 @@
                        <tr>
                             <td align="left" class="style4" >
                                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideSummaryYear" runat="server" Text="学年：" ForeColor="Blue"></asp:Label>
-                                <asp:Label ID="LbGuideViewSummaryYear" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="LbGuideYear" runat="server" Text=""></asp:Label>
                                 
                             &nbsp;
 
                             </td>
                             <td align="left" >
                                 <asp:Label ID="LbGuideSummaryCycle" runat="server" Text="学期：" ForeColor="Blue"></asp:Label>
-                                <asp:Label ID="LbGuideViewSummaryCycle" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="LbGuideSemester" runat="server" Text=""></asp:Label>
                             </td>
                             <td align="left" width="30%">
                                 <asp:Label ID="LbGuideSummaryNo" runat="server" Text="项次：" ForeColor="Blue"></asp:Label>
