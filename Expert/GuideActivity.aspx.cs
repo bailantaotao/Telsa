@@ -249,8 +249,8 @@ public partial class Expert_GuideActivity : System.Web.UI.Page
             //DropDownList1.SelectedValue = d[0];
             //DropDownList2.SelectedValue = d[1];
             //DropDownList3.SelectedValue = d[2];
-            TextBox1.Text = d[3];
-            TextBox2.Text = d[4];
+            TextBox1.Text = d[3].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[3].Split(' ')[0];
+            TextBox2.Text = d[4].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotWrite : d[4].Split(' ')[0];
             TbGuideActivityProgress.Text = d[5];
             TbGuideActivityPoint.Text = d[6];
             TbGuideActivityDescription.Text = d[7];
