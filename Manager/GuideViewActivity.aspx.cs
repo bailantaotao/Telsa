@@ -62,11 +62,11 @@ public partial class Manager_GuideViewActivity : System.Web.UI.Page
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
 
-        string query = "select ActivityName from GuideActivityRecordList SN='" + Session["UserGuideListSN"].ToString() + "' and NO='" + Request["ActivityNO"].ToString() + "'";
+        string query = "select GuideSchool from GuideListUser where SN='" + Session["UserGuideListSN"].ToString() + "'";
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals(""))
             return;
-        LbGuideActivity.Text = sb.ToString() + "省跟踪指导专家活动纪录表";
+        LbGuideActivity.Text = sb.ToString() + "跟踪指导专家活动纪录表";
         GuideActivityNO.Append(Request["ActivityNO"].ToString());
 
     }
