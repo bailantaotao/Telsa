@@ -206,6 +206,9 @@
                                             SortExpression="StudentID">
                                             <ItemStyle Width="100px"></ItemStyle>
                                         </asp:BoundField> 
+                                        <asp:BoundField DataField="Name" HeaderText="学生姓名" ReadOnly="True"  ItemStyle-Width="100px">
+                                            <ItemStyle Width="100px"></ItemStyle>
+                                        </asp:BoundField> 
                                         <asp:TemplateField HeaderText="语文" SortExpression="Chinese" ItemStyle-Width="50px"> 
                                             <EditItemTemplate> 
                                                 <asp:TextBox ID="tbChin" runat="server" Text='<%# Bind("Chinese") %>' MaxLength="3" Width="50px"></asp:TextBox> 
@@ -278,7 +281,7 @@
                                             </ItemTemplate> 
                                             <ItemStyle Width="50px"></ItemStyle>
                                         </asp:TemplateField> 
-                                        <asp:CommandField ShowEditButton="True" ItemStyle-Width="120px"/> 
+                                        <asp:CommandField ShowEditButton="True" ItemStyle-Width="50px"/> 
                                     </Columns> 
                                     <FooterStyle BackColor="#99CCCC" ForeColor="#003399" /> 
                                     <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" /> 

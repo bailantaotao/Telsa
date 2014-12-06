@@ -120,7 +120,7 @@ public partial class Manager_QViewScore : System.Web.UI.Page
     {
         string yearSemester = LbYear.Text.Trim()+LbSemester.Text.Trim();
 
-        Query = "select QStudent" + yearSemester + ".GradeLevel, QStudent" + yearSemester + ".Class, QStudent" + yearSemester + ".StudentID, QStudent" + yearSemester + ".Name, QScore" + yearSemester + ".Chinese, QScore" + yearSemester + ".English, QScore" + yearSemester + ".Math, QScore" + yearSemester + ".Society, QScore" + yearSemester + ".Science, QScore" + yearSemester + ".Music, QScore" + yearSemester + ".Physical, QScore" + yearSemester + ".Art " +
+        Query = "select QStudent" + yearSemester + ".GradeLevel, QStudent" + yearSemester + ".Class, QStudent" + yearSemester + ".StudentID, QStudent" + yearSemester + ".Name, QScore" + yearSemester + ".Chinese, QScore" + yearSemester + ".English, QScore" + yearSemester + ".Math, QScore" + yearSemester + ".Society, QScore" + yearSemester + ".Science, QScore" + yearSemester + ".Music, QScore" + yearSemester + ".Physical, QScore" + yearSemester + ".Art, QStudent" + yearSemester + ".Name " +
                 "from QStudent" + yearSemester + " " +
                 "left join QScore" + yearSemester + " on QScore" + yearSemester + ".StudentID = QStudent" + yearSemester + ".StudentID ";
 
@@ -202,6 +202,9 @@ public partial class Manager_QViewScore : System.Web.UI.Page
 
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
         LbCompleted.Text += "班内学号" + "</font></td>";
+
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+        LbCompleted.Text += "学生姓名" + "</font></td>";
 
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
         LbCompleted.Text += "语文" + "</font></td>";
@@ -323,6 +326,10 @@ public partial class Manager_QViewScore : System.Web.UI.Page
                 // 美术
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[10] + "</td>";
+
+                //学生姓名
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                LbCompleted.Text += ((string[])(data[i]))[11] + "</td>";
                 
                 LbCompleted.Text += "</tr>";
 
