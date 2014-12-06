@@ -162,7 +162,7 @@ public partial class SchoolMaster_PlanItemAddMember : System.Web.UI.Page
             if (i.ToString().Equals(Request["PTAN"].ToString()))
             {
                 DataTable oldData = personIncharge[i];
-                oldData.Rows[0]["PlanName"] = name;
+                //oldData.Rows[0]["PlanName"] = name;
                 //oldData.Rows[0]["PlanGender"] = schoolUserData[1];
                 //oldData.Rows[0]["PlanEthnic"] = schoolUserData[2];
                 //oldData.Rows[0]["PlanCulture"] = schoolUserData[3];
