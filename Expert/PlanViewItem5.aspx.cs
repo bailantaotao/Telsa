@@ -122,7 +122,7 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
             string[] DBData = (string[])data[j];
             if ((index + 1).ToString().Equals(DBData[0]))
             {
-                personInCharge += DBData[2] + "\n";
+                personInCharge += DBData[2] + "<br/>";
             }
         }
         return personInCharge;
@@ -191,5 +191,13 @@ public partial class SchoolMaster_PlanViewItem5 : System.Web.UI.Page
         {
             Response.Redirect("../MingdeIndex.aspx");
         }
+    }
+    protected void GvSchool_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Cells[4].Text = Server.HtmlDecode(e.Row.Cells[4].Text);
+            e.Row.Cells[5].Text = Server.HtmlDecode(e.Row.Cells[5].Text);
+        } 
     }
 }

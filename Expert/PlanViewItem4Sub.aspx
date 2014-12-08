@@ -113,7 +113,7 @@
                     </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None"
+                    <asp:GridView ID="GvSchool" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderStyle="None" OnRowDataBound="GvSchool_RowDataBound"
             BorderWidth="1px" CellPadding="3" CellSpacing="2" BorderColor="#DEBA84" Width="890px">
                         <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
                         <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />

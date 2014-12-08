@@ -186,7 +186,7 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
             string[] DBData = (string[])data[j];
             if (index.ToString().Equals(DBData[0]))
             {
-                personInCharge += DBData[2] + "\n";
+                personInCharge += DBData[2] + "<br/>";
             }
         }
         return personInCharge;
@@ -300,5 +300,14 @@ public partial class SchoolMaster_PlanViewItem4Sub : System.Web.UI.Page
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../Index.aspx");
+    }
+
+    protected void GvSchool_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            e.Row.Cells[4].Text = Server.HtmlDecode(e.Row.Cells[4].Text);
+            e.Row.Cells[10].Text = Server.HtmlDecode(e.Row.Cells[10].Text);
+        }
     }
 }
