@@ -160,7 +160,7 @@
                                     <SortedDescendingHeaderStyle BackColor="#93451F" />
                                 </asp:GridView>
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                    ConnectionString="<%$ ConnectionStrings:TelsaConnectionString %>" 
+                                    ConnectionString="<%$ ConnectionStrings:SQLConStr %>"  
                                     SelectCommand="SELECT [SurveyQuestionnaireID], [SurveyQuestionnaireName], [SurveyQuestionnaireURL] FROM [SurveyQuestionnaireViewName]">
                                 </asp:SqlDataSource>
                             </td>

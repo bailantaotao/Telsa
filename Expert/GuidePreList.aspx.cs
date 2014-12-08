@@ -225,8 +225,8 @@ public partial class Expert_GuidePreList : System.Web.UI.Page
 
                 Flag++;
 
-                Session["GuideYear"] = ((string[])(data[i]))[1];
-                Session["GuideSemester"] = ((string[])(data[i]))[2];
+                //Session["GuideYear"] = ((string[])(data[i]))[1];
+                //Session["GuideSemester"] = ((string[])(data[i]))[2];
             }
             goto FINALLY;
         }

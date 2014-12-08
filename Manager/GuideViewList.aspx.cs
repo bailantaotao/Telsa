@@ -38,6 +38,23 @@ public partial class Manager_GuideViewList : System.Web.UI.Page
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
+
+        ManageSQL ms = new ManageSQL();
+        ArrayList dataSession = new ArrayList();
+        string querySession = string.Empty;
+
+        querySession = "select GuideYear,GuideSemester from GuideList where SN='" + Request["SN"].ToString() + "'";
+        ms.GetAllColumnData(querySession, dataSession);
+
+        if (dataSession.Count > 0)
+        {
+            for (int i = 0; i < dataSession.Count; i++)
+            {
+                string[] d = (string[])dataSession[i];
+                Session["GuideYear"] = d[0];
+                Session["GuideSemester"] = d[1];
+            }
+        }
     }
     protected void Page_Load(object sender, EventArgs e)
     {

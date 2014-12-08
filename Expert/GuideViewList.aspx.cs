@@ -44,6 +44,23 @@ public partial class Expert_GuideViewList : System.Web.UI.Page
             HyperLink1.Visible = false;
             img.Visible = false;
         }
+
+        ManageSQL ms = new ManageSQL();
+        ArrayList dataSession = new ArrayList();
+        string querySession = string.Empty;
+
+        querySession = "select GuideYear,GuideSemester from GuideList where SN='" + Request["SN"].ToString() + "'";
+        ms.GetAllColumnData(querySession, dataSession);
+
+        if (dataSession.Count > 0)
+        {
+            for (int i = 0; i < dataSession.Count; i++)
+            {
+                string[] d = (string[])dataSession[i];
+                Session["GuideYear"] = d[0];
+                Session["GuideSemester"] = d[1];
+            }
+        }
     }
     protected void Page_Load(object sender, EventArgs e)
     {
