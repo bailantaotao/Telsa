@@ -11,11 +11,17 @@ public partial class Stage5_MDRegulations_00 : System.Web.UI.Page
 {
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
+    protected void Page_Init(object sender, EventArgs e)
+    {
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
+            Response.Redirect("../SessionOut.aspx");
+        if (!Session["ClassCode"].ToString().Equals("1"))
+            Response.Redirect("../SessionOut.aspx");
+    }
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
-
     protected void SelectedIndexChanged(object sender, EventArgs e)
     {
         Session["SelectValue"] = DlRegulationSelect.SelectedValue;
