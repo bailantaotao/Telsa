@@ -436,7 +436,7 @@ public partial class SchoolMaster_PlanItem4Sub : System.Web.UI.Page
                 for (int j = 0; j < data.Count; j++)
                 {
                     string[] DBData = (string[])data[j];
-                    if ((i + 1).ToString().Equals(DBData[0]))
+                    if (i.ToString().Equals(DBData[0]))
                     {
                         pic.data.Add(new string[] { DBData[1], DBData[2] });
                     }
