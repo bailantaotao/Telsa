@@ -133,24 +133,24 @@
                 <div id="BlockRightDownDataDisplay">
                     <table width="750px">
                         <tr>
-                            <td width="7%" rowspan="2">问题维度</td>
-                            <td width="7%" rowspan="2">问题序号</td>
-                            <td colspan="2" width="30%">内部评估</td>
-                            <td colspan="5" width="50%">外部评估</td>
+                            <td width="7%" rowspan="2" align="center">问题维度</td>
+                            <td width="7%" rowspan="2" align="center">问题序号</td>
+                            <td colspan="2" width="30%" align="center">内部评估</td>
+                            <td colspan="5" width="50%" align="center">外部评估</td>
                         </tr>
                         <tr>
-                            <td width="15%">解决及效果</td>
-                            <td width="15%" align="left">
+                            <td width="15%" align="center">解决及效果</td>
+                            <td width="15%" align="center">
                                 未解决原因
                             </td>
-                            <td width="10%">检测者姓名</td>
-                            <td width="10%">职务及单位</td>
-                            <td width="10%">开始时间</td>
-                            <td width="10%">结束时间</td>
-                            <td width="10%">需要支持</td>
+                            <td width="10%" align="center">检测者姓名</td>
+                            <td width="10%" align="center">职务及单位</td>
+                            <td width="10%" align="center">开始时间</td>
+                            <td width="10%" align="center">结束时间</td>
+                            <td width="10%" align="center">需要支持</td>
                         </tr>
                         <tr>
-                            <td width="5%" rowspan="3">学科能力</td>
+                            <td width="5%" rowspan="3" align="center">学科能力</td>
                             <td>1</td>
                             <td>    
                                 <asp:Label ID="LbRC00" runat="server" Width="70px"></asp:Label>
@@ -223,7 +223,7 @@
                             </td>
                         </tr>
                          <tr>
-                            <td width="5%" rowspan="3">人格陶冶</td>
+                            <td width="5%" rowspan="3" align="center">人格陶冶</td>
                             <td>1</td>
                             <td>                                
                                 <asp:Label ID="LbRC30" runat="server" Width="70px"></asp:Label>
@@ -296,7 +296,7 @@
                             </td>
                         </tr>
                          <tr>
-                            <td width="5%" rowspan="3">学科能力</td>
+                            <td width="5%" rowspan="3" align="center">学校管理</td>
                             <td>1</td>
                             <td>                                
                                 <asp:Label ID="LbRC60" runat="server" Width="70px"></asp:Label>

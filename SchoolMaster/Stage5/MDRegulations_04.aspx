@@ -95,7 +95,7 @@
                 <div id="BlockRightDownDataDisplay">
                     <table align="center" >
                         <tr>
-                        <td>
+                        <td colspan="2" rowspan="5">
                         <asp:Label ID="Label1" runat="server" Text="规章制度选单:"></asp:Label>
                         <asp:DropDownList ID="DlRegulationSelect" runat="server" AutoPostBack="true"  Font-Size="14px" Width="177px" Height="30px"
                             onselectedindexchanged="SelectedIndexChanged" >
@@ -108,7 +108,30 @@
                             <asp:ListItem Value="6">安全制度</asp:ListItem>
                             <asp:ListItem Value="7">其它管理制度</asp:ListItem>
                         </asp:DropDownList>
-                          </td>
+                        </td>
+                        <td>
+                            <asp:Label ID="Label22" runat="server" Text="提示:" Font-Size="16pt" ForeColor="Red"></asp:Label>
+                        </td>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label23" runat="server" Text="1.首次点选参考范例" Font-Size="14pt" ForeColor="Purple"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label24" runat="server" Text="2.编辑成本校规章制度另存新档" Font-Size="14pt" ForeColor="Purple"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label25" runat="server" Text="3.上传为本校规章制度" Font-Size="14pt" ForeColor="Purple"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label26" runat="server" Text="4.尔后更新下载本校规章制度修改" Font-Size="14pt" ForeColor="Purple"></asp:Label>
+                            </td>
+                        </tr>
                     </tr>
                     </table>
                     <table align="center" width="700">

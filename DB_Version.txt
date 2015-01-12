@@ -1,19 +1,1 @@
 Telsa v6.0.0
-Telsa v6.0.1
-Telsa v6.0.2
-Telsa v6.0.3
-Telsa v6.0.4
-Telsa v6.0.5
-Telsa v6.0.6
-Telsa v6.0.7
-Telsa v6.0.8
-
-##########     v6.0.8     ##########
-Changed:
-	Table: PlanCalendarLeader
-	Column: [Added][nvarchar(10)] PlanCalendarPersonInCharge 
-
-##########     v6.0.8     ##########
-Changed:
-	Table: QGradeClassHistory
-	Column: [Added] Zipcode, School

@@ -29,7 +29,7 @@
                         </tr>
                         <tr>
                             <td style="width:500px; line-height:50px; text-align:left">
-                                <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipAdminEmail%>"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text="管理者Email：koutamaishi@fpg.com.tw"></asp:Label>
                             </td>
                         </tr>
                         <tr>

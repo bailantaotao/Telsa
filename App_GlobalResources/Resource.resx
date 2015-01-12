@@ -124,7 +124,7 @@
     <value>网路自学</value>
   </data>
   <data name="HyKPI" xml:space="preserve">
-    <value>學校現有發展水平</value>
+    <value>学校现有发展水平</value>
   </data>
   <data name="HyQuestionnaire" xml:space="preserve">
     <value>调查问卷管理</value>
@@ -598,7 +598,7 @@
     <value>学年</value>
   </data>
   <data name="TipKPICancelQuestionnaire" xml:space="preserve">
-    <value>開始進行問卷填寫，如放棄作答請直接點選取消即可</value>
+    <value>开始进行问卷填写，如放弃作答请直接点选取消即可</value>
   </data>
   <data name="BtnKPINotifySingleSchool" xml:space="preserve">
     <value>发送单校系统通知</value>

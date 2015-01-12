@@ -31,7 +31,7 @@ public partial class Expert_UserControlQuestionDisplay : System.Web.UI.UserContr
         if (!IsPostBack)
         {
             // 題號
-            LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". " + Resources.Resource.TipQuestion + " ";
+            LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". ";// +Resources.Resource.TipQuestion + " ";
             // 題目內容
             LbQuestion.Text = eventArgs.Question;
             // 此題分數

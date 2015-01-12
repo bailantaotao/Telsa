@@ -41,6 +41,10 @@
             margin-left:40px;
             text-align:left;
         }
+        .style1
+        {
+            height: 20px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -183,11 +187,11 @@
                     <table width="739px">
                         <thead>
                             <tr>
-                                <th width="350px">名稱</th>
-                                <th width="70px">範本</th>
-                                <th width="70px">已上傳</th>
+                                <th width="350px" class="style1">名称</th>
+                                <th width="70px" class="style1">範本</th>
+                                <th width="70px" class="style1">已上传</th>
                                 <%--<th width="50px">上傳</th>--%>
-                                <th width="50px">下載</th>
+                                <th width="50px" class="style1">下载</th>
                             </tr>
                         </thead>
                         <tr>
@@ -195,7 +199,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem1 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach1.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach1.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus1" runat="server" Text=""></asp:Label>
@@ -212,7 +216,7 @@
                                 <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem2 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach2.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach2.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus2" runat="server" Text=""></asp:Label>
@@ -229,7 +233,7 @@
                                 <asp:Label ID="Label6" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem3 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach3.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach3.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus3" runat="server" Text=""></asp:Label>
@@ -246,7 +250,7 @@
                                 <asp:Label ID="Label8" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem4 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach4.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach4.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus4" runat="server" Text=""></asp:Label>
@@ -263,7 +267,7 @@
                                 <asp:Label ID="Label10" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem5 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach5.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach5.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus5" runat="server" Text=""></asp:Label>
@@ -280,7 +284,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem6 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach6.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach6.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus6" runat="server" Text=""></asp:Label>
@@ -297,7 +301,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem7 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach7.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach7.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus7" runat="server" Text=""></asp:Label>
@@ -314,7 +318,7 @@
                                 <asp:Label ID="Label16" runat="server" Text="<%$ Resources:Resource, LkbDownloadItem8 %>"></asp:Label>
                             </td>
                             <td>
-                                <a href="../template/stage3/attach8.doc"><font color="red">參考範例</font></a>
+                                <a href="../template/stage3/attach8.doc"><font color="red">参考范例</font></a>
                             </td>
                             <td>
                                 <asp:Label ID="LbStatus8" runat="server" Text=""></asp:Label>

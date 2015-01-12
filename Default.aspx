@@ -10,6 +10,14 @@
         .auto-style1 {
             height: 32px;
         }
+        .style1
+        {
+            width: 75px;
+        }
+        .style2
+        {
+            width: 484px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(<%= backgroundImage %>) no-repeat center top;">
@@ -20,17 +28,18 @@
         <div style="height: 270px"></div>
         <table style="width: 750px; height:291px; padding-left:50px ">
             <tr style="height:auto;">
-                <td align="center" style="vertical-align: top">
-                    <table>
+                <td align="right" style="vertical-align: top">
+                    <table style="margin-right: 0px">
                         <tr>
-                            <td style="width:110px; line-height:50px">
+                            <td style="line-height:50px" class="style1">
                                 <asp:Image ID="ImgView_Account" ImageUrl="~/Image/zh-TW/TextViewBlack_Account.png" runat="server" />
                             </td>
-                            <td style="width:290px;">
+                            <td class="style2">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
                                         <asp:TextBox ID="Tb_Account" runat="server" Font-Bold="False" Font-Size="Medium" 
-                                            Font-Names="Microsoft JhengHei" OnTextChanged="Tb_Account_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                            Font-Names="Microsoft JhengHei" OnTextChanged="Tb_Account_TextChanged" 
+                                            AutoPostBack="true" Height="30px" Width="80px"></asp:TextBox>
                                         <asp:Label ID="LbUserSchool" runat="server" Text=""></asp:Label>
                                     </ContentTemplate>
                                     <Triggers>
@@ -40,22 +49,23 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:110px; line-height:50px">
+                            <td style="line-height:50px" class="style1">
                                 <asp:Image ID="Img_ViewPwd" ImageUrl="~/Image/zh-TW/TextViewBlack_Pwd.png" runat="server" />
                             </td>
-                            <td style="width:290px;">
+                            <td class="style2">
                                 <asp:TextBox ID="Tb_Pwd" runat="server" Font-Bold="False" Font-Size="Medium" 
-                                    TextMode="Password" Font-Names="Microsoft JhengHei"></asp:TextBox>
+                                    TextMode="Password" Font-Names="Microsoft JhengHei" Height="30px" 
+                                    Width="80px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:110px; line-height:50px">
+                            <td style="line-height:50px" class="style1">
                                 <asp:Image ID="Img_ViewVerify" ImageUrl="~/Image/zh-TW/TextViewBlack_Verify.png" runat="server" />
                                 <img src="VerificationCode.aspx" />
                             </td>
-                            <td style="width:290px;">
+                            <td class="style2">
                                 <asp:TextBox ID="Tb_VerificationCode" runat="server" Font-Bold="False" Font-Size="Medium" 
-                                    Font-Names="Microsoft JhengHei"></asp:TextBox>
+                                    Font-Names="Microsoft JhengHei" Height="30px" Width="80px"></asp:TextBox>
                             </td>
                         </tr>
                         <tr>

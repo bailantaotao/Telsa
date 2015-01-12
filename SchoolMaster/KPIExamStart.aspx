@@ -116,6 +116,7 @@
                     <div style="float:left; padding-left:30px">
                         <asp:Button ID="BtnStartInput" runat="server" Text="<%$ Resources:Resource, ButtonStartInput %>" Enabled="false" />
                     </div>
+                    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">

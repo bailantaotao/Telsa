@@ -113,7 +113,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1" align="left">
+                            <td colspan="2" align="left">
                                 <asp:Label ID="LbTitle" runat="server" Text=""></asp:Label>                                
                             </td>
                         </tr>

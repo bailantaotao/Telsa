@@ -23,12 +23,14 @@
         }
         #BlockRightDown {
             padding-top: 10px;
+            padding-left:25px;
         }
         #BlockRightDownController {
             height:55px;
         }
         #BlockRightDownDataDisplay {
             padding-top:50px;
+            padding-left:25px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -40,6 +42,10 @@
             line-height: 50px;
             margin-left:40px;
             text-align:left;
+        }
+        .style1
+        {
+            width: 100%;
         }
     </style>
 </head>
@@ -105,17 +111,17 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left" width="60%">
-                                &nbsp&nbsp&nbsp<asp:Label ID="LbTipTemplates" runat="server" Text="‧执行/监测报告模板(说明)" ></asp:Label>
+                            <td align="left" class="style1">
+                                <asp:Label ID="LbTipTemplates" runat="server" Text="‧执行/监测报告模板(说明)" ></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td align="left">
+                            <td align="left" class="style1">
                                <asp:Label ID="LbTemplatesContent" runat="server" ></asp:Label>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style1">
                             </td>
                             <td align="right" style="">
                                 <asp:Button ID="BtnTemplateReturn" runat="server" Text="返回上一页" 

@@ -167,7 +167,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="Label11" runat="server" Text="4.在跟蹤指導結束一周內，完成一個配有照片的總結，用於宣傳及監測評估。"></asp:Label>
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="Label11" runat="server" Text="4.在跟踪指导结束一周内，完成一个配有照片的总结，用于宣传及监测评估。"></asp:Label>
                                 </td>
                             </tr>
                         </tr>

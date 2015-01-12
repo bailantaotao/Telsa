@@ -23,6 +23,7 @@
         }
         #BlockRightDown {
             padding-top: 10px;
+            padding-left:5px;
         }
         #BlockRightDownController {
             height:55px;

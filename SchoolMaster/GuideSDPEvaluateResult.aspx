@@ -800,7 +800,7 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style23">
-                                <asp:Label ID="Label150" runat="server" Text="学校: " ></asp:Label>
+                                <asp:Label ID="Label150" runat="server" Text="学校" ></asp:Label>
                             </td>
                             <td align="center" colspan="2" rowspan="1" style="border: thin Ridge black" class="style36" 
                                 >
@@ -808,7 +808,7 @@
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style22">
-                                <asp:Label ID="Label20" runat="server" Text="专家组: " ></asp:Label>
+                                <asp:Label ID="Label20" runat="server" Text="专家组" ></asp:Label>
                             </td>
                             <td align="center" colspan="1" rowspan="1" style="border: thin Ridge black" 
                                 class="style22">
@@ -819,7 +819,7 @@
                             <td align="center" colspan="1" height="150px" style="border: thin Ridge black">
                                 <asp:Label ID="LbDescription" runat="server" Text="说明"></asp:Label>
                             </td>
-                            <td align="center" colspan="7" height="150px" style="border: thin Ridge black">
+                            <td align="left" colspan="7" height="150px" style="border: thin Ridge black">
                                 <asp:Label ID="LbDescriptionContent" runat="server" Text="评估等级A、B、C三个等级，A为好（主要为优点，虽然有一些不足，但优点多于不足），B为中（有一些主要的不足，应该引起学校的高度关注，做为下一年改进的重点），C为差（存在大量的不足，这些不足严重影响学校的发展，学校应该着手进行改变）。"></asp:Label>
                             </td>
                         </tr>

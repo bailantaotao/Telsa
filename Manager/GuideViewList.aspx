@@ -187,9 +187,19 @@
                                     Width="717px" DataSourceID="SqlDataSource2" HorizontalAlign="Center"
                                     >
                                     <Columns>
-                                        <asp:BoundField DataField="ItemNo" HeaderText="編號" SortExpression="ItemNo" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60px"/>
+                                        <asp:BoundField DataField="ItemNo" HeaderText="编号" SortExpression="ItemNo" 
+                                            ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60px">
+<HeaderStyle Width="60px"></HeaderStyle>
+
+<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
                                         <asp:BoundField DataField="GuideItemName" HeaderText="附件" 
-                                            SortExpression="GuideItemName" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="500px"/>
+                                            SortExpression="GuideItemName" HeaderStyle-HorizontalAlign="Center" 
+                                            ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="500px">
+<HeaderStyle HorizontalAlign="Center" Width="500px"></HeaderStyle>
+
+<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                        </asp:BoundField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#Eval("GuideItemUrl")%>'  Text="附件下载"></asp:HyperLink>

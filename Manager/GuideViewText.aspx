@@ -159,13 +159,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="left" >
-                               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextAction" runat="server" Text="（一）指导活动（学校发展计划）"></asp:Label> 
-                            </td>    
-                        </tr>
-                        <tr>
                             <td align="center">
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSubject" runat="server" Text="1.学科能力："></asp:Label>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSubject" runat="server" Text="（一）学科能力："></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -178,7 +173,7 @@
                         </tr>
                         <tr>
                             <td align="center">
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextPersonality" runat="server" Text="2.人格陶冶："></asp:Label>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextPersonality" runat="server" Text="（二）人格陶冶："></asp:Label>
                             </td>
                         </tr>
                         <tr>
@@ -191,7 +186,7 @@
                         </tr>
                         <tr>
                             <td align="center">
-                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSchoolManagement" runat="server" Text="3.学校管理："></asp:Label>
+                                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<asp:Label ID="LbGuideTextSchoolManagement" runat="server" Text="（三）学校管理："></asp:Label>
                             </td>
                         </tr>
                         <tr>

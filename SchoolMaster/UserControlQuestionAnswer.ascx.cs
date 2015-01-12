@@ -31,7 +31,7 @@ public partial class SchoolMaster_UserControlQuestionAnswer : System.Web.UI.User
         if (!IsPostBack)
         {
             // 題號
-            LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". " + Resources.Resource.TipQuestion + " ";
+            LbQuestionNumber.Text = (eventArgs.QuestionID + 1).ToString() + ". ";//+ Resources.Resource.TipQuestion + " ";
             // 題目內容
             LbQuestion.Text = "(" + ((eventArgs.IsSingleSelection) ? Resources.Resource.TipSingleQuestion : Resources.Resource.TipMultiQuestion) + ") " + eventArgs.Question;
 			if (eventArgs.AnswerItem.Count > 0)

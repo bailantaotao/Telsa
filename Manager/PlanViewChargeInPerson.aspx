@@ -23,8 +23,11 @@
                             Sorry, No any data.
                         </EmptyDataTemplate>
                         <Columns>
-                            <asp:BoundField DataField="PersonInCharge" HeaderText="負責人" ItemStyle-Width="150px" >
+                            <asp:BoundField DataField="PersonInCharge" HeaderText="负责人" 
+                                ItemStyle-Width="150px" >
                                 <HeaderStyle Width="150px" />
+
+<ItemStyle Width="150px"></ItemStyle>
                             </asp:BoundField>
                             <asp:BoundField DataField="SN" HeaderText="<%$ Resources:Resource, TipPlanTitle %>" ItemStyle-Width="120px" Visible="false" >
                                 <ItemStyle Width="120px"></ItemStyle>
@@ -36,6 +39,8 @@
                                 </ItemTemplate>
 
                                 <HeaderStyle Width="50px" />
+
+<ItemStyle Width="50px"></ItemStyle>
 
                             </asp:TemplateField>
                         </Columns>
