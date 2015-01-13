@@ -96,7 +96,7 @@
                     <table align="center" >
                         <tr>
                         <td colspan="2" rowspan="5">
-                        <asp:Label ID="Label1" runat="server" Text="规章制度选单:"></asp:Label>
+                        <asp:Label ID="Label66" runat="server" Text="规章制度选单:"></asp:Label>
                         <asp:DropDownList ID="DlRegulationSelect" runat="server" AutoPostBack="true"  Font-Size="14px" Width="177px" Height="30px"
                             onselectedindexchanged="SelectedIndexChanged" >
                             <asp:ListItem Selected="True" Value="0">请选择</asp:ListItem>

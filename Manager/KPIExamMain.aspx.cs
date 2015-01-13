@@ -130,7 +130,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select KPIYear from KPIRecordMain group by KPIYear order by KPIYear asc";
+        Query = "select KPIDeadline.KPIYear from KPIDeadline group by KPIYear order by KPIYear asc";
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlYear.Items.Add("None");
@@ -225,14 +225,15 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Semester, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish " +
+        Query = "select KPIDeadline.KPIYear, KPIDeadline.Semester, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish, KPIRecordMain.KPIDeadlineSN " +
                 "from KPIRecordMain " +
                 "left join Account on Account.School = KPIRecordMain.SchoolName " +
-                "left join area on Account.ZipCode = area.id ";
+                "left join area on Account.ZipCode = area.id " +
+                "left join KPIDeadline on KPIDeadline.SN = KPIRecordMain.KPIDeadlineSN ";
 
         string tmp = string.Empty;
         string[] storeParam = new string[6];
-        string[] sqlParam = new string[] { "KPIRecordMain.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIRecordMain.Semester", "KPIRecordMain.IsFinish", "area.name" };
+        string[] sqlParam = new string[] { "KPIDeadline.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIDeadline.Semester", "KPIRecordMain.IsFinish", "area.name" };
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
         storeParam[1] = DdlScoreLevel.SelectedIndex == 0 ? null : DdlScoreLevel.Items[DdlScoreLevel.SelectedIndex].ToString();
         storeParam[2] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
@@ -259,7 +260,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         if (!string.IsNullOrEmpty(tmp))
             Query += "where " + tmp;
 
-        Query += "order by KPIRecordMain.KPIYear desc ";
+        Query += "order by KPIDeadline.KPIYear desc ";
         Session["KPIExamMain"] = Query;
     }
 
@@ -336,8 +337,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
                 else
                     LbCompleted.Text += "<tr align='center'>";
 
-                string EncryptYearID = GetEncryptionString(QuestionYear, ((string[])(data[i]))[0]);
-                string EncryptCycleID = GetEncryptionString(QuestionCycle, ((string[])(data[i]))[1]);
+                string EncryptYearID = GetEncryptionString(QuestionYear, ((string[])(data[i]))[6]);
                 string EncryptSchoolname = GetEncryptionString(QuestionSchoolname, ((string[])(data[i]))[3]);
                 string EncryptScoreLevel = GetEncryptionString(QuestionScoreLevel, string.IsNullOrEmpty(((string[])(data[i]))[4]) ? "E" : ((string[])(data[i]))[4]);
                 //string EncryptClassID = GetEncryptionString(ClassID, ((string[])(data[i]))[2]);
@@ -362,7 +362,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
                 LbCompleted.Text += string.IsNullOrEmpty(((string[])(data[i]))[4]) ? "E" : ((string[])(data[i]))[4] + "</td>";
 
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += "<a href='KPIExamScoreViewDimension.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptSchoolname + "&" + EncryptScoreLevel + "'>" + Resources.Resource.TipKPIViewScore + "</a>";
+                LbCompleted.Text += "<a href='KPIExamScoreViewDimension.aspx?" + EncryptYearID + "&" + EncryptSchoolname + "&" + EncryptScoreLevel + "'>" + Resources.Resource.TipKPIViewScore + "</a>";
                 LbCompleted.Text += "</td>";
                 LbCompleted.Text += "</tr>";
 

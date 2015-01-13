@@ -144,28 +144,16 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
             return false;
         return true;
     }
-    private bool getCycle(ref int cycle, string schoolName, ref int id)
+    private bool getCycle(string schoolName, ref int id)
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         StringBuilder sb = new StringBuilder();
-        string query = "select count(*) from KPIRecordMain where Schoolname = N'" + schoolName + "' and KPIYear = '" + BaseClass.NowYear + "' and IsFinish='True'";
+        string query = "select count(*) from KPIRecordMain where Schoolname = N'" + schoolName + "' and KPIDEADLINESN = '" + Session["KPISN"].ToString() + "'";
         if (!ms.GetRowNumbers(query, sb))
             return false;
 
-        if (sb.ToString().Equals("2"))
-            return false;
-
-        int finishNumbers = Convert.ToInt32(sb.ToString());
-        if (finishNumbers == 0)
-        {
-            cycle = 1;            
-        }
-        else if (finishNumbers == 1)
-        {
-            cycle = 2;            
-        }
-        query = "select top 1 id from KPIRecordMain where Schoolname = N'" + schoolName + "' and KPIYear = '" + BaseClass.NowYear + "' and IsFinish='False' order by ID desc";
+        query = "select top 1 id from KPIRecordMain where Schoolname = N'" + schoolName + "' and KPIDEADLINESN = '" + Session["KPISN"].ToString() + "' and IsFinish='False' order by ID desc";
         if (!ms.GetAllColumnData(query, data))
             return false;
         if (data.Count == 0)
@@ -293,7 +281,6 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
         ArrayList data = new ArrayList();
         
         int KPIID = 0;
-        int cycle = 0;
         string schoolName = string.Empty;
         string query = string.Empty;
         bool status = false;
@@ -307,7 +294,7 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
         schoolName = sb.ToString();
         
         // 取得該校做了第幾次 超過2就return
-        status = getCycle(ref cycle, schoolName, ref KPIID);
+        status = getCycle(schoolName, ref KPIID);
         if(!status)
         {
             return;
@@ -317,15 +304,13 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
         if (KPIID == -1)
         {
             // 新增一筆資料到KPIRecordMain
-            query = "insert into KPIRecordMain (KPIYear, SchoolName, Semester, IsFinish, KPIDeadLineSN) VALUES ('" +
-                    BaseClass.NowYear + "',N'" +
+            query = "insert into KPIRecordMain (KPIDEADLINESN, SchoolName, IsFinish) VALUES ('" +
+                    Session["KPISN"].ToString() + "',N'" +
                     schoolName + "','" +
-                    cycle + "','" +
-                    "False','" +
-                    Session["KPISN"].ToString() + "')";
+                    "False')";
             if (!ms.WriteData(query, sb))
                 return;
-            status = getCycle(ref cycle, schoolName, ref KPIID);
+            status = getCycle(schoolName, ref KPIID);
             if (!status)
             {
                 return;

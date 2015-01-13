@@ -55,10 +55,10 @@ public partial class SchoolMaster_KPIExamScoreView : System.Web.UI.Page
         StringBuilder sb = new StringBuilder();
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
-        
-        Query = "select KPIRecordMain.KPIYear, KPIRecordMain.Semester, KPIDeadline.Deadline, KPIRecordMain.ScoreLevel, KPIRecordMain.isfinish " +
+
+        Query = "select KPIDeadline.KPIYear, KPIDeadline.Semester, KPIDeadline.Deadline, KPIRecordMain.ScoreLevel, KPIRecordMain.isfinish, KPIDeadline.SN " +
                 "from KPIRecordMain " +
-                "left join KPIDeadline on KPIRecordMain.KPIYear = KPIDeadline.KPIYear and KPIRecordMain.Semester = KPIDeadline.Semester " +
+                "left join KPIDeadline on KPIRecordMain.KPIDeadlineSN = KPIDeadline.SN " +
                 "where KPIRecordMain.SchoolName = N'" + sb.ToString() + "'";
     }
 
@@ -134,7 +134,7 @@ public partial class SchoolMaster_KPIExamScoreView : System.Web.UI.Page
                     else
                         LbCompleted.Text += "<tr align='center'>";
 
-                    string EncryptYearID = GetEncryptionString(QuestionYear, ((string[])(data[i]))[0]);
+                    string EncryptSN = GetEncryptionString(QuestionYear, ((string[])(data[i]))[5]);
                     string EncryptCycleID = GetEncryptionString(QuestionCycle, ((string[])(data[i]))[1]);
                     //string EncryptClassID = GetEncryptionString(ClassID, ((string[])(data[i]))[2]);
 
@@ -179,7 +179,7 @@ public partial class SchoolMaster_KPIExamScoreView : System.Web.UI.Page
                         //LbCompleted.Text += "</td>";
                     }
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                    LbCompleted.Text += "<a href='KPIExamScoreViewDimension.aspx?" + EncryptYearID + "&" + EncryptCycleID + "'>" + Resources.Resource.TipKPIViewScore + "</a>";
+                    LbCompleted.Text += "<a href='KPIExamScoreViewDimension.aspx?" + EncryptSN + "'>" + Resources.Resource.TipKPIViewScore + "</a>";
                     LbCompleted.Text += "</td>";
                     LbCompleted.Text += "</tr>";
 

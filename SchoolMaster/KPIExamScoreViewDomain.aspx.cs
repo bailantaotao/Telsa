@@ -13,20 +13,20 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
     private int DataPage = 0, Flag = 0, Count = 0;
     private string Query = string.Empty;
     private const string QuestionYear = "Year";
-    private const string QuestionCycle = "Cycle";
     private const string QuestionDimension = "Dimension";
     private string QuestionDomain = "Domain";
     private string Year = string.Empty;
     private string Cycle = string.Empty;
     private string Dimension = string.Empty;
     private string ClassID = "ClassID";
+    private string sn = "-1";
 
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
 
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["Year"]) || string.IsNullOrEmpty(Request["Cycle"]))
+        if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "" || string.IsNullOrEmpty(Request["Year"]))
             Response.Redirect("../SessionOut.aspx");
         if (!Session["ClassCode"].ToString().Equals("0"))
             Response.Redirect("../SessionOut.aspx");
@@ -35,8 +35,17 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Year = Request["Year"].ToString();
-        Cycle = Request["Cycle"].ToString();
+        ArrayList data = new ArrayList();
+        ManageSQL ms = new ManageSQL();
+        string query = "select KPIYear, semester from KPIDeadline where SN = '" + Request["Year"].ToString() + "'";
+        ms.GetAllColumnData(query, data);
+        sn = Request["Year"].ToString();
+        if (data.Count > 0)
+        {
+            Year = ((string[])data[0])[0];
+            Cycle = ((string[])data[0])[1];
+        }
+
         Dimension = Request["Dimension"].ToString();
         if (!IsPostBack)
         {
@@ -68,7 +77,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
     private bool getKPIMainRecordID(StringBuilder sb)
     {
         ManageSQL ms = new ManageSQL();
-        string query = "select KPIRecordMain.ID from KPIRecordMain where KPIYear = '" + Year + "' and Semester = '" + Cycle + "' and KPIRecordMain.SchoolName = N'" + Session["schoolName"].ToString() + "' ";
+        string query = "select KPIRecordMain.ID from KPIRecordMain where KPIDeadlineSN = '" + Request["Year"].ToString() + "' and KPIRecordMain.SchoolName = N'" + Session["schoolName"].ToString() + "'";
         if (!ms.GetOneData(query, sb))
             return false;
         return true;
@@ -142,8 +151,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
                 else
                     LbCompleted.Text += "<tr align='center'>";
 
-                string EncryptYearID = GetEncryptionString(QuestionYear, Year);
-                string EncryptCycleID = GetEncryptionString(QuestionCycle, Cycle);
+                string EncryptYearID = GetEncryptionString(QuestionYear, sn);
                 string EncryptDimensionID = GetEncryptionString(QuestionDimension, Dimension);
                 string EncryptDomainID = GetEncryptionString(QuestionDomain, domainid[0]);
 
@@ -158,7 +166,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                     LbCompleted.Text += "0"  + "</td>";
                     LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                    LbCompleted.Text += "<a href='KPIExamScoreViewDomainDetail.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptDimensionID + "&" + EncryptDomainID + "'>" + Resources.Resource.TipKPIView + "</a>";
+                    LbCompleted.Text += "<a href='KPIExamScoreViewDomainDetail.aspx?" + EncryptYearID + "&" + EncryptDimensionID + "&" + EncryptDomainID + "'>" + Resources.Resource.TipKPIView + "</a>";
                     LbCompleted.Text += "</td>";
                     LbCompleted.Text += "</tr>";
                     Flag++;
@@ -181,7 +189,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
                 bool isNotComplete = false;
                 isNotComplete = string.IsNullOrEmpty(((string[])(data[i]))[3]);
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += "<a href='KPIExamScoreViewDomainDetail.aspx?" + EncryptYearID + "&" + EncryptCycleID + "&" + EncryptDimensionID + "&" + EncryptDomainID + "'>" + Resources.Resource.TipKPIView + "</a>";
+                LbCompleted.Text += "<a href='KPIExamScoreViewDomainDetail.aspx?" + EncryptYearID + "&" + EncryptDimensionID + "&" + EncryptDomainID + "'>" + Resources.Resource.TipKPIView + "</a>";
                 LbCompleted.Text += "</td>";
                 //if (isNotComplete)
                 //{
@@ -234,7 +242,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
     }
     protected void BtnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("KPIExamScoreViewDimension.aspx?" + QuestionYear + "=" + Year + "&" + QuestionCycle + "=" + Cycle);        
+        Response.Redirect("KPIExamScoreViewDimension.aspx?" + QuestionYear + "=" + sn);        
     }
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {

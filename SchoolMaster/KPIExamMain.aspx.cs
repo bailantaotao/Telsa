@@ -186,7 +186,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
         ArrayList data = new ArrayList();
         getSchoolName(sb);
         string schoolName = sb.ToString();
-        string query = "select count(schoolName) from KPIRecordMain where SchoolName=N'" + schoolName + "'";
+        string query = "select count(schoolName) from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
 
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals("0"))
@@ -203,7 +203,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
             return;
         }
 
-        query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "'";
+        query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
         ms.GetOneData(query, sb);
 
         string ID = sb.ToString();
