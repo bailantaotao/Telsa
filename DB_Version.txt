@@ -7,11 +7,21 @@ Telsa v6.0.5
 Telsa v6.0.6
 Telsa v6.0.7
 Telsa v6.0.8
+Telsa v6.0.9
+
+##########     v6.0.8     ##########
+Changed
+    Table:  KPIRecordMain
+    Column: [Deleted] Year, Semester
+    Column: [Added] KPIDeadlineSN[int]
+Changed
+    Table:  KPIDeadline
+    Column: [Modified] SN, set as primary key and auto increment
 
 ##########     v6.0.8     ##########
 Changed:
 	Table: PlanCalendarLeader
-	Column: [Added][nvarchar(10)] PlanCalendarPersonInCharge 
+	Column: [Added][nvarchar(10)] PlanCalendarPersonInCharge
 
 ##########     v6.0.8     ##########
 Changed:
