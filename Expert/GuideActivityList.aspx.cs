@@ -134,7 +134,9 @@ public partial class Expert_GuideActivityList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         StringBuilder sb = new StringBuilder();
+        StringBuilder sbmember = new StringBuilder();
         string query = string.Empty;
+        string querymember = string.Empty;
 
         //get your command argument from the button here
         if (sender is Button)
@@ -160,6 +162,10 @@ public partial class Expert_GuideActivityList : System.Web.UI.Page
                 query = "delete from GuideActivity where SN='" + Session["UserGuideListSN"].ToString() + "'" +
                        "and ActivityNo=" + (Convert.ToInt32(yourAssignedValue)+1);
                 ms.WriteData(query, sb);
+
+                querymember = "delete from GuideActivityMember where SN='" + Session["UserGuideListSN"].ToString() + "'" +
+                       "and ActivityNo=" + (Convert.ToInt32(yourAssignedValue) + 1);
+                ms.WriteData(querymember, sbmember);
             }
             catch
             {
