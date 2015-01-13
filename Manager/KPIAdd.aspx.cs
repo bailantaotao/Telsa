@@ -79,6 +79,9 @@ public partial class Manager_KPIAdd : System.Web.UI.Page
                     DataTable dt = (DataTable)ViewState["dt"];
 
                     ManageSQL ms = new ManageSQL();
+                    string querydeadlineSN = "select SN from KPIDeadline where KPIYear = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][1] + "' and Semester = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][2] + "'";
+                    StringBuilder sbdeadlineSN = new StringBuilder();
+                    ms.GetOneData(querydeadlineSN, sbdeadlineSN);
                     string query = "delete from KPIDeadline where KPIYear = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][1] + "' and Semester = '" + dt.Rows[Convert.ToInt32(yourAssignedValue)][2] + "'";
                     StringBuilder sb = new StringBuilder();
                     ms.WriteData(query, sb);
@@ -88,6 +91,11 @@ public partial class Manager_KPIAdd : System.Web.UI.Page
                     {
                         dt.Rows[i][0] = (i + 1).ToString();
                     }
+
+                    
+                    string querydeletedeadline = "delete from KPIRecordMain where KPIDeadlineSN = '" + sbdeadlineSN.ToString() + "'";
+                    StringBuilder sbdeletedeadline = new StringBuilder();
+                    ms.WriteData(querydeletedeadline, sbdeletedeadline);
 
                     Response.Redirect("KPIAdd.aspx");
                     //ViewState["dt"] = dt;
