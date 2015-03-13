@@ -223,6 +223,8 @@
                                 <asp:Label ID="LbGuideResultYear" runat="server" Text="学年:" ForeColor="Blue"></asp:Label>
                                 <asp:DropDownList ID="DlGuideViewResultYear" runat="server" Width="75px">
                                     <asp:ListItem Selected="True" Value="0">请选择</asp:ListItem>
+                                    <asp:ListItem>2013</asp:ListItem>
+                                    <asp:ListItem>2014</asp:ListItem>
                                     <asp:ListItem>2015</asp:ListItem>
                                     <asp:ListItem>2016</asp:ListItem>
                                     <asp:ListItem>2017</asp:ListItem>
@@ -232,8 +234,6 @@
                                     <asp:ListItem>2021</asp:ListItem>
                                     <asp:ListItem>2022</asp:ListItem>
                                     <asp:ListItem>2023</asp:ListItem>
-                                    <asp:ListItem>2024</asp:ListItem>
-                                    <asp:ListItem>2025</asp:ListItem>
                                 </asp:DropDownList>
                                 <%-- <asp:Label ID="LbGuideViewResultYear" runat="server" Text=""></asp:Label>--%>
                             </td>

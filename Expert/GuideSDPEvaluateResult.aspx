@@ -225,21 +225,15 @@
                         <tr>
                             <td align="left" colspan="3" class="style21">
                                 <asp:Label ID="LbGuideResultYear" runat="server" Text="学年:" ForeColor="Blue"></asp:Label>
-                                &nbsp<asp:DropDownList ID="DlYear" runat="server">
-                                        <asp:ListItem Selected="True" Value="0">请选择</asp:ListItem>
-                                            <asp:ListItem>2015</asp:ListItem>
-                                            <asp:ListItem>2016</asp:ListItem>
-                                            <asp:ListItem>2017</asp:ListItem>
-                                            <asp:ListItem>2018</asp:ListItem>
-                                            <asp:ListItem>2019</asp:ListItem>
-                                            <asp:ListItem>2020</asp:ListItem>
-                                            <asp:ListItem>2021</asp:ListItem>
-                                            <asp:ListItem>2022</asp:ListItem>
-                                            <asp:ListItem>2023</asp:ListItem>
-                                            <asp:ListItem>2024</asp:ListItem>
-                                            <asp:ListItem>2025</asp:ListItem>
+                                &nbsp<asp:DropDownList ID="DlYear" runat="server" 
+                                    DataSourceID="SqlDataSource1" DataTextField="GuideSummaryYear" 
+                                    DataValueField="GuideSummaryYear">
                                 </asp:DropDownList>
                                 <asp:Label ID="LbGuideYear" runat="server" Text=""></asp:Label>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                                    ConnectionString="<%$ ConnectionStrings:SQLConStr %>"
+                                    SelectCommand="SELECT [GuideSummaryYear] FROM [GuideSummaryYearNameMapping]">
+                                </asp:SqlDataSource>
                             </td>
                             <td align="left" colspan="3">
                                 <asp:Label ID="LbGuideResultSemester" runat="server" Text="学期:" ForeColor="Blue"></asp:Label>
