@@ -136,6 +136,8 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         LbCompleted.Text = "<table style='width:700px;'>";
         LbCompleted.Text += "<tr align='center' style='background-color:#00FFFF;'>";
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+        LbCompleted.Text += Resources.Resource.TipKpiSN + "</td>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipYears + "</td>";
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipSchool + "</td>";
@@ -318,7 +320,9 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         int CompleteNumbers = 0;
         int DataCount = 0;
 
-        Count = (Select - 1) * 10;
+        int num = 1;
+
+        Count = (Select -1) * 10;
 
         if (YearCollection.Count > 0)
         {
@@ -334,8 +338,11 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                 {
                     DataCount++;
 
-                    if (Count < DataCount && DataCount < (Count + 10))
+                   
+
+                    if (Count < DataCount && DataCount <= (Count + 10))
                     {
+                        
 
                         Query = "select InternetStudy.QuestionClassID, InternetStudy.ClassID, InternetStudyUserAnswer.TotalScore " +
                                 "from InternetStudy " +
@@ -345,6 +352,8 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                                 "order by InternetStudy.ClassID desc";
 
                         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4'>";
+                        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                        LbCompleted.Text += num + "</td>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         LbCompleted.Text += entry.Key + "</td>";
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -393,6 +402,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                         UnPass = (UnPass.Length > 0) ? UnPass.Substring(0, UnPass.Length - 1) : UnPass;
                         Pass = (Pass.Length > 0) ? Pass.Substring(0, Pass.Length - 1) : Pass;
 
+                       
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         LbCompleted.Text += CompleteNumbers + " / " + CompleteBase + "</td>";
 
@@ -411,6 +421,8 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
 
                         // initialzation
                         CompleteNumbers = 0;
+
+                        num++;
                     }
                 }
 
