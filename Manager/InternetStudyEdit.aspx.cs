@@ -75,6 +75,8 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipAdd + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
             LbCompleted.Text += Resources.Resource.TipEdit + "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += Resources.Resource.TipComment + "</td>";
             LbCompleted.Text += "</tr>";
 
             LbTotalCount.Text = Resources.Resource.TipTotal + " " + data.Count.ToString() + " " + Resources.Resource.TipNumbers;
@@ -171,6 +173,10 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
                         LbCompleted.Text += "<a href='#'><img src='../Image/zh-TW/ButtonAddGary.png'></a></td>";
                     }
 
+                    LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+
+                    LbCompleted.Text += "<a href='InternetStudyComment.aspx?" + EncryptQuestionClassID + "'>" + Resources.Resource.TipComment + "</a></td>";
+
 
                     LbCompleted.Text += "</tr>";
 
@@ -180,7 +186,7 @@ public partial class Manager_InternetStudyEdit : System.Web.UI.Page
             else
             {
                 LbCompleted.Text += "<tr align='center' style='background-color:#6699FF;' colspan = '5'>";
-                LbCompleted.Text += "<td colspan = '5' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
+                LbCompleted.Text += "<td colspan = '6' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #6699FF;'>";
                 LbCompleted.Text += Resources.Resource.SMNowYearNoData + "</td>";
                 LbCompleted.Text += "</tr>";
 
