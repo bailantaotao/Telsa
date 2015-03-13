@@ -8,6 +8,7 @@ Telsa v6.0.6
 Telsa v6.0.7
 Telsa v6.0.8
 Telsa v6.0.9
+Telsa v6.1.0
 
 ##########     v6.0.8     ##########
 Changed
