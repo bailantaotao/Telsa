@@ -166,7 +166,7 @@ public partial class SchoolMaster_InternetStudyComment : System.Web.UI.Page
         Query = "insert into InternetStudyComment (" +
                 "QuestionClassID, UserID, UserComment, CommentTime ) VALUES ('" +
                 Session["QuestionClassID"].ToString() + "','" +
-                Session["UserID"].ToString() + "','" +
+                Session["UserID"].ToString() + "', N'" +
                 TbComment.Text + "','" +
                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "')";
 
