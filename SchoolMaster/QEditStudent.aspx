@@ -294,7 +294,8 @@
                         <td align="left">
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                                    <asp:DropDownList ID="DdlStudentID" runat="server" Width="80px" Font-Size="14pt" AutoPostBack="true">
+                                    <asp:DropDownList ID="DdlStudentID" runat="server" Width="80px" 
+                                        Font-Size="14pt" AutoPostBack="true">
                                     </asp:DropDownList>
                                 </ContentTemplate>
                                 <%--<Triggers>

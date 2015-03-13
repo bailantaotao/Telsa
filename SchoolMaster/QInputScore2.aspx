@@ -112,7 +112,7 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <table width="739px">
+                    <table width="751px">
                         <tr>
                             <td align="left">
                                 学校: <asp:Label ID="LbSchool" runat="server" Text=""></asp:Label>
@@ -128,7 +128,7 @@
                             </td>
                         </tr>
                     </table>
-                    <table width="739px">
+                    <table width="760px">
                         <tr>
                             <td align="left">
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="true">
@@ -186,7 +186,7 @@
                     </table>--%>
                 </div>
                 <div id="BlockRightDownDataDisplay">
-                    <table style="width: 735px">
+                    <table style="width: 750px">
                         <tr>
                             <td align="left" style="">
                                 <asp:GridView ID="gvPerson" runat="server" AutoGenerateColumns="False" BackColor="White" Width="850px"  

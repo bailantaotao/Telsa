@@ -1112,18 +1112,18 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
 
         if (!ms.GetAllColumnData(Query, data))
         {
-            DdlStudentID.Items.Add("学籍辅号");
+            DdlStudentID.Items.Add("班内学号");
             DdlStudentID.Items.Add("None");
             return;
         }
 
         if (data.Count == 0)
         {
-            DdlStudentID.Items.Add("学籍辅号");
+            DdlStudentID.Items.Add("班内学号");
             DdlStudentID.Items.Add("None");
             return;
         }
-        DdlStudentID.Items.Add("学籍辅号");
+        DdlStudentID.Items.Add("班内学号");
         foreach (string[] studetnName in data)
         {
             DdlStudentID.Items.Add(studetnName[0]);
