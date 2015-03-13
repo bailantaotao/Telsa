@@ -209,8 +209,6 @@ public partial class SchoolMaster_PlanMain : System.Web.UI.Page
     }
     protected void LkbPlanItem6_Click(object sender, EventArgs e)
     {
-        
-
         Response.Redirect("PlanItem6.aspx");
     }
     protected void LkbPlanItem7_Click(object sender, EventArgs e)

@@ -116,9 +116,7 @@
                             
                             <td align="left">
                                 <asp:Button ID="btnBack" runat="server" Text="<%$ Resources:Resource, TipPlanBack %>" OnClick="btnBack_Click1" Font-Size="14pt"/>
-                                &nbsp&nbsp&nbsp<asp:Button ID="btnSubmit" runat="server" Height="29px" Text="提交学校发展计划" 
-                                    Width="171px" Font-Size="14pt" onclick="btnSubmit_Click" />
-                            </td>
+                                &nbsp&nbsp&nbsp</td>
                         </tr>
                     </table>
                 </div>
@@ -179,6 +177,19 @@
                                 <asp:LinkButton ID="LkbPlanItem11" runat="server" Text="<%$ Resources:Resource, LkbPlanItem11 %>" OnClick="LkbPlanItem11_Click" ></asp:LinkButton>
                             </td>
                         </tr>
+                        <tr><td></td></tr>
+                        <tr>
+                            <td align="left">
+                                <asp:Button ID="btnSubmit" runat="server" Height="29px" Text="提交学校发展计划" Width="171px" Font-Size="14pt" onclick="btnSubmit_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Label ID="Label3" runat="server" Text="请确认学校发展计划所有部分及附件都已完成，确认后执行提交！" ForeColor="Red"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr><td></td></tr>
+                        <tr><td></td></tr>
                     </table>
                     <table width="739px">
                         <tr>
