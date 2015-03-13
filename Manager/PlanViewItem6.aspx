@@ -116,7 +116,6 @@
                             <td align="left" width="30%" style="padding-top:20px">
                                 <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
                                     <asp:ListItem Value="0" Selected="True">校长</asp:ListItem>
-                                    <asp:ListItem Value="1" Selected="True">副校长</asp:ListItem>
                                 </asp:RadioButtonList>
                             </td>
                             <td align="left" width="70%" style="padding-top:20px" >
