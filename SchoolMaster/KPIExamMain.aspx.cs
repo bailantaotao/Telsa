@@ -32,7 +32,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
 
             if (getCurrentKPIQSN() == MANAGER_HAVE_YET_TO_QUESTIONNAIRE)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('新学年、学期尚未开放数据录入');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('新學年、學期尚未開放數據錄入');", true);
                 DdlDimension.Visible = false;
                 DdlDomain.Visible = false;
                 Label2.Visible = false;
@@ -194,20 +194,13 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
             LbSubmitCount.Text = "0";
             return;
         }
-        
+
         query = "select IsFinish from KPIRecordMain where SchoolName=N'" + schoolName + "'";
         ms.GetOneData(query, sb);
-        if (sb.ToString().Equals("False"))
+        if (sb.ToString().Equals("false"))
         {
             LbSubmitCount.Text = "0";
             return;
-        }
-        if (sb.ToString().Equals("True"))
-        {
-            DdlDimension.Visible = false;
-            DdlDomain.Visible = false;
-            BtnStartInput.Visible = false;
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('您已填写过自我诊断分析书，请等新学期开放，谢谢');", true);
         }
 
         query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
