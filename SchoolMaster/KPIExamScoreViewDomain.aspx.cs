@@ -129,7 +129,7 @@ public partial class SchoolMaster_KPIExamScoreViewDomain : System.Web.UI.Page
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipKpiSN + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-            LbCompleted.Text += Resources.Resource.TipKPIDimensionName + "</td>";
+            LbCompleted.Text += Resources.Resource.TipKPIDomainName + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.TipKPITotalScore + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";

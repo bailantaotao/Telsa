@@ -858,4 +858,7 @@
   <data name="QStudentScoreInput" xml:space="preserve">
     <value>学生成绩输入</value>
   </data>
+  <data name="TipKPIDomainName" xml:space="preserve">
+    <value>领域名称</value>
+  </data>
 </root>
