@@ -153,7 +153,7 @@ public partial class SchoolMaster_KPIExamStart : System.Web.UI.Page
         if (!ms.GetRowNumbers(query, sb))
             return false;
 
-        query = "select top 1 id from KPIRecordMain where Schoolname = N'" + schoolName + "' and KPIDEADLINESN = '" + Session["KPISN"].ToString() + "' and IsFinish='False' order by ID desc";
+        query = "select top 1 id from KPIRecordMain where Schoolname = N'" + schoolName + "' and KPIDEADLINESN = '" + Session["KPISN"].ToString() + "' order by ID desc";
         if (!ms.GetAllColumnData(query, data))
             return false;
         if (data.Count == 0)

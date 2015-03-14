@@ -194,14 +194,16 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
             LbSubmitCount.Text = "0";
             return;
         }
+      
+        query = "select IsFinish from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
 
-        query = "select IsFinish from KPIRecordMain where SchoolName=N'" + schoolName + "'";
         ms.GetOneData(query, sb);
         if (sb.ToString().Equals("false"))
         {
             LbSubmitCount.Text = "0";
             return;
         }
+
 
         query = "select ID from KPIRecordMain where SchoolName=N'" + schoolName + "' and KPIDeadlineSN = '" + Session["KPISN"].ToString() + "'";
         ms.GetOneData(query, sb);
