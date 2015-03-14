@@ -113,7 +113,7 @@ public partial class SchoolMaster_PlanViewMain : System.Web.UI.Page
     private bool getSchoolID(StringBuilder sb)
     {
         ManageSQL ms = new ManageSQL();
-        string query = "select UserID from Account where School = '" + Request["SCHOOLNAME"].ToString() + "'";
+        string query = "select UserID from Account where School = N'" + Request["SCHOOLNAME"].ToString() + "'";
         if (!ms.GetOneData(query, sb))
             return false;
         return true;
