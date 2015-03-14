@@ -432,7 +432,7 @@ public partial class SchoolMaster_PlanItem6Sub : System.Web.UI.Page
     {
         StringBuilder sb = new StringBuilder();
         ManageSQL ms = new ManageSQL();
-        string query = "delete from PlanMasterWork where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+        string query = "delete from PlanMasterWork where SN ='" + Session["UserPlanListSN"].ToString() + "' and TitleIsSM='" + schoolMasterTitle.ToString() + "'";
         ms.WriteData(query, sb);
         sb.Clear();
         query = "insert into PlanMasterWork (SN, TitleIsSM, Name, Gender, Nation, Profession, Advantage, Problem, DevelopOpportunity, Challenge) VALUES ('" +
