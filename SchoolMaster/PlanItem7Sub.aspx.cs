@@ -427,7 +427,7 @@ public partial class SchoolMaster_PlanItem7Sub : System.Web.UI.Page
     {
         StringBuilder sb = new StringBuilder();
         ManageSQL ms = new ManageSQL();
-        string query = "delete from PlanDepartment where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+        string query = "delete from PlanDepartment where SN ='" + Session["UserPlanListSN"].ToString() + "' and DepartmentNO='" + schoolDepartmentNO.ToString() + "'";
         ms.WriteData(query, sb);
         sb.Clear();
         query = "insert into PlanDepartment (SN, DepartmentNO, PersonInCharge, Gender, Title, NumbersOfPeople, Condition) VALUES ('" +
