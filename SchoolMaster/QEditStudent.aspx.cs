@@ -913,7 +913,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         string yearSemester = DdlYear.SelectedValue + DdlSemester.SelectedValue;
 
         Query = "select QStudent" + yearSemester + ".Name, QStudent" + yearSemester + ".IdentifyID, QStudent" + yearSemester + ".GradeLevel, QStudent" + yearSemester + ".Class, QStudent" + yearSemester + ".StudentID " +
-                "from QStudent" + yearSemester + " where QStudent" + yearSemester + ".School=N'" + schoolName.ToString() + "'";                
+                "from QStudent" + yearSemester + " where QStudent" + yearSemester + ".School=N'" + schoolName.ToString() + "' ";                
 
         string tmp = string.Empty;
         string[] storeParam = new string[3];
@@ -927,15 +927,7 @@ public partial class SchoolMaster_QEditStudent : System.Web.UI.Page
         {
             if (!string.IsNullOrEmpty(storeParam[i]))
             {
-                if (string.IsNullOrEmpty(tmp))
-                {
-                    tmp += "where " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
-                }
-                else
-                {
-                    tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
-                }
-
+                tmp += "and " + sqlParam[i] + "=N'" + storeParam[i] + "' ";
             }
         }
         Query += tmp;
