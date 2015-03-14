@@ -32,7 +32,7 @@ public partial class SchoolMaster_KPIExamMain : System.Web.UI.Page
 
             if (getCurrentKPIQSN() == MANAGER_HAVE_YET_TO_QUESTIONNAIRE)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('新學年、學期尚未開放數據錄入');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('新学年、学期尚未开放数据录入');", true);
                 DdlDimension.Visible = false;
                 DdlDomain.Visible = false;
                 Label2.Visible = false;
