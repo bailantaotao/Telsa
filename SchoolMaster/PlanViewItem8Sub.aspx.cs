@@ -129,7 +129,8 @@ public partial class SchoolMaster_PlanViewItem8Sub : System.Web.UI.Page
         data.Clear();
         query = "select Target, Activity, StartTime, EndTime, FinishRate, Condition " +
                         "from PlanOrganizationList " +
-                        "where SN ='" + Session["UserPlanListSN"].ToString() + "'";
+                        "where SN ='" + Session["UserPlanListSN"].ToString() + "' and " +
+                        "OrganizationNO = '" + schoolDepartmentNO.ToString() + "'"; 
 
         ms.GetAllColumnData(query, data);
 
