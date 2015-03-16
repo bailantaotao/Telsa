@@ -52,7 +52,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         //LbSchoolName.Text = schoolName.ToString();
         //LbSchoolSN.Text = Session["UserID"].ToString();
         //LbSchoolMaster.Text = Session["UserName"].ToString();
-        //if (!IsPostBack)
+        if (!IsPostBack)
         {
             setDefault(DdlType.Province);
             setDefault(DdlType.SchoolName);
