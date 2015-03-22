@@ -128,6 +128,8 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipUnPassClass + "</td>";
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+        LbCompleted.Text += Resources.Resource.FinishDate + "</td>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipNotify + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -288,6 +290,7 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
         int CompleteBase = 10;
         int CompleteNumbers = 0;
         int DataCount = 0;
+        ArrayList data1 = new ArrayList();
 
         int num = 1;
 
@@ -378,6 +381,28 @@ public partial class Manager_InternetStudyScore : System.Web.UI.Page
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
                         LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + UnPassNumber + "</a></td>";
+
+                        if (CompleteNumbers == 10)
+                        {
+                            string QueryFinish = string.Empty;
+
+                            QueryFinish = "select max(InternetStudyUserAnswer.FinishTime) " +
+                                          "from InternetStudy " +
+                                          "left join InternetStudyUserAnswer on InternetStudyUserAnswer.QuestionClassID = InternetStudy.QuestionClassID " +
+                                          "left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                          "where InternetStudy.QuestionClassYear = '" + entry.Key + "' and Account.UserID = '" + saUserData[0] + "' ";
+                            ms.GetAllColumnData(QueryFinish, data1);
+                            if (data1.Count > 0)
+                            {
+                                string[] d = (string[])data1[0];
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                                LbCompleted.Text += d[0].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotFinish : d[0].Split(' ')[0];
+                            }
+                        }
+                        else if (CompleteNumbers != 10)
+                        {
+                            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                        }
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";

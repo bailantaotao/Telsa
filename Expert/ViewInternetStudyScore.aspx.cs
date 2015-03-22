@@ -30,7 +30,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             DdlProvince.Visible = true;
             LbProvince.Visible = false;
             IsMingDer = true;
-            LoadProvince();
+            LoadProvinceAndAttendYear();
         }
         else
         {
@@ -38,6 +38,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             LbProvince.Visible = true;
             LbProvince.Text = SearchProvince();
             IsMingDer = false;
+            LoadAttendYear();
         }
         if (!IsPostBack)
         {
@@ -68,6 +69,8 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     {
 
     }
+
+    
 
     private string SearchProvince()
     {
@@ -100,11 +103,24 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         }
         return false;
     }
-    private void LoadProvince()
+
+    private string SearchAttendYear()
+    {
+        string query = "select Year from AttendYear";
+        ManageSQL ms = new ManageSQL();
+        StringBuilder sb = new StringBuilder();
+        ms.GetOneData(query, sb);
+        return string.IsNullOrEmpty(sb.ToString()) ? "none" : sb.ToString();
+    }
+
+    private void LoadProvinceAndAttendYear()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
+        ArrayList data1 = new ArrayList();
         Query = "select area.name from area where ID <= 31 order by id asc";
+        string query = "select Year from AttendYear order by Year asc";
+
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -120,6 +136,49 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         foreach (string[] province in data)
         {
             DdlProvince.Items.Add(province[0]);
+        }
+
+        if (!ms.GetAllColumnData(query, data1))
+        {
+            DdlAttendYear.Items.Add("None");
+            return;
+        }
+
+        if (data1.Count == 0)
+        {
+            DdlAttendYear.Items.Add("None");
+            return;
+        }
+
+        foreach (string[] AttendYear in data1)
+        {
+            DdlAttendYear.Items.Add(AttendYear[0]);
+        }
+    }
+
+    private void LoadAttendYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        
+        ArrayList data1 = new ArrayList();
+        string query = "select Year from AttendYear order by Year asc";
+
+       
+        if (!ms.GetAllColumnData(query, data1))
+        {
+            DdlAttendYear.Items.Add("None");
+            return;
+        }
+
+        if (data1.Count == 0)
+        {
+            DdlAttendYear.Items.Add("None");
+            return;
+        }
+
+        foreach (string[] AttendYear in data1)
+        {
+            DdlAttendYear.Items.Add(AttendYear[0]);
         }
     }
 
@@ -150,7 +209,10 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipUnPassClass + "</td>";
         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+        LbCompleted.Text += Resources.Resource.FinishDate + "</td>";
+        LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipNotify + "</td>";
+        
         LbCompleted.Text += "</tr>";
 
         // step.1 找出目前資料庫所有已存在的問卷年分
@@ -267,7 +329,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
     private bool GetUserAnswerData(ArrayList UserData)
     {
         ManageSQL ms = new ManageSQL();
-        if (Session["ProvinceSelect"] != null && Session["ProvinceSelect"].ToString().Equals("True"))
+        if (Session["ProvinceSelect"] != null && Session["ProvinceSelect"].ToString().Equals("True") && Session["AttendYearSelect"] != null && Session["AttendYearSelect"].ToString().Equals("True"))
         {
             if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
             {
@@ -281,6 +343,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                         "left join area on area.id = Account.Zipcode " +
                         "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                        "and Account.AttendYear = '" + DdlAttendYear.SelectedValue + "' " +
                         "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, area.name";
             }
         }
@@ -296,7 +359,9 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             {
                 Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' " +
+                        "and Account.AttendYear = '" + DdlAttendYear.SelectedValue + "' " +
+                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
             }
         }
 
@@ -319,6 +384,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         int CompleteBase = 10;
         int CompleteNumbers = 0;
         int DataCount = 0;
+        ArrayList data1 = new ArrayList();
 
         int num = 1;
 
@@ -402,6 +468,8 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                         UnPass = (UnPass.Length > 0) ? UnPass.Substring(0, UnPass.Length - 1) : UnPass;
                         Pass = (Pass.Length > 0) ? Pass.Substring(0, Pass.Length - 1) : Pass;
 
+                        
+                        
                        
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         LbCompleted.Text += CompleteNumbers + " / " + CompleteBase + "</td>";
@@ -413,6 +481,28 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
                         LbCompleted.Text += "<a href='#' onclick=\"window.open('ViewScore.aspx?" + "UnPass=" + UnPass + "&SM=" + saUserData[0] + "', '檢視科目', config='height=500,width=500');\">" + UnPassNumber + "</a></td>";
+
+                        if (CompleteNumbers == 10)
+                        {
+                            string QueryFinish = string.Empty;
+
+                            QueryFinish = "select max(InternetStudyUserAnswer.FinishTime) " +
+                                          "from InternetStudy " +
+                                          "left join InternetStudyUserAnswer on InternetStudyUserAnswer.QuestionClassID = InternetStudy.QuestionClassID " +
+                                          "left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                          "where InternetStudy.QuestionClassYear = '" + entry.Key + "' and Account.UserID = '" + saUserData[0] + "' ";
+                            ms.GetAllColumnData(QueryFinish, data1);
+                            if (data1.Count > 0)
+                            {
+                                string[] d = (string[])data1[0];
+                                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                                LbCompleted.Text += d[0].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotFinish : d[0].Split(' ')[0];
+                            }
+                        }
+                        else if (CompleteNumbers != 10)
+                        {
+                            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                        }
 
                         LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                         //LbCompleted.Text += "<a href='ViewInternetStudyScore.aspx?" + "UnPass=" + UnPass + "'>" + "Click" + "</a></td>";
@@ -564,6 +654,24 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         if (Session["IsMingDer"].ToString().Equals("False"))
         {
             Response.Redirect("../ProvinceIndex.aspx");
+        }
+    }
+    protected void DdlAttendYear_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlAttendYear.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+        {
+            Session["AttendYearSelect"] = "False";
+            LbCompleted.Text = "";
+            LbTotalCount.Text = "0";
+            PageOrder.Text = "0 / 0";
+            LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
+            DdlPageSelect.Items.Clear();
+        }
+        else
+        {
+            Session["AttendYearSelect"] = "True";
+            Session["AttendYearSelectValue"] = DdlAttendYear.SelectedValue;
+            CheckSearchType();
         }
     }
 }
