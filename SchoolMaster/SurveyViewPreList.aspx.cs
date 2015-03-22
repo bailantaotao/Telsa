@@ -75,6 +75,7 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
+        ArrayList data1 = new ArrayList();
         BaseClass bc = new BaseClass();
         StringBuilder sb = new StringBuilder();
         StringBuilder sb1 = new StringBuilder();
@@ -84,6 +85,7 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
 
         string query = string.Empty;
         string query1 = string.Empty;
+        string query2 = string.Empty;
         string status = string.Empty;
 
         if (ms.GetAllColumnData(Query, data))
@@ -98,6 +100,8 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
             LbCompleted.Text += "提交有效期限" + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "完成状态" + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.FinishDay + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "</font></td>";
             LbCompleted.Text += "</tr>";
@@ -199,6 +203,16 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
                     LbCompleted.Text += "未完成" + "</td>";
                 }
 
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+
+                query2 = "select SurveySubmitTime from SurveyListUser where SurveyYear=" + ((string[])(data[i]))[1] + " and SurveySchool= N'" + schoolName.ToString() + "'";
+                ms.GetAllColumnData(query2, data1);
+                if (data1.Count > 0)
+                {
+                    string[] d = (string[])data1[0];
+                    LbCompleted.Text += d[0].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotFinish : d[0].Split(' ')[0];
+                }
+
                 if (ts.Days <= 0)
                 {
                     // 代表還沒到deadline 可填寫問卷
@@ -213,12 +227,12 @@ public partial class SchoolMaster_SurveyViewPreList : System.Web.UI.Page
                     if (userData.Count == 0)
                     {
                         // 沒有資料，代表該學校是後來才加進群組的，則提已過期
-                        LbCompleted.Text += Resources.Resource.TipPlanExpired + "</td>";
+                        //LbCompleted.Text += Resources.Resource.TipPlanExpired + "</td>";
                     }
                     else
                     {
                         // 有資料，但已經超過deadline, 故還是顯示已提交
-                        LbCompleted.Text += Resources.Resource.TipPlanSubmited + "</td>";
+                        //LbCompleted.Text += Resources.Resource.TipPlanSubmited + "</td>";
                     }
                 }
 

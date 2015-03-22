@@ -124,7 +124,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="left" width="90px">
+                            <td align="left" width="60px">
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlYear" runat="server" Width="80px" Font-Size="14pt">
@@ -135,7 +135,7 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td align="left">
+                            <td align="left" width="60px">
                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlStatus" runat="server" Width="80px" Font-Size="14pt">
@@ -149,7 +149,7 @@
                                     </Triggers>
                                 </asp:UpdatePanel>
                             </td>
-                            <td align="left">
+                            <td align="left" width="60px">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlSchoolName" runat="server" Width="150px" Font-Size="14pt">

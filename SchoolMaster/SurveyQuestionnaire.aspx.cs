@@ -359,12 +359,14 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
         StringBuilder sb4 = new StringBuilder();
         StringBuilder sb5 = new StringBuilder();
         StringBuilder sb6 = new StringBuilder();
+        StringBuilder sb7 = new StringBuilder();
 
         string query1 = string.Empty;
         string query2 = string.Empty;
         string query3 = string.Empty;
         string query4 = string.Empty;
         string query5 = string.Empty;
+        string query6 = string.Empty;
         ManageSQL ms = new ManageSQL();
 
         storeData();
@@ -378,7 +380,7 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
         query4 = "select Complete from SurveyListEnglish where Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
         ms.GetOneData(query4, sb5);
         query5 = "update SurveyListUser set SurveyStatus='True' where SN=" + Session["UserSurveyListSN"].ToString() + " and Year= " + Session["SurveyYear"].ToString() + " and School= N'" + schoolName.ToString() + "'";
-        
+        query6 = "update SurveyListUser set SurveySubmitTime= '" + DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") + "'" + "where SN=" + Session["UserSurveyListSN"].ToString() + "and SurveyYear= " + Session["SurveyYear"].ToString() + "and SurveySchool= N'" + schoolName.ToString() + "'";
 
         if (sb2.ToString() == "1")
         {
@@ -388,7 +390,8 @@ public partial class SchoolMaster_SurveyQuestionnaire : System.Web.UI.Page
                 {
                     if (sb5.ToString() == "1")
                     {
-                        ms.WriteData(query, sb6);
+                        ms.WriteData(query5, sb6);
+                        ms.WriteData(query6, sb7);
                     }
                 }
             }
