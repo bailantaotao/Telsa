@@ -87,9 +87,11 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
+        ArrayList data1 = new ArrayList();
         BaseClass bc = new BaseClass();
 
         ArrayList userData = new ArrayList();
+        string queryTime = string.Empty;
 
         if (ms.GetAllColumnData(Query, data))
         {
@@ -107,6 +109,8 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
             // -[20140906, HungTao] add function for plan complete numbers
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanStatus + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.FinishDay + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += "</font></td>";
             LbCompleted.Text += "</tr>";
@@ -277,6 +281,17 @@ public partial class SchoolMaster_PlanList : System.Web.UI.Page
                 //LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 //LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
 
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+
+                queryTime = "select PlanSubmitTime from PlanListUser "+
+                         "left join planlist on PlanListUser.PlanListSN = PlanList.SN " +
+                         "where PlanListUser.PlanListSN ='" + ((string[])(data[i]))[0] + "' and PlanList.planyear = '" + ((string[])(data[i]))[1] + "' and PlanListUser.PlanSchool=N'" + schoolName.ToString() + "'";
+                ms.GetAllColumnData(queryTime, data1);
+                if (data1.Count > 0)
+                {
+                    string[] d = (string[])data1[0];
+                    LbCompleted.Text += d[0].Contains(BaseClass.standardTimestamp) ? Resources.Resource.TipNotFinish : d[0].Split(' ')[0];
+                }
                
                 if (ts.Days <= 0)
                 {
