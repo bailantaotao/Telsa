@@ -703,7 +703,7 @@
     <value>学校发展计划观看</value>
   </data>
   <data name="TipPlanDeadline" xml:space="preserve">
-    <value>计划提交有限期限</value>
+    <value>计划提交有效期限</value>
   </data>
   <data name="TipPlanErrorData" xml:space="preserve">
     <value>错误的资料</value>
@@ -860,5 +860,26 @@
   </data>
   <data name="TipKPIDomainName" xml:space="preserve">
     <value>领域名称</value>
+  </data>
+  <data name="FinishDay" xml:space="preserve">
+    <value>提交日</value>
+  </data>
+  <data name="TipNotFinish" xml:space="preserve">
+    <value>未完成</value>
+  </data>
+  <data name="FinishDate" xml:space="preserve">
+    <value>完成日</value>
+  </data>
+  <data name="TipAttendYear" xml:space="preserve">
+    <value>项目年：</value>
+  </data>
+  <data name="TipQuestionnaireDeadline" xml:space="preserve">
+    <value>问卷提交有效期限</value>
+  </data>
+  <data name="TipQuestionnaireStatus" xml:space="preserve">
+    <value>问卷状态</value>
+  </data>
+  <data name="TipQuestionnaireYear" xml:space="preserve">
+    <value>问卷年分</value>
   </data>
 </root>
