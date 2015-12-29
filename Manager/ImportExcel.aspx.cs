@@ -60,7 +60,7 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
     public void initYear()
     {
         string year = DateTime.Now.ToString("yyyy");
-        int minYear = Convert.ToInt32(year) - 1;
+        int minYear = 2013;
         int maxYear = Convert.ToInt32(year) + 10;
         for (int i = minYear; i < maxYear; i++)
             DdlYear.Items.Add(i.ToString());
@@ -206,7 +206,7 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
             ms.GetRowNumbers(query, sb);
             if (sb.ToString().Equals("0"))
             {
-                query = "insert into Account (Shl_No, ID, UserID, Password, School, UserName, Telphone, ClassCode, Email, Zipcode) VALUES (" +
+                query = "insert into Account (Shl_No, ID, UserID, Password, School, UserName, Telphone, ClassCode, Email, Zipcode, ImportYear) VALUES (" +
                     "N'" + dt.Rows[i]["Shl_No"].ToString() + "', " +
                     "N'" + dt.Rows[i]["ID"].ToString() + "', " +
                     "N'" + dt.Rows[i]["User_ID"].ToString() + "', " +
@@ -216,7 +216,8 @@ public partial class Manager_ImportExcel : System.Web.UI.Page
                     "N'" + dt.Rows[i]["联系方式"].ToString() + "', " +
                     "N'" + "0" + "', " +
                     "N'" + dt.Rows[i]["电子邮件"].ToString() + "', " +
-                    "N'" + DdlProvince.SelectedValue + "')";
+                    "N'" + DdlProvince.SelectedValue + "', " + 
+                    "N'" + DdlYear.SelectedValue + "')";
                 ms.WriteData(query, sb);
 
                 continue;
