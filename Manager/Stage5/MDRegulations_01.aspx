@@ -44,6 +44,22 @@
         {
             border:1px solid black;
         }
+        .style1
+        {
+            width: 102px;
+        }
+        .style2
+        {
+            width: 144px;
+        }
+        .style3
+        {
+            width: 265px;
+        }
+        .style4
+        {
+            width: 2496px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../../<%= backgroundImage %>) no-repeat center top;">
@@ -95,11 +111,17 @@
                 <div id="BlockRightDownDataDisplay">
                     <table align="center" >
                         <tr>
-                            <td style="width:150px">
+                            <td class="style2">
                                 <asp:Label ID="Label23" runat="server" Text="省分:"></asp:Label>
                                 <asp:DropDownList ID="DlProvince" runat="server" AutoPostBack="True" 
                                     style="margin-right: 0px">
                                 </asp:DropDownList>
+                                       
+                            </td>
+                            <td class="style1">
+                                 <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                            Width="120px" style="margin-left: 13px">
+                                        </asp:DropDownList>
                             </td>
                             <td>
                             
@@ -110,8 +132,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="width:50px"> </td>
-                            <td align="center">
+                            <td class="style2"> </td>
+                            <td align="center" class="style1">
                             <asp:Label ID="Label1" runat="server" Text="规章制度选单:"></asp:Label>
                             <asp:DropDownList ID="DlRegulationSelect" runat="server" AutoPostBack="true"  Font-Size="14px" Width="177px" Height="30px"
                                 onselectedindexchanged="SelectedIndexChanged" >
@@ -135,8 +157,8 @@
                      <table width="739px">
                         <thead>
                             <tr>
-                                <th width="250px">名稱</th>
-                                <th width="130px">範本</th>
+                                <th class="style4">名稱</th>
+                                <th class="style3">範本</th>
                                 <%-- <th width="70px">已上傳</th>--%>
                                 <%--<th width="100px">浏览附件</th>
                                 <th width="50px">上傳</th>--%>
@@ -144,10 +166,10 @@
                             </tr>
                         </thead>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label2" runat="server" Text="“不作为党员”告诫制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/01.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -164,10 +186,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label4" runat="server" Text="公章（介绍信）使用管理制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/02.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -184,10 +206,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label6" runat="server" Text="计划和总结工作制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/03.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -204,10 +226,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label8" runat="server" Text="民主评议党员制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/04.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -224,10 +246,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label3" runat="server" Text="保密工作制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/05.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -244,10 +266,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label5" runat="server" Text="思想政治工作制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/06.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -264,10 +286,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label7" runat="server" Text="政治学习制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/07.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -284,10 +306,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label9" runat="server" Text="党内监督制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/08.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -304,10 +326,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label10" runat="server" Text="党员大会制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/09.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -324,10 +346,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label11" runat="server" Text="党员民主生活会制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/10.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -344,10 +366,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label12" runat="server" Text="党员汇报制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/11.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -364,10 +386,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label13" runat="server" Text="党员组织关系接转制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/12.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -384,10 +406,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label14" runat="server" Text="党员活动制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/13.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -404,10 +426,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label15" runat="server" Text="党员联系制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/14.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -424,10 +446,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label16" runat="server" Text="党员群众评议支部制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/15.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -444,10 +466,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label17" runat="server" Text="党费缴纳管理制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/16.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -464,10 +486,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label18" runat="server" Text="党积极分子培养教育管理制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/17.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -484,10 +506,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label19" runat="server" Text="党课制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/18.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -504,10 +526,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label20" runat="server" Text="班子民主生活会制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/19.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>
@@ -524,10 +546,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td class="style4">
                                 <asp:Label ID="Label21" runat="server" Text="请示报告制度"></asp:Label>
                             </td>
-                            <td>
+                            <td class="style3">
                                 <a href="./01/20.doc"><font color="red">參考範例</font></a>
                             </td>
                             <%--<td>

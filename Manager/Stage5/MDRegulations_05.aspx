@@ -44,6 +44,22 @@
         {
             border:1px solid black;
         }
+        .style1
+        {
+            width: 102px;
+        }
+        .style2
+        {
+            width: 144px;
+        }
+        .style3
+        {
+            width: 265px;
+        }
+        .style4
+        {
+            width: 2496px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../../<%= backgroundImage %>) no-repeat center top;">
@@ -95,11 +111,17 @@
                 <div id="BlockRightDownDataDisplay">
                     <table align="center" >
                         <tr>
-                            <td style="width:150px">
+                            <td class="style2">
                                 <asp:Label ID="Label23" runat="server" Text="省分:"></asp:Label>
                                 <asp:DropDownList ID="DlProvince" runat="server" AutoPostBack="True" 
                                     style="margin-right: 0px">
                                 </asp:DropDownList>
+                                       
+                            </td>
+                            <td class="style1">
+                                 <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                            Width="120px" style="margin-left: 13px">
+                                        </asp:DropDownList>
                             </td>
                             <td>
                             
@@ -137,8 +159,8 @@
                     <table width="739px">
                         <thead>
                             <tr>
-                                <th class="style1">名稱</th>
-                                <th width="130px">範本</th>
+                                <th class="style4">名稱</th>
+                                <th class="style3">範本</th>
                                 <%-- <th width="70px">已上傳</th>
                                 <th width="100px">浏览附件</th>
                                 <th width="50px">上傳</th>--%>
@@ -146,7 +168,7 @@
                             </tr>
                         </thead>
                         <tr>
-                            <td class="style1">
+                            <td>
                                 <asp:Label ID="Label2" runat="server" Text="先进班集体评选细则"></asp:Label>
                             </td>
                             <td>
@@ -166,7 +188,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="style2">
+                            <td>
                                 <asp:Label ID="Label4" runat="server" Text="创建文明班级实施细则"></asp:Label>
                             </td>
                             <td class="style3">
@@ -181,12 +203,12 @@
                             <td class="style3">
                                 <asp:Button ID="Button3" runat="server" Text="<%$ Resources:Resource, BtnClick %>" OnClick="btnUpload_Click" CommandArgument="2" Height="21px"/>
                             </td>--%>
-                            <td class="style3">
+                            <td>
                                 <asp:Button ID="Button4" runat="server" Text="<%$ Resources:Resource, BtnClick %>"  OnClick="ButtonDownLoad_Click"  CommandArgument="2" />
                             </td>
                         </tr>
                         <tr>
-                            <td class="style1">
+                            <td>
                                 <asp:Label ID="Label6" runat="server" Text="班主任工作细则"></asp:Label>
                             </td>
                             <td>
@@ -206,7 +228,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="style1">
+                            <td>
                                 <asp:Label ID="Label8" runat="server" Text="班主任与副班主任分工细则"></asp:Label>
                             </td>
                             <td>
@@ -226,7 +248,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="style1">
+                            <td>
                                 <asp:Label ID="Label3" runat="server" Text="班主任考核细则"></asp:Label>
                             </td>
                             <td>
@@ -246,7 +268,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="style1">
+                            <td>
                                 <asp:Label ID="Label5" runat="server" Text="教学常规管理考评细则"></asp:Label>
                             </td>
                             <td>

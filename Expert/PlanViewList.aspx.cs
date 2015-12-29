@@ -32,8 +32,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         Province,
         Year,
         SchoolName,
+        ImportYear
     }
-
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
@@ -48,15 +48,18 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         if (Session["IsMingDer"].ToString().Equals("True"))
         {
             DdlProvince.Visible = true;
+            DdlImportYear.Visible = true;
             LbProvince.Visible = false;
             IsMingDer = true;
             setDefault(DdlType.Province);
+            setDefault(DdlType.ImportYear);
             UpProvince.Visible = true;
             LbTipProvince.Visible = false;
         }
         else
         {
             DdlProvince.Visible = false;
+            DdlImportYear.Visible = false;
             LbProvince.Visible = true;
             LbProvince.Text = SearchProvince();
             IsMingDer = false;
@@ -64,7 +67,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
 
     }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         getSchoolName(schoolName);
@@ -85,7 +87,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         }
 
     }
-
     private string SearchProvince()
     {
         string query = "select Area.name from Area where Area.ID='" + Session["Province"].ToString() + "'";
@@ -94,7 +95,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         ms.GetOneData(query, sb);
         return string.IsNullOrEmpty(sb.ToString()) ? "none" : sb.ToString();
     }
-
     private void setDefault(DdlType type)
     {
         switch (type)
@@ -107,6 +107,9 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
                 break;
             case DdlType.SchoolName:
                 setSchoolName();
+                break;
+            case DdlType.ImportYear:
+                setImportYear();
                 break;
         }
     }
@@ -154,6 +157,28 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlYear.Items.Add(province[0]);
         }
     }
+    private void setImportYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select Account.ImportYear from Account where ImportYear Is Not Null group by ImportYear order by ImportYear asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+        DdlImportYear.Items.Add(Resources.Resource.DdlTypeImportYear);
+        foreach (string[] province in data)
+        {
+            DdlImportYear.Items.Add(province[0]);
+        }
+    }
     private void setSchoolName()
     {
         ManageSQL ms = new ManageSQL();
@@ -191,31 +216,32 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             DdlSchoolName.Items.Add(province[0]);
         }
     }
-    
-
-
     private void SearchType()
     {
         StringBuilder sb = new StringBuilder();
         getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select PlanList.SN, PlanList.PlanYear, PlanList.PlanDeadline, PlanListUser.PlanSchool " +
+        Query = "select PlanList.SN, Account.ImportYear, PlanList.PlanYear, PlanList.PlanDeadline, PlanListUser.PlanSchool " +
                 "from PlanList  " +
                 "left join PlanListUser on PlanListUser.PlanListSN = PlanList.SN " +
                 "left join Account on PlanListUser.PlanSchool = Account.School " +
                 "left join Area on Area.id = Account.Zipcode ";
 
         string tmp = string.Empty;
-        string[] storeParam = new string[4];
-        string[] sqlParam = new string[] { "PlanList.PlanYear", "PlanListUser.PlanSchool", "Area.name", "PlanListUser.PlanStatus"};
+        string[] storeParam = new string[5];
+        string[] sqlParam = new string[] { "PlanList.PlanYear", "Account.ImportYear", "PlanListUser.PlanSchool", "Area.name", "PlanListUser.PlanStatus" };
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
-        storeParam[1] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
-        if(IsMingDer)
-            storeParam[2] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
+        if (IsMingDer)
+            storeParam[1] = DdlImportYear.SelectedIndex == 0 ? null : DdlImportYear.Items[DdlImportYear.SelectedIndex].ToString();
         else
-            storeParam[2] = DdlProvince.SelectedIndex == -1 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
-        storeParam[3] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
+            storeParam[1] = DdlImportYear.SelectedIndex == -1 ? null : DdlImportYear.Items[DdlImportYear.SelectedIndex].ToString();
+        storeParam[2] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
+        if(IsMingDer)
+            storeParam[3] = DdlProvince.SelectedIndex == 0 ?  null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
+        else
+            storeParam[3] = DdlProvince.SelectedIndex == -1 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString();
+        storeParam[4] = DdlStatus.SelectedIndex == 0 ? null : DdlStatus.SelectedValue;
 
         for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length ); i++)
         {
@@ -260,7 +286,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         Query += "order by PlanList.PlanYear desc ";
         Session["PlanList"] = Query;
     }
-        
     private bool getSchoolName(StringBuilder sb)
     {
         ManageSQL ms = new ManageSQL();
@@ -289,6 +314,8 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipPlanSN + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanYear + "</font></td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
+            LbCompleted.Text += Resources.Resource.DdlTypeImportYear + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
             LbCompleted.Text += Resources.Resource.TipPlanSchoolName.Substring(0, Resources.Resource.TipPlanSchoolName.Length - 1) + "</font></td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'><font color='white'>";
@@ -363,7 +390,7 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
                 string EncryptSN = GetEncryptionString(SN, ((string[])(data[i]))[0]);
                 string EncryptYEAR = GetEncryptionString(YEAR, ((string[])(data[i]))[1]);
-                string EncryptSchoolName = GetEncryptionString(SCHOOLNAME, ((string[])(data[i]))[3]);
+                string EncryptSchoolName = GetEncryptionString(SCHOOLNAME, ((string[])(data[i]))[4]);
                 TimeSpan ts = TimeSpan.Zero;
                 try
                 {
@@ -389,11 +416,13 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
 
 
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                LbCompleted.Text += ((string[])(data[i]))[2] + "</td>";
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[1] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
+                LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += ((string[])(data[i]))[2].Split(' ')[0] + "</td>";
+                LbCompleted.Text += ((string[])(data[i]))[3].Split(' ')[0] + "</td>";
 
                 // +[20140906, HungTao] add function for plan complete numbers
                 string whetherDo = "select Count(PlanStatus) " +
@@ -564,7 +593,6 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             LbCompleted.Text += "</table>";
 
     }
-
     private string GetEncryptionString(string Tag, string Data)
     {
         //BaseClass bc = new BaseClass();
@@ -572,19 +600,16 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         BaseClass bc = new BaseClass();
         return (Tag + "=" + Data);
     }
-
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
         Query = Session["PlanList"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
-
     protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../Default.aspx");
     }
-
     protected void BtnSearch_Click(object sender, EventArgs e)
     {
         SearchType();
@@ -607,6 +632,13 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
     }
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_Province(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_Province(string schoolName)
+    {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         StringBuilder sb = new StringBuilder();
@@ -616,11 +648,14 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
         string Selectprovince = string.Empty;
 
         DdlSchoolName.Items.Clear();
-        if (DdlProvince.SelectedValue.Equals(Resources.Resource.DdlTypeProvince))
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
         {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
             query = "select School from Account " +
                     "left join Area on Account.zipcode = Area.id " +
                     "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() +
                     "group by School ";
         }
         else
@@ -630,7 +665,65 @@ public partial class SchoolMaster_PlanViewList : System.Web.UI.Page
             query = "select School from Account " +
                     "left join Area on Account.zipcode = Area.id " +
                     "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() + " " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                    "group by School ";
+        }
+
+        if (!ms.GetAllColumnData(query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
+    protected void DdlImportYear_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_ImportYear(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_ImportYear(string schoolName)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
+
+        string query = string.Empty;
+        string queryID = string.Empty;
+        string Selectprovince = string.Empty;
+
+        DdlSchoolName.Items.Clear();
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
                     "and Account.zipcode=" + sb.ToString() +
+                    "group by School ";
+        }
+        else
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() + " " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
                     "group by School ";
         }
         if (!ms.GetAllColumnData(query, data))

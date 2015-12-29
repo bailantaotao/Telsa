@@ -44,6 +44,10 @@
         .auto-style1 {
             height: 26px;
         }
+        .style1
+        {
+            width: 382px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -108,13 +112,17 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left" style="width:auto">
+                            <td align="left" class="style1">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipProvince %>"></asp:Label>
                                 <asp:Label ID="LbProvince" runat="server" Text=""></asp:Label>
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="true">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt" 
                                             AutoPostBack="True" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                            Font-Size="14pt" onselectedindexchanged="DdlImportYear_SelectedIndexChanged" 
+                                            Width="100px">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -136,7 +144,7 @@
 
                         </tr>
                         <tr>
-                            <td align="left" style="width:auto">
+                            <td align="left" class="style1">
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlYear" runat="server" Width="80px" Font-Size="14pt">

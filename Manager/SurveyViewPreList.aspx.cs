@@ -22,6 +22,7 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
     private const string YEAR = "YEAR";
     private const string MODIFIED = "MODIFIED";
     private const string SCHOOLNAME = "SCHOOLNAME";
+    private const string QuestionImportYear = "ImportYear";
 
     private StringBuilder schoolName = new StringBuilder();
 
@@ -32,6 +33,7 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
         Province,
         Year,
         SchoolName,
+        ImportYear
     }
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -47,13 +49,12 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        getSchoolName(schoolName);
-        
         if (!IsPostBack)
         {
-            setDefault(DdlType.SchoolName);
             setDefault(DdlType.Year);
             setDefault(DdlType.Province);
+            setDefault(DdlType.ImportYear);
+            DdlSchoolName.Items.Add(new ListItem(Resources.Resource.DdlTypeSchoolname, "0"));
             if (Session["SurveyList"] != null)
                 Query = Session["SurveyList"].ToString();
             else
@@ -74,6 +75,9 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
                 break;
             case DdlType.SchoolName:
                 setSchoolName();
+                break;
+            case DdlType.ImportYear:
+                setImportYear();
                 break;
         }
     }
@@ -131,9 +135,9 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
         string Selectprovince = string.Empty;
 
         Query = "select School from Account " +
-                    "left join Area on Account.zipcode = Area.id " +
-                    "where School not like N'%專家%' and School not like N'%管理者%' " +
-                    "group by School ";
+                "left join Area on Account.zipcode = Area.id " +
+                "where School not like N'%專家%' and School not like N'%管理者%' " +
+                "group by School ";
         
         if (!ms.GetAllColumnData(Query, data))
         {
@@ -150,6 +154,28 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
         foreach (string[] province in data)
         {
             DdlSchoolName.Items.Add(province[0]);
+        }
+    }
+    private void setImportYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select Account.ImportYear from Account where ImportYear Is Not Null group by ImportYear order by ImportYear asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+        DdlImportYear.Items.Add(Resources.Resource.DdlTypeImportYear);
+        foreach (string[] province in data)
+        {
+            DdlImportYear.Items.Add(province[0]);
         }
     }
     private void SearchType()
@@ -210,7 +236,6 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
             return false;
         return true;
     }
-
 
     private void LoadInternetStudy(int Select)
     {
@@ -509,6 +534,13 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
     }
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_Province(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_Province(string schoolName)
+    {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
         StringBuilder sb = new StringBuilder();
@@ -518,11 +550,14 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
         string Selectprovince = string.Empty;
 
         DdlSchoolName.Items.Clear();
-        if (DdlProvince.SelectedValue.Equals(Resources.Resource.DdlTypeProvince))
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
         {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
             query = "select School from Account " +
                     "left join Area on Account.zipcode = Area.id " +
                     "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() +
                     "group by School ";
         }
         else
@@ -532,7 +567,65 @@ public partial class Manager_SurveyViewPreList : System.Web.UI.Page
             query = "select School from Account " +
                     "left join Area on Account.zipcode = Area.id " +
                     "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() + " " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                    "group by School ";
+        }
+
+        if (!ms.GetAllColumnData(query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
+    protected void DdlImportYear_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_ImportYear(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_ImportYear(string schoolName)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
+
+        string query = string.Empty;
+        string queryID = string.Empty;
+        string Selectprovince = string.Empty;
+
+        DdlSchoolName.Items.Clear();
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
                     "and Account.zipcode=" + sb.ToString() +
+                    "group by School ";
+        }
+        else
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() + " " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
                     "group by School ";
         }
         if (!ms.GetAllColumnData(query, data))

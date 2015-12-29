@@ -28,18 +28,20 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         if (Session["IsMingDer"].ToString().Equals("True"))
         {
             DdlProvince.Visible = true;
+            DdlImportYear.Visible = true;
             LbProvince.Visible = false;
             IsMingDer = true;
-            LoadProvinceAndAttendYear();
+            LoadProvince();
         }
         else
         {
             DdlProvince.Visible = false;
+            DdlImportYear.Visible = false;
             LbProvince.Visible = true;
             LbProvince.Text = SearchProvince();
             IsMingDer = false;
-            LoadAttendYear();
         }
+        
         if (!IsPostBack)
         {
             if (Session["InternetStudyEditYearQuery"] != null)
@@ -64,14 +66,14 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             }
         }
     }
-
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(!IsPostBack)
+        {
+            setImportYear();
+            setOrderType();
+        }
     }
-
-    
-
     private string SearchProvince()
     {
         string query = "select area.name from area where area.id='" + Session["Province"].ToString() + "'";
@@ -94,7 +96,6 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         Query = "select InternetStudy.QuestionClassYear, Count(QuestionAddedComplete) from InternetStudy where InternetStudy.QuestionAddedComplete='true' AND " +
                 "InternetStudy.QuestionClassYear between '" + Low + "' AND '" + High + "'" + " group by QuestionClassYear";
     }
-
     private bool GetCompleteQuestionnaire(ArrayList data, ManageSQL ms)
     {
         if (ms.GetAllColumnData(Query, data))
@@ -103,24 +104,12 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         }
         return false;
     }
-
-    private string SearchAttendYear()
-    {
-        string query = "select Year from AttendYear";
-        ManageSQL ms = new ManageSQL();
-        StringBuilder sb = new StringBuilder();
-        ms.GetOneData(query, sb);
-        return string.IsNullOrEmpty(sb.ToString()) ? "none" : sb.ToString();
-    }
-
-    private void LoadProvinceAndAttendYear()
+    private void LoadProvince()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        ArrayList data1 = new ArrayList();
         Query = "select area.name from area where ID <= 31 order by id asc";
-        string query = "select Year from AttendYear order by Year asc";
-
+        
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlProvince.Items.Add("None");
@@ -138,47 +127,43 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             DdlProvince.Items.Add(province[0]);
         }
 
-        if (!ms.GetAllColumnData(query, data1))
-        {
-            DdlAttendYear.Items.Add("None");
-            return;
-        }
-
-        if (data1.Count == 0)
-        {
-            DdlAttendYear.Items.Add("None");
-            return;
-        }
-
-        foreach (string[] AttendYear in data1)
-        {
-            DdlAttendYear.Items.Add(AttendYear[0]);
-        }
+        
     }
-
-    private void LoadAttendYear()
+    private void setImportYear()
     {
         ManageSQL ms = new ManageSQL();
-        
-        ArrayList data1 = new ArrayList();
-        string query = "select Year from AttendYear order by Year asc";
-
-       
-        if (!ms.GetAllColumnData(query, data1))
+        ArrayList data = new ArrayList();
+        Query = "select Account.ImportYear from Account where ImportYear Is Not Null group by ImportYear order by ImportYear asc";
+        if (!ms.GetAllColumnData(Query, data))
         {
-            DdlAttendYear.Items.Add("None");
+            DdlImportYear.Items.Add("None");
             return;
         }
 
-        if (data1.Count == 0)
+        if (data.Count == 0)
         {
-            DdlAttendYear.Items.Add("None");
+            DdlImportYear.Items.Add("None");
             return;
         }
-
-        foreach (string[] AttendYear in data1)
+        DdlImportYear.Items.Add(Resources.Resource.DdlTypeImportYear);
+        foreach (string[] province in data)
         {
-            DdlAttendYear.Items.Add(AttendYear[0]);
+            DdlImportYear.Items.Add(province[0]);
+        }
+    }
+    private void setOrderType()
+    {
+        DdlOrderType.Items.Add("ID");
+        DdlOrderType.Items.Add("完成时间");
+    }
+    private void setTimeOrder()
+    {
+        if (DdlOrderType.SelectedValue.ToString() == "完成时间")
+        {
+            DdlTimeOrder.Items.Clear();
+            DdlTimeOrder.Items.Add(Resources.Resource.TipPlzChoose);
+            DdlTimeOrder.Items.Add("完成时间晚的优先");
+            DdlTimeOrder.Items.Add("完成时间早的优先");
         }
     }
 
@@ -262,11 +247,10 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         BaseClass bc = new BaseClass();
         return (Tag + "=" + Data);
     }
-
     private void NoData()
     {
         LbCompleted.Text += "<tr align='center' style='background-color:#B8CBD4;'>";
-        LbCompleted.Text += "<td colspan = '7' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+        LbCompleted.Text += "<td colspan = '9' style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
         LbCompleted.Text += Resources.Resource.TipQuestionnaireNotCompelet + "</td>";
         LbCompleted.Text += "</tr>";
 
@@ -325,43 +309,131 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         return true;
 
     }
-
     private bool GetUserAnswerData(ArrayList UserData)
     {
         ManageSQL ms = new ManageSQL();
-        if (Session["ProvinceSelect"] != null && Session["ProvinceSelect"].ToString().Equals("True") && Session["AttendYearSelect"] != null && Session["AttendYearSelect"].ToString().Equals("True"))
+        if (Session["IsMingDer"].ToString().Equals("True"))
         {
             if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
             {
-                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+                if (DdlTimeOrder.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+                {
+                    Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                            "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                            "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+                }
+                else if (DdlTimeOrder.SelectedValue.Equals("完成时间早的优先"))
+                {
+                    Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                            "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                            "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                            "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                            "order by temp.MaxTime asc";
+                }
+                else
+                {
+                    Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                            "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                            "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                            "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                            "order by temp.MaxTime desc";
+                }
             }
-            else
+            else if (Session["IsMingDer"].ToString().Equals("True"))
             {
-                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "left join area on area.id = Account.Zipcode " +
-                        "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
-                        "and Account.AttendYear = '" + DdlAttendYear.SelectedValue + "' " +
-                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, area.name";
+                if (DdlImportYear.SelectedValue.Equals(Resources.Resource.DdlTypeImportYear))
+                {
+                    if (DdlTimeOrder.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+                    {
+                        Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                                "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                "left join area on area.id = Account.Zipcode " +
+                                "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                                "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, area.name";
+                    }
+                    else if (DdlTimeOrder.SelectedValue.Equals("完成时间早的优先"))
+                    {
+                        Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                                "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                "left join area on area.id = Account.Zipcode " +
+                                "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                                "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                                "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                                "order by temp.MaxTime asc";
+                    }
+                    else
+                    {
+                        Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                                "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                "left join area on area.id = Account.Zipcode " +
+                                "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                                "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                                "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                                "order by temp.MaxTime desc";
+                    }
+                }
+                else
+                {
+                    if (DdlTimeOrder.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+                    {
+                        Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
+                                "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                "left join area on area.id = Account.Zipcode " +
+                                "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                                "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                                "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School, area.name";
+                    }
+                    else if (DdlTimeOrder.SelectedValue.Equals("完成时间早的优先"))
+                    {
+                        Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                                "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                "left join area on area.id = Account.Zipcode " +
+                                "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                                "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                                "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                                "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                                "order by temp.MaxTime asc";
+                    }
+                    else
+                    {
+                        Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                                "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                                "left join area on area.id = Account.Zipcode " +
+                                "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                                "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                                "where area.name like N'%" + DdlProvince.SelectedValue + "%' " +
+                                "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                                "order by temp.MaxTime asc";
+                    }
+                }
             }
         }
         else
         {
-            if (IsMingDer)
-            {
-                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
-                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
-                        "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
-            }
-            else
+            if (DdlTimeOrder.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
             {
                 Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School " +
                         "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
                         "where Account.ZipCode = '" + Session["Province"].ToString() + "' " +
-                        "and Account.AttendYear = '" + DdlAttendYear.SelectedValue + "' " +
                         "group by InternetStudyUserAnswer.UserID, Account.UserName, Account.School";
+            }
+            else if (DdlTimeOrder.SelectedValue.Equals("完成时间早的优先"))
+            {
+                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                        "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                        "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' " +
+                        "order by temp.MaxTime asc";
+            }
+            else
+            {
+                Query = "select InternetStudyUserAnswer.UserID, Account.UserName, Account.School, InternetStudyUserAnswer.FinishTime " +
+                        "from InternetStudyUserAnswer left join Account on Account.UserID = InternetStudyUserAnswer.UserID " +
+                        "join (select InternetStudyUserAnswer.UserID, max(InternetStudyUserAnswer.FinishTime) as MaxTime from InternetStudyUserAnswer group by InternetStudyUserAnswer.UserID) " +
+                        "as temp on InternetStudyUserAnswer.FinishTime in (temp.MaxTime) " +
+                        "where Account.ZipCode = '" + Session["Province"].ToString() + "' " +
+                        "order by temp.MaxTime desc";
             }
         }
 
@@ -377,7 +449,6 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         }
         return true;
     }
-
     private bool ListData(Hashtable YearCollection, ArrayList UserData, int Select)
     {
         ManageSQL ms = new ManageSQL();
@@ -545,7 +616,6 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
 
         return true;
     }
-
     private int GetUserMaxScore(ArrayList UserAnswerTable, String QuestionnireID)
     {
         int MaxScore = -1;
@@ -560,7 +630,6 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         }
         return MaxScore;
     }
-
     private void CheckSearchType()
     {
         BaseClass bc = new BaseClass();
@@ -599,7 +668,6 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         TbYearA.Text = "";
         TbYearB.Text = "";
     }
-
     protected void ImgBtnSearch_Click(object sender, ImageClickEventArgs e)
     {
         ImageButton ibt = (ImageButton)sender;
@@ -607,20 +675,17 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
         {
             CheckSearchType();
         }
-    }
-    
+    }    
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         Query = Session["InternetStudyEditYearQuery"].ToString();
         Session["InternetStudyEditDataPage"] = DdlPageSelect.SelectedIndex + 1;
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
-    }
-	
+    }	
 	protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../Default.aspx");
-    }
-	
+    }	
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
@@ -631,6 +696,7 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             PageOrder.Text = "0 / 0";
             LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
             DdlPageSelect.Items.Clear();
+            CheckSearchType();
         }
         else
         {
@@ -656,22 +722,33 @@ public partial class Expert_ViewInternetStudyScore : System.Web.UI.Page
             Response.Redirect("../ProvinceIndex.aspx");
         }
     }
-    protected void DdlAttendYear_SelectedIndexChanged(object sender, EventArgs e)
+    protected void DdlImportYear_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (DdlAttendYear.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
+        if (DdlProvince.SelectedValue.Equals(Resources.Resource.TipPlzChoose))
         {
-            Session["AttendYearSelect"] = "False";
+            Session["ProvinceSelect"] = "False";
             LbCompleted.Text = "";
             LbTotalCount.Text = "0";
             PageOrder.Text = "0 / 0";
-            LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers; ;
+            LbTotalCount.Text = Resources.Resource.TipTotal + " 0 " + Resources.Resource.TipNumbers;
             DdlPageSelect.Items.Clear();
+            CheckSearchType();
         }
         else
         {
-            Session["AttendYearSelect"] = "True";
-            Session["AttendYearSelectValue"] = DdlAttendYear.SelectedValue;
+            Session["ProvinceSelect"] = "True";
+            Session["ProvinceSelectValue"] = DdlProvince.SelectedValue;
             CheckSearchType();
         }
+    }
+    protected void DdlOrderType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DdlTimeOrder.Items.Clear();
+        DdlTimeOrder.Items.Add(Resources.Resource.TipPlzChoose);
+        setTimeOrder();
+    }
+    protected void DdlTimeOrder_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        CheckSearchType();
     }
 }

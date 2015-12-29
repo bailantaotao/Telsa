@@ -44,6 +44,22 @@
         {
             border:1px solid black;
         }
+        .style1
+        {
+            width: 102px;
+        }
+        .style2
+        {
+            width: 144px;
+        }
+        .style3
+        {
+            width: 265px;
+        }
+        .style4
+        {
+            width: 2496px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../../<%= backgroundImage %>) no-repeat center top;">
@@ -94,19 +110,22 @@
             <div id="BlockRightDown">
                 <div id="BlockRightDownDataDisplay">
                     <table align="center" >
-                    <tr>
-                            <td style="width:150px">
+                        <tr>
+                            <td class="style2">
                                 <asp:Label ID="Label23" runat="server" Text="省分:"></asp:Label>
                                 <asp:DropDownList ID="DlProvince" runat="server" AutoPostBack="True" 
                                     style="margin-right: 0px">
                                 </asp:DropDownList>
                             </td>
+                            <td class="style1">
+                                <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                    Width="120px" style="margin-left: 13px">
+                                </asp:DropDownList>
+                            </td>
                             <td>
-                            
                                 <asp:Label ID="Label22" runat="server" Text="欲观看学校:"></asp:Label>
                                 <asp:DropDownList ID="DlTargetSchool" runat="server" Width="300px">
                                 </asp:DropDownList>
-                            
                             </td>
                         </tr>
                         <tr>
@@ -136,8 +155,8 @@
                     <table width="739px">
                         <thead>
                             <tr>
-                                <th width="250px">名稱</th>
-                                <th width="130px">範本</th>
+                                <th class="style4">名稱</th>
+                                <th class="style3">範本</th>
                                 <%-- <th width="70px">已上傳</th>
                                 <th width="100px">浏览附件</th>
                                 <th width="50px">上傳</th>--%>

@@ -25,10 +25,10 @@
             padding-top: 10px;
         }
         #BlockRightDownController {
-            height:55px;
+            height:70px;
         }
         #BlockRightDownDataDisplay {
-        
+            padding-top: 100px;
         }
         #BlockRightDownDataPageSelect{
             width:50%;
@@ -102,43 +102,72 @@
             </div>
             <div id="BlockRightDown">
                 <div id="BlockRightDownController">
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 30px">
-                        <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipProvince %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 0px">
-                        <asp:DropDownList ID="DdlProvince" runat="server" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged" AutoPostBack="true">
-                            <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
-                        </asp:DropDownList>
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 30px">
-                        <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipYear %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px;">
-                        <asp:UpdatePanel ID="UpdateCNo" runat="server">
-                            <ContentTemplate>
-                                <asp:TextBox ID="TbYearA" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
-                            </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
-                            </Triggers>
-                        </asp:UpdatePanel>
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px;">
-                        ~
-                    </div>
-                    <div style="text-align:center; height:55px; float: left;  line-height:55px;">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                                <asp:TextBox ID="TbYearB" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
-                            </contenttemplate>
-                            <triggers>
-                                <asp:asyncpostbacktrigger controlid="imgbtnsearch" eventname="click" />
-                            </triggers>
-                        </asp:updatepanel>                        
-                    </div>
-                    <div style="text-align:center; width: auto; height:55px; float: left;  line-height:55px; vertical-align:middle; padding-left:15px; padding-top:10px">
-                        <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
-                    </div>
+                    <table style="width: 735px">
+                        <tr>
+                            <td>
+                                <div style="text-align:center; height:55px; float: left;  line-height:55px;">
+                                    <asp:Label ID="Label4" runat="server" Text="<%$ Resources:Resource, TipProvince %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
+                                </div>
+                                <div style="text-align:center; height:55px; float: left;  line-height:55px; margin-left: 0px">
+                                    <asp:DropDownList ID="DdlProvince" runat="server" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged" AutoPostBack="true">
+                                        <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" Font-Size="10pt"  
+                                                      Width="100px" 
+                                        onselectedindexchanged="DdlImportYear_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                </div>
+                            <td>
+                        </tr>
+                        <tr> 
+                            <td>   
+                                <div>
+                                    <asp:Label ID="Label5" runat="server" Text="<%$ Resources:Resource, TipOrder %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
+                                    <asp:DropDownList ID="DdlOrderType" runat="server" AutoPostBack="true" 
+                                        onselectedindexchanged="DdlOrderType_SelectedIndexChanged">
+                                        <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:DropDownList ID="DdlTimeOrder" runat="server" AutoPostBack="true" 
+                                        onselectedindexchanged="DdlTimeOrder_SelectedIndexChanged">
+                                        <asp:ListItem Text="<%$ Resources:Resource, TipPlzChoose %>"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="text-align:center; height:55px; float: left;  line-height:55px; ">
+                                    <asp:Label ID="Label2" runat="server" Text="<%$ Resources:Resource, TipYear %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"></asp:Label>
+                                </div>
+                                <div style="text-align:center; height:55px; float: left;  line-height:55px;">
+                                    <asp:UpdatePanel ID="UpdateCNo" runat="server">
+                                        <ContentTemplate>
+                                            <asp:TextBox ID="TbYearA" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
+                                        </ContentTemplate>
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
+                                        </Triggers>
+                                    </asp:UpdatePanel>
+                                </div>
+                                <div style="text-align:center; height:55px; float: left;  line-height:55px;">
+                                    ~
+                                </div>
+                                <div style="text-align:center; height:55px; float: left;  line-height:55px;">
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                        <ContentTemplate>
+                                            <asp:TextBox ID="TbYearB" runat="server" Width="70px" MaxLength="4"></asp:TextBox>
+                                        </contenttemplate>
+                                        <triggers>
+                                            <asp:asyncpostbacktrigger controlid="imgbtnsearch" eventname="click" />
+                                        </triggers>
+                                    </asp:updatepanel>                        
+                                </div>
+                                <div style="text-align:center; width: auto; height:55px; float: left;  line-height:55px; vertical-align:middle; padding-left:5px; padding-top:10px">
+                                    <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">

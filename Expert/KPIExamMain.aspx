@@ -103,7 +103,11 @@
                                 <asp:Label ID="LbProvince" runat="server" Text=""></asp:Label>
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="false">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlProvince" runat="server" AutoPostBack="true" Width="120px"></asp:DropDownList>
+                                        <asp:DropDownList ID="DdlProvince" runat="server" AutoPostBack="true" 
+                                            Width="120px" onselectedindexchanged="DdlProvince_SelectedIndexChanged1"></asp:DropDownList>
+                                        <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                            onselectedindexchanged="DdlImportYear_SelectedIndexChanged" Width="120px">
+                                        </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ImgBtnSearch" EventName="Click" />
@@ -170,10 +174,7 @@
                                 <asp:ImageButton ID="ImgBtnSearch" runat="server" OnClick="ImgBtnSearch_Click" ImageUrl="<%$ Resources:Resource, ImgUrlSearch %>"/>
                             </td>
                         </tr>
-                        <tr>
-                          
-                        </tr>
-                    </table>
+                        </table>
                 </div>
                 <div id="BlockRightDownDataDisplay">
                     <table style="width: 735px">

@@ -19,12 +19,14 @@ public partial class Stage5_MDRegulations_03 : System.Web.UI.Page
     private string ProvinceQuery = string.Empty;
     private string TargetSchool = string.Empty;
     private string Province = string.Empty;
+    private string ImportYear = string.Empty;
     private string ProvinceState = string.Empty;
 
     private enum DdlType
     {
         SchoolName,
         Province,
+        ImportYear,
     }
     private void setDefault(DdlType type)
     {
@@ -36,17 +38,32 @@ public partial class Stage5_MDRegulations_03 : System.Web.UI.Page
             case DdlType.Province:
                 setProvince();
                 break;
+            case DdlType.ImportYear:
+                setImportYear();
+                break;
         }
     }
     private void setSchoolName()
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select School from Account " +
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            Query = "select School from Account " +
                     "left join Area on Account.zipcode = Area.ID " +
                     "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%' " +
                     "and Area.ID =" + Province.ToString() +
                     "group by School ";
+        }
+        else if (DdlImportYear.SelectedValue.ToString() != Resources.Resource.DdlTypeImportYear)
+        {
+            Query = "select School from Account " +
+                        "left join Area on Account.zipcode = Area.ID " +
+                        "where School not like N'%專家%' and School not like N'%专家%' and School not like N'%管理者%' " +
+                        "and Area.ID =" + Province.ToString() +
+                        "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() +
+                        "group by School ";
+        }
 
         if (!ms.GetAllColumnData(Query, data))
         {
@@ -90,6 +107,28 @@ public partial class Stage5_MDRegulations_03 : System.Web.UI.Page
             DlProvince.Items.Add(province[0]);
         }
     }
+    private void setImportYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select Account.ImportYear from Account where ImportYear Is Not Null group by ImportYear order by ImportYear asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+        DdlImportYear.Items.Add(Resources.Resource.DdlTypeImportYear);
+        foreach (string[] province in data)
+        {
+            DdlImportYear.Items.Add(province[0]);
+        }
+    }
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
@@ -97,6 +136,7 @@ public partial class Stage5_MDRegulations_03 : System.Web.UI.Page
         if (!Session["ClassCode"].ToString().Equals("2"))
             Response.Redirect("../SessionOut.aspx");
         setDefault(DdlType.Province);
+        setDefault(DdlType.ImportYear);
         DlTargetSchool.Items.Add(Resources.Resource.DdlTypeSchoolname);
     }
     protected void Page_Load(object sender, EventArgs e)

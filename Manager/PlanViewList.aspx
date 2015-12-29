@@ -91,7 +91,7 @@
                 </div>
                 <div style="text-align:center; width: auto; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="true" ForeColor="Red" Text="<%$ Resources:Resource, TipPlanDataView %>" Font-Size="<%$ Resources:Resource, TextSizeTitle %>"
-                         NavigateUrl="PlanList.aspx"></asp:HyperLink>
+                         NavigateUrl="PlanViewList.aspx"></asp:HyperLink>
                 </div>
                 <div style="text-align:center; width: 14px; height:39px; float: left;  line-height:39px; vertical-align:middle; padding-left:15px;">
                     <img src="../Image/zh-TW/TipBlack.png" />
@@ -110,6 +110,9 @@
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt" 
                                             AutoPostBack="True" onselectedindexchanged="DdlProvince_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" Font-Size="14pt"
+                                            Width="100px" onselectedindexchanged="DdlImportYear_SelectedIndexChanged">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -149,7 +152,7 @@
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px" Font-Size="14pt">
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="150px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>

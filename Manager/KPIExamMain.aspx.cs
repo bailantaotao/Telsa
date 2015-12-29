@@ -22,6 +22,7 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
 
     private const string QuestionYear = "Year";
     private const string QuestionCycle = "Cycle";
+    private const string QuestionImportYear = "ImportYear";
 
 
     public string backgroundImage = Resources.Resource.ImgUrlBackground;
@@ -33,9 +34,9 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         ScoreLevel,
         SchoolName,
         Cycle,
-        State
+        State,
+        ImportYear
     }
-
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
@@ -48,21 +49,18 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         LbProvince.Visible = false;
         LbTipProvince.Visible = false;
         UpProvince.Visible = true;
-        IsMingDer = true;
-        setDefault(DdlType.Province);
-
-
-        setDefault(DdlType.Cycle);
-        setDefault(DdlType.SchoolName);
-        setDefault(DdlType.ScoreLevel);
-        setDefault(DdlType.Year);
-        setDefault(DdlType.State);
     }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
+            setDefault(DdlType.Province);
+            setDefault(DdlType.Cycle);
+            setDefault(DdlType.ScoreLevel);
+            setDefault(DdlType.Year);
+            setDefault(DdlType.State);
+            setDefault(DdlType.ImportYear);
+            DdlSchoolName.Items.Add(new ListItem(Resources.Resource.DdlTypeSchoolname, "0"));
             if (Session["KPIExamMain"] != null)
                 Query = Session["KPIExamMain"].ToString();
             else
@@ -70,7 +68,6 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
             LoadInternetStudy(1);
         }
     }
-
     private string SearchProvince()
     {
         string query = "select area.name from area where area.id='" + Session["Province"].ToString() + "'";
@@ -79,13 +76,12 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         ms.GetOneData(query, sb);
         return string.IsNullOrEmpty(sb.ToString()) ? "none" : sb.ToString();
     }
-
     private void setDefault(DdlType type)
     {
         switch (type)
         {
             case DdlType.Province:
-                setProvince();
+                setProvince(); 
                 break;
             case DdlType.Year:
                 setYear();
@@ -101,6 +97,9 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
                 break;
             case DdlType.State:
                 setState();
+                break;
+            case DdlType.ImportYear:
+                setImportYear();
                 break;
         }
     }
@@ -148,6 +147,28 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
             DdlYear.Items.Add(province[0]);
         }
     }
+    private void setImportYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select Account.ImportYear from Account where ImportYear Is Not Null group by ImportYear order by ImportYear asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+        DdlImportYear.Items.Add(Resources.Resource.DdlTypeImportYear);
+        foreach (string[] province in data)
+        {
+            DdlImportYear.Items.Add(province[0]);
+        }
+    }
     private void setScoreLevel()
     {
         ManageSQL ms = new ManageSQL();
@@ -174,7 +195,16 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
     {
         ManageSQL ms = new ManageSQL();
         ArrayList data = new ArrayList();
-        Query = "select School from Account group by School";
+        StringBuilder sb = new StringBuilder();
+
+        string query = string.Empty;
+        string Selectprovince = string.Empty;
+
+        Query = "select School from Account " +
+                "left join Area on Account.zipcode = Area.id " +
+                "where School not like N'%專家%' and School not like N'%管理者%' " +
+                "group by School ";
+
         if (!ms.GetAllColumnData(Query, data))
         {
             DdlSchoolName.Items.Add("None");
@@ -203,43 +233,41 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
     }
     private void setState()
     {
-        
         DdlQuestionnaireState.Items.Add(Resources.Resource.DdlTypeState);
         DdlQuestionnaireState.Items.Add(new ListItem(Resources.Resource.TipKPIStateFinish, "True"));
         DdlQuestionnaireState.Items.Add(new ListItem(Resources.Resource.TipKPIStateUnFinish, "False"));
     }
-
-
-    private bool getSchoolName(StringBuilder sb)
-    {
-        ManageSQL ms = new ManageSQL();
-        string query = "select school from Account where UserID = '" + Session["UserID"].ToString() + "'";
-        if (!ms.GetOneData(query, sb))
-            return false;
-        return true;
-    }
+    //private bool getSchoolName(StringBuilder sb)
+    //{
+    //    ManageSQL ms = new ManageSQL();
+    //    string query = "select school from Account where UserID = '" + Session["UserID"].ToString() + "'";
+    //    if (!ms.GetOneData(query, sb))
+    //        return false;
+    //    return true;
+    //}
 
     private void SearchType()
     {
         StringBuilder sb = new StringBuilder();
-        getSchoolName(sb);
+        //getSchoolName(sb);
         Session["SchoolName"] = sb.ToString();
 
-        Query = "select KPIDeadline.KPIYear, KPIDeadline.Semester, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish, KPIRecordMain.KPIDeadlineSN " +
+        Query = "select KPIDeadline.KPIYear, Account.ImportYear, KPIDeadline.Semester, area.name, Account.School, KPIRecordMain.ScoreLevel , KPIRecordMain.IsFinish, KPIRecordMain.KPIDeadlineSN " +
                 "from KPIRecordMain " +
                 "left join Account on Account.School = KPIRecordMain.SchoolName " +
                 "left join area on Account.ZipCode = area.id " +
                 "left join KPIDeadline on KPIDeadline.SN = KPIRecordMain.KPIDeadlineSN ";
 
         string tmp = string.Empty;
-        string[] storeParam = new string[6];
-        string[] sqlParam = new string[] { "KPIDeadline.KPIYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIDeadline.Semester", "KPIRecordMain.IsFinish", "area.name" };
+        string[] storeParam = new string[7];
+        string[] sqlParam = new string[] { "KPIDeadline.KPIYear", "Account.ImportYear", "KPIRecordMain.ScoreLevel", "Account.School", "KPIDeadline.Semester", "KPIRecordMain.IsFinish", "area.name" };
         storeParam[0] = DdlYear.SelectedIndex == 0 ? null : DdlYear.Items[DdlYear.SelectedIndex].ToString();
-        storeParam[1] = DdlScoreLevel.SelectedIndex == 0 ? null : DdlScoreLevel.Items[DdlScoreLevel.SelectedIndex].ToString();
-        storeParam[2] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
-        storeParam[3] = DdlCycle.SelectedIndex == 0 ? null : DdlCycle.Items[DdlCycle.SelectedIndex].ToString();
-        storeParam[4] = DdlQuestionnaireState.SelectedIndex == 0 ? null : ((DdlQuestionnaireState.SelectedValue == "True") ? "True" : "False");
-        storeParam[5] = DdlProvince.SelectedIndex == -1 ? null : (DdlProvince.SelectedIndex == 0 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString());        
+        storeParam[1] = DdlImportYear.SelectedIndex == 0 ? null : DdlImportYear.Items[DdlImportYear.SelectedIndex].ToString();
+        storeParam[2] = DdlScoreLevel.SelectedIndex == 0 ? null : DdlScoreLevel.Items[DdlScoreLevel.SelectedIndex].ToString();
+        storeParam[3] = DdlSchoolName.SelectedIndex == 0 ? null : DdlSchoolName.Items[DdlSchoolName.SelectedIndex].ToString();
+        storeParam[4] = DdlCycle.SelectedIndex == 0 ? null : DdlCycle.Items[DdlCycle.SelectedIndex].ToString();
+        storeParam[5] = DdlQuestionnaireState.SelectedIndex == 0 ? null : ((DdlQuestionnaireState.SelectedValue == "True") ? "True" : "False");
+        storeParam[6] = DdlProvince.SelectedIndex == -1 ? null : (DdlProvince.SelectedIndex == 0 ? null : DdlProvince.Items[DdlProvince.SelectedIndex].ToString());        
 
         for (int i = 0; i < (IsMingDer ? storeParam.Length : storeParam.Length - 1); i++)
         {
@@ -263,7 +291,6 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         Query += "order by KPIDeadline.KPIYear desc ";
         Session["KPIExamMain"] = Query;
     }
-
     private void LoadInternetStudy(int Select)
     {
         ManageSQL ms = new ManageSQL();
@@ -278,6 +305,8 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
             LbCompleted.Text += Resources.Resource.TipKpiSN + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.DdlTypeYear + "</td>";
+            LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+            LbCompleted.Text += Resources.Resource.DdlTypeImportYear + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
             LbCompleted.Text += Resources.Resource.DdlTypeCycle + "</td>";
             LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
@@ -357,9 +386,11 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
                 LbCompleted.Text += ((string[])(data[i]))[2] + "</td>";
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += ((string[])(data[i]))[3] + "</td>";
-
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
-                LbCompleted.Text += string.IsNullOrEmpty(((string[])(data[i]))[4]) ? "E" : ((string[])(data[i]))[4] + "</td>";
+                LbCompleted.Text += ((string[])(data[i]))[4] + "</td>";
+               
+                LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
+                LbCompleted.Text += string.IsNullOrEmpty(((string[])(data[i]))[5]) ? "E" : ((string[])(data[i]))[5] + "</td>";
 
                 LbCompleted.Text += "<td style='border-bottom-style: solid; border-bottom-width: thin; border-bottom-color: #00FFFF;'>";
                 LbCompleted.Text += "<a href='KPIExamScoreViewDimension.aspx?" + EncryptYearID + "&" + EncryptSchoolname + "&" + EncryptScoreLevel + "'>" + Resources.Resource.TipKPIViewScore + "</a>";
@@ -383,7 +414,6 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
             LbCompleted.Text += "</table>";
 
     }
-
     private string GetEncryptionString(string Tag, string Data)
     {
         //BaseClass bc = new BaseClass();
@@ -391,14 +421,12 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
         BaseClass bc = new BaseClass();
         return (Tag + "=" + Data);
     }
-
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
         Query = Session["KPIExamMain"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
-
     protected void ImgBtnSearch_Click(object sender, ImageClickEventArgs e)
     {
         ImageButton ibt = (ImageButton)sender;
@@ -419,5 +447,118 @@ public partial class Manager_KPIExamMain : System.Web.UI.Page
     protected void ImgBtnIndex_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../SystemManagerIndex.aspx");
+    }
+    protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_Province(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_Province(string schoolName)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
+
+        string query = string.Empty;
+        string queryID = string.Empty;
+        string Selectprovince = string.Empty;
+
+        DdlSchoolName.Items.Clear();
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() +
+                    "group by School ";
+        }
+        else
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() + " " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                    "group by School ";
+        }
+
+        if (!ms.GetAllColumnData(query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
+    protected void DdlImportYear_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_ImportYear(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_ImportYear(string schoolName)
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        StringBuilder sb = new StringBuilder();
+
+        string query = string.Empty;
+        string queryID = string.Empty;
+        string Selectprovince = string.Empty;
+
+        DdlSchoolName.Items.Clear();
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() +
+                    "group by School ";
+        }
+        else
+        {
+            queryID = "select ID from Area where Name= N'" + DdlProvince.SelectedValue.ToString() + "'";
+            ms.GetOneData(queryID, sb);
+            query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.id " +
+                    "where School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.zipcode=" + sb.ToString() + " " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                    "group by School ";
+        }
+        if (!ms.GetAllColumnData(query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
     }
 }

@@ -22,6 +22,7 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
     private const string YEAR = "YEAR";
     private const string SEMESTER = "SEMESTER";
     private const string SCHOOLNAME = "SCHOOLNAME";
+    private const string QuestionImportYear = "ImportYear";
 
     private StringBuilder schoolName = new StringBuilder();
 
@@ -34,8 +35,8 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         Province,
         Year,
         SchoolName,
+        ImportYear
     }
-
     protected void Page_Init(object sender, EventArgs e)
     {
         if (Session.Count == 0 || Session["UserName"].ToString() == "" || Session["UserID"].ToString() == "" || Session["ClassCode"].ToString() == "")
@@ -46,15 +47,18 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         if (Session["IsMingDer"].ToString().Equals("True"))
         {
             DdlProvince.Visible = true;
+            DdlImportYear.Visible = true;
             LbProvince.Visible = false;
             IsMingDer = true;
             setDefault(DdlType.Province);
+            setDefault(DdlType.ImportYear);
             UpProvince.Visible = true;
             LbTipProvince.Visible = false;
         }
         else
         {
             DdlProvince.Visible = false;
+            DdlImportYear.Visible = false;
             LbProvince.Visible = true;
             LbProvince.Text = SearchProvince();
             IsMingDer = false;
@@ -68,10 +72,8 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
 
         removeSession("QViewScore");
     }
-
     protected void Page_Load(object sender, EventArgs e)
     {
-
         //Session["UserID"] = "admin";
         getSchoolName(schoolName);
         //LbSchoolName.Text = schoolName.ToString();
@@ -82,6 +84,7 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             setDefault(DdlType.Province);
             //setDefault(DdlType.SchoolName);
             setDefault(DdlType.Year);
+            DdlSchoolName.Items.Add(new ListItem(Resources.Resource.DdlTypeSchoolname, "0"));
             if (Session["QViewScoreList"] != null)
                 Query = Session["QViewScoreList"].ToString();
             else
@@ -92,13 +95,11 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         }
 
     }
-
     private void removeSession(string key)
     {
         if (Session[key] != null)
             Session.Remove(key);
     }
-
     private string SearchProvince()
     {
         string query = "select Area.name from Area where Area.id='" + Session["Province"].ToString() + "'";
@@ -107,7 +108,6 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         ms.GetOneData(query, sb);
         return string.IsNullOrEmpty(sb.ToString()) ? "none" : sb.ToString();
     }
-
     private void setDefault(DdlType type)
     {
         switch (type)
@@ -117,6 +117,9 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
                 break;
             case DdlType.Year:
                 setYear();
+                break;
+            case DdlType.ImportYear:
+                setImportYear();
                 break;
         }
     }
@@ -143,7 +146,6 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             DdlProvince.Items.Add(new ListItem(province[0], province[1]));
         }
     }
-
     private void setYear()
     {
         ManageSQL ms = new ManageSQL();
@@ -166,9 +168,28 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             DdlYear.Items.Add(province[0]);
         }
     }
-    
+    private void setImportYear()
+    {
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+        Query = "select Account.ImportYear from Account where ImportYear Is Not Null group by ImportYear order by ImportYear asc";
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
 
-
+        if (data.Count == 0)
+        {
+            DdlImportYear.Items.Add("None");
+            return;
+        }
+        DdlImportYear.Items.Add(Resources.Resource.DdlTypeImportYear);
+        foreach (string[] province in data)
+        {
+            DdlImportYear.Items.Add(province[0]);
+        }
+    }
 
     private void SearchType()
     {
@@ -276,7 +297,6 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         //Query += "order by QList.Year desc, QList.Semester asc";
         //Session["PlanList"] = Query;
     }
-
     private bool getSchoolName(StringBuilder sb)
     {
         ManageSQL ms = new ManageSQL();
@@ -285,8 +305,6 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             return false;
         return true;
     }
-
-
     private void LoadInternetStudy(int Select)
     {
         ManageSQL ms = new ManageSQL();
@@ -403,7 +421,6 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         LbCompleted.Text += "</table>";
 
     }
-
     private string GetEncryptionString(string Tag, string Data)
     {
         //BaseClass bc = new BaseClass();
@@ -411,19 +428,16 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
         BaseClass bc = new BaseClass();
         return (Tag + "=" + Data);
     }
-
     protected void PageSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
         // 使用者一定要有大於10筆的資料，才有足更能力去選擇第二頁、第三頁，故這裡可不判斷是否為空，因為為空時，使用者也無法做選擇頁面的操作
         Query = Session["QVSL_PageSelect_SelectedIndexChanged"].ToString();
         LoadInternetStudy(DdlPageSelect.SelectedIndex + 1);
     }
-
     protected void ImgBtnLogout_Click(object sender, ImageClickEventArgs e)
     {
         Response.Redirect("../Default.aspx");
     }
-
     protected void BtnSearch_Click(object sender, EventArgs e)
     {
         if (IsMingDer)
@@ -465,12 +479,54 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
             Response.Redirect("../MingdeIndex.aspx");
         }
     }
-
     protected void DdlProvince_SelectedIndexChanged(object sender, EventArgs e)
     {
-        setSchoolName(DdlProvince.SelectedValue);
-    }
+        if (DdlProvince.SelectedIndex == 0)
+            return;
 
+        setSchoolName_Province(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_Province(string schoolName)
+    {
+        DdlSchoolName.Items.Clear();
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+
+
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            Query = "select School from Account " +
+                   "left join Area on Account.zipcode = Area.ID " +
+                   "where area.name =N'" + schoolName + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
+                   "group by School ";
+        }
+        else if (DdlImportYear.SelectedValue.ToString() != Resources.Resource.DdlTypeImportYear)
+        {
+            Query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.ID " +
+                    "where area.name =N'" + schoolName + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                    "group by School ";
+        }
+
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
     private void setSchoolName(string provinceData)
     {
         DdlSchoolName.Items.Clear();
@@ -492,6 +548,54 @@ public partial class Expert_QViewScoreList : System.Web.UI.Page
                             "where area.name =N'" + LbProvince.Text + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
                             "group by School ";
         }
+
+        if (!ms.GetAllColumnData(Query, data))
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+
+        if (data.Count == 0)
+        {
+            DdlSchoolName.Items.Add("None");
+            return;
+        }
+        DdlSchoolName.Items.Add(Resources.Resource.DdlTypeSchoolname);
+        foreach (string[] province in data)
+        {
+            DdlSchoolName.Items.Add(province[0]);
+        }
+    }
+    protected void DdlImportYear_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (DdlProvince.SelectedIndex == 0)
+            return;
+
+        setSchoolName_ImportYear(DdlProvince.Items[DdlProvince.SelectedIndex].ToString());
+    }
+    private void setSchoolName_ImportYear(string schoolName)
+    {
+        DdlSchoolName.Items.Clear();
+        ManageSQL ms = new ManageSQL();
+        ArrayList data = new ArrayList();
+
+        if (DdlImportYear.SelectedValue.ToString() == Resources.Resource.DdlTypeImportYear)
+        {
+            Query = "select School from Account " +
+                   "left join Area on Account.zipcode = Area.ID " +
+                   "where area.name =N'" + schoolName + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
+                   "group by School ";
+        }
+        else if (DdlImportYear.SelectedValue.ToString() != Resources.Resource.DdlTypeImportYear)
+        {
+            Query = "select School from Account " +
+                    "left join Area on Account.zipcode = Area.ID " +
+                    "where area.name =N'" + schoolName + "'" + " and School not like N'%專家%' and School not like N'%管理者%' " +
+                    "and Account.ImportYear =" + DdlImportYear.SelectedValue.ToString() + " " +
+                    "group by School ";
+        }
+
+
 
         if (!ms.GetAllColumnData(Query, data))
         {

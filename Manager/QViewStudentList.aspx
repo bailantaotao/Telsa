@@ -44,6 +44,10 @@
         .auto-style1 {
             height: 26px;
         }
+        .style1
+        {
+            width: 252px;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -115,10 +119,14 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left">
+                            <td align="left" class="style1">
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="true">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlProvince" runat="server" Width="80px" Font-Size="14pt" AutoPostBack="true" OnSelectedIndexChanged="DdlProvince_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                            Font-Size="14pt" onselectedindexchanged="DdlImportYear_SelectedIndexChanged" 
+                                            Width="100px">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -129,7 +137,7 @@
                             <td align="left">
                                 <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                                     <ContentTemplate>
-                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="80px" Font-Size="14pt">
+                                        <asp:DropDownList ID="DdlSchoolName" runat="server" Width="150px" Font-Size="14pt">
                                         </asp:DropDownList>
                                     </ContentTemplate>
                                     <Triggers>
@@ -139,7 +147,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="left">
+                            <td align="left" class="style1">
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
                                         <asp:DropDownList ID="DdlYear" runat="server" Width="80px" Font-Size="14pt">

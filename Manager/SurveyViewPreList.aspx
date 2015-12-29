@@ -115,6 +115,10 @@
                                     Font-Size="14pt" Height="28px" AutoPostBack="True" 
                                             onselectedindexchanged="DdlProvince_SelectedIndexChanged">
                                         </asp:DropDownList>
+                                        <asp:DropDownList ID="DdlImportYear" runat="server" AutoPostBack="true" 
+                                            Font-Size="14pt" onselectedindexchanged="DdlImportYear_SelectedIndexChanged" 
+                                            Width="100px">
+                                        </asp:DropDownList>
                                 <asp:UpdatePanel ID="UpProvince" runat="server" Visible="false">
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="BtnSearch" EventName="Click" />
