@@ -45,6 +45,10 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
+        .style1
+        {
+            width: 96%;
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; font-size: 14pt; border-top-style: none; font-family: Arial; border-right-style: none; border-left-style: none; border-bottom-style: none; background:url(../<%= backgroundImage %>) no-repeat center top;">
@@ -102,7 +106,7 @@
                 <div id="BlockRightDownController">
                     <table width="739px">
                         <tr>
-                            <td align="left" width="20%">
+                            <td align="left" class="style1">
                                 年分：<asp:Label ID="LbYear" runat="server" Text=""></asp:Label>   
                             </td>
                             <td align="left" width="60%">
@@ -110,7 +114,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="1" align="left">
+                            <td colspan="1" align="left" class="style1">
                                 <asp:Label ID="LbTipProvince" runat="server" Text="<%$ Resources:Resource, TipPlanTitle4 %>"></asp:Label> 
                                                                
                             </td>
