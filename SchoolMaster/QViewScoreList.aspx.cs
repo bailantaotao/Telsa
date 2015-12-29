@@ -146,7 +146,9 @@ public partial class SchoolMaster_QViewScoreList : System.Web.UI.Page
 
         Query = "select QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School " +
                 "from QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + " " +
-                "where QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode = '" + Session["Province"].ToString() + "' group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School";
+                "where QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".Zipcode = '" + Session["Province"].ToString() +
+                "and school= N'" + Session["SchoolName"].ToString() + "'" + 
+                "' group by QStudent" + DdlYear.SelectedValue + DdlSemester.SelectedValue + ".School";
 
         
 
