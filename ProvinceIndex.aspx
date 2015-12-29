@@ -88,6 +88,9 @@
                     <asp:ImageButton ID="ImgBtnLogout" runat="server"  ImageUrl="<%$ Resources:Resource, ImgIndexUrlLogout%>" OnClick="ImgBtnLogout_Click"/>
                 </div>
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnSendAnnocementRecord%>" onclick="BtnSendAnnocementRecord_Click" />
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnSendMsg" runat="server" Text="<%$ Resources:Resource, TipSendMsg%>" OnClick="BtnSendMsg_Click" />
                 </div>
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">

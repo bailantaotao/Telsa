@@ -91,13 +91,22 @@
                     <asp:Button ID="BtnSendMsg" runat="server" Text="<%$ Resources:Resource, TipSendMsg%>" OnClick="BtnSendMsg_Click" />
                 </div>
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="Button1" runat="server" Text="<%$ Resources:Resource, BtnSendAnnocementRecord%>" onclick="BtnSendAnnocementRecord_Click" />
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnSendAnnocement" runat="server" Text="<%$ Resources:Resource, BtnSendAnnocement%>" OnClick="BtnSendAnnocement_Click" />
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                </div>
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
+                    <asp:Button ID="BtnRecoverPassword" runat="server" Text="恢复密码" 
+                        onclick="BtnRecoverPassword_Click"/>
                 </div>
                 <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnModifyPassword" runat="server" Text="修改密码" 
                         onclick="BtnModifyPassword_Click" />
                 </div>
-                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 210px">
+                <div style="float:right; vertical-align:central; line-height:37px; padding-right: 30px">
                     <asp:Button ID="BtnImportProvinceData" runat="server" Text="导入项目省校" OnClick="BtnImportProvinceData_Click"  />
                 </div>
             </div>

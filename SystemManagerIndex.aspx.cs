@@ -99,4 +99,12 @@ public partial class SystemManagerIndex : System.Web.UI.Page
     {
         Response.Redirect("ModifiedPassword.aspx");
     }
+    protected void BtnRecoverPassword_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("RecoverPassword.aspx");
+    }
+    protected void BtnSendAnnocementRecord_Click(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "window.open('MsgAnnocementRecord.aspx', '', config='height=500,width=900')", true);
+    }
 }
