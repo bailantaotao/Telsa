@@ -882,4 +882,16 @@
   <data name="TipQuestionnaireYear" xml:space="preserve">
     <value>问卷年分</value>
   </data>
+  <data name="DdlTypeImportYear" xml:space="preserve">
+    <value>项目年</value>
+  </data>
+  <data name="BtnSendAnnocementRecord" xml:space="preserve">
+    <value>发送通知纪录</value>
+  </data>
+  <data name="BtnClose" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="TipOrder" xml:space="preserve">
+    <value>排序方式:</value>
+  </data>
 </root>
