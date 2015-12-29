@@ -9,6 +9,7 @@ Telsa v6.0.7
 Telsa v6.0.8
 Telsa v6.0.9
 Telsa v6.1.0
+Telsa v6.1.1
 
 ##########     v6.0.8     ##########
 Changed
@@ -28,3 +29,8 @@ Changed:
 Changed:
 	Table: QGradeClassHistory
 	Column: [Added] Zipcode, School
+
+##########     v6.0.8     ##########
+Changed:
+	Table: Account
+	Column: [Added] ImportYear
